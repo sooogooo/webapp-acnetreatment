@@ -1,0 +1,15 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Brush handle -->
+  <rect x="14" y="8" width="2" height="12" rx="1" fill="var(--icon-color, #3498db)"/>
+  <!-- Brush ferrule (metal band) -->
+  <rect x="13.5" y="7" width="3" height="2" rx="0.3" fill="var(--icon-color, #3498db)" opacity="0.8"/>
+  <!-- Brush bristles -->
+  <path d="M12 3L14 7L16 3" stroke="var(--icon-color, #3498db)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  <path d="M10 4L13 7L15 4" stroke="var(--icon-color, #3498db)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  <path d="M11 2L13.5 7L16.5 2" stroke="var(--icon-color, #3498db)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  <path d="M9 5L12.5 7L14.5 5" stroke="var(--icon-color, #3498db)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  <!-- Powder/makeup particles -->
+  <circle cx="8" cy="6" r="0.5" fill="var(--icon-color, #3498db)" opacity="0.4"/>
+  <circle cx="6" cy="8" r="0.3" fill="var(--icon-color, #3498db)" opacity="0.5"/>
+  <circle cx="7" cy="10" r="0.4" fill="var(--icon-color, #3498db)" opacity="0.3"/>
+</svg>

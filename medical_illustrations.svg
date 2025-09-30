@@ -1,0 +1,477 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1600" width="1200" height="1600">
+  <defs>
+    <!-- Gradients for depth and medical appearance -->
+    <linearGradient id="epidermisGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFE4B5;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#FFDAB9;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F4A460;stop-opacity:1" />
+    </linearGradient>
+
+    <linearGradient id="dermisGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#DEB887;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#CD853F;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#A0522D;stop-opacity:1" />
+    </linearGradient>
+
+    <linearGradient id="hypodermisGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#F5DEB3;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#DDD8C0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#C4B29A;stop-opacity:1" />
+    </linearGradient>
+
+    <radialGradient id="follicleGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#8B4513;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#654321;stop-opacity:1" />
+    </radialGradient>
+
+    <linearGradient id="sebaceousGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFD700;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#FFA500;stop-opacity:0.8" />
+    </linearGradient>
+
+    <!-- Arrow marker -->
+    <marker id="arrowhead" markerWidth="10" markerHeight="7"
+            refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333" />
+    </marker>
+
+    <!-- Inflammation pattern -->
+    <radialGradient id="inflammationGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#FF6B6B;stop-opacity:0.8" />
+      <stop offset="50%" style="stop-color:#FF4757;stop-opacity:0.6" />
+      <stop offset="100%" style="stop-color:#FF3742;stop-opacity:0.3" />
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="1600" fill="#F8F9FA"/>
+
+  <!-- Title -->
+  <text x="600" y="40" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif"
+        font-size="28" font-weight="bold" fill="#2C3E50">皮肤结构与痤疮形成机制医疗插图</text>
+
+  <!-- Section 1: Skin Structure Layers -->
+  <g id="skinStructure">
+    <!-- Section title -->
+    <text x="150" y="90" font-family="SimHei, Microsoft YaHei, sans-serif"
+          font-size="20" font-weight="bold" fill="#34495E">1. 皮肤分层结构图</text>
+
+    <!-- Epidermis layers -->
+    <g id="epidermis">
+      <!-- Stratum corneum -->
+      <rect x="50" y="100" width="250" height="25" fill="#F5F5DC" stroke="#8B7355" stroke-width="1"/>
+      <text x="280" y="118" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="12" fill="#2C3E50">角质层</text>
+
+      <!-- Stratum lucidum -->
+      <rect x="50" y="125" width="250" height="8" fill="#FFE4E1" stroke="#8B7355" stroke-width="1"/>
+      <text x="280" y="135" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="12" fill="#2C3E50">透明层</text>
+
+      <!-- Stratum granulosum -->
+      <rect x="50" y="133" width="250" height="15" fill="#FFDAB9" stroke="#8B7355" stroke-width="1"/>
+      <text x="280" y="148" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="12" fill="#2C3E50">颗粒层</text>
+
+      <!-- Stratum spinosum -->
+      <rect x="50" y="148" width="250" height="20" fill="#DEB887" stroke="#8B7355" stroke-width="1"/>
+      <text x="280" y="163" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="12" fill="#2C3E50">棘层</text>
+
+      <!-- Stratum basale -->
+      <rect x="50" y="168" width="250" height="12" fill="#D2B48C" stroke="#8B7355" stroke-width="1"/>
+      <text x="280" y="178" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="12" fill="#2C3E50">基底层</text>
+
+      <!-- Epidermis bracket -->
+      <path d="M 40 100 L 35 100 L 35 180 L 40 180" stroke="#34495E" stroke-width="2" fill="none"/>
+      <text x="15" y="145" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="14"
+            font-weight="bold" fill="#34495E" transform="rotate(-90 15 145)">表皮层</text>
+    </g>
+
+    <!-- Dermis -->
+    <g id="dermis">
+      <!-- Papillary dermis -->
+      <rect x="50" y="180" width="250" height="40" fill="url(#dermisGrad)" stroke="#8B4513" stroke-width="1"/>
+      <text x="280" y="205" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="12" fill="#2C3E50">乳头层</text>
+
+      <!-- Reticular dermis -->
+      <rect x="50" y="220" width="250" height="60" fill="#CD853F" stroke="#8B4513" stroke-width="1"/>
+      <text x="280" y="255" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="12" fill="#2C3E50">网状层</text>
+
+      <!-- Dermis bracket -->
+      <path d="M 40 180 L 35 180 L 35 280 L 40 280" stroke="#34495E" stroke-width="2" fill="none"/>
+      <text x="15" y="235" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="14"
+            font-weight="bold" fill="#34495E" transform="rotate(-90 15 235)">真皮层</text>
+    </g>
+
+    <!-- Hypodermis -->
+    <g id="hypodermis">
+      <rect x="50" y="280" width="250" height="50" fill="url(#hypodermisGrad)" stroke="#8B7355" stroke-width="1"/>
+
+      <!-- Fat cells -->
+      <circle cx="80" cy="305" r="8" fill="#FFFACD" stroke="#DDD8C0" stroke-width="1"/>
+      <circle cx="120" cy="300" r="10" fill="#FFFACD" stroke="#DDD8C0" stroke-width="1"/>
+      <circle cx="160" cy="310" r="9" fill="#FFFACD" stroke="#DDD8C0" stroke-width="1"/>
+      <circle cx="200" cy="295" r="11" fill="#FFFACD" stroke="#DDD8C0" stroke-width="1"/>
+      <circle cx="240" cy="308" r="8" fill="#FFFACD" stroke="#DDD8C0" stroke-width="1"/>
+
+      <text x="280" y="310" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="12" fill="#2C3E50">皮下组织</text>
+
+      <!-- Hypodermis bracket -->
+      <path d="M 40 280 L 35 280 L 35 330 L 40 330" stroke="#34495E" stroke-width="2" fill="none"/>
+      <text x="15" y="310" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="14"
+            font-weight="bold" fill="#34495E" transform="rotate(-90 15 310)">皮下组织</text>
+    </g>
+  </g>
+
+  <!-- Section 2: Hair Follicle and Sebaceous Gland Structure -->
+  <g id="follicleStructure">
+    <!-- Section title -->
+    <text x="600" y="90" font-family="SimHei, Microsoft YaHei, sans-serif"
+          font-size="20" font-weight="bold" fill="#34495E">2. 毛囊和皮脂腺结构</text>
+
+    <!-- Hair follicle -->
+    <g id="hairFollicle">
+      <!-- Main follicle shaft -->
+      <ellipse cx="650" cy="215" rx="15" ry="120" fill="url(#follicleGrad)" stroke="#654321" stroke-width="2"/>
+
+      <!-- Hair shaft -->
+      <line x1="650" y1="100" x2="650" y2="300" stroke="#8B4513" stroke-width="3"/>
+      <circle cx="650" cy="95" r="2" fill="#8B4513"/>
+
+      <!-- Sebaceous glands -->
+      <ellipse cx="630" cy="150" rx="12" ry="8" fill="url(#sebaceousGrad)" stroke="#FFA500" stroke-width="1"/>
+      <ellipse cx="670" cy="160" rx="10" ry="6" fill="url(#sebaceousGrad)" stroke="#FFA500" stroke-width="1"/>
+      <ellipse cx="625" cy="170" rx="8" ry="6" fill="url(#sebaceousGrad)" stroke="#FFA500" stroke-width="1"/>
+
+      <!-- Pore opening -->
+      <ellipse cx="650" cy="100" rx="8" ry="3" fill="#8B4513" stroke="#654321" stroke-width="1"/>
+
+      <!-- Blood vessels -->
+      <path d="M 600 200 Q 620 210 640 200 Q 660 190 680 200 Q 700 210 720 200"
+            stroke="#DC143C" stroke-width="2" fill="none"/>
+      <path d="M 605 250 Q 625 260 645 250 Q 665 240 685 250"
+            stroke="#DC143C" stroke-width="2" fill="none"/>
+
+      <!-- Labels -->
+      <line x1="680" y1="100" x2="720" y2="80" stroke="#333" stroke-width="1" marker-end="url(#arrowhead)"/>
+      <text x="725" y="78" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="12" fill="#2C3E50">毛孔开口</text>
+
+      <line x1="630" y1="150" x2="580" y2="130" stroke="#333" stroke-width="1" marker-end="url(#arrowhead)"/>
+      <text x="520" y="128" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="12" fill="#2C3E50">皮脂腺</text>
+
+      <line x1="680" y1="215" x2="720" y2="215" stroke="#333" stroke-width="1" marker-end="url(#arrowhead)"/>
+      <text x="725" y="218" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="12" fill="#2C3E50">毛囊</text>
+
+      <line x1="700" y1="200" x2="740" y2="180" stroke="#333" stroke-width="1" marker-end="url(#arrowhead)"/>
+      <text x="745" y="178" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="12" fill="#2C3E50">血管分布</text>
+    </g>
+  </g>
+
+  <!-- Section 3: Acne Formation Process -->
+  <g id="acneFormation">
+    <!-- Section title -->
+    <text x="150" y="390" font-family="SimHei, Microsoft YaHei, sans-serif"
+          font-size="20" font-weight="bold" fill="#34495E">3. 痤疮形成过程图</text>
+
+    <!-- Timeline arrow -->
+    <line x1="50" y1="420" x2="950" y2="420" stroke="#34495E" stroke-width="3" marker-end="url(#arrowhead)"/>
+    <text x="500" y="410" font-family="SimHei, Microsoft YaHei, sans-serif"
+          font-size="14" font-weight="bold" fill="#34495E">时间进程</text>
+
+    <!-- Stage 1: Normal follicle -->
+    <g id="stage1">
+      <text x="120" y="450" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif"
+            font-size="14" font-weight="bold" fill="#27AE60">阶段1：正常状态</text>
+
+      <ellipse cx="120" cy="500" rx="12" ry="60" fill="#DEB887" stroke="#8B4513" stroke-width="1"/>
+      <line x1="120" y1="440" x2="120" y2="560" stroke="#8B4513" stroke-width="2"/>
+      <ellipse cx="105" cy="480" rx="8" ry="5" fill="#FFD700" stroke="#FFA500" stroke-width="1"/>
+
+      <text x="120" y="580" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif"
+            font-size="11" fill="#2C3E50">毛囊通畅</text>
+      <text x="120" y="595" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif"
+            font-size="11" fill="#2C3E50">皮脂正常分泌</text>
+    </g>
+
+    <!-- Stage 2: Clogged pore -->
+    <g id="stage2">
+      <text x="320" y="450" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif"
+            font-size="14" font-weight="bold" fill="#F39C12">阶段2：角质堵塞</text>
+
+      <ellipse cx="320" cy="500" rx="12" ry="60" fill="#DEB887" stroke="#8B4513" stroke-width="1"/>
+      <line x1="320" y1="445" x2="320" y2="560" stroke="#8B4513" stroke-width="2"/>
+      <ellipse cx="305" cy="480" rx="10" ry="6" fill="#FFD700" stroke="#FFA500" stroke-width="1"/>
+
+      <!-- Blocked pore -->
+      <ellipse cx="320" cy="440" rx="8" ry="4" fill="#654321"/>
+      <rect x="315" y="445" width="10" height="15" fill="#8B4513"/>
+
+      <text x="320" y="580" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif"
+            font-size="11" fill="#2C3E50">角质栓形成</text>
+      <text x="320" y="595" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif"
+            font-size="11" fill="#2C3E50">皮脂堆积</text>
+    </g>
+
+    <!-- Stage 3: Bacterial infection -->
+    <g id="stage3">
+      <text x="520" y="450" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif"
+            font-size="14" font-weight="bold" fill="#E67E22">阶段3：细菌感染</text>
+
+      <ellipse cx="520" cy="500" rx="15" ry="60" fill="#DEB887" stroke="#8B4513" stroke-width="1"/>
+      <line x1="520" y1="445" x2="520" y2="560" stroke="#8B4513" stroke-width="2"/>
+      <ellipse cx="500" cy="480" rx="12" ry="8" fill="#FFD700" stroke="#FFA500" stroke-width="1"/>
+
+      <!-- Blocked pore with buildup -->
+      <ellipse cx="520" cy="440" rx="10" ry="5" fill="#654321"/>
+      <rect x="512" y="445" width="16" height="20" fill="#8B4513"/>
+
+      <!-- Bacteria (small dots) -->
+      <circle cx="515" cy="470" r="1.5" fill="#8B0000"/>
+      <circle cx="525" cy="475" r="1.5" fill="#8B0000"/>
+      <circle cx="518" cy="485" r="1.5" fill="#8B0000"/>
+      <circle cx="522" cy="490" r="1.5" fill="#8B0000"/>
+
+      <text x="520" y="580" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif"
+            font-size="11" fill="#2C3E50">细菌增殖</text>
+      <text x="520" y="595" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif"
+            font-size="11" fill="#2C3E50">厌氧环境</text>
+    </g>
+
+    <!-- Stage 4: Inflammation -->
+    <g id="stage4">
+      <text x="720" y="450" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif"
+            font-size="14" font-weight="bold" fill="#E74C3C">阶段4：炎症反应</text>
+
+      <ellipse cx="720" cy="500" rx="18" ry="65" fill="url(#inflammationGrad)" stroke="#FF4757" stroke-width="2"/>
+      <line x1="720" y1="445" x2="720" y2="565" stroke="#8B4513" stroke-width="2"/>
+      <ellipse cx="695" cy="480" rx="15" ry="10" fill="#FFD700" stroke="#FFA500" stroke-width="1"/>
+
+      <!-- Inflamed cyst -->
+      <circle cx="720" cy="440" r="12" fill="#FF6B6B" stroke="#FF4757" stroke-width="2"/>
+      <rect x="710" y="445" width="20" height="25" fill="#FF4757"/>
+
+      <!-- Pus -->
+      <circle cx="720" cy="455" r="6" fill="#FFFACD" stroke="#FFD700" stroke-width="1"/>
+
+      <!-- Inflammation indicators -->
+      <circle cx="705" cy="490" r="3" fill="#FF6B6B" opacity="0.7"/>
+      <circle cx="735" cy="485" r="3" fill="#FF6B6B" opacity="0.7"/>
+      <circle cx="710" cy="510" r="3" fill="#FF6B6B" opacity="0.7"/>
+
+      <text x="720" y="580" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif"
+            font-size="11" fill="#2C3E50">炎症丘疹</text>
+      <text x="720" y="595" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif"
+            font-size="11" fill="#2C3E50">组织破坏</text>
+    </g>
+  </g>
+
+  <!-- Section 4: Treatment Mechanisms -->
+  <g id="treatmentMechanisms">
+    <!-- Section title -->
+    <text x="150" y="660" font-family="SimHei, Microsoft YaHei, sans-serif"
+          font-size="20" font-weight="bold" fill="#34495E">4. 治疗机制示意</text>
+
+    <!-- Topical medication penetration -->
+    <g id="topicalTreatment">
+      <text x="150" y="690" font-family="SimHei, Microsoft YaHei, sans-serif"
+            font-size="16" font-weight="bold" fill="#8E44AD">外用药物渗透</text>
+
+      <!-- Skin layers -->
+      <rect x="50" y="700" width="200" height="15" fill="#F5F5DC" stroke="#8B7355" stroke-width="1"/>
+      <rect x="50" y="715" width="200" height="25" fill="#DEB887" stroke="#8B7355" stroke-width="1"/>
+      <rect x="50" y="740" width="200" height="35" fill="#CD853F" stroke="#8B7355" stroke-width="1"/>
+
+      <!-- Follicle -->
+      <ellipse cx="150" cy="740" rx="8" ry="30" fill="#8B4513" stroke="#654321" stroke-width="1"/>
+
+      <!-- Drug penetration arrows -->
+      <path d="M 100 690 L 100 720" stroke="#9B59B6" stroke-width="3" marker-end="url(#arrowhead)"/>
+      <path d="M 120 690 L 145 730" stroke="#9B59B6" stroke-width="3" marker-end="url(#arrowhead)"/>
+      <path d="M 180 690 L 155 730" stroke="#9B59B6" stroke-width="3" marker-end="url(#arrowhead)"/>
+
+      <!-- Drug molecules -->
+      <circle cx="90" cy="700" r="2" fill="#9B59B6"/>
+      <circle cx="110" cy="705" r="2" fill="#9B59B6"/>
+      <circle cx="170" cy="702" r="2" fill="#9B59B6"/>
+
+      <text x="270" y="725" font-family="SimHei, Microsoft YaHei, sans-serif"
+            font-size="12" fill="#2C3E50">药物分子渗透到</text>
+      <text x="270" y="740" font-family="SimHei, Microsoft YaHei, sans-serif"
+            font-size="12" fill="#2C3E50">毛囊和皮脂腺</text>
+    </g>
+
+    <!-- Laser treatment -->
+    <g id="laserTreatment">
+      <text x="150" y="820" font-family="SimHei, Microsoft YaHei, sans-serif"
+            font-size="16" font-weight="bold" fill="#E74C3C">激光治疗层次</text>
+
+      <!-- Skin layers -->
+      <rect x="50" y="830" width="200" height="15" fill="#F5F5DC" stroke="#8B7355" stroke-width="1"/>
+      <rect x="50" y="845" width="200" height="25" fill="#DEB887" stroke="#8B7355" stroke-width="1"/>
+      <rect x="50" y="870" width="200" height="35" fill="#CD853F" stroke="#8B7355" stroke-width="1"/>
+
+      <!-- Laser beams -->
+      <path d="M 100 820 L 100 875" stroke="#FF0000" stroke-width="4" opacity="0.8"/>
+      <path d="M 120 820 L 120 880" stroke="#FF0000" stroke-width="4" opacity="0.8"/>
+      <path d="M 140 820 L 140 875" stroke="#FF0000" stroke-width="4" opacity="0.8"/>
+      <path d="M 160 820 L 160 880" stroke="#FF0000" stroke-width="4" opacity="0.8"/>
+
+      <!-- Heat zones -->
+      <ellipse cx="130" cy="860" rx="25" ry="15" fill="#FF6B6B" opacity="0.5"/>
+      <ellipse cx="130" cy="885" rx="20" ry="10" fill="#FF4757" opacity="0.5"/>
+
+      <text x="270" y="855" font-family="SimHei, Microsoft YaHei, sans-serif"
+            font-size="12" fill="#2C3E50">激光能量深入</text>
+      <text x="270" y="870" font-family="SimHei, Microsoft YaHei, sans-serif"
+            font-size="12" fill="#2C3E50">真皮层，刺激</text>
+      <text x="270" y="885" font-family="SimHei, Microsoft YaHei, sans-serif"
+            font-size="12" fill="#2C3E50">胶原重塑</text>
+    </g>
+
+    <!-- Microneedling -->
+    <g id="microneedling">
+      <text x="150" y="950" font-family="SimHei, Microsoft YaHei, sans-serif"
+            font-size="16" font-weight="bold" fill="#27AE60">微针治疗原理</text>
+
+      <!-- Skin layers -->
+      <rect x="50" y="960" width="200" height="15" fill="#F5F5DC" stroke="#8B7355" stroke-width="1"/>
+      <rect x="50" y="975" width="200" height="25" fill="#DEB887" stroke="#8B7355" stroke-width="1"/>
+      <rect x="50" y="1000" width="200" height="35" fill="#CD853F" stroke="#8B7355" stroke-width="1"/>
+
+      <!-- Microneedles -->
+      <line x1="80" y1="950" x2="80" y2="990" stroke="#2C3E50" stroke-width="2"/>
+      <line x1="110" y1="950" x2="110" y2="985" stroke="#2C3E50" stroke-width="2"/>
+      <line x1="140" y1="950" x2="140" y2="995" stroke="#2C3E50" stroke-width="2"/>
+      <line x1="170" y1="950" x2="170" y2="990" stroke="#2C3E50" stroke-width="2"/>
+      <line x1="200" y1="950" x2="200" y2="988" stroke="#2C3E50" stroke-width="2"/>
+
+      <!-- Microchannels -->
+      <ellipse cx="80" cy="980" rx="2" ry="8" fill="#FF9999" opacity="0.6"/>
+      <ellipse cx="110" cy="982" rx="2" ry="6" fill="#FF9999" opacity="0.6"/>
+      <ellipse cx="140" cy="985" rx="2" ry="10" fill="#FF9999" opacity="0.6"/>
+      <ellipse cx="170" cy="983" rx="2" ry="8" fill="#FF9999" opacity="0.6"/>
+
+      <text x="270" y="980" font-family="SimHei, Microsoft YaHei, sans-serif"
+            font-size="12" fill="#2C3E50">微针形成通道</text>
+      <text x="270" y="995" font-family="SimHei, Microsoft YaHei, sans-serif"
+            font-size="12" fill="#2C3E50">促进修复因子</text>
+      <text x="270" y="1010" font-family="SimHei, Microsoft YaHei, sans-serif"
+            font-size="12" fill="#2C3E50">深层渗透</text>
+    </g>
+
+    <!-- Chemical peel mechanism -->
+    <g id="chemicalPeel">
+      <text x="150" y="1080" font-family="SimHei, Microsoft YaHei, sans-serif"
+            font-size="16" font-weight="bold" fill="#F39C12">刷酸作用机制</text>
+
+      <!-- Before -->
+      <g id="beforePeel">
+        <text x="90" y="1110" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif"
+              font-size="14" fill="#2C3E50">治疗前</text>
+
+        <!-- Thick stratum corneum -->
+        <rect x="50" y="1120" width="80" height="20" fill="#F5F5DC" stroke="#8B7355" stroke-width="1"/>
+        <rect x="50" y="1140" width="80" height="15" fill="#DEB887" stroke="#8B7355" stroke-width="1"/>
+        <rect x="50" y="1155" width="80" height="25" fill="#CD853F" stroke="#8B7355" stroke-width="1"/>
+
+        <!-- Clogged pore -->
+        <ellipse cx="90" cy="1125" rx="5" ry="3" fill="#654321"/>
+        <rect x="87" y="1128" width="6" height="12" fill="#8B4513"/>
+
+        <text x="90" y="1200" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif"
+              font-size="11" fill="#2C3E50">角质层厚</text>
+        <text x="90" y="1215" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif"
+              font-size="11" fill="#2C3E50">毛孔堵塞</text>
+      </g>
+
+      <!-- Arrow -->
+      <path d="M 140 1150 L 170 1150" stroke="#F39C12" stroke-width="3" marker-end="url(#arrowhead)"/>
+      <text x="155" y="1145" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif"
+            font-size="12" fill="#F39C12">刷酸</text>
+
+      <!-- After -->
+      <g id="afterPeel">
+        <text x="220" y="1110" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif"
+              font-size="14" fill="#2C3E50">治疗后</text>
+
+        <!-- Thinner stratum corneum -->
+        <rect x="180" y="1120" width="80" height="12" fill="#F5F5DC" stroke="#8B7355" stroke-width="1"/>
+        <rect x="180" y="1132" width="80" height="15" fill="#DEB887" stroke="#8B7355" stroke-width="1"/>
+        <rect x="180" y="1147" width="80" height="25" fill="#CD853F" stroke="#8B7355" stroke-width="1"/>
+
+        <!-- Open pore -->
+        <ellipse cx="220" cy="1125" rx="3" ry="2" fill="#DEB887"/>
+
+        <!-- Acid molecules -->
+        <circle cx="200" cy="1110" r="1.5" fill="#FFA500"/>
+        <circle cx="215" cy="1108" r="1.5" fill="#FFA500"/>
+        <circle cx="235" cy="1112" r="1.5" fill="#FFA500"/>
+
+        <text x="220" y="1200" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif"
+              font-size="11" fill="#2C3E50">角质层薄</text>
+        <text x="220" y="1215" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif"
+              font-size="11" fill="#2C3E50">毛孔通畅</text>
+      </g>
+
+      <text x="270" y="1150" font-family="SimHei, Microsoft YaHei, sans-serif"
+            font-size="12" fill="#2C3E50">果酸/水杨酸</text>
+      <text x="270" y="1165" font-family="SimHei, Microsoft YaHei, sans-serif"
+            font-size="12" fill="#2C3E50">溶解角质栓</text>
+      <text x="270" y="1180" font-family="SimHei, Microsoft YaHei, sans-serif"
+            font-size="12" fill="#2C3E50">促进细胞更新</text>
+    </g>
+  </g>
+
+  <!-- Additional medical annotations -->
+  <g id="medicalNotes">
+    <text x="50" y="1300" font-family="SimHei, Microsoft YaHei, sans-serif"
+          font-size="14" font-weight="bold" fill="#34495E">医学要点：</text>
+
+    <text x="50" y="1325" font-family="SimHei, Microsoft YaHei, sans-serif"
+          font-size="12" fill="#2C3E50">• 痤疮发病机制：皮脂腺分泌过度 → 毛囊角化异常 → 痤疮丙酸杆菌增殖 → 炎症反应</text>
+
+    <text x="50" y="1345" font-family="SimHei, Microsoft YaHei, sans-serif"
+          font-size="12" fill="#2C3E50">• 治疗原理：调节皮脂分泌、溶解角质栓、抗菌消炎、促进组织修复</text>
+
+    <text x="50" y="1365" font-family="SimHei, Microsoft YaHei, sans-serif"
+          font-size="12" fill="#2C3E50">• 分层治疗：表皮层（角质调理）→ 真皮层（消炎修复）→ 皮下层（深层重建）</text>
+
+    <text x="50" y="1385" font-family="SimHei, Microsoft YaHei, sans-serif"
+          font-size="12" fill="#2C3E50">• 个体化方案：根据痤疮分级、皮肤类型、年龄等因素制定综合治疗策略</text>
+  </g>
+
+  <!-- Legend -->
+  <g id="legend">
+    <rect x="900" y="100" width="280" height="200" fill="#F8F9FA" stroke="#34495E" stroke-width="1" rx="5"/>
+    <text x="1040" y="125" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif"
+          font-size="16" font-weight="bold" fill="#34495E">图例说明</text>
+
+    <!-- Legend items -->
+    <circle cx="920" cy="150" r="8" fill="#FFD700"/>
+    <text x="940" y="155" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="12" fill="#2C3E50">皮脂腺</text>
+
+    <circle cx="920" cy="170" r="8" fill="#8B4513"/>
+    <text x="940" y="175" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="12" fill="#2C3E50">毛囊</text>
+
+    <circle cx="920" cy="190" r="8" fill="#DC143C"/>
+    <text x="940" y="195" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="12" fill="#2C3E50">血管</text>
+
+    <circle cx="920" cy="210" r="8" fill="#FF6B6B"/>
+    <text x="940" y="215" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="12" fill="#2C3E50">炎症区域</text>
+
+    <circle cx="920" cy="230" r="8" fill="#8B0000"/>
+    <text x="940" y="235" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="12" fill="#2C3E50">细菌</text>
+
+    <circle cx="920" cy="250" r="8" fill="#9B59B6"/>
+    <text x="940" y="255" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="12" fill="#2C3E50">药物分子</text>
+
+    <line x1="1020" y1="150" x2="1040" y2="150" stroke="#FF0000" stroke-width="4"/>
+    <text x="1050" y="155" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="12" fill="#2C3E50">激光</text>
+
+    <line x1="1020" y1="170" x2="1040" y2="170" stroke="#2C3E50" stroke-width="2"/>
+    <text x="1050" y="175" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="12" fill="#2C3E50">微针</text>
+  </g>
+
+  <!-- Copyright and source -->
+  <text x="600" y="1580" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif"
+        font-size="10" fill="#7F8C8D">医疗插图 - 仅供教育参考使用 | 临床诊疗请遵医嘱</text>
+
+</svg>

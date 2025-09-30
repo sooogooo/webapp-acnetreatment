@@ -1,0 +1,165 @@
+/* SVG Icon System Styles */
+
+:root {
+  /* Default medical blue */
+  --icon-color: #3498db;
+  --icon-hover-color: #2980b9;
+  --icon-disabled-color: #bdc3c7;
+  --icon-success-color: #27ae60;
+  --icon-warning-color: #f39c12;
+  --icon-error-color: #e74c3c;
+}
+
+/* Base icon styles */
+.icon {
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  vertical-align: middle;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Size variants */
+.icon--small { width: 16px; height: 16px; }
+.icon--medium { width: 24px; height: 24px; }
+.icon--large { width: 32px; height: 32px; }
+.icon--xl { width: 48px; height: 48px; }
+
+/* Interactive states */
+.icon--clickable {
+  cursor: pointer;
+}
+
+.icon--clickable:hover {
+  --icon-color: var(--icon-hover-color);
+  transform: scale(1.05);
+}
+
+.icon--disabled {
+  --icon-color: var(--icon-disabled-color);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Semantic color variants */
+.icon--success { --icon-color: var(--icon-success-color); }
+.icon--warning { --icon-color: var(--icon-warning-color); }
+.icon--error { --icon-color: var(--icon-error-color); }
+
+/* Loading animation for spinner */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.icon--loading {
+  animation: spin 1s linear infinite;
+}
+
+/* Chapter icon grid layout */
+.chapter-icons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.chapter-icon-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+  text-decoration: none;
+  color: inherit;
+}
+
+.chapter-icon-item:hover {
+  background-color: rgba(52, 152, 219, 0.1);
+}
+
+.chapter-icon-item .icon {
+  margin-bottom: 0.5rem;
+}
+
+.chapter-icon-title {
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-align: center;
+  color: var(--text-color, #333);
+}
+
+/* Medical diagram styles */
+.medical-diagram {
+  max-width: 100%;
+  height: auto;
+  background: rgba(52, 152, 219, 0.05);
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+/* UI icon button styles */
+.icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: transparent;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.icon-button:hover {
+  background-color: rgba(52, 152, 219, 0.1);
+}
+
+.icon-button:active {
+  background-color: rgba(52, 152, 219, 0.2);
+  transform: scale(0.95);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .chapter-icons {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 0.75rem;
+    padding: 0.75rem;
+  }
+
+  .icon--large { width: 28px; height: 28px; }
+  .icon--xl { width: 36px; height: 36px; }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --icon-color: #5dade2;
+    --icon-hover-color: #85c1e9;
+    --text-color: #ecf0f1;
+  }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  .icon,
+  .icon-button,
+  .chapter-icon-item {
+    transition: none;
+  }
+
+  .icon--loading {
+    animation: none;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  :root {
+    --icon-color: #000;
+    --icon-hover-color: #333;
+  }
+}

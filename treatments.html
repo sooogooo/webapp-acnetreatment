@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>痤疮治疗项目价格表 - 联合丽格西南中心</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+        .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            margin-bottom: 40px;
+            font-size: 1.1em;
+        }
+        .logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .logo img {
+            max-width: 120px;
+        }
+        .section {
+            margin-bottom: 60px;
+        }
+        .section-title {
+            font-size: 2em;
+            color: #667eea;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+        .items-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        .item-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        .item-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .item-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 0 0 0 100px;
+        }
+        .item-name {
+            font-size: 1.4em;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        .item-category {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            margin-bottom: 15px;
+        }
+        .item-desc {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-size: 0.95em;
+        }
+        .item-price {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 15px;
+            border-top: 2px solid rgba(255,255,255,0.5);
+        }
+        .price-label {
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+        .price-value {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #e74c3c;
+        }
+        .price-note {
+            font-size: 0.8em;
+            color: #95a5a6;
+            margin-top: 5px;
+        }
+        .package-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 20px;
+            padding: 35px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(102,126,234,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        .package-card::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+        }
+        .package-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .package-name {
+            font-size: 2em;
+            font-weight: bold;
+        }
+        .package-level {
+            background: rgba(255,255,255,0.3);
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 1em;
+        }
+        .package-items {
+            background: rgba(255,255,255,0.15);
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            font-size: 1.05em;
+            line-height: 1.8;
+        }
+        .package-desc {
+            font-size: 1.05em;
+            line-height: 1.8;
+            opacity: 0.95;
+            margin-bottom: 25px;
+        }
+        .package-prices {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 25px;
+        }
+        .price-box {
+            background: rgba(255,255,255,0.2);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+        }
+        .price-box-label {
+            font-size: 0.9em;
+            opacity: 0.8;
+            margin-bottom: 8px;
+        }
+        .price-box-value {
+            font-size: 2.2em;
+            font-weight: bold;
+        }
+        .price-box-note {
+            font-size: 0.85em;
+            opacity: 0.7;
+            margin-top: 5px;
+        }
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: white;
+            color: #667eea;
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+            z-index: 100;
+        }
+        .back-button:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(102,126,234,0.4);
+        }
+        @media (max-width: 768px) {
+            .container { padding: 20px; }
+            h1 { font-size: 1.8em; }
+            .items-grid { grid-template-columns: 1fr; }
+            .package-prices { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-button">← 返回首页</a>
+
+    <div class="container">
+        <div class="logo">
+            <img src="logo.png" alt="联合丽格">
+        </div>
+
+        <h1>痤疮治疗项目价格表</h1>
+        <p class="subtitle">联合丽格西南中心 • 专业医美治疗方案</p>
+
+        <!-- 单品项目 -->
+        <div class="section">
+            <h2 class="section-title">🔬 单品治疗项目</h2>
+            <div class="items-grid" id="singleItemsGrid"></div>
+        </div>
+
+        <!-- 套餐方案 -->
+        <div class="section">
+            <h2 class="section-title">📦 综合治疗套餐</h2>
+            <div id="packagesContainer"></div>
+        </div>
+    </div>
+
+    <script>
+        // 真实数据（来自acnelist.xlsx）
+        const data = {
+            singleItems: [
+                { name: '激光针清/湿敷舒敏/红蓝光', category: '基础治疗', desc: '用于轻度痘肌问题，消炎去红，激光开口更卫生', price_single: 99, price_triple: 199 },
+                { name: '博乐达水杨酸面部', category: '刷酸治疗', desc: '抑制皮脂分泌、松解角质、抗炎作用，促进皮损消退，减少新发皮疹', price_single: 680, price_triple: 1680 },
+                { name: '小针刀剥离', category: '痘坑修复', desc: '真皮层剥离技术，降低皮下组织粘连，加速痘坑问题治疗', price_single: 980, price_triple: 2580 },
+                { name: '1565非剥脱点阵', category: '激光治疗', desc: '1565nm波长激光，聚焦真皮中上层，适合浅中层痘坑、毛孔粗大、细纹', price_single: 980, price_triple: 2580 },
+                { name: '1550非剥脱点阵激光', category: '激光治疗', desc: '穿透较深，适合改善中深层痘坑、萎缩性瘢痕，对亚洲人真皮层效果更强', price_single: 1280, price_triple: 2980 },
+                { name: '二氧化碳点阵激光', category: '激光治疗', desc: '强效胶原纤维合成及重塑，促进表皮再生，用于痘坑治疗', price_single: 1280, price_triple: 2980 },
+                { name: '三明治祛痘嫩肤', category: '综合治疗', desc: '多层促渗祛痘抗炎，配合水杨酸促进角质脱落', price_single: 1380, price_triple: 2980 },
+                { name: '黄金微针4.0', category: '射频微针', desc: '射频能量直接作用皮脂腺，抑制油脂分泌，刺激胶原新生', price_single: 1680, price_triple: 4580 }
+            ],
+            packages: [
+                { name: '痘清清A', level: '基础套餐', price_single: 980, price_triple: 2580, items: '1565点阵/1550点阵 1次 + 博乐达超分子水杨酸 1次', desc: '深浅层结合，光热杀菌+水杨酸消炎控油，1次见效，建议3次疗程治疗' },
+                { name: '痘清清B', level: '标准套餐', price_single: 1280, price_triple: 2980, items: '芬生源208抗痘再生瓶 + 博乐达超分子水杨酸 + OPT光子/1565/CO2点阵激光 1次', desc: '三项综合治疗，抗炎抑菌导入+激光胶原再生+水杨酸祛痘' },
+                { name: '痘清清C', level: '高端套餐', price_single: 2580, price_triple: 5980, items: '博乐达超分子水杨酸 1次 + 黄金超光子/1565/CO2 1次 + 伊肤泉战痘套组/芬生源祛痘套组 1次 + LED/湿敷/针清 1次', desc: '包含战痘套组，抗炎抑菌+组织修复，促进皮肤高效恢复' },
+                { name: '毛孔痘坑卡1.0', level: '痘坑专项', price_single: 2580, price_triple: 5980, items: '剥脱点阵激光 + 博乐达超分子水杨酸 + 小针刀剥离 + 针清/照光', desc: 'CO2点阵磨削表皮组织同时刺激深层胶原再生，改善凹陷性痘坑' },
+                { name: '毛孔痘坑卡3.0', level: '顶级套餐', price_single: 3980, price_triple: 8800, items: '黄金微针（非绝缘）1次 + CO2点阵激光 1次 + 伊肤泉战痘套组/芬生源祛痘套组 1次 + 博乐达超分子水杨酸 2次 + 小针刀剥离 2次 + 针清/照光 6次', desc: '综合套餐方案，医生全方案定制，结合多种治疗，适合严重痘坑问题' }
+            ]
+        };
+
+        // 渲染单品项目
+        const grid = document.getElementById('singleItemsGrid');
+        data.singleItems.forEach(item => {
+            const card = document.createElement('div');
+            card.className = 'item-card';
+            card.innerHTML = `
+                <div class="item-name">${item.name}</div>
+                <div class="item-category">${item.category}</div>
+                <div class="item-desc">${item.desc}</div>
+                <div class="item-price">
+                    <div>
+                        <div class="price-label">单次价格</div>
+                        <div class="price-value">¥${item.price_single}</div>
+                    </div>
+                    <div>
+                        <div class="price-label">3次套餐</div>
+                        <div class="price-value">¥${item.price_triple}</div>
+                    </div>
+                </div>
+                <div class="price-note">平均每次：¥${Math.round(item.price_triple/3)}</div>
+            `;
+            grid.appendChild(card);
+        });
+
+        // 渲染套餐方案
+        const packagesContainer = document.getElementById('packagesContainer');
+        data.packages.forEach(pkg => {
+            const card = document.createElement('div');
+            card.className = 'package-card';
+            card.innerHTML = `
+                <div class="package-header">
+                    <div class="package-name">${pkg.name}</div>
+                    <div class="package-level">${pkg.level}</div>
+                </div>
+                <div class="package-items"><strong>包含项目：</strong>${pkg.items}</div>
+                <div class="package-desc">${pkg.desc}</div>
+                <div class="package-prices">
+                    <div class="price-box">
+                        <div class="price-box-label">单次体验价</div>
+                        <div class="price-box-value">¥${pkg.price_single}</div>
+                        <div class="price-box-note">适合初次尝试</div>
+                    </div>
+                    <div class="price-box">
+                        <div class="price-box-label">3次疗程价</div>
+                        <div class="price-box-value">¥${pkg.price_triple}</div>
+                        <div class="price-box-note">平均每次 ¥${Math.round(pkg.price_triple/3)}</div>
+                    </div>
+                </div>
+            `;
+            packagesContainer.appendChild(card);
+        });
+    </script>
+</body>
+</html>

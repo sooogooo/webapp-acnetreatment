@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1000" height="700" viewBox="0 0 1000 700" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="normalSkin" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#F5E6D3;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#E8D5B0;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="inflammation" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFE6E6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FFCCCC;stop-opacity:1" />
+    </linearGradient>
+    <pattern id="bacteria" patternUnits="userSpaceOnUse" width="6" height="6">
+      <circle cx="3" cy="3" r="1.5" fill="#E74C3C"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1000" height="700" fill="#FAFAFA"/>
+
+  <!-- Title -->
+  <text x="500" y="30" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="24" font-weight="bold" fill="#2C3E50">痤疮形成机制与发展过程</text>
+
+  <!-- Timeline -->
+  <line x1="50" y1="630" x2="950" y2="630" stroke="#34495E" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="500" y="655" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="14" fill="#7F8C8D">时间轴 (2-8周发展过程)</text>
+
+  <!-- Arrow marker -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#34495E"/>
+    </marker>
+  </defs>
+
+  <!-- Stage 1: Normal follicle -->
+  <g id="stage1" transform="translate(80,70)">
+    <rect x="0" y="0" width="120" height="150" fill="none" stroke="#BDC3C7" stroke-width="1" rx="5"/>
+    <text x="60" y="15" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="12" font-weight="bold" fill="#2C3E50">阶段1：正常状态</text>
+
+    <!-- Normal skin surface -->
+    <rect x="10" y="25" width="100" height="15" fill="url(#normalSkin)"/>
+
+    <!-- Normal follicle -->
+    <ellipse cx="60" cy="80" rx="8" ry="35" fill="none" stroke="#27AE60" stroke-width="2"/>
+    <rect x="58" y="25" width="4" height="15" fill="#8B4513"/>
+
+    <!-- Normal sebaceous gland -->
+    <ellipse cx="45" cy="60" rx="12" ry="8" fill="#F39C12" opacity="0.7"/>
+
+    <!-- Normal sebum flow -->
+    <path d="M52,60 Q58,50 58,40" stroke="#F39C12" stroke-width="1" fill="none"/>
+
+    <text x="60" y="130" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#27AE60">• 毛囊通畅</text>
+    <text x="60" y="142" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#27AE60">• 皮脂正常排出</text>
+
+    <!-- Timeline marker -->
+    <line x1="60" y1="160" x2="60" y2="560" stroke="#BDC3C7" stroke-width="1" stroke-dasharray="2,2"/>
+    <text x="60" y="580" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#7F8C8D">0周</text>
+  </g>
+
+  <!-- Stage 2: Hyperkeratinization -->
+  <g id="stage2" transform="translate(230,70)">
+    <rect x="0" y="0" width="120" height="150" fill="none" stroke="#BDC3C7" stroke-width="1" rx="5"/>
+    <text x="60" y="15" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="12" font-weight="bold" fill="#2C3E50">阶段2：角质堵塞</text>
+
+    <!-- Skin surface -->
+    <rect x="10" y="25" width="100" height="15" fill="url(#normalSkin)"/>
+
+    <!-- Blocked follicle opening -->
+    <rect x="56" y="25" width="8" height="15" fill="#D35400"/>
+    <rect x="58" y="25" width="4" height="8" fill="#8B4513"/>
+
+    <!-- Follicle with keratin plug -->
+    <ellipse cx="60" cy="80" rx="10" ry="35" fill="none" stroke="#E67E22" stroke-width="2"/>
+    <ellipse cx="60" cy="45" rx="6" ry="4" fill="#D35400"/>
+
+    <!-- Enlarged sebaceous gland -->
+    <ellipse cx="42" cy="65" rx="15" ry="10" fill="#F39C12" opacity="0.8"/>
+
+    <text x="60" y="130" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#E67E22">• 角质过度角化</text>
+    <text x="60" y="142" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#E67E22">• 毛囊口堵塞</text>
+
+    <!-- Timeline marker -->
+    <line x1="60" y1="160" x2="60" y2="560" stroke="#BDC3C7" stroke-width="1" stroke-dasharray="2,2"/>
+    <text x="60" y="580" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#7F8C8D">1-2周</text>
+  </g>
+
+  <!-- Stage 3: Sebum accumulation -->
+  <g id="stage3" transform="translate(380,70)">
+    <rect x="0" y="0" width="120" height="150" fill="none" stroke="#BDC3C7" stroke-width="1" rx="5"/>
+    <text x="60" y="15" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="12" font-weight="bold" fill="#2C3E50">阶段3：皮脂累积</text>
+
+    <!-- Skin surface -->
+    <rect x="10" y="25" width="100" height="15" fill="url(#normalSkin)"/>
+
+    <!-- Completely blocked follicle -->
+    <rect x="56" y="25" width="8" height="15" fill="#A0522D"/>
+
+    <!-- Distended follicle -->
+    <ellipse cx="60" cy="80" rx="15" ry="35" fill="#FFF3CD" stroke="#E67E22" stroke-width="2"/>
+    <ellipse cx="60" cy="45" rx="8" ry="5" fill="#D35400"/>
+
+    <!-- Accumulated sebum -->
+    <ellipse cx="60" cy="70" rx="12" ry="20" fill="#F39C12" opacity="0.6"/>
+
+    <!-- Enlarged sebaceous gland -->
+    <ellipse cx="38" cy="70" rx="18" ry="12" fill="#F39C12"/>
+
+    <text x="60" y="130" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#E67E22">• 皮脂大量累积</text>
+    <text x="60" y="142" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#E67E22">• 厌氧环境形成</text>
+
+    <!-- Timeline marker -->
+    <line x1="60" y1="160" x2="60" y2="560" stroke="#BDC3C7" stroke-width="1" stroke-dasharray="2,2"/>
+    <text x="60" y="580" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#7F8C8D">2-3周</text>
+  </g>
+
+  <!-- Stage 4: Bacterial proliferation -->
+  <g id="stage4" transform="translate(530,70)">
+    <rect x="0" y="0" width="120" height="150" fill="none" stroke="#BDC3C7" stroke-width="1" rx="5"/>
+    <text x="60" y="15" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="12" font-weight="bold" fill="#2C3E50">阶段4：细菌繁殖</text>
+
+    <!-- Skin surface -->
+    <rect x="10" y="25" width="100" height="15" fill="url(#normalSkin)"/>
+
+    <!-- Blocked follicle -->
+    <rect x="56" y="25" width="8" height="15" fill="#A0522D"/>
+
+    <!-- Infected follicle -->
+    <ellipse cx="60" cy="80" rx="15" ry="35" fill="url(#bacteria)" stroke="#E74C3C" stroke-width="2"/>
+    <ellipse cx="60" cy="45" rx="8" ry="5" fill="#D35400"/>
+
+    <!-- P. acnes bacteria (microscopic view) -->
+    <g id="bacteria-view">
+      <circle cx="55" cy="65" r="1" fill="#E74C3C"/>
+      <circle cx="65" cy="70" r="1" fill="#E74C3C"/>
+      <circle cx="58" cy="85" r="1" fill="#E74C3C"/>
+      <circle cx="62" cy="90" r="1" fill="#E74C3C"/>
+      <circle cx="50" cy="80" r="1" fill="#E74C3C"/>
+      <circle cx="70" cy="85" r="1" fill="#E74C3C"/>
+    </g>
+
+    <text x="60" y="130" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#E74C3C">• P.acnes大量繁殖</text>
+    <text x="60" y="142" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#E74C3C">• 毒素产生</text>
+
+    <!-- Timeline marker -->
+    <line x1="60" y1="160" x2="60" y2="560" stroke="#BDC3C7" stroke-width="1" stroke-dasharray="2,2"/>
+    <text x="60" y="580" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#7F8C8D">3-4周</text>
+  </g>
+
+  <!-- Stage 5: Inflammation -->
+  <g id="stage5" transform="translate(680,70)">
+    <rect x="0" y="0" width="120" height="150" fill="none" stroke="#BDC3C7" stroke-width="1" rx="5"/>
+    <text x="60" y="15" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="12" font-weight="bold" fill="#2C3E50">阶段5：炎症反应</text>
+
+    <!-- Inflamed skin surface -->
+    <rect x="10" y="25" width="100" height="15" fill="url(#inflammation)"/>
+
+    <!-- Severely blocked follicle -->
+    <rect x="56" y="25" width="8" height="15" fill="#8B0000"/>
+
+    <!-- Inflamed follicle -->
+    <ellipse cx="60" cy="80" rx="18" ry="35" fill="#FFCDD2" stroke="#C62828" stroke-width="3"/>
+
+    <!-- White blood cells -->
+    <g id="white-blood-cells">
+      <circle cx="45" cy="70" r="2" fill="#FFFFFF" stroke="#2196F3" stroke-width="1"/>
+      <circle cx="75" cy="75" r="2" fill="#FFFFFF" stroke="#2196F3" stroke-width="1"/>
+      <circle cx="52" cy="90" r="2" fill="#FFFFFF" stroke="#2196F3" stroke-width="1"/>
+      <circle cx="68" cy="85" r="2" fill="#FFFFFF" stroke="#2196F3" stroke-width="1"/>
+    </g>
+
+    <!-- Swelling indicators -->
+    <ellipse cx="60" cy="80" rx="22" ry="40" fill="none" stroke="#FF5722" stroke-width="1" stroke-dasharray="3,3" opacity="0.7"/>
+
+    <text x="60" y="130" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#C62828">• 白细胞浸润</text>
+    <text x="60" y="142" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#C62828">• 红肿疼痛</text>
+
+    <!-- Timeline marker -->
+    <line x1="60" y1="160" x2="60" y2="560" stroke="#BDC3C7" stroke-width="1" stroke-dasharray="2,2"/>
+    <text x="60" y="580" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#7F8C8D">4-6周</text>
+  </g>
+
+  <!-- Stage 6: Pustule/Cyst formation -->
+  <g id="stage6" transform="translate(830,70)">
+    <rect x="0" y="0" width="120" height="150" fill="none" stroke="#BDC3C7" stroke-width="1" rx="5"/>
+    <text x="60" y="15" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="12" font-weight="bold" fill="#2C3E50">阶段6：脓疱/囊肿</text>
+
+    <!-- Severely inflamed skin -->
+    <rect x="10" y="25" width="100" height="15" fill="#FFB3BA"/>
+
+    <!-- Pustule head -->
+    <circle cx="60" cy="32" r="6" fill="#FFFACD" stroke="#DAA520" stroke-width="2"/>
+    <circle cx="60" cy="32" r="3" fill="#F5F5DC"/>
+
+    <!-- Cystic follicle -->
+    <ellipse cx="60" cy="85" rx="20" ry="40" fill="#FFE4E1" stroke="#8B0000" stroke-width="3"/>
+
+    <!-- Pus formation -->
+    <ellipse cx="60" cy="85" rx="15" ry="30" fill="#F5F5DC" opacity="0.8"/>
+
+    <!-- Tissue damage -->
+    <path d="M40,85 Q60,110 80,85" stroke="#8B0000" stroke-width="2" fill="none"/>
+
+    <!-- Scar tissue formation -->
+    <ellipse cx="60" cy="105" rx="18" ry="8" fill="#DEB887" opacity="0.5"/>
+
+    <text x="60" y="130" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#8B0000">• 脓疱形成</text>
+    <text x="60" y="142" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#8B0000">• 组织破坏</text>
+
+    <!-- Timeline marker -->
+    <line x1="60" y1="160" x2="60" y2="560" stroke="#BDC3C7" stroke-width="1" stroke-dasharray="2,2"/>
+    <text x="60" y="580" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#7F8C8D">6-8周</text>
+  </g>
+
+  <!-- Microscopic view section -->
+  <g id="microscopic-section" transform="translate(50,300)">
+    <rect x="0" y="0" width="900" height="200" fill="none" stroke="#34495E" stroke-width="2" rx="10"/>
+    <text x="450" y="20" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="16" font-weight="bold" fill="#2C3E50">显微镜视角：细胞和细菌变化</text>
+
+    <!-- Normal keratinocytes -->
+    <g transform="translate(50,40)">
+      <text x="60" y="15" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="12" fill="#27AE60">正常角质细胞</text>
+      <rect x="30" y="20" width="15" height="10" fill="#E8F5E8" stroke="#27AE60" stroke-width="1"/>
+      <rect x="50" y="20" width="15" height="10" fill="#E8F5E8" stroke="#27AE60" stroke-width="1"/>
+      <rect x="70" y="20" width="15" height="10" fill="#E8F5E8" stroke="#27AE60" stroke-width="1"/>
+      <circle cx="37.5" cy="25" r="1.5" fill="#4CAF50"/>
+      <circle cx="57.5" cy="25" r="1.5" fill="#4CAF50"/>
+      <circle cx="77.5" cy="25" r="1.5" fill="#4CAF50"/>
+    </g>
+
+    <!-- Hyperkeratinized cells -->
+    <g transform="translate(200,40)">
+      <text x="60" y="15" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="12" fill="#E67E22">过度角化细胞</text>
+      <rect x="20" y="20" width="20" height="15" fill="#FFF3E0" stroke="#FF9800" stroke-width="2"/>
+      <rect x="45" y="20" width="20" height="15" fill="#FFF3E0" stroke="#FF9800" stroke-width="2"/>
+      <rect x="70" y="20" width="20" height="15" fill="#FFF3E0" stroke="#FF9800" stroke-width="2"/>
+      <rect x="95" y="20" width="20" height="15" fill="#FFF3E0" stroke="#FF9800" stroke-width="2"/>
+    </g>
+
+    <!-- P. acnes bacteria -->
+    <g transform="translate(400,40)">
+      <text x="60" y="15" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="12" fill="#E74C3C">痤疮丙酸杆菌</text>
+      <g id="bacteria-detailed">
+        <ellipse cx="30" cy="35" rx="3" ry="8" fill="#E74C3C" opacity="0.8"/>
+        <ellipse cx="40" cy="30" rx="3" ry="8" fill="#E74C3C" opacity="0.8"/>
+        <ellipse cx="50" cy="40" rx="3" ry="8" fill="#E74C3C" opacity="0.8"/>
+        <ellipse cx="60" cy="28" rx="3" ry="8" fill="#E74C3C" opacity="0.8"/>
+        <ellipse cx="70" cy="35" rx="3" ry="8" fill="#E74C3C" opacity="0.8"/>
+        <ellipse cx="80" cy="32" rx="3" ry="8" fill="#E74C3C" opacity="0.8"/>
+        <ellipse cx="90" cy="38" rx="3" ry="8" fill="#E74C3C" opacity="0.8"/>
+      </g>
+    </g>
+
+    <!-- Inflammatory cells -->
+    <g transform="translate(600,40)">
+      <text x="60" y="15" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="12" fill="#2196F3">炎症细胞</text>
+      <!-- Neutrophils -->
+      <circle cx="30" cy="30" r="4" fill="#E3F2FD" stroke="#2196F3" stroke-width="1"/>
+      <path d="M28,30 L32,30 M30,28 L30,32 M28.5,28.5 L31.5,31.5 M31.5,28.5 L28.5,31.5" stroke="#2196F3" stroke-width="0.5"/>
+      <!-- Macrophages -->
+      <circle cx="60" cy="35" r="5" fill="#F3E5F5" stroke="#9C27B0" stroke-width="1"/>
+      <circle cx="58" cy="33" r="1" fill="#9C27B0"/>
+      <circle cx="62" cy="37" r="1" fill="#9C27B0"/>
+      <!-- Lymphocytes -->
+      <circle cx="90" cy="32" r="3" fill="#E8F5E8" stroke="#4CAF50" stroke-width="1"/>
+      <circle cx="90" cy="32" r="1.5" fill="#4CAF50"/>
+    </g>
+
+    <!-- Process arrows -->
+    <g stroke="#34495E" stroke-width="1" fill="none" marker-end="url(#smallArrow)">
+      <path d="M120,50 L180,50"/>
+      <path d="M270,50 L350,50"/>
+      <path d="M470,50 L550,50"/>
+    </g>
+
+    <!-- Small arrow marker -->
+    <defs>
+      <marker id="smallArrow" markerWidth="6" markerHeight="6" refX="0" refY="3" orient="auto">
+        <polygon points="0 0, 6 3, 0 6" fill="#34495E"/>
+      </marker>
+    </defs>
+
+    <!-- Key factors -->
+    <g transform="translate(100,120)">
+      <text x="400" y="15" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="14" font-weight="bold" fill="#2C3E50">关键致病因素</text>
+
+      <g transform="translate(0,30)">
+        <rect x="0" y="0" width="160" height="60" fill="#FFF9C4" stroke="#FBC02D" stroke-width="1" rx="5"/>
+        <text x="80" y="15" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="12" font-weight="bold" fill="#F57F17">雄激素影响</text>
+        <text x="80" y="30" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#F57F17">• 皮脂腺增大</text>
+        <text x="80" y="42" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#F57F17">• 皮脂分泌增加</text>
+        <text x="80" y="54" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#F57F17">• 毛囊角化异常</text>
+      </g>
+
+      <g transform="translate(200,30)">
+        <rect x="0" y="0" width="160" height="60" fill="#FFEBEE" stroke="#E53935" stroke-width="1" rx="5"/>
+        <text x="80" y="15" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="12" font-weight="bold" fill="#C62828">遗传因素</text>
+        <text x="80" y="30" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#C62828">• 皮脂腺敏感性</text>
+        <text x="80" y="42" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#C62828">• 炎症反应强度</text>
+        <text x="80" y="54" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#C62828">• 角质化程度</text>
+      </g>
+
+      <g transform="translate(400,30)">
+        <rect x="0" y="0" width="160" height="60" fill="#E8F5E8" stroke="#43A047" stroke-width="1" rx="5"/>
+        <text x="80" y="15" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="12" font-weight="bold" fill="#2E7D32">环境因素</text>
+        <text x="80" y="30" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#2E7D32">• 压力水平</text>
+        <text x="80" y="42" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#2E7D32">• 饮食习惯</text>
+        <text x="80" y="54" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#2E7D32">• 护肤品使用</text>
+      </g>
+
+      <g transform="translate(600,30)">
+        <rect x="0" y="0" width="160" height="60" fill="#F3E5F5" stroke="#8E24AA" stroke-width="1" rx="5"/>
+        <text x="80" y="15" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="12" font-weight="bold" fill="#6A1B9A">免疫反应</text>
+        <text x="80" y="30" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#6A1B9A">• Toll样受体激活</text>
+        <text x="80" y="42" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#6A1B9A">• 细胞因子释放</text>
+        <text x="80" y="54" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#6A1B9A">• 组织损伤</text>
+      </g>
+    </g>
+  </g>
+</svg>

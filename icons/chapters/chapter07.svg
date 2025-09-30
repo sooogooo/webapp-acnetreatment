@@ -1,0 +1,13 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Circular repair symbol -->
+  <circle cx="12" cy="12" r="8" stroke="var(--icon-color, #3498db)" stroke-width="2" fill="none"/>
+  <!-- Wrench/tool inside -->
+  <path d="M8 10L10 8L14 12L16 10L16 14L12 14L8 10Z" stroke="var(--icon-color, #3498db)" stroke-width="1.5" fill="none" stroke-linejoin="round"/>
+  <!-- Repair arrows -->
+  <path d="M6 6L8 8" stroke="var(--icon-color, #3498db)" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M18 6L16 8" stroke="var(--icon-color, #3498db)" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M18 18L16 16" stroke="var(--icon-color, #3498db)" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M6 18L8 16" stroke="var(--icon-color, #3498db)" stroke-width="1.5" stroke-linecap="round"/>
+  <!-- Center dot -->
+  <circle cx="12" cy="12" r="1" fill="var(--icon-color, #3498db)"/>
+</svg>

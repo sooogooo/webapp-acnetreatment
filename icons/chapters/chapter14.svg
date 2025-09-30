@@ -1,0 +1,14 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Female silhouette with longer hair -->
+  <path d="M7 7C7 4 9 2 12 2C15 2 17 4 17 7C17 8.5 16.5 9.5 16 10.5C15.5 11 15 11 14.5 11H9.5C9 11 8.5 11 8 10.5C7.5 9.5 7 8.5 7 7Z" stroke="var(--icon-color, #3498db)" stroke-width="1.5" fill="none"/>
+  <!-- Hair flowing -->
+  <path d="M7 7C6.5 8 6 9 6 10C6 10.5 6.5 11 7 11" stroke="var(--icon-color, #3498db)" stroke-width="1" fill="none" opacity="0.6"/>
+  <path d="M17 7C17.5 8 18 9 18 10C18 10.5 17.5 11 17 11" stroke="var(--icon-color, #3498db)" stroke-width="1" fill="none" opacity="0.6"/>
+  <!-- Body -->
+  <path d="M12 11C9 11 6 12.5 6 14.5V19C6 20.5 7 22 8.5 22H15.5C17 22 18 20.5 18 19V14.5C18 12.5 15 11 12 11Z" stroke="var(--icon-color, #3498db)" stroke-width="1.5" fill="none"/>
+  <!-- Feminine details (subtle) -->
+  <path d="M10 13.5C10.5 13.2 11.5 13.2 12 13.5C12.5 13.2 13.5 13.2 14 13.5" stroke="var(--icon-color, #3498db)" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
+  <!-- Adult acne indication -->
+  <circle cx="9.5" cy="8" r="0.5" fill="var(--icon-color, #3498db)" opacity="0.5"/>
+  <circle cx="14.5" cy="6.5" r="0.5" fill="var(--icon-color, #3498db)" opacity="0.5"/>
+</svg>

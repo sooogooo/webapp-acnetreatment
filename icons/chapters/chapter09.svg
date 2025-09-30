@@ -1,0 +1,10 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Moon -->
+  <path d="M12 2C8 2 5 5 5 9C5 13 8 16 12 16C13 16 14 15.8 15 15.4C14 17 12 18 10 18C6 18 3 15 3 11C3 7 6 4 10 4C11 4 12 4.2 13 4.6C12.3 3 12 2 12 2Z" stroke="var(--icon-color, #3498db)" stroke-width="1.5" fill="var(--icon-color, #3498db)" opacity="0.3"/>
+  <!-- Stars -->
+  <path d="M18 6L18.5 7L19.5 7L18.7 7.7L19 8.5L18 8L17 8.5L17.3 7.7L16.5 7L17.5 7L18 6Z" fill="var(--icon-color, #3498db)" opacity="0.8"/>
+  <path d="M20 10L20.3 10.7L21 10.7L20.5 11.2L20.7 11.9L20 11.5L19.3 11.9L19.5 11.2L19 10.7L19.7 10.7L20 10Z" fill="var(--icon-color, #3498db)" opacity="0.6"/>
+  <path d="M21 14L21.2 14.5L21.7 14.5L21.4 14.8L21.5 15.3L21 15L20.5 15.3L20.6 14.8L20.3 14.5L20.8 14.5L21 14Z" fill="var(--icon-color, #3498db)" opacity="0.7"/>
+  <!-- Sleep ZZZ -->
+  <path d="M15 20L17 20L15 22L17 22" stroke="var(--icon-color, #3498db)" stroke-width="1" stroke-linecap="round"/>
+</svg>

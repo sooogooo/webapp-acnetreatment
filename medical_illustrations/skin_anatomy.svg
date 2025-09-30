@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="collagenPattern" patternUnits="userSpaceOnUse" width="8" height="8">
+      <rect width="8" height="8" fill="#E8D5B0"/>
+      <path d="M0,4 L8,4 M4,0 L4,8" stroke="#D4B896" stroke-width="0.5"/>
+    </pattern>
+    <pattern id="fatPattern" patternUnits="userSpaceOnUse" width="20" height="20">
+      <circle cx="10" cy="10" r="8" fill="#FFF2CC" stroke="#E6CC80" stroke-width="1"/>
+    </pattern>
+    <linearGradient id="epidermisGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#F5E6D3;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#E8D5B0;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="dermisGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#E8D5B0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#D4B896;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="600" fill="#F8F8F8"/>
+
+  <!-- Title -->
+  <text x="400" y="30" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="24" font-weight="bold" fill="#2C3E50">皮肤结构详细解剖图</text>
+
+  <!-- Epidermis (表皮) -->
+  <g id="epidermis">
+    <!-- Stratum corneum (角质层) -->
+    <rect x="100" y="80" width="500" height="15" fill="#F5E6D3" stroke="#E8D5B0" stroke-width="1"/>
+    <text x="620" y="92" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="12" fill="#2C3E50">角质层</text>
+    <line x1="600" y1="87" x2="610" y2="87" stroke="#2C3E50" stroke-width="1"/>
+
+    <!-- Stratum lucidum (透明层) -->
+    <rect x="100" y="95" width="500" height="8" fill="#F0E2CF" stroke="#E8D5B0" stroke-width="1"/>
+    <text x="620" y="102" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="12" fill="#2C3E50">透明层</text>
+    <line x1="600" y1="99" x2="610" y2="99" stroke="#2C3E50" stroke-width="1"/>
+
+    <!-- Stratum granulosum (颗粒层) -->
+    <rect x="100" y="103" width="500" height="12" fill="#EBDDCA" stroke="#E8D5B0" stroke-width="1"/>
+    <text x="620" y="112" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="12" fill="#2C3E50">颗粒层</text>
+    <line x1="600" y1="109" x2="610" y2="109" stroke="#2C3E50" stroke-width="1"/>
+
+    <!-- Stratum spinosum (棘层) -->
+    <rect x="100" y="115" width="500" height="18" fill="#E8D5B0" stroke="#D4B896" stroke-width="1"/>
+    <text x="620" y="127" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="12" fill="#2C3E50">棘层</text>
+    <line x1="600" y1="124" x2="610" y2="124" stroke="#2C3E50" stroke-width="1"/>
+
+    <!-- Stratum basale (基底层) -->
+    <rect x="100" y="133" width="500" height="12" fill="#D4B896" stroke="#C0A582" stroke-width="1"/>
+    <text x="620" y="142" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="12" fill="#2C3E50">基底层</text>
+    <line x1="600" y1="139" x2="610" y2="139" stroke="#2C3E50" stroke-width="1"/>
+  </g>
+
+  <!-- Dermis (真皮) -->
+  <g id="dermis">
+    <!-- Papillary dermis (乳头层) -->
+    <rect x="100" y="145" width="500" height="80" fill="url(#dermisGradient)" stroke="#C0A582" stroke-width="1"/>
+    <text x="620" y="180" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="12" fill="#2C3E50">乳头层</text>
+    <line x1="600" y1="175" x2="610" y2="175" stroke="#2C3E50" stroke-width="1"/>
+
+    <!-- Capillary network -->
+    <g stroke="#E74C3C" stroke-width="2" fill="none">
+      <path d="M150,160 Q170,150 190,160 Q210,170 230,160"/>
+      <path d="M280,165 Q300,155 320,165 Q340,175 360,165"/>
+      <path d="M410,170 Q430,160 450,170 Q470,180 490,170"/>
+      <circle cx="170" cy="160" r="1.5" fill="#E74C3C"/>
+      <circle cx="210" cy="160" r="1.5" fill="#E74C3C"/>
+      <circle cx="300" cy="165" r="1.5" fill="#E74C3C"/>
+      <circle cx="340" cy="165" r="1.5" fill="#E74C3C"/>
+    </g>
+
+    <!-- Reticular dermis (网状层) -->
+    <rect x="100" y="225" width="500" height="120" fill="url(#collagenPattern)" stroke="#C0A582" stroke-width="1"/>
+    <text x="620" y="280" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="12" fill="#2C3E50">网状层</text>
+    <line x1="600" y1="275" x2="610" y2="275" stroke="#2C3E50" stroke-width="1"/>
+  </g>
+
+  <!-- Hypodermis (皮下组织) -->
+  <g id="hypodermis">
+    <rect x="100" y="345" width="500" height="100" fill="url(#fatPattern)" stroke="#C0A582" stroke-width="1"/>
+    <text x="620" y="390" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="12" fill="#2C3E50">皮下组织</text>
+    <line x1="600" y1="385" x2="610" y2="385" stroke="#2C3E50" stroke-width="1"/>
+
+    <!-- Deep blood vessels -->
+    <g stroke="#C0392B" stroke-width="3" fill="none">
+      <path d="M120,380 L580,380"/>
+      <path d="M150,410 L550,410"/>
+    </g>
+  </g>
+
+  <!-- Hair follicle structure -->
+  <g id="hairFollicle">
+    <!-- Hair shaft -->
+    <rect x="250" y="80" width="4" height="30" fill="#8B4513" rx="2"/>
+    <text x="260" y="95" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#2C3E50">毛干</text>
+
+    <!-- Follicle -->
+    <ellipse cx="252" cy="200" rx="15" ry="80" fill="none" stroke="#7D6608" stroke-width="2"/>
+    <text x="275" y="200" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#2C3E50">毛囊</text>
+
+    <!-- Hair bulb -->
+    <ellipse cx="252" cy="280" rx="12" ry="15" fill="#DEB887" stroke="#D4B896" stroke-width="1"/>
+    <circle cx="252" cy="285" r="3" fill="#8B4513"/>
+    <text x="275" y="285" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#2C3E50">毛球</text>
+
+    <!-- Dermal papilla -->
+    <circle cx="252" cy="295" r="5" fill="#E74C3C"/>
+    <text x="275" y="295" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#2C3E50">毛乳头</text>
+  </g>
+
+  <!-- Sebaceous gland -->
+  <g id="sebaceousGland">
+    <ellipse cx="220" cy="170" rx="20" ry="15" fill="#F39C12" stroke="#E67E22" stroke-width="1"/>
+    <path d="M230,170 Q240,160 250,170" stroke="#E67E22" stroke-width="1" fill="none"/>
+    <text x="190" y="155" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#2C3E50">皮脂腺</text>
+    <line x1="210" y1="160" x2="215" y2="165" stroke="#2C3E50" stroke-width="0.5"/>
+  </g>
+
+  <!-- Sweat glands -->
+  <g id="sweatGlands">
+    <!-- Eccrine gland -->
+    <g transform="translate(350,280)">
+      <path d="M0,0 Q-10,10 0,20 Q10,30 0,40 Q-10,50 0,60" stroke="#3498DB" stroke-width="2" fill="none"/>
+      <circle cx="0" cy="60" r="5" fill="#3498DB"/>
+      <text x="10" y="30" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#2C3E50">小汗腺</text>
+    </g>
+
+    <!-- Apocrine gland -->
+    <g transform="translate(450,250)">
+      <path d="M0,0 Q-15,15 0,30 Q15,45 0,60" stroke="#9B59B6" stroke-width="3" fill="none"/>
+      <circle cx="0" cy="60" r="8" fill="#9B59B6"/>
+      <text x="15" y="30" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#2C3E50">大汗腺</text>
+    </g>
+  </g>
+
+  <!-- Nerve endings -->
+  <g id="nerveEndings" stroke="#F39C12" stroke-width="1" fill="none">
+    <path d="M160,200 Q170,210 180,200 Q190,190 200,200"/>
+    <path d="M320,220 Q330,230 340,220 Q350,210 360,220"/>
+    <circle cx="160" cy="200" r="2" fill="#F39C12"/>
+    <circle cx="200" cy="200" r="2" fill="#F39C12"/>
+    <circle cx="320" cy="220" r="2" fill="#F39C12"/>
+    <circle cx="360" cy="220" r="2" fill="#F39C12"/>
+    <text x="120" y="210" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#2C3E50">神经末梢</text>
+  </g>
+
+  <!-- Layer labels -->
+  <g id="layerLabels">
+    <text x="50" y="105" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="14" font-weight="bold" fill="#2C3E50">表皮</text>
+    <text x="50" y="200" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="14" font-weight="bold" fill="#2C3E50">真皮</text>
+    <text x="50" y="390" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="14" font-weight="bold" fill="#2C3E50">皮下组织</text>
+  </g>
+
+  <!-- Scale indicator -->
+  <g id="scale">
+    <text x="50" y="550" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="12" fill="#7F8C8D">厚度比例：表皮0.1mm，真皮2-4mm，皮下组织可变</text>
+  </g>
+</svg>

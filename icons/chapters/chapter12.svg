@@ -1,0 +1,16 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- First person -->
+  <circle cx="8" cy="6" r="2" stroke="var(--icon-color, #3498db)" stroke-width="1.5" fill="none"/>
+  <path d="M8 8C6 8 4 9.5 4 11.5V16C4 17 4.5 18 5.5 18H10.5C11.5 18 12 17 12 16V11.5C12 9.5 10 8 8 8Z" stroke="var(--icon-color, #3498db)" stroke-width="1.5" fill="none"/>
+
+  <!-- Second person -->
+  <circle cx="16" cy="6" r="2" stroke="var(--icon-color, #3498db)" stroke-width="1.5" fill="none"/>
+  <path d="M16 8C18 8 20 9.5 20 11.5V16C20 17 19.5 18 18.5 18H13.5C12.5 18 12 17 12 16V11.5C12 9.5 14 8 16 8Z" stroke="var(--icon-color, #3498db)" stroke-width="1.5" fill="none"/>
+
+  <!-- Connecting hands -->
+  <path d="M10.5 13C11 13 11.5 13 12 13C12.5 13 13 13 13.5 13" stroke="var(--icon-color, #3498db)" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Support/care symbols -->
+  <path d="M12 20C12.5 21 12.5 22 12 22C11.5 22 11.5 21 12 20Z" fill="var(--icon-color, #3498db)" opacity="0.6"/>
+  <circle cx="12" cy="21" r="0.5" fill="var(--icon-color, #3498db)" opacity="0.4"/>
+</svg>

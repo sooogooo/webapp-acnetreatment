@@ -1,0 +1,9 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Brain outline -->
+  <path d="M8 4C6 4 4 6 4 8C4 9 4.5 10 5 10.5C4.5 11 4 12 4 13C4 15 6 17 8 17H16C18 17 20 15 20 13C20 12 19.5 11 19 10.5C19.5 10 20 9 20 8C20 6 18 4 16 4C15 4 14 4.5 13.5 5C13 4.5 12 4 11 4C10 4 9 4.5 8.5 5C8 4.5 8 4 8 4Z" stroke="var(--icon-color, #3498db)" stroke-width="1.5" fill="none"/>
+  <!-- Heart inside brain -->
+  <path d="M9.5 10C9.5 9.5 10 9 10.5 9C11 9 11.5 9.5 11.5 10C12 9 13 9 13.5 9C14 9 14.5 9.5 14.5 10C14.5 11 12 13.5 12 13.5S9.5 11 9.5 10Z" fill="var(--icon-color, #3498db)" opacity="0.7"/>
+  <!-- Brain texture lines -->
+  <path d="M8 8C9 8.5 10 8.5 11 8" stroke="var(--icon-color, #3498db)" stroke-width="1" opacity="0.5"/>
+  <path d="M13 8C14 8.5 15 8.5 16 8" stroke="var(--icon-color, #3498db)" stroke-width="1" opacity="0.5"/>
+</svg>

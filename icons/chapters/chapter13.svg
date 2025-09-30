@@ -1,0 +1,15 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Young person silhouette -->
+  <circle cx="12" cy="7" r="3" stroke="var(--icon-color, #3498db)" stroke-width="1.5" fill="none"/>
+  <!-- Casual clothing (hoodie/t-shirt) -->
+  <path d="M12 10C9 10 6 11 6 13V18C6 19.5 7 21 8.5 21H15.5C17 21 18 19.5 18 18V13C18 11 15 10 12 10Z" stroke="var(--icon-color, #3498db)" stroke-width="1.5" fill="none"/>
+  <!-- Hood outline -->
+  <path d="M9 10C9.5 9 10.5 8.5 12 8.5C13.5 8.5 14.5 9 15 10" stroke="var(--icon-color, #3498db)" stroke-width="1" fill="none" opacity="0.6"/>
+  <!-- Youth energy/growth arrows -->
+  <path d="M5 15L7 13" stroke="var(--icon-color, #3498db)" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+  <path d="M19 15L17 13" stroke="var(--icon-color, #3498db)" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+  <path d="M12 3L12 5" stroke="var(--icon-color, #3498db)" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+  <!-- Small acne indication -->
+  <circle cx="10" cy="6" r="0.5" fill="var(--icon-color, #3498db)" opacity="0.4"/>
+  <circle cx="14" cy="7.5" r="0.5" fill="var(--icon-color, #3498db)" opacity="0.4"/>
+</svg>

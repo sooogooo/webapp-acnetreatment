@@ -1,0 +1,14 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Main pill -->
+  <ellipse cx="12" cy="12" rx="7" ry="4" stroke="var(--icon-color, #3498db)" stroke-width="1.5" fill="var(--icon-color, #3498db)" opacity="0.2"/>
+  <!-- Pill division line -->
+  <line x1="12" y1="8" x2="12" y2="16" stroke="var(--icon-color, #3498db)" stroke-width="1" opacity="0.6"/>
+  <!-- Smaller pills around -->
+  <circle cx="6" cy="8" r="1.5" fill="var(--icon-color, #3498db)" opacity="0.6"/>
+  <circle cx="18" cy="8" r="1.5" fill="var(--icon-color, #3498db)" opacity="0.6"/>
+  <ellipse cx="7" cy="16" rx="1.5" ry="1" fill="var(--icon-color, #3498db)" opacity="0.5"/>
+  <ellipse cx="17" cy="16" rx="1.5" ry="1" fill="var(--icon-color, #3498db)" opacity="0.5"/>
+  <!-- Pill markings -->
+  <circle cx="10" cy="12" r="0.5" fill="var(--icon-color, #3498db)" opacity="0.8"/>
+  <circle cx="14" cy="12" r="0.5" fill="var(--icon-color, #3498db)" opacity="0.8"/>
+</svg>

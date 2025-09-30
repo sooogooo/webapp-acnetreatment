@@ -1,0 +1,4797 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>痘痘，再见，未来最好不见 - 女性美容医生的痘痘诊疗与生活指南</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Microsoft YaHei', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 0;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .subtitle {
+            color: #7f8c8d;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        .book-info {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+
+        .toc {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .chapter-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .chapter-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .chapter-title {
+            color: #e74c3c;
+            font-size: 1.1em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .chapter-desc {
+            color: #555;
+            font-size: 0.9em;
+        }
+
+        .content-area {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-top: 20px;
+            display: none;
+        }
+
+        .content-area.active {
+            display: block;
+        }
+
+        .content {
+            max-height: 70vh;
+            overflow-y: auto;
+            padding-right: 20px;
+        }
+
+        .content h1, .content h2, .content h3 {
+            color: #2c3e50;
+            margin: 20px 0 10px 0;
+        }
+
+        .content p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .content ul, .content ol {
+            margin: 15px 0;
+            padding-left: 30px;
+        }
+
+        .content li {
+            margin-bottom: 8px;
+            line-height: 1.6;
+        }
+
+        .content strong {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .content em {
+            font-style: italic;
+            color: #7f8c8d;
+        }
+
+        .back-btn {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 20px;
+            transition: background 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background: #2980b9;
+        }
+
+        .stats {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 30px;
+        }
+
+        .stat-item {
+            display: inline-block;
+            margin: 0 20px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #e74c3c;
+        }
+
+        .stat-label {
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+
+        footer {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            margin-top: 30px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .footer-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .footer-company {
+            text-align: center;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #ecf0f1;
+        }
+
+        .footer-company h4 {
+            color: #2c3e50;
+            font-size: 1.3em;
+            margin-bottom: 8px;
+        }
+
+        .footer-company p {
+            color: #7f8c8d;
+            font-size: 1em;
+        }
+
+        .footer-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
+            padding: 20px 0;
+        }
+
+        .footer-item {
+            color: #555;
+            font-size: 0.95em;
+            text-align: center;
+        }
+
+        .footer-item strong {
+            color: #2c3e50;
+            display: inline-block;
+            margin-right: 5px;
+        }
+
+        .footer-item a {
+            color: #3498db;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-item a:hover {
+            color: #2980b9;
+            text-decoration: underline;
+        }
+
+        .footer-copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 2px solid #ecf0f1;
+        }
+
+        .footer-copyright p {
+            color: #7f8c8d;
+            margin: 5px 0;
+        }
+
+        @media (max-width: 768px) {
+            .footer-info {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .footer-item {
+                text-align: left;
+                padding-left: 20px;
+            }
+        }
+
+        .search-box {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .search-input {
+            padding: 10px 20px;
+            border: 2px solid #ddd;
+            border-radius: 25px;
+            width: 300px;
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .search-input:focus {
+            border-color: #3498db;
+        }
+
+        /* 医美专区样式 */
+        .medical-beauty-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .medical-beauty-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: medicalPulse 4s ease-in-out infinite;
+        }
+
+        @keyframes medicalPulse {
+            0%, 100% { opacity: 0.5; transform: scale(0.8) rotate(0deg); }
+            50% { opacity: 1; transform: scale(1) rotate(180deg); }
+        }
+
+        .medical-beauty-section h3 {
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 1.8em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        .medical-beauty-highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .highlight-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .highlight-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .highlight-icon {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
+        }
+
+        .highlight-card h4 {
+            margin-bottom: 10px;
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+
+        .highlight-card p {
+            font-size: 0.9em;
+            opacity: 0.9;
+            line-height: 1.4;
+        }
+
+        /* 特殊章节样式 */
+        .chapter-card.special {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+            color: white;
+            border: 3px solid #ffeaa7;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .chapter-card.special::before {
+            content: "✨ 专业医美";
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: #ffeaa7;
+            color: #2d3436;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.7em;
+            font-weight: bold;
+        }
+
+        .chapter-card.special .chapter-title {
+            color: #ffeaa7;
+            font-size: 1.2em;
+        }
+
+        .chapter-card.special .chapter-desc {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* 工具面板样式 */
+        .tool-panel {
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            margin-top: 20px;
+            display: none;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .tool-panel.active {
+            display: block;
+        }
+
+        .tool-header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #e74c3c;
+            padding-bottom: 15px;
+        }
+
+        .tool-header h2 {
+            color: #2c3e50;
+            font-size: 1.6em;
+            margin-bottom: 10px;
+        }
+
+        .tool-header p {
+            color: #7f8c8d;
+            font-size: 1em;
+        }
+
+        /* 表格样式 */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .comparison-table th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .comparison-table td {
+            padding: 12px 15px;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        .comparison-table tr:hover {
+            background-color: #e3f2fd;
+        }
+
+        /* 表单样式 */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .form-group select,
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group select:focus,
+        .form-group input:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, #95a5a6 0%, #7f8c8d 100%);
+            box-shadow: 0 4px 15px rgba(149, 165, 166, 0.3);
+        }
+
+        /* 结果显示样式 */
+        .result-card {
+            background: linear-gradient(135deg, #00b894 0%, #00a085 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+            box-shadow: 0 10px 30px rgba(0, 184, 148, 0.3);
+        }
+
+        .result-card h3 {
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        .cost-breakdown {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+
+        .cost-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .cost-item:last-child {
+            border-bottom: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-top: 10px;
+            padding-top: 15px;
+            border-top: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /* 费用计算器专用样式 */
+        .calculator-settings {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .calculator-results {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .treatment-category {
+            background: rgba(52, 152, 219, 0.05);
+            border: 2px solid rgba(52, 152, 219, 0.2);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .treatment-category h4 {
+            color: #2980b9;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+            border-bottom: 2px solid rgba(52, 152, 219, 0.2);
+            padding-bottom: 8px;
+        }
+
+        .checkbox-group {
+            margin: 15px 0;
+        }
+
+        .checkbox-group label {
+            display: block;
+            margin: 10px 0;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .checkbox-group label:hover {
+            background: rgba(52, 152, 219, 0.1);
+            border-color: rgba(52, 152, 219, 0.3);
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            margin-right: 10px;
+            transform: scale(1.2);
+        }
+
+        .checkbox-group input[type="checkbox"]:checked + span,
+        .checkbox-group label:has(input[type="checkbox"]:checked) {
+            background: rgba(52, 152, 219, 0.15);
+            border-color: #3498db;
+            font-weight: bold;
+        }
+
+        /* 费用计算器专用样式 */
+        .treatment-type-btn {
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            padding: 15px 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .treatment-type-btn:hover {
+            border-color: #3498db;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.2);
+        }
+
+        .treatment-type-btn.active {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            color: white;
+            border-color: #2980b9;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.4);
+        }
+
+        .treatment-options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .treatment-checkbox {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 15px;
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid transparent;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .treatment-checkbox:hover {
+            background: rgba(52, 152, 219, 0.08);
+            border-color: rgba(52, 152, 219, 0.3);
+        }
+
+        .treatment-checkbox input[type="checkbox"] {
+            margin-right: 10px;
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .treatment-checkbox input[type="checkbox"]:checked {
+            accent-color: #3498db;
+        }
+
+        .treatment-checkbox:has(input[type="checkbox"]:checked) {
+            background: rgba(52, 152, 219, 0.12);
+            border-color: #3498db;
+        }
+
+        .price-tag {
+            font-size: 0.85em;
+            color: #00b894;
+            font-weight: bold;
+            margin-left: auto;
+            padding-left: 10px;
+        }
+
+        /* 图标样式系统 */
+        :root {
+            --icon-color: #3498db;
+            --icon-hover-color: #2980b9;
+            --icon-special-color: #ffeaa7;
+        }
+
+        .icon {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            vertical-align: middle;
+            transition: all 0.3s ease;
+        }
+
+        .icon--small {
+            width: 20px;
+            height: 20px;
+        }
+
+        .icon--large {
+            width: 32px;
+            height: 32px;
+        }
+
+        .icon--extra-large {
+            width: 48px;
+            height: 48px;
+        }
+
+        .icon svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* 图标动画效果 */
+        .icon:hover {
+            transform: scale(1.1);
+        }
+
+        .chapter-card .icon:hover {
+            transform: scale(1.2) rotate(5deg);
+        }
+
+        .loading-icon {
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* 章节卡片图标布局 */
+        .chapter-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+
+        .chapter-icon {
+            flex-shrink: 0;
+            --icon-color: #e74c3c;
+        }
+
+        .chapter-card:hover .chapter-icon {
+            --icon-color: #c0392b;
+        }
+
+        .chapter-card.special .chapter-icon {
+            --icon-color: #ffeaa7;
+        }
+
+        /* 搜索框图标 */
+        .search-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            pointer-events: none;
+            --icon-color: #7f8c8d;
+        }
+
+        .search-input {
+            padding-left: 45px;
+        }
+
+        .search-input:focus + .search-icon {
+            --icon-color: #3498db;
+        }
+
+        /* 返回按钮图标 */
+        .back-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .back-btn .icon {
+            --icon-color: white;
+        }
+
+        /* 功能卡片图标 */
+        .highlight-card .highlight-icon {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .highlight-card .highlight-icon .icon {
+            width: 40px;
+            height: 40px;
+            --icon-color: white;
+        }
+
+        /* 三件套黄金组合特殊样式 */
+        .highlight-card.golden-combo {
+            background: linear-gradient(135deg, #ffd700 0%, #ff8c00 100%);
+            color: #2c3e50;
+            border: 3px solid #fff;
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(255, 215, 0, 0.4);
+            position: relative;
+        }
+
+        .highlight-card.golden-combo::before {
+            content: '⭐ 黄金组合';
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+            animation: glow 2s ease-in-out infinite alternate;
+            z-index: 10;
+        }
+
+        @keyframes glow {
+            from { box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3); }
+            to { box-shadow: 0 6px 25px rgba(255, 107, 107, 0.6); }
+        }
+
+        .highlight-card.golden-combo::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { left: -100%; }
+            50% { left: 100%; }
+            100% { left: -100%; }
+        }
+
+        .highlight-card.golden-combo:hover {
+            transform: translateY(-8px) scale(1.08);
+            box-shadow: 0 25px 50px rgba(255, 215, 0, 0.6);
+        }
+
+        .highlight-card.golden-combo h4 {
+            font-size: 1.3em;
+            text-shadow: 1px 1px 2px rgba(255,255,255,0.5);
+            position: relative;
+            z-index: 2;
+        }
+
+        .highlight-card.golden-combo p {
+            font-weight: 600;
+            opacity: 1;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* 快速预览弹窗 */
+        .quick-preview {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            color: #2c3e50;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            width: 300px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            border: 2px solid #ffd700;
+        }
+
+        .highlight-card:hover .quick-preview {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(10px);
+        }
+
+        .preview-header {
+            text-align: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #ffd700;
+        }
+
+        .preview-header h5 {
+            color: #ff6b6b;
+            font-size: 1.1em;
+            margin-bottom: 5px;
+        }
+
+        .preview-items {
+            display: flex;
+            justify-content: space-around;
+            margin: 15px 0;
+        }
+
+        .preview-item {
+            text-align: center;
+            flex: 1;
+        }
+
+        .preview-item-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            margin: 0 auto 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2em;
+        }
+
+        .preview-item-text {
+            font-size: 0.8em;
+            font-weight: bold;
+            color: #666;
+        }
+
+        .preview-benefits {
+            background: #f8f9fa;
+            padding: 12px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+
+        .preview-benefits h6 {
+            color: #27ae60;
+            font-size: 0.9em;
+            margin-bottom: 8px;
+            text-align: center;
+        }
+
+        .preview-benefits ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .preview-benefits li {
+            font-size: 0.8em;
+            color: #555;
+            margin-bottom: 4px;
+            position: relative;
+            padding-left: 15px;
+        }
+
+        .preview-benefits li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #27ae60;
+            font-weight: bold;
+        }
+
+        .preview-cta {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .preview-btn {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .preview-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+        }
+
+        /* 三件套专题页面样式 */
+        .golden-combo-header {
+            background: linear-gradient(135deg, #ffd700 0%, #ff8c00 100%);
+            color: #2c3e50;
+            padding: 40px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .golden-combo-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        .combo-hero {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+        }
+
+        .combo-hero h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(255,255,255,0.5);
+        }
+
+        .hero-subtitle {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 20px;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            display: block;
+            font-size: 2.2em;
+            font-weight: bold;
+            color: #ff6b6b;
+            text-shadow: 1px 1px 2px rgba(255,255,255,0.5);
+        }
+
+        .stat-label {
+            font-size: 0.9em;
+            margin-top: 5px;
+            opacity: 0.8;
+        }
+
+        /* 治疗时间轴 */
+        .treatment-timeline {
+            margin: 40px 0;
+        }
+
+        .treatment-timeline h2 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-size: 1.8em;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, #667eea, #764ba2);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 40px;
+            width: 50%;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            padding-right: 40px;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            padding-left: 40px;
+            text-align: left;
+        }
+
+        .timeline-marker {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2em;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+            animation: timelinePulse 2s ease-in-out infinite;
+        }
+
+        @keyframes timelinePulse {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+            }
+            50% {
+                transform: scale(1.1);
+                box-shadow: 0 6px 25px rgba(102, 126, 234, 0.5);
+            }
+        }
+
+        .timeline-marker:nth-child(1) { animation-delay: 0s; }
+        .timeline-marker:nth-child(2) { animation-delay: 0.5s; }
+        .timeline-marker:nth-child(3) { animation-delay: 1s; }
+        .timeline-marker:nth-child(4) { animation-delay: 1.5s; }
+
+        .timeline-item:nth-child(odd) .timeline-marker {
+            right: -20px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-marker {
+            left: -20px;
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border: 2px solid #f8f9fa;
+        }
+
+        .timeline-content h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .timeline-content p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .timeline-content ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .timeline-content li {
+            color: #555;
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .timeline-content li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        /* 治疗方法网格 */
+        .treatment-methods {
+            margin: 40px 0;
+        }
+
+        .treatment-methods h2 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-size: 1.8em;
+        }
+
+        .methods-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .method-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+            border: 2px solid #f8f9fa;
+        }
+
+        .method-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .method-card:hover .method-icon {
+            animation: methodIconBounce 0.6s ease-in-out;
+        }
+
+        @keyframes methodIconBounce {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            25% { transform: scale(1.1) rotate(-5deg); }
+            50% { transform: scale(1.2) rotate(0deg); }
+            75% { transform: scale(1.1) rotate(5deg); }
+        }
+
+        .method-icon {
+            font-size: 3em;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .method-card h3 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.4em;
+        }
+
+        .method-description {
+            text-align: left;
+        }
+
+        .method-description p {
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+        .method-description ul {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0;
+        }
+
+        .method-description li {
+            padding: 5px 0;
+            border-bottom: 1px solid #f0f0f0;
+            color: #666;
+        }
+
+        .method-description li:last-child {
+            border-bottom: none;
+        }
+
+        /* 协同优势 */
+        .combo-advantages {
+            margin: 40px 0;
+            background: #f8f9fa;
+            padding: 40px;
+            border-radius: 15px;
+        }
+
+        .combo-advantages h2 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-size: 1.8em;
+        }
+
+        .advantages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+
+        .advantage-item {
+            text-align: center;
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .advantage-icon {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            animation: advantageFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes advantageFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .advantage-item:nth-child(1) .advantage-icon { animation-delay: 0s; }
+        .advantage-item:nth-child(2) .advantage-icon { animation-delay: 0.5s; }
+        .advantage-item:nth-child(3) .advantage-icon { animation-delay: 1s; }
+        .advantage-item:nth-child(4) .advantage-icon { animation-delay: 1.5s; }
+
+        .advantage-item h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .advantage-item p {
+            color: #666;
+            font-size: 0.9em;
+            line-height: 1.5;
+        }
+
+        /* 成功案例 */
+        .success-cases {
+            margin: 40px 0;
+        }
+
+        .success-cases h2 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-size: 1.8em;
+        }
+
+        .cases-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+        }
+
+        .case-item {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+
+        .case-info h3 {
+            margin-bottom: 20px;
+            font-size: 1.3em;
+        }
+
+        .case-info p {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        /* 价格指南 */
+        .price-guide {
+            margin: 40px 0;
+            background: #f8f9fa;
+            padding: 40px;
+            border-radius: 15px;
+        }
+
+        .price-guide h2 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-size: 1.8em;
+        }
+
+        .price-table {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .price-item {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .price-item h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .price-range {
+            margin-bottom: 20px;
+        }
+
+        .price {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .period {
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        .price-item ul {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+        }
+
+        .price-item li {
+            padding: 5px 0;
+            border-bottom: 1px solid #f0f0f0;
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .price-item li:last-child {
+            border-bottom: none;
+        }
+
+        .total-cost {
+            background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(39, 174, 96, 0.3);
+        }
+
+        .total-cost h3 {
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        .total-cost p {
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        /* 操作按钮 */
+        .action-buttons {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px solid #e9ecef;
+        }
+
+        .action-buttons .btn {
+            margin: 0 10px 10px 0;
+        }
+
+        /* 三件套专题页面移动端优化 */
+        @media (max-width: 768px) {
+            .combo-hero h1 {
+                font-size: 2em;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                left: 0 !important;
+                padding-left: 60px !important;
+                padding-right: 0 !important;
+                text-align: left !important;
+            }
+
+            .timeline-marker {
+                left: 0 !important;
+                right: auto !important;
+            }
+
+            .methods-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .advantages-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cases-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .price-table {
+                grid-template-columns: 1fr;
+            }
+
+            .action-buttons .btn {
+                display: block;
+                width: 100%;
+                margin: 10px 0;
+            }
+
+            .golden-combo-header {
+                padding: 30px 20px;
+            }
+
+            .hero-stats .stat {
+                padding: 15px;
+                background: rgba(255,255,255,0.2);
+                border-radius: 10px;
+            }
+
+            /* 费用计算器移动端适配 */
+            #costCalculatorModal .modal-content {
+                max-width: 95%;
+            }
+
+            #costCalculatorModal .modal-content > div[style*="grid"] {
+                grid-template-columns: 1fr !important;
+            }
+
+            .treatment-type-btn {
+                padding: 12px 8px;
+            }
+
+            .treatment-type-btn div:first-child {
+                font-size: 0.95em;
+            }
+
+            .treatment-category {
+                padding: 15px;
+                margin: 15px 0;
+            }
+
+            .treatment-checkbox {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+
+            .price-tag {
+                margin-left: 28px;
+                padding-left: 0;
+            }
+
+            .result-card {
+                padding: 20px;
+            }
+
+            #totalCost {
+                font-size: 1.8em !important;
+            }
+        }
+
+        /* 自测模态窗口样式 */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            visibility: hidden;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 800px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            transform: scale(0.7);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: scale(1);
+        }
+
+        .modal-header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #e74c3c;
+            padding-bottom: 20px;
+        }
+
+        .modal-header h2 {
+            color: #2c3e50;
+            font-size: 1.8em;
+            margin-bottom: 10px;
+        }
+
+        .modal-header .subtitle {
+            color: #7f8c8d;
+            font-size: 1em;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #95a5a6;
+            transition: color 0.3s ease;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .close-btn:hover {
+            color: #e74c3c;
+        }
+
+        /* 评估步骤样式 */
+        .assessment-step {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .assessment-step.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .step-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .step-number {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin: 0 auto 15px;
+        }
+
+        .step-title {
+            color: #2c3e50;
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .step-description {
+            color: #7f8c8d;
+            margin-bottom: 20px;
+        }
+
+        /* 评分区域样式 */
+        .scoring-area {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+        }
+
+        .area-title {
+            color: #2c3e50;
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .scoring-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .score-option {
+            background: white;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .score-option:hover {
+            border-color: #3498db;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.2);
+        }
+
+        .score-option.selected {
+            border-color: #e74c3c;
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(231, 76, 60, 0.3);
+        }
+
+        .score-value {
+            font-size: 1.4em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .score-label {
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+
+        .score-description {
+            font-size: 0.8em;
+            margin-top: 8px;
+            line-height: 1.3;
+        }
+
+        /* 问题样式 */
+        .question-container {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+        }
+
+        .question-title {
+            color: #2c3e50;
+            font-size: 1.1em;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .answer-options {
+            display: grid;
+            gap: 12px;
+        }
+
+        .answer-option {
+            background: white;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .answer-option:hover {
+            border-color: #3498db;
+            background: #f0f8ff;
+        }
+
+        .answer-option.selected {
+            border-color: #e74c3c;
+            background: #ffeaea;
+        }
+
+        .answer-option input[type="radio"] {
+            margin: 0;
+            width: 18px;
+            height: 18px;
+        }
+
+        /* 进度条样式 */
+        .progress-container {
+            margin: 20px 0;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #ecf0f1;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: width 0.3s ease;
+            border-radius: 4px;
+        }
+
+        .progress-text {
+            text-align: center;
+            margin-top: 10px;
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+
+        /* 按钮样式 */
+        .btn-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 6px 20px rgba(231, 76, 60, 0.4);
+        }
+
+        .btn:disabled {
+            background: #bdc3c7;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* Markdown代码块样式 */
+        #chapterContent pre {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 20px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        #chapterContent code {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9em;
+            line-height: 1.5;
+        }
+
+        #chapterContent pre code {
+            background: transparent;
+            padding: 0;
+            border-radius: 0;
+            color: inherit;
+        }
+
+        #chapterContent p code {
+            background: #f4f4f4;
+            color: #e74c3c;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 0.9em;
+        }
+
+        /* Markdown表格样式 */
+        .markdown-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .markdown-table thead {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .markdown-table th {
+            padding: 15px;
+            text-align: left;
+            font-weight: bold;
+            border-bottom: 2px solid #764ba2;
+        }
+
+        .markdown-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #ecf0f1;
+        }
+
+        .markdown-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .markdown-table tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        .markdown-table tr:hover {
+            background-color: #e8f4f8;
+        }
+
+        /* 结果显示样式 */
+        .result-container {
+            text-align: center;
+            padding: 30px;
+        }
+
+        .result-score {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin: 20px 0;
+        }
+
+        .score-display {
+            font-size: 3em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .severity-level {
+            font-size: 1.4em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .severity-description {
+            font-size: 1em;
+            opacity: 0.9;
+        }
+
+        .treatment-recommendation {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 25px 0;
+            text-align: left;
+        }
+
+        .recommendation-title {
+            color: #2c3e50;
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .recommendation-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .recommendation-list li {
+            background: white;
+            border-left: 4px solid #e74c3c;
+            padding: 12px 20px;
+            margin-bottom: 10px;
+            border-radius: 0 8px 8px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .recommendation-list li:before {
+            content: "✓";
+            color: #27ae60;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            .toc {
+                grid-template-columns: 1fr;
+            }
+
+            .search-input {
+                width: 90%;
+            }
+
+            .medical-beauty-highlights {
+                grid-template-columns: 1fr;
+            }
+
+            .highlight-card {
+                padding: 20px;
+            }
+
+            .comparison-table {
+                font-size: 0.9em;
+            }
+
+            .comparison-table th,
+            .comparison-table td {
+                padding: 8px;
+            }
+
+            /* 移动端图标优化 */
+            .icon--large {
+                width: 28px;
+                height: 28px;
+            }
+
+            .chapter-header {
+                gap: 10px;
+            }
+
+            .highlight-card .highlight-icon .icon {
+                width: 32px;
+                height: 32px;
+            }
+
+            /* 移动端模态窗口优化 */
+            .modal-content {
+                width: 95%;
+                padding: 20px;
+                margin: 10px;
+            }
+
+            .modal-header h2 {
+                font-size: 1.5em;
+            }
+
+            .scoring-options {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .btn-group {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 200px;
+            }
+
+            .score-display {
+                font-size: 2.5em;
+            }
+
+            /* 移动端费用计算器优化 */
+            .tool-panel > div {
+                grid-template-columns: 1fr !important;
+                gap: 20px !important;
+            }
+
+            .calculator-settings,
+            .calculator-results {
+                padding: 20px;
+            }
+
+            .treatment-category {
+                padding: 15px;
+            }
+
+            .checkbox-group label {
+                padding: 10px;
+                font-size: 0.9em;
+            }
+
+            /* 移动端方案对比优化 */
+            .comparison-table-container {
+                overflow-x: auto;
+            }
+
+            .comparison-plan-card {
+                min-width: 280px;
+            }
+        }
+
+        /* 治疗方案对比样式 */
+        .comparison-table-container {
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        .comparison-table {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+            min-width: 100%;
+        }
+
+        .comparison-plan-card {
+            background: white;
+            border: 3px solid #e0e0e0;
+            border-radius: 16px;
+            padding: 24px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .comparison-plan-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .comparison-plan-card.recommended {
+            border-color: #ffd700;
+            background: linear-gradient(135deg, #fffaf0 0%, #ffffff 100%);
+            box-shadow: 0 8px 20px rgba(255, 215, 0, 0.3);
+        }
+
+        .comparison-plan-card.recommended::before {
+            content: '⭐ 推荐';
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+            color: #000;
+            padding: 6px 20px;
+            font-size: 0.85em;
+            font-weight: 700;
+            border-bottom-left-radius: 12px;
+        }
+
+        .comparison-plan-card.special {
+            border-color: #e74c3c;
+            background: linear-gradient(135deg, #fff5f5 0%, #ffffff 100%);
+        }
+
+        .comparison-plan-card.special::after {
+            content: '黄金三件套';
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
+            padding: 6px 16px;
+            font-size: 0.8em;
+            font-weight: 600;
+            border-bottom-right-radius: 12px;
+        }
+
+        .plan-name {
+            font-size: 1.5em;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 12px;
+            margin-top: 8px;
+        }
+
+        .plan-cost {
+            font-size: 1.3em;
+            color: #e74c3c;
+            font-weight: 700;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #ecf0f1;
+        }
+
+        .comparison-row {
+            margin: 18px 0;
+        }
+
+        .comparison-label {
+            font-size: 0.9em;
+            color: #7f8c8d;
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .comparison-value {
+            font-size: 1em;
+            color: #2c3e50;
+            font-weight: 500;
+        }
+
+        .progress-bar-container {
+            width: 100%;
+            height: 24px;
+            background: #ecf0f1;
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #3498db 0%, #2ecc71 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 8px;
+            transition: width 0.6s ease;
+        }
+
+        .progress-bar-text {
+            font-size: 0.8em;
+            color: white;
+            font-weight: 700;
+        }
+
+        .star-rating {
+            display: flex;
+            gap: 4px;
+            font-size: 1.2em;
+        }
+
+        .star-rating .star {
+            color: #ffd700;
+        }
+
+        .star-rating .star.empty {
+            color: #ddd;
+        }
+
+        .treatment-list {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0 0 0;
+        }
+
+        .treatment-list li {
+            padding: 8px 0;
+            color: #2c3e50;
+            font-size: 0.95em;
+            position: relative;
+            padding-left: 24px;
+        }
+
+        .treatment-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #2ecc71;
+            font-weight: 700;
+            font-size: 1.1em;
+        }
+
+        .pros-cons-toggle {
+            background: #f8f9fa;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 12px;
+            margin-top: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .pros-cons-toggle:hover {
+            background: #e8eaed;
+            border-color: #3498db;
+        }
+
+        .pros-cons-toggle-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .pros-cons-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+
+        .pros-cons-content.active {
+            max-height: 500px;
+            margin-top: 12px;
+        }
+
+        .pros-list, .cons-list {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0;
+        }
+
+        .pros-list li {
+            padding: 6px 0;
+            color: #27ae60;
+            font-size: 0.9em;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .pros-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            font-weight: 700;
+        }
+
+        .cons-list li {
+            padding: 6px 0;
+            color: #e74c3c;
+            font-size: 0.9em;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .cons-list li::before {
+            content: '✗';
+            position: absolute;
+            left: 0;
+            font-weight: 700;
+        }
+
+        .suitable-info {
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 12px;
+            border-radius: 8px;
+            margin-top: 15px;
+            font-size: 0.9em;
+            color: #2c3e50;
+        }
+
+        .consult-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .consult-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(52, 152, 219, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-logo">
+                <img src="logo.png" alt="联合丽格" style="max-width: 120px; margin-bottom: 20px;">
+            </div>
+            <h1>痘痘，再见，未来最好不见</h1>
+            <p class="subtitle">女性美容医生的痘痘诊疗与生活指南</p>
+            <div class="search-box">
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="搜索章节内容..." id="searchInput">
+                    <div class="search-icon icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="11" cy="11" r="7" stroke="var(--icon-color, #3498db)" stroke-width="2" fill="none"/>
+                            <path d="m21 21-4.35-4.35" stroke="var(--icon-color, #3498db)" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- 增强版全局搜索区域 -->
+        <div class="enhanced-search-section" style="background: white; border-radius: 20px; padding: 30px; margin-bottom: 30px; box-shadow: 0 10px 40px rgba(0,0,0,0.08);">
+            <div class="search-header" style="text-align: center; margin-bottom: 25px;">
+                <h3 style="color: #2c3e50; font-size: 1.6em; margin-bottom: 8px;">🔍 智能搜索</h3>
+                <p style="color: #7f8c8d; font-size: 0.95em;">搜索章节、治疗方案、常见问题</p>
+            </div>
+
+            <!-- 增强搜索框 -->
+            <div class="enhanced-search-box" style="position: relative; max-width: 700px; margin: 0 auto 20px;">
+                <input type="text" id="enhancedSearchInput" placeholder="输入关键词：痘痘、激光、水杨酸、费用..."
+                    style="width: 100%; padding: 18px 55px 18px 20px; font-size: 1.05em; border: 2px solid #e0e0e0; border-radius: 50px; outline: none; transition: all 0.3s;"
+                    onfocus="this.style.borderColor='#667eea'; this.style.boxShadow='0 5px 20px rgba(102,126,234,0.2)'"
+                    onblur="this.style.borderColor='#e0e0e0'; this.style.boxShadow='none'">
+                <button onclick="performEnhancedSearch()" style="position: absolute; right: 5px; top: 50%; transform: translateY(-50%); width: 45px; height: 45px; border: none; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.3s;">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                        <circle cx="11" cy="11" r="7" stroke="white" stroke-width="2.5" fill="none"/>
+                        <path d="m21 21-4.35-4.35" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- 快捷搜索标签 -->
+            <div class="quick-search-tags" style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 20px;">
+                <button onclick="quickSearch('轻度痘痘')" class="tag-btn">轻度痘痘</button>
+                <button onclick="quickSearch('痘坑修复')" class="tag-btn">痘坑修复</button>
+                <button onclick="quickSearch('激光治疗')" class="tag-btn">激光治疗</button>
+                <button onclick="quickSearch('水杨酸')" class="tag-btn">水杨酸</button>
+                <button onclick="quickSearch('费用价格')" class="tag-btn">费用价格</button>
+                <button onclick="quickSearch('心理支持')" class="tag-btn">心理支持</button>
+            </div>
+
+            <!-- 搜索结果显示区域 -->
+            <div id="searchResults" style="display: none; margin-top: 25px; max-height: 400px; overflow-y: auto; background: #f8f9fa; border-radius: 15px; padding: 20px;"></div>
+        </div>
+
+        <!-- 痘痘问题分类专题 -->
+        <div class="acne-categories-section" style="margin-bottom: 30px;">
+            <h3 style="text-align: center; color: #2c3e50; font-size: 1.8em; margin-bottom: 25px;">📚 痘痘问题分类专题</h3>
+
+            <div class="categories-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+                <!-- 分类卡片 -->
+                <div class="category-card" onclick="showCategoryContent('understanding')" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 25px; border-radius: 15px; cursor: pointer; transition: transform 0.3s, box-shadow 0.3s; box-shadow: 0 5px 20px rgba(102,126,234,0.3);">
+                    <div style="font-size: 2.5em; margin-bottom: 10px;">🔬</div>
+                    <h4 style="font-size: 1.3em; margin-bottom: 10px;">认识痘痘</h4>
+                    <p style="font-size: 0.95em; opacity: 0.9; margin-bottom: 15px;">了解痘痘的成因、类型和发展过程</p>
+                    <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                        <span class="mini-tag">成因分析</span>
+                        <span class="mini-tag">类型分级</span>
+                        <span class="mini-tag">发病机制</span>
+                    </div>
+                </div>
+
+                <div class="category-card" onclick="showCategoryContent('treatment')" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; padding: 25px; border-radius: 15px; cursor: pointer; transition: transform 0.3s, box-shadow 0.3s; box-shadow: 0 5px 20px rgba(245,87,108,0.3);">
+                    <div style="font-size: 2.5em; margin-bottom: 10px;">💊</div>
+                    <h4 style="font-size: 1.3em; margin-bottom: 10px;">治疗方案</h4>
+                    <p style="font-size: 0.95em; opacity: 0.9; margin-bottom: 15px;">专业医学治疗和医美项目</p>
+                    <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                        <span class="mini-tag">口服药物</span>
+                        <span class="mini-tag">激光治疗</span>
+                        <span class="mini-tag">刷酸项目</span>
+                    </div>
+                </div>
+
+                <div class="category-card" onclick="showCategoryContent('daily_care')" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); color: white; padding: 25px; border-radius: 15px; cursor: pointer; transition: transform 0.3s, box-shadow 0.3s; box-shadow: 0 5px 20px rgba(79,172,254,0.3);">
+                    <div style="font-size: 2.5em; margin-bottom: 10px;">🧴</div>
+                    <h4 style="font-size: 1.3em; margin-bottom: 10px;">日常护理</h4>
+                    <p style="font-size: 0.95em; opacity: 0.9; margin-bottom: 15px;">护肤、化妆、生活方式管理</p>
+                    <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                        <span class="mini-tag">护肤方法</span>
+                        <span class="mini-tag">化妆技巧</span>
+                        <span class="mini-tag">饮食调理</span>
+                    </div>
+                </div>
+
+                <div class="category-card" onclick="showCategoryContent('psychology')" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); color: white; padding: 25px; border-radius: 15px; cursor: pointer; transition: transform 0.3s, box-shadow 0.3s; box-shadow: 0 5px 20px rgba(250,112,154,0.3);">
+                    <div style="font-size: 2.5em; margin-bottom: 10px;">💝</div>
+                    <h4 style="font-size: 1.3em; margin-bottom: 10px;">心理支持</h4>
+                    <p style="font-size: 0.95em; opacity: 0.9; margin-bottom: 15px;">重建自信、心理疏导、社交应对</p>
+                    <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                        <span class="mini-tag">自信重建</span>
+                        <span class="mini-tag">社交应对</span>
+                        <span class="mini-tag">家庭支持</span>
+                    </div>
+                </div>
+
+                <div class="category-card" onclick="showCategoryContent('scar_repair')" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); color: #2c3e50; padding: 25px; border-radius: 15px; cursor: pointer; transition: transform 0.3s, box-shadow 0.3s; box-shadow: 0 5px 20px rgba(168,237,234,0.3);">
+                    <div style="font-size: 2.5em; margin-bottom: 10px;">🔧</div>
+                    <h4 style="font-size: 1.3em; margin-bottom: 10px;">痘坑修复</h4>
+                    <p style="font-size: 0.95em; opacity: 0.9; margin-bottom: 15px;">痘印痘坑的专业修复方案</p>
+                    <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                        <span class="mini-tag" style="background: rgba(102,126,234,0.2); color: #667eea;">点阵激光</span>
+                        <span class="mini-tag" style="background: rgba(102,126,234,0.2); color: #667eea;">小针刀</span>
+                        <span class="mini-tag" style="background: rgba(102,126,234,0.2); color: #667eea;">微针治疗</span>
+                    </div>
+                </div>
+
+                <div class="category-card" onclick="showCategoryContent('special_groups')" style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); color: #2c3e50; padding: 25px; border-radius: 15px; cursor: pointer; transition: transform 0.3s, box-shadow 0.3s; box-shadow: 0 5px 20px rgba(252,182,159,0.3);">
+                    <div style="font-size: 2.5em; margin-bottom: 10px;">👥</div>
+                    <h4 style="font-size: 1.3em; margin-bottom: 10px;">特殊人群</h4>
+                    <p style="font-size: 0.95em; opacity: 0.9; margin-bottom: 15px;">青少年、成年女性专属指南</p>
+                    <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                        <span class="mini-tag" style="background: rgba(102,126,234,0.2); color: #667eea;">青少年</span>
+                        <span class="mini-tag" style="background: rgba(102,126,234,0.2); color: #667eea;">成年女性</span>
+                        <span class="mini-tag" style="background: rgba(102,126,234,0.2); color: #667eea;">职场人士</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <style>
+            .tag-btn {
+                padding: 8px 18px;
+                background: #f0f0f0;
+                border: none;
+                border-radius: 20px;
+                cursor: pointer;
+                font-size: 0.9em;
+                color: #555;
+                transition: all 0.3s;
+            }
+            .tag-btn:hover {
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                color: white;
+                transform: translateY(-2px);
+                box-shadow: 0 5px 15px rgba(102,126,234,0.3);
+            }
+            .mini-tag {
+                display: inline-block;
+                padding: 4px 10px;
+                background: rgba(255,255,255,0.25);
+                border-radius: 12px;
+                font-size: 0.85em;
+            }
+            .category-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 15px 40px rgba(0,0,0,0.2) !important;
+            }
+            @media (max-width: 768px) {
+                .enhanced-search-section { padding: 20px 15px !important; }
+                .quick-search-tags { justify-content: flex-start !important; }
+                .categories-grid { grid-template-columns: 1fr !important; gap: 15px !important; }
+                .category-card { padding: 20px !important; }
+                .search-header h3 { font-size: 1.3em !important; }
+            }
+        </style>
+
+        <div class="book-info">
+            <h3>关于本书</h3>
+            <p>这是一本由专业女性皮肤科医生撰写的痘痘管理指南，涵盖医学诊疗、日常护理、心理支持等多个维度。本书以中国现实生活为背景，为受痘痘困扰的读者提供科学、实用、温暖的指导。</p>
+        </div>
+
+        <div class="medical-beauty-section">
+            <h3>专业医美指南</h3>
+            <div class="medical-beauty-highlights">
+                <div class="highlight-card golden-combo" onclick="showGoldenComboPage()">
+                    <div class="highlight-icon">
+                        <div class="icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2L12 6" stroke="var(--icon-color, #2c3e50)" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M12 18L12 22" stroke="var(--icon-color, #2c3e50)" stroke-width="2" stroke-linecap="round"/>
+                                <circle cx="12" cy="12" r="4" stroke="var(--icon-color, #2c3e50)" stroke-width="2" fill="none"/>
+                                <path d="M8 8L10 10" stroke="var(--icon-color, #2c3e50)" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M14 14L16 16" stroke="var(--icon-color, #2c3e50)" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M16 8L14 10" stroke="var(--icon-color, #2c3e50)" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M10 14L8 16" stroke="var(--icon-color, #2c3e50)" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <h4>三件套治疗方案</h4>
+                    <p>口服药物 + 微针激光 + 刷酸系统的黄金组合</p>
+
+                    <!-- 快速预览弹窗 -->
+                    <div class="quick-preview">
+                        <div class="preview-header">
+                            <h5>黄金三件套详情</h5>
+                            <p>专业医美联合治疗方案</p>
+                        </div>
+
+                        <div class="preview-items">
+                            <div class="preview-item">
+                                <div class="preview-item-icon">💊</div>
+                                <div class="preview-item-text">口服药物</div>
+                            </div>
+                            <div class="preview-item">
+                                <div class="preview-item-icon">🔬</div>
+                                <div class="preview-item-text">微针激光</div>
+                            </div>
+                            <div class="preview-item">
+                                <div class="preview-item-icon">🧪</div>
+                                <div class="preview-item-text">刷酸治疗</div>
+                            </div>
+                        </div>
+
+                        <div class="preview-benefits">
+                            <h6>协同优势</h6>
+                            <ul>
+                                <li>95%有效缓解炎症</li>
+                                <li>显著减少复发率</li>
+                                <li>改善皮肤质感</li>
+                                <li>缩短治疗周期</li>
+                            </ul>
+                        </div>
+
+                        <div class="preview-cta">
+                            <button class="preview-btn" onclick="event.stopPropagation(); showGoldenComboPage();">
+                                查看完整指南
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="highlight-card" onclick="showSelfTest()">
+                    <div class="highlight-icon">
+                        <div class="icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9 12L11 14L15 10" stroke="var(--icon-color, white)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <rect x="3" y="5" width="18" height="14" rx="2" stroke="var(--icon-color, white)" stroke-width="2" fill="none"/>
+                                <path d="M8 3V7" stroke="var(--icon-color, white)" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M16 3V7" stroke="var(--icon-color, white)" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <h4>痤疮严重程度自测</h4>
+                    <p>专业分诊工具，精准评估您的痤疮类型</p>
+                </div>
+                <div class="highlight-card" onclick="showCostCalculator()">
+                    <div class="highlight-icon">
+                        <div class="icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="12" cy="12" r="9" stroke="var(--icon-color, white)" stroke-width="2" fill="none"/>
+                                <path d="M14.5 9.5C14 8.5 13 8 12 8S10 8.5 9.5 9.5" stroke="var(--icon-color, white)" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M12 12V16" stroke="var(--icon-color, white)" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M10.5 16H13.5" stroke="var(--icon-color, white)" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <h4>费用预算计算器</h4>
+                    <p>根据治疗方案智能估算年度费用</p>
+                </div>
+                <div class="highlight-card" onclick="showTreatmentComparison()">
+                    <div class="highlight-icon">
+                        <div class="icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3 3V21H21" stroke="var(--icon-color, white)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M7 16L12 11L16 15L21 10" stroke="var(--icon-color, white)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <h4>治疗方案对比</h4>
+                    <p>不同预算下的最优治疗组合推荐</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="tableOfContents" class="toc">
+            <!-- 章节列表将通过JavaScript生成 -->
+        </div>
+
+        <div id="contentArea" class="content-area">
+            <button class="back-btn" onclick="showTableOfContents()">
+                <div class="icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M15 18L9 12L15 6" stroke="var(--icon-color, #3498db)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                返回目录
+            </button>
+            <div id="chapterContent" class="content"></div>
+        </div>
+
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-number">15万</div>
+                <div class="stat-label">总字数</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">14</div>
+                <div class="stat-label">主要章节</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">4</div>
+                <div class="stat-label">实用附录</div>
+            </div>
+        </div>
+
+        <!-- 实际项目列表区域 -->
+        <div style="background: white; border-radius: 20px; padding: 40px; margin: 40px 0; box-shadow: 0 10px 40px rgba(0,0,0,0.1);">
+            <h3 style="text-align: center; color: #2c3e50; font-size: 2em; margin-bottom: 10px;">💉 实际治疗项目</h3>
+            <p style="text-align: center; color: #7f8c8d; margin-bottom: 40px;">联合丽格西南中心真实医美项目 | 价格透明 | 专业定制</p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 30px;">
+                <!-- 单品项目快速预览 -->
+                <div style="background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); padding: 25px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.08);">
+                    <h4 style="color: #667eea; margin-bottom: 15px; font-size: 1.3em;">🔬 单品治疗项目</h4>
+                    <ul style="list-style: none; padding: 0; margin: 0;">
+                        <li style="padding: 8px 0; color: #555; border-bottom: 1px solid rgba(255,255,255,0.5);">• 激光针清/湿敷舒敏 <span style="float: right; color: #e74c3c; font-weight: bold;">¥99起</span></li>
+                        <li style="padding: 8px 0; color: #555; border-bottom: 1px solid rgba(255,255,255,0.5);">• 博乐达水杨酸面部 <span style="float: right; color: #e74c3c; font-weight: bold;">¥680起</span></li>
+                        <li style="padding: 8px 0; color: #555; border-bottom: 1px solid rgba(255,255,255,0.5);">• 1565/1550点阵激光 <span style="float: right; color: #e74c3c; font-weight: bold;">¥980起</span></li>
+                        <li style="padding: 8px 0; color: #555; border-bottom: 1px solid rgba(255,255,255,0.5);">• CO2点阵激光 <span style="float: right; color: #e74c3c; font-weight: bold;">¥1280起</span></li>
+                        <li style="padding: 8px 0; color: #555; border-bottom: 1px solid rgba(255,255,255,0.5);">• 黄金微针4.0 <span style="float: right; color: #e74c3c; font-weight: bold;">¥1680起</span></li>
+                        <li style="padding: 8px 0; color: #7f8c8d; text-align: center;">...共8个项目</li>
+                    </ul>
+                </div>
+
+                <!-- 套餐方案快速预览 -->
+                <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 25px; border-radius: 15px; box-shadow: 0 5px 20px rgba(102,126,234,0.3); color: white;">
+                    <h4 style="margin-bottom: 15px; font-size: 1.3em;">📦 综合治疗套餐</h4>
+                    <ul style="list-style: none; padding: 0; margin: 0;">
+                        <li style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.3);">• 痘清清A（基础） <span style="float: right; font-weight: bold;">¥980起</span></li>
+                        <li style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.3);">• 痘清清B（标准） <span style="float: right; font-weight: bold;">¥1280起</span></li>
+                        <li style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.3);">• 痘清清C（高端） <span style="float: right; font-weight: bold;">¥2580起</span></li>
+                        <li style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.3);">• 毛孔痘坑卡1.0 <span style="float: right; font-weight: bold;">¥2580起</span></li>
+                        <li style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.3);">• 毛孔痘坑卡3.0 <span style="float: right; font-weight: bold;">¥3980起</span></li>
+                        <li style="padding: 8px 0; opacity: 0.8; text-align: center;">5个套餐全部展示</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 查看完整价格表按钮 -->
+            <div style="text-align: center;">
+                <a href="treatments.html" style="display: inline-block; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 18px 45px; border-radius: 50px; text-decoration: none; font-size: 1.2em; font-weight: bold; box-shadow: 0 10px 30px rgba(102,126,234,0.4); transition: all 0.3s;">
+                    📋 查看完整项目价格表 →
+                </a>
+                <p style="margin-top: 15px; color: #7f8c8d; font-size: 0.9em;">
+                    包含详细项目描述 | 单次价格 | 3次套餐价 | 专业建议
+                </p>
+            </div>
+        </div>
+
+        <footer>
+            <div class="footer-content">
+                <div class="footer-company">
+                    <h4>联合丽格西南中心</h4>
+                    <p>重庆联合丽格科技有限公司</p>
+                </div>
+
+                <div class="footer-info">
+                    <div class="footer-item">
+                        <strong>备案号：</strong>
+                        <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">渝ICP备2024023473号</a>
+                    </div>
+                    <div class="footer-item">
+                        <strong>电话：</strong>023-63326559
+                    </div>
+                    <div class="footer-item">
+                        <strong>邮箱：</strong>
+                        <a href="mailto:yuxiaodong@beaucare.org">yuxiaodong@beaucare.org</a>
+                    </div>
+                    <div class="footer-item">
+                        <strong>微信：</strong>@sooogooo
+                    </div>
+                </div>
+
+                <div class="footer-copyright">
+                    <p>&copy; 2025 重庆联合丽格第五医疗美容医院 | 痘痘诊疗指南 | 温暖陪伴成长</p>
+                    <p style="font-size: 0.9em; color: #95a5a6; margin-top: 8px;">本书仅供科普参考，具体治疗请咨询专业医生</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- 自测模态窗口 -->
+    <div id="selfTestModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeSelfTest()">&times;</button>
+            <div class="modal-header">
+                <h2>痤疮严重程度自测</h2>
+                <p class="subtitle">基于GAGS国际标准评分系统</p>
+            </div>
+
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div id="progressFill" class="progress-fill" style="width: 0%"></div>
+                </div>
+                <div id="progressText" class="progress-text">第 1 步，共 6 步</div>
+            </div>
+
+            <!-- 步骤1：介绍 -->
+            <div id="step0" class="assessment-step active">
+                <div class="step-header">
+                    <div class="step-number">1</div>
+                    <div class="step-title">欢迎使用专业痤疮评估系统</div>
+                    <div class="step-description">本测试基于GAGS(Global Acne Grading System)国际标准，将帮助您准确评估痤疮严重程度并给出专业建议</div>
+                </div>
+                <div class="question-container">
+                    <div class="question-title">评估说明</div>
+                    <ul style="text-align: left; padding-left: 20px;">
+                        <li>本测试将评估您面部4个主要区域的痤疮状况</li>
+                        <li>每个区域根据痤疮类型和数量进行评分</li>
+                        <li>总评分将确定您的痤疮严重程度等级</li>
+                        <li>测试结果将提供个性化的治疗建议</li>
+                        <li>整个过程大约需要3-5分钟</li>
+                    </ul>
+                </div>
+                <div class="btn-group">
+                    <button class="btn btn-primary" onclick="nextStep()">开始评估</button>
+                </div>
+            </div>
+
+            <!-- 步骤2：右脸颊评分 -->
+            <div id="step1" class="assessment-step">
+                <div class="step-header">
+                    <div class="step-number">2</div>
+                    <div class="step-title">右脸颊区域评估</div>
+                    <div class="step-description">请根据您右脸颊区域的实际情况选择最符合的选项</div>
+                </div>
+                <div class="scoring-area">
+                    <div class="area-title">右脸颊</div>
+                    <div class="scoring-options" id="rightCheekOptions">
+                        <div class="score-option" data-score="0" onclick="selectScore('rightCheek', 0, this)">
+                            <div class="score-value">0分</div>
+                            <div class="score-label">无痤疮</div>
+                            <div class="score-description">皮肤清洁，无明显痤疮病变</div>
+                        </div>
+                        <div class="score-option" data-score="2" onclick="selectScore('rightCheek', 2, this)">
+                            <div class="score-value">2分</div>
+                            <div class="score-label">轻度</div>
+                            <div class="score-description">少量粉刺、丘疹，< 10个病变</div>
+                        </div>
+                        <div class="score-option" data-score="4" onclick="selectScore('rightCheek', 4, this)">
+                            <div class="score-value">4分</div>
+                            <div class="score-label">中度</div>
+                            <div class="score-description">中等数量丘疹、脓疱，10-40个病变</div>
+                        </div>
+                        <div class="score-option" data-score="6" onclick="selectScore('rightCheek', 6, this)">
+                            <div class="score-value">6分</div>
+                            <div class="score-label">重度</div>
+                            <div class="score-description">大量炎性病变，结节，> 40个病变</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="btn-group">
+                    <button class="btn btn-secondary" onclick="prevStep()">上一步</button>
+                    <button class="btn btn-primary" onclick="nextStep()" id="step1Next" disabled>下一步</button>
+                </div>
+            </div>
+
+            <!-- 步骤3：左脸颊评分 -->
+            <div id="step2" class="assessment-step">
+                <div class="step-header">
+                    <div class="step-number">3</div>
+                    <div class="step-title">左脸颊区域评估</div>
+                    <div class="step-description">请根据您左脸颊区域的实际情况选择最符合的选项</div>
+                </div>
+                <div class="scoring-area">
+                    <div class="area-title">左脸颊</div>
+                    <div class="scoring-options" id="leftCheekOptions">
+                        <div class="score-option" data-score="0" onclick="selectScore('leftCheek', 0, this)">
+                            <div class="score-value">0分</div>
+                            <div class="score-label">无痤疮</div>
+                            <div class="score-description">皮肤清洁，无明显痤疮病变</div>
+                        </div>
+                        <div class="score-option" data-score="2" onclick="selectScore('leftCheek', 2, this)">
+                            <div class="score-value">2分</div>
+                            <div class="score-label">轻度</div>
+                            <div class="score-description">少量粉刺、丘疹，< 10个病变</div>
+                        </div>
+                        <div class="score-option" data-score="4" onclick="selectScore('leftCheek', 4, this)">
+                            <div class="score-value">4分</div>
+                            <div class="score-label">中度</div>
+                            <div class="score-description">中等数量丘疹、脓疱，10-40个病变</div>
+                        </div>
+                        <div class="score-option" data-score="6" onclick="selectScore('leftCheek', 6, this)">
+                            <div class="score-value">6分</div>
+                            <div class="score-label">重度</div>
+                            <div class="score-description">大量炎性病变，结节，> 40个病变</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="btn-group">
+                    <button class="btn btn-secondary" onclick="prevStep()">上一步</button>
+                    <button class="btn btn-primary" onclick="nextStep()" id="step2Next" disabled>下一步</button>
+                </div>
+            </div>
+
+            <!-- 步骤4：鼻子和眉心评分 -->
+            <div id="step3" class="assessment-step">
+                <div class="step-header">
+                    <div class="step-number">4</div>
+                    <div class="step-title">鼻部和眉心区域评估</div>
+                    <div class="step-description">请根据您鼻子和眉心区域的实际情况选择最符合的选项</div>
+                </div>
+                <div class="scoring-area">
+                    <div class="area-title">鼻部和眉心</div>
+                    <div class="scoring-options" id="noseOptions">
+                        <div class="score-option" data-score="0" onclick="selectScore('nose', 0, this)">
+                            <div class="score-value">0分</div>
+                            <div class="score-label">无痤疮</div>
+                            <div class="score-description">皮肤清洁，无明显痤疮病变</div>
+                        </div>
+                        <div class="score-option" data-score="1" onclick="selectScore('nose', 1, this)">
+                            <div class="score-value">1分</div>
+                            <div class="score-label">轻度</div>
+                            <div class="score-description">少量粉刺、丘疹，< 5个病变</div>
+                        </div>
+                        <div class="score-option" data-score="2" onclick="selectScore('nose', 2, this)">
+                            <div class="score-value">2分</div>
+                            <div class="score-label">中度</div>
+                            <div class="score-description">中等数量丘疹、脓疱，5-20个病变</div>
+                        </div>
+                        <div class="score-option" data-score="3" onclick="selectScore('nose', 3, this)">
+                            <div class="score-value">3分</div>
+                            <div class="score-label">重度</div>
+                            <div class="score-description">大量炎性病变，结节，> 20个病变</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="btn-group">
+                    <button class="btn btn-secondary" onclick="prevStep()">上一步</button>
+                    <button class="btn btn-primary" onclick="nextStep()" id="step3Next" disabled>下一步</button>
+                </div>
+            </div>
+
+            <!-- 步骤5：下巴评分 -->
+            <div id="step4" class="assessment-step">
+                <div class="step-header">
+                    <div class="step-number">5</div>
+                    <div class="step-title">下巴区域评估</div>
+                    <div class="step-description">请根据您下巴区域的实际情况选择最符合的选项</div>
+                </div>
+                <div class="scoring-area">
+                    <div class="area-title">下巴</div>
+                    <div class="scoring-options" id="chinOptions">
+                        <div class="score-option" data-score="0" onclick="selectScore('chin', 0, this)">
+                            <div class="score-value">0分</div>
+                            <div class="score-label">无痤疮</div>
+                            <div class="score-description">皮肤清洁，无明显痤疮病变</div>
+                        </div>
+                        <div class="score-option" data-score="1" onclick="selectScore('chin', 1, this)">
+                            <div class="score-value">1分</div>
+                            <div class="score-label">轻度</div>
+                            <div class="score-description">少量粉刺、丘疹，< 5个病变</div>
+                        </div>
+                        <div class="score-option" data-score="2" onclick="selectScore('chin', 2, this)">
+                            <div class="score-value">2分</div>
+                            <div class="score-label">中度</div>
+                            <div class="score-description">中等数量丘疹、脓疱，5-20个病变</div>
+                        </div>
+                        <div class="score-option" data-score="3" onclick="selectScore('chin', 3, this)">
+                            <div class="score-value">3分</div>
+                            <div class="score-label">重度</div>
+                            <div class="score-description">大量炎性病变，结节，> 20个病变</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="btn-group">
+                    <button class="btn btn-secondary" onclick="prevStep()">上一步</button>
+                    <button class="btn btn-primary" onclick="nextStep()" id="step4Next" disabled>下一步</button>
+                </div>
+            </div>
+
+            <!-- 步骤6：结果显示 -->
+            <div id="step5" class="assessment-step">
+                <div class="result-container">
+                    <div class="step-header">
+                        <div class="step-number">6</div>
+                        <div class="step-title">评估结果</div>
+                    </div>
+
+                    <div id="resultScore" class="result-score">
+                        <div id="scoreDisplay" class="score-display">0</div>
+                        <div id="severityLevel" class="severity-level">评估中...</div>
+                        <div id="severityDescription" class="severity-description">正在计算您的痤疮严重程度...</div>
+                    </div>
+
+                    <div id="treatmentRecommendation" class="treatment-recommendation">
+                        <div class="recommendation-title">个性化治疗建议</div>
+                        <ul id="recommendationList" class="recommendation-list">
+                            <!-- 动态生成 -->
+                        </ul>
+                    </div>
+
+                    <div class="btn-group">
+                        <button class="btn btn-secondary" onclick="restartTest()">重新测试</button>
+                        <button class="btn btn-primary" onclick="closeSelfTest()">完成</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 三件套专题页面 -->
+    <div id="goldenComboModal" class="modal-overlay">
+        <div class="modal-content" style="max-width: 1000px;">
+            <button class="close-btn" onclick="closeGoldenComboPage()">&times;</button>
+            <div class="golden-combo-header">
+                <div class="combo-hero">
+                    <div class="hero-badge">⭐ 黄金组合</div>
+                    <h1>三件套治疗方案</h1>
+                    <p class="hero-subtitle">口服药物 + 微针激光 + 刷酸系统</p>
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <span class="stat-number">95%</span>
+                            <span class="stat-label">有效率</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">3-6</span>
+                            <span class="stat-label">个月见效</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">80%</span>
+                            <span class="stat-label">复发率降低</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="treatment-timeline">
+                <h2>治疗时间轴</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-marker">1</div>
+                        <div class="timeline-content">
+                            <h3>第1-2周：启动期</h3>
+                            <p>开始口服药物治疗，建立基础治疗方案</p>
+                            <ul>
+                                <li>开始口服抗生素或维A酸类药物</li>
+                                <li>温和清洁，避免过度刺激</li>
+                                <li>监测皮肤反应</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker">2</div>
+                        <div class="timeline-content">
+                            <h3>第3-4周：加强期</h3>
+                            <p>加入微针激光治疗，增强治疗效果</p>
+                            <ul>
+                                <li>开始第一次微针激光治疗</li>
+                                <li>继续口服药物治疗</li>
+                                <li>加强保湿和防晒</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker">3</div>
+                        <div class="timeline-content">
+                            <h3>第5-8周：系统期</h3>
+                            <p>引入刷酸治疗，形成完整治疗体系</p>
+                            <ul>
+                                <li>开始低浓度刷酸治疗</li>
+                                <li>继续微针激光治疗（间隔2-3周）</li>
+                                <li>调整口服药物剂量</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker">4</div>
+                        <div class="timeline-content">
+                            <h3>第9-24周：维持期</h3>
+                            <p>巩固治疗效果，预防复发</p>
+                            <ul>
+                                <li>维持性口服药物治疗</li>
+                                <li>定期微针激光维持</li>
+                                <li>家用刷酸护理</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="treatment-methods">
+                <h2>三大治疗方法详解</h2>
+                <div class="methods-grid">
+                    <div class="method-card">
+                        <div class="method-icon">💊</div>
+                        <h3>口服药物治疗</h3>
+                        <div class="method-description">
+                            <p><strong>作用机制：</strong>从内部调节激素水平，控制皮脂分泌</p>
+                            <p><strong>主要药物：</strong></p>
+                            <ul>
+                                <li>四环素类抗生素（多西环素）</li>
+                                <li>维A酸类（异维A酸）</li>
+                                <li>激素调节剂（螺内酯）</li>
+                            </ul>
+                            <p><strong>治疗周期：</strong>3-6个月</p>
+                            <p><strong>有效率：</strong>85-90%</p>
+                        </div>
+                    </div>
+
+                    <div class="method-card">
+                        <div class="method-icon">🔬</div>
+                        <h3>微针激光治疗</h3>
+                        <div class="method-description">
+                            <p><strong>作用机制：</strong>促进皮肤更新，减少炎症，改善质感</p>
+                            <p><strong>治疗方式：</strong></p>
+                            <ul>
+                                <li>点阵激光：改善痘坑痘印</li>
+                                <li>射频微针：深层重塑胶原</li>
+                                <li>光动力：杀灭痤疮丙酸杆菌</li>
+                            </ul>
+                            <p><strong>治疗间隔：</strong>2-3周一次</p>
+                            <p><strong>总疗程：</strong>4-6次</p>
+                        </div>
+                    </div>
+
+                    <div class="method-card">
+                        <div class="method-icon">🧪</div>
+                        <h3>刷酸系统治疗</h3>
+                        <div class="method-description">
+                            <p><strong>作用机制：</strong>加速角质代谢，疏通毛孔，预防复发</p>
+                            <p><strong>酸类选择：</strong></p>
+                            <ul>
+                                <li>水杨酸：疏通毛孔，抗炎</li>
+                                <li>果酸：促进更新，改善质感</li>
+                                <li>维A酸：调节角化，预防复发</li>
+                            </ul>
+                            <p><strong>使用频率：</strong>初期每周1-2次</p>
+                            <p><strong>维持期：</strong>每周2-3次</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="combo-advantages">
+                <h2>三件套协同优势</h2>
+                <div class="advantages-grid">
+                    <div class="advantage-item">
+                        <div class="advantage-icon">🎯</div>
+                        <h3>多靶点治疗</h3>
+                        <p>同时作用于痤疮发病的多个环节，从根源解决问题</p>
+                    </div>
+                    <div class="advantage-item">
+                        <div class="advantage-icon">⚡</div>
+                        <h3>快速见效</h3>
+                        <p>口服药物快速控制炎症，激光加速修复，效果更显著</p>
+                    </div>
+                    <div class="advantage-item">
+                        <div class="advantage-icon">🔄</div>
+                        <h3>降低复发</h3>
+                        <p>刷酸维持治疗效果，口服药物调节内分泌，有效预防复发</p>
+                    </div>
+                    <div class="advantage-item">
+                        <div class="advantage-icon">✨</div>
+                        <h3>全面改善</h3>
+                        <p>不仅治疗痤疮，还改善肌理、缩小毛孔、淡化痘印</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="success-cases">
+                <h2>成功案例展示</h2>
+                <div class="cases-grid">
+                    <div class="case-item">
+                        <div class="case-info">
+                            <h3>案例一：重度囊肿性痤疮</h3>
+                            <p><strong>年龄：</strong>25岁 女性</p>
+                            <p><strong>治疗前：</strong>面部大量囊肿、结节，炎症严重</p>
+                            <p><strong>治疗方案：</strong>异维A酸 + 点阵激光 + 水杨酸</p>
+                            <p><strong>治疗周期：</strong>6个月</p>
+                            <p><strong>治疗效果：</strong>痤疮完全消退，肌理显著改善</p>
+                        </div>
+                    </div>
+                    <div class="case-item">
+                        <div class="case-info">
+                            <h3>案例二：顽固性成人痤疮</h3>
+                            <p><strong>年龄：</strong>28岁 女性</p>
+                            <p><strong>治疗前：</strong>反复发作5年，下颌部集中</p>
+                            <p><strong>治疗方案：</strong>螺内酯 + 射频微针 + 维A酸</p>
+                            <p><strong>治疗周期：</strong>4个月</p>
+                            <p><strong>治疗效果：</strong>痤疮控制良好，1年内无复发</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="price-guide">
+                <h2>费用预算指南</h2>
+                <div class="price-table">
+                    <div class="price-item">
+                        <h3>口服药物</h3>
+                        <div class="price-range">
+                            <span class="price">¥500-2000</span>
+                            <span class="period">/月</span>
+                        </div>
+                        <ul>
+                            <li>多西环素：¥100-300/月</li>
+                            <li>异维A酸：¥800-1500/月</li>
+                            <li>螺内酯：¥200-500/月</li>
+                        </ul>
+                    </div>
+                    <div class="price-item">
+                        <h3>微针激光</h3>
+                        <div class="price-range">
+                            <span class="price">¥1500-5000</span>
+                            <span class="period">/次</span>
+                        </div>
+                        <ul>
+                            <li>点阵激光：¥2000-4000/次</li>
+                            <li>射频微针：¥2500-5000/次</li>
+                            <li>光动力：¥1500-3000/次</li>
+                        </ul>
+                    </div>
+                    <div class="price-item">
+                        <h3>刷酸治疗</h3>
+                        <div class="price-range">
+                            <span class="price">¥200-800</span>
+                            <span class="period">/月</span>
+                        </div>
+                        <ul>
+                            <li>医用刷酸：¥500-1500/次</li>
+                            <li>家用酸类：¥200-500/月</li>
+                            <li>配套护肤：¥300-800/月</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="total-cost">
+                    <h3>总体预算：</h3>
+                    <p>完整6个月治疗周期：<strong>¥15,000-35,000</strong></p>
+                    <p>年度维持费用：<strong>¥8,000-15,000</strong></p>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <button class="btn btn-primary" onclick="showSelfTest()">
+                    <span>🔬</span> 先进行痤疮评估
+                </button>
+                <button class="btn btn-secondary" onclick="showCostCalculator()">
+                    <span>💰</span> 费用计算器
+                </button>
+                <button class="btn" onclick="loadChapter('medical_beauty_guide.md', '专业医美指南：痤疮医美治疗完全指南')">
+                    <span>📖</span> 查看详细指南
+                </button>
+                <button class="btn" onclick="closeGoldenComboPage()" style="background: linear-gradient(135deg, #95a5a6 0%, #7f8c8d 100%);">
+                    <span>🏠</span> 返回首页
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 治疗方案对比模态窗口 -->
+    <div id="comparisonModal" class="modal-overlay">
+        <div class="modal-content" style="max-width: 1200px; position: relative;">
+            <button class="close-btn" onclick="closeComparisonModal()">&times;</button>
+
+            <div class="modal-header">
+                <h2>治疗方案对比分析</h2>
+                <p class="subtitle">根据您的需求选择最适合的治疗方案</p>
+            </div>
+
+            <div class="comparison-filters" style="margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 12px;">
+                <div style="display: flex; gap: 20px; align-items: center; flex-wrap: wrap;">
+                    <div style="flex: 1; min-width: 200px;">
+                        <label style="display: block; margin-bottom: 8px; color: #2c3e50; font-weight: 600;">预算范围</label>
+                        <input type="range" id="budgetSlider" min="3000" max="60000" step="1000" value="60000"
+                               oninput="filterPlansByBudget(this.value)"
+                               style="width: 100%; cursor: pointer;">
+                        <div style="display: flex; justify-content: space-between; font-size: 0.85em; color: #7f8c8d; margin-top: 5px;">
+                            <span>¥3,000</span>
+                            <span id="budgetValue" style="font-weight: 600; color: #e74c3c;">¥60,000+</span>
+                            <span>¥60,000+</span>
+                        </div>
+                    </div>
+                    <div>
+                        <label style="display: block; margin-bottom: 8px; color: #2c3e50; font-weight: 600;">排序方式</label>
+                        <select onchange="sortPlans(this.value)" style="padding: 10px 15px; border: 2px solid #ddd; border-radius: 8px; font-size: 1em; cursor: pointer; background: white;">
+                            <option value="default">默认排序</option>
+                            <option value="effectiveness">按效果排序</option>
+                            <option value="cost">按费用排序</option>
+                            <option value="duration">按周期排序</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div id="comparisonTable" class="comparison-table-container">
+                <!-- 动态生成的对比表格 -->
+            </div>
+
+            <div style="margin-top: 30px; padding: 20px; background: #fff3cd; border-radius: 12px; border-left: 4px solid #ffc107;">
+                <h3 style="color: #856404; margin-top: 0;">智能推荐说明</h3>
+                <p style="color: #856404; margin: 0;">
+                    如果您已完成痤疮自测评估，系统会根据您的GAGS评分和预算自动推荐最适合的方案（高亮显示）。
+                    未完成评估的用户可以点击下方按钮先进行评估。
+                </p>
+            </div>
+
+            <div class="action-buttons" style="margin-top: 25px;">
+                <button class="btn btn-primary" onclick="closeComparisonAndShowSelfTest()">
+                    <span>🔬</span> 先进行痤疮评估
+                </button>
+                <button class="btn btn-secondary" onclick="closeComparisonModal(); showCostCalculator();">
+                    <span>💰</span> 打开费用计算器
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 费用计算器模态窗口 -->
+    <div id="costCalculatorModal" class="modal-overlay">
+        <div class="modal-content" style="max-width: 1100px;">
+            <button class="close-btn" onclick="closeCostCalculator()">&times;</button>
+
+            <div class="tool-header">
+                <h2>痤疮治疗费用预算计算器</h2>
+                <p>根据您选择的治疗方案，智能计算预期费用</p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 30px;">
+                <!-- 左侧：治疗选择区 -->
+                <div class="calculator-settings">
+                    <h3 style="margin-bottom: 20px; color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px;">治疗方案设置</h3>
+
+                    <!-- 治疗类型选择 -->
+                    <div class="form-group">
+                        <label>治疗类型</label>
+                        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 10px;">
+                            <div class="treatment-type-btn active" data-type="basic" onclick="updateTreatmentType('basic')">
+                                <div style="font-weight: bold; margin-bottom: 5px;">基础型</div>
+                                <div style="font-size: 0.85em; opacity: 0.8;">口服药物为主</div>
+                            </div>
+                            <div class="treatment-type-btn" data-type="standard" onclick="updateTreatmentType('standard')">
+                                <div style="font-weight: bold; margin-bottom: 5px;">标准型</div>
+                                <div style="font-size: 0.85em; opacity: 0.8;">药物+刷酸</div>
+                            </div>
+                            <div class="treatment-type-btn" data-type="premium" onclick="updateTreatmentType('premium')">
+                                <div style="font-weight: bold; margin-bottom: 5px;">高端型</div>
+                                <div style="font-size: 0.85em; opacity: 0.8;">完整三件套</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 口服药物组 -->
+                    <div class="treatment-category">
+                        <h4>口服药物治疗</h4>
+                        <div class="treatment-options">
+                            <label class="treatment-checkbox">
+                                <input type="checkbox" id="isotretinoin" onchange="calculateTotal()">
+                                <span>异维A酸（异维A酸胶囊）</span>
+                                <span class="price-tag">¥300-800/月</span>
+                            </label>
+                            <label class="treatment-checkbox">
+                                <input type="checkbox" id="minocycline" onchange="calculateTotal()">
+                                <span>米诺环素（抗生素）</span>
+                                <span class="price-tag">¥100-300/月</span>
+                            </label>
+                            <label class="treatment-checkbox">
+                                <input type="checkbox" id="doxycycline" onchange="calculateTotal()">
+                                <span>多西环素（抗生素）</span>
+                                <span class="price-tag">¥80-250/月</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- 激光治疗组 -->
+                    <div class="treatment-category">
+                        <h4>激光治疗项目</h4>
+                        <div class="treatment-options">
+                            <label class="treatment-checkbox">
+                                <input type="checkbox" id="fractional" onchange="calculateTotal()">
+                                <span>点阵激光</span>
+                                <span class="price-tag">¥1500-3000/次</span>
+                            </label>
+                            <label class="treatment-checkbox">
+                                <input type="checkbox" id="rfMicroneedling" onchange="calculateTotal()">
+                                <span>射频微针</span>
+                                <span class="price-tag">¥2000-5000/次</span>
+                            </label>
+                            <label class="treatment-checkbox">
+                                <input type="checkbox" id="goldMicroneedling" onchange="calculateTotal()">
+                                <span>黄金微针</span>
+                                <span class="price-tag">¥1800-4000/次</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- 刷酸治疗组 -->
+                    <div class="treatment-category">
+                        <h4>刷酸治疗项目</h4>
+                        <div class="treatment-options">
+                            <label class="treatment-checkbox">
+                                <input type="checkbox" id="aha" onchange="calculateTotal()">
+                                <span>果酸焕肤</span>
+                                <span class="price-tag">¥300-800/次</span>
+                            </label>
+                            <label class="treatment-checkbox">
+                                <input type="checkbox" id="bha" onchange="calculateTotal()">
+                                <span>水杨酸焕肤</span>
+                                <span class="price-tag">¥200-600/次</span>
+                            </label>
+                            <label class="treatment-checkbox">
+                                <input type="checkbox" id="mandelic" onchange="calculateTotal()">
+                                <span>杏仁酸焕肤</span>
+                                <span class="price-tag">¥250-700/次</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- 治疗周期选择 -->
+                    <div class="form-group">
+                        <label>治疗周期</label>
+                        <select id="duration" onchange="calculateTotal()" style="width: 100%; padding: 10px; border: 2px solid #ddd; border-radius: 8px;">
+                            <option value="3">3个月（短期治疗）</option>
+                            <option value="6" selected>6个月（标准疗程）</option>
+                            <option value="12">12个月（完整疗程+维持）</option>
+                        </select>
+                    </div>
+
+                    <!-- 城市级别选择 -->
+                    <div class="form-group">
+                        <label>所在城市级别</label>
+                        <select id="cityLevel" onchange="calculateTotal()" style="width: 100%; padding: 10px; border: 2px solid #ddd; border-radius: 8px;">
+                            <option value="1.2">一线城市（北上广深）</option>
+                            <option value="1.0" selected>二线城市（省会/经济发达城市）</option>
+                            <option value="0.8">三线及以下城市</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- 右侧：费用结果展示 -->
+                <div class="calculator-results">
+                    <h3 style="margin-bottom: 20px; color: #2c3e50; border-bottom: 2px solid #00b894; padding-bottom: 10px;">费用预算结果</h3>
+
+                    <div class="result-card" style="margin-bottom: 20px;">
+                        <h3>总体预算</h3>
+                        <div style="font-size: 2.5em; font-weight: bold; margin: 15px 0; text-align: center;" id="totalCost">
+                            ¥0 - ¥0
+                        </div>
+                        <div style="text-align: center; opacity: 0.9; font-size: 0.95em;">
+                            完整治疗周期预估费用
+                        </div>
+                    </div>
+
+                    <div style="background: white; border-radius: 12px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+                        <h4 style="margin-bottom: 15px; color: #2c3e50;">费用明细</h4>
+                        <div id="costBreakdown">
+                            <div style="text-align: center; color: #7f8c8d; padding: 30px;">
+                                请选择治疗项目
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="background: white; border-radius: 12px; padding: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+                        <h4 style="margin-bottom: 15px; color: #2c3e50;">费用分析</h4>
+                        <div id="costAnalysis">
+                            <div style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #eee;">
+                                <span>月均费用：</span>
+                                <span id="monthlyCost" style="font-weight: bold; color: #3498db;">¥0</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #eee;">
+                                <span>药物费用占比：</span>
+                                <span id="oralPercent" style="font-weight: bold; color: #9b59b6;">0%</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #eee;">
+                                <span>激光费用占比：</span>
+                                <span id="laserPercent" style="font-weight: bold; color: #e74c3c;">0%</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; padding: 10px 0;">
+                                <span>刷酸费用占比：</span>
+                                <span id="peelingPercent" style="font-weight: bold; color: #f39c12;">0%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 20px; padding: 15px; background: #fff3cd; border-radius: 8px; border-left: 4px solid #ffc107;">
+                        <div style="font-weight: bold; margin-bottom: 5px; color: #856404;">温馨提示</div>
+                        <div style="font-size: 0.9em; color: #856404; line-height: 1.5;">
+                            以上费用为预估值，实际费用可能因医院等级、医生资质、设备品牌等因素有所差异。建议就诊前咨询具体医疗机构获取准确报价。
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 20px;">
+                        <button class="btn btn-primary" onclick="resetCalculator()" style="width: 100%; padding: 15px; font-size: 1.1em;">
+                            重置计算器
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ========== 真实的痤疮治疗项目数据（来自acnelist.xlsx） ==========
+        const ACNE_REAL_DATA = {
+            singleItems: [
+                { id: 'item_1', name: '激光针清/湿敷舒敏/红蓝光', category: '基础治疗', desc: '用于轻度痘肌问题，消炎去红，激光开口更卫生', price_single: 99, price_triple: 199 },
+                { id: 'item_2', name: '博乐达水杨酸面部', category: '刷酸治疗', desc: '抑制皮脂分泌、松解角质、抗炎、促进皮损消退', price_single: 680, price_triple: 1680 },
+                { id: 'item_3', name: '小针刀剥离', category: '痘坑修复', desc: '真皮层剥离技术，降低组织粘连，加速痘坑治疗', price_single: 980, price_triple: 2580 },
+                { id: 'item_4', name: '1565非剥脱点阵', category: '激光治疗', desc: '1565nm波长激光，适合浅中层痘坑、毛孔粗大', price_single: 980, price_triple: 2580 },
+                { id: 'item_5', name: '1550非剥脱点阵激光', category: '激光治疗', desc: '穿透较深，适合中深层痘坑、萎缩性瘢痕', price_single: 1280, price_triple: 2980 },
+                { id: 'item_6', name: '二氧化碳点阵激光', category: '激光治疗', desc: '强效胶原纤维合成及重塑，用于痘坑治疗', price_single: 1280, price_triple: 2980 },
+                { id: 'item_7', name: '三明治祛痘嫩肤', category: '综合治疗', desc: '多层促渗祛痘抗炎，配合水杨酸促进角质脱落', price_single: 1380, price_triple: 2980 },
+                { id: 'item_8', name: '黄金微针4.0', category: '射频微针', desc: '射频能量作用皮脂腺，抑制油脂分泌，刺激胶原新生', price_single: 1680, price_triple: 4580 }
+            ],
+            packages: [
+                { id: 'pkg_a', name: '痘清清A', level: '基础套餐', price_single: 980, price_triple: 2580, items: '1565/1550点阵+博乐达水杨酸', desc: '深浅层结合，光热杀菌+水杨酸消炎控油' },
+                { id: 'pkg_b', name: '痘清清B', level: '标准套餐', price_single: 1280, price_triple: 2980, items: '芬生源208+博乐达水杨酸+OPT光子/点阵激光', desc: '三项综合治疗，抗炎抑菌导入+激光胶原再生' },
+                { id: 'pkg_c', name: '痘清清C', level: '高端套餐', price_single: 2580, price_triple: 5980, items: '博乐达水杨酸+激光治疗+战痘套组+LED/湿敷/针清', desc: '包含战痘套组，促进皮肤高效恢复' },
+                { id: 'pkg_d', name: '毛孔痘坑卡1.0', level: '痘坑专项', price_single: 2580, price_triple: 5980, items: 'CO2点阵激光+博乐达水杨酸+小针刀剥离+针清/照光', desc: 'CO2点阵磨削表皮+刺激深层胶原' },
+                { id: 'pkg_e', name: '毛孔痘坑卡3.0', level: '顶级套餐', price_single: 3980, price_triple: 8800, items: '黄金微针+CO2点阵+战痘套组+博乐达水杨酸×2+小针刀×2+针清/照光×6', desc: '综合全方案，医生定制，针对严重问题' }
+            ]
+        };
+
+        // 章节配置
+        const chapters = [
+            { file: '00_preface.md', title: '前言：我与痘痘的不解之缘', desc: '医生的从医经历与写作初衷', icon: 'icons/chapters/preface.svg' },
+            { file: '01_true_face.md', title: '第一章：痘痘的真面目', desc: '揭示成年痘的真相，破除青春痘迷思', icon: 'icons/chapters/chapter01.svg' },
+            { file: '02_hidden_culprits.md', title: '第二章：痘痘背后的"幕后黑手"', desc: '深度分析内分泌、压力、饮食等影响因素', icon: 'icons/chapters/chapter02.svg' },
+            { file: '03_psychological_impact.md', title: '第三章：痘痘的心理影响', desc: '颜值焦虑、社交恐惧的成因与应对', icon: 'icons/chapters/chapter03.svg' },
+            { file: '04_professional_treatment.md', title: '第四章：专业诊疗方案', desc: '医院就诊指导与各种治疗方法详解', icon: 'icons/chapters/chapter04.svg' },
+            { file: 'medical_beauty_guide.md', title: '专业医美指南：痤疮医美治疗完全指南', desc: '口服药物治疗、微针激光、刷酸系统与分诊应用完整方案', icon: 'icons/medical/treatment_types.svg', isSpecial: true },
+            { file: '05_skincare_methods.md', title: '第五章：日常护肤的科学方法', desc: '破除护肤误区，建立科学护理体系', icon: 'icons/chapters/chapter05.svg' },
+            { file: '06_makeup_guide.md', title: '第六章：化妆技巧与注意事项', desc: '痘痘肌化妆秘籍与产品选择指南', icon: 'icons/chapters/chapter06.svg' },
+            { file: '07_scar_treatment.md', title: '第七章：痘印痘坑的修复', desc: '疤痕分类、治疗方法与心理调适', icon: 'icons/chapters/chapter07.svg' },
+            { file: '08_diet_nutrition.md', title: '第八章：饮食调理与营养支持', desc: '科学饮食指导与一周食谱推荐', icon: 'icons/chapters/chapter08.svg' },
+            { file: '09_lifestyle_stress.md', title: '第九章：作息调整与压力管理', desc: '适合996工作制的生活优化方案', icon: 'icons/chapters/chapter09.svg' },
+            { file: '10_exercise_health.md', title: '第十章：运动与皮肤健康', desc: '运动对皮肤的影响与护理指导', icon: 'icons/chapters/chapter10.svg' },
+            { file: '11_rebuild_confidence.md', title: '第十一章：重建自信心', desc: '心理重建与自我价值重新认知', icon: 'icons/chapters/chapter11.svg' },
+            { file: '12_family_social_support.md', title: '第十二章：家庭支持与社会适应', desc: '家庭沟通与社交技巧指导', icon: 'icons/chapters/chapter12.svg' },
+            { file: '13_teenage_management.md', title: '第十三章：青少年痘痘管理', desc: '青春期特殊管理与家长指导', icon: 'icons/chapters/chapter13.svg' },
+            { file: '14_adult_women_management.md', title: '第十四章：成年女性痘痘管理', desc: '职场女性的专业形象与生活平衡', icon: 'icons/chapters/chapter14.svg' },
+            { file: '15_appendix_a.md', title: '附录A：药物与成分表', desc: '常用药物成分详解与选择指南', icon: 'icons/chapters/appendix_a.svg' },
+            { file: '16_appendix_b.md', title: '附录B：应急处理方案', desc: '突发情况的快速处理方法', icon: 'icons/chapters/appendix_b.svg' },
+            { file: '17_appendix_c.md', title: '附录C：专业资源', desc: '医院推荐与求助渠道汇总', icon: 'icons/chapters/appendix_c.svg' },
+            { file: '18_appendix_d.md', title: '附录D：常见问题解答', desc: '50个常见问题的专业解答', icon: 'icons/chapters/appendix_c.svg' },
+            { file: '19_conclusion.md', title: '结语：美丽人生，从接纳开始', desc: '未来展望与温暖鼓励', icon: 'icons/chapters/conclusion.svg' }
+        ];
+
+        // SVG图标缓存
+        const iconCache = new Map();
+
+        // SVG图标加载函数
+        async function loadSVG(iconPath) {
+            // 检查缓存
+            if (iconCache.has(iconPath)) {
+                return iconCache.get(iconPath);
+            }
+
+            try {
+                const response = await fetch(iconPath);
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+                const svgContent = await response.text();
+
+                // 缓存SVG内容
+                iconCache.set(iconPath, svgContent);
+                return svgContent;
+            } catch (error) {
+                console.error('Failed to load SVG:', iconPath, error);
+                // 返回默认图标
+                const defaultIcon = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="3" stroke="var(--icon-color, #e74c3c)" stroke-width="2" fill="none"/><path d="M12 1V3M12 21V23M4.22 4.22L5.64 5.64M18.36 18.36L19.78 19.78M1 12H3M21 12H23M4.22 19.78L5.64 18.36M18.36 5.64L19.78 4.22" stroke="var(--icon-color, #e74c3c)" stroke-width="2" stroke-linecap="round"/></svg>';
+                iconCache.set(iconPath, defaultIcon);
+                return defaultIcon;
+            }
+        }
+
+        // 生成目录
+        async function generateTableOfContents() {
+            const toc = document.getElementById('tableOfContents');
+
+            for (const chapter of chapters) {
+                const card = document.createElement('div');
+                card.className = chapter.isSpecial ? 'chapter-card special' : 'chapter-card';
+
+                // 加载SVG图标
+                const svgContent = await loadSVG(chapter.icon);
+
+                card.innerHTML = `
+                    <div class="chapter-header">
+                        <div class="chapter-icon icon icon--large">
+                            ${svgContent}
+                        </div>
+                        <div class="chapter-title">${chapter.title}</div>
+                    </div>
+                    <div class="chapter-desc">${chapter.desc}</div>
+                `;
+                card.onclick = () => loadChapter(chapter.file, chapter.title);
+                toc.appendChild(card);
+            }
+        }
+
+        // 加载章节内容
+        async function loadChapter(filename, title) {
+            try {
+                const response = await fetch(filename);
+                const text = await response.text();
+                const content = markdownToHtml(text);
+
+                document.getElementById('chapterContent').innerHTML = `
+                    <h1>${title}</h1>
+                    ${content}
+                `;
+                document.getElementById('tableOfContents').style.display = 'none';
+                document.getElementById('contentArea').classList.add('active');
+                document.querySelector('.book-info').style.display = 'none';
+                document.querySelector('.stats').style.display = 'none';
+            } catch (error) {
+                document.getElementById('chapterContent').innerHTML = `
+                    <h1>加载失败</h1>
+                    <p>抱歉，无法加载章节内容。请稍后重试。</p>
+                `;
+                document.getElementById('contentArea').classList.add('active');
+            }
+        }
+
+        // 完全重写的Markdown转HTML函数
+        function markdownToHtml(markdown) {
+            if (!markdown) return '';
+
+            // 统一换行符处理
+            let text = markdown.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
+
+            // 按行分割并去掉前后空白
+            let lines = text.split('\n');
+            let result = [];
+            let inUnorderedList = false;
+            let inOrderedList = false;
+            let inTable = false;
+            let inCodeBlock = false;
+            let codeBlockContent = [];
+            let codeBlockLang = '';
+
+            for (let i = 0; i < lines.length; i++) {
+                let line = lines[i];
+                let trimmedLine = line.trim();
+
+                // 处理代码块
+                if (trimmedLine.startsWith('```')) {
+                    if (!inCodeBlock) {
+                        // 开始代码块
+                        inCodeBlock = true;
+                        codeBlockLang = trimmedLine.substring(3).trim();
+                        codeBlockContent = [];
+                        continue;
+                    } else {
+                        // 结束代码块
+                        inCodeBlock = false;
+                        let codeHtml = codeBlockContent.join('\n')
+                            .replace(/&/g, '&amp;')
+                            .replace(/</g, '&lt;')
+                            .replace(/>/g, '&gt;');
+                        result.push(`<pre><code class="language-${codeBlockLang}">${codeHtml}</code></pre>`);
+                        codeBlockContent = [];
+                        codeBlockLang = '';
+                        continue;
+                    }
+                }
+
+                // 如果在代码块中，直接添加内容
+                if (inCodeBlock) {
+                    codeBlockContent.push(line);
+                    continue;
+                }
+
+                // 处理表格
+                if (trimmedLine.startsWith('|') && trimmedLine.endsWith('|')) {
+                    // 检查是否是分隔行 (|---|---|)
+                    if (trimmedLine.match(/^\|[\s\-:]+\|$/)) {
+                        // 这是表头分隔行，已经在表格中
+                        continue;
+                    }
+
+                    // 如果还未开始表格，检查下一行是否是分隔行
+                    if (!inTable) {
+                        if (i + 1 < lines.length && lines[i + 1].trim().match(/^\|[\s\-:]+\|$/)) {
+                            // 开始表格，这是表头
+                            result.push('<table class="markdown-table">');
+                            result.push('<thead>');
+                            let cells = trimmedLine.split('|').filter(cell => cell.trim() !== '');
+                            let headerRow = '<tr>' + cells.map(cell => `<th>${processInlineFormatting(cell.trim())}</th>`).join('') + '</tr>';
+                            result.push(headerRow);
+                            result.push('</thead>');
+                            result.push('<tbody>');
+                            inTable = true;
+                            i++; // 跳过下一行（分隔行）
+                            continue;
+                        }
+                    } else {
+                        // 在表格中，这是数据行
+                        let cells = trimmedLine.split('|').filter(cell => cell.trim() !== '');
+                        let dataRow = '<tr>' + cells.map(cell => `<td>${processInlineFormatting(cell.trim())}</td>`).join('') + '</tr>';
+                        result.push(dataRow);
+                        continue;
+                    }
+                } else if (inTable) {
+                    // 遇到非表格行，结束表格
+                    result.push('</tbody>');
+                    result.push('</table>');
+                    inTable = false;
+                }
+
+                // 处理空行 - 结束当前列表状态
+                if (trimmedLine === '') {
+                    if (inUnorderedList) {
+                        result.push('</ul>');
+                        inUnorderedList = false;
+                    }
+                    if (inOrderedList) {
+                        result.push('</ol>');
+                        inOrderedList = false;
+                    }
+                    // 添加段落间距，但不添加空的p标签
+                    if (result.length > 0 && result[result.length - 1] !== '') {
+                        result.push('');
+                    }
+                    continue;
+                }
+
+                // 处理标题 - 必须在行首
+                if (trimmedLine.match(/^### (.+)/)) {
+                    // 结束任何活动的列表
+                    if (inUnorderedList) {
+                        result.push('</ul>');
+                        inUnorderedList = false;
+                    }
+                    if (inOrderedList) {
+                        result.push('</ol>');
+                        inOrderedList = false;
+                    }
+                    let title = trimmedLine.replace(/^### /, '');
+                    title = processInlineFormatting(title);
+                    result.push(`<h3>${title}</h3>`);
+                    continue;
+                }
+
+                if (trimmedLine.match(/^## (.+)/)) {
+                    if (inUnorderedList) {
+                        result.push('</ul>');
+                        inUnorderedList = false;
+                    }
+                    if (inOrderedList) {
+                        result.push('</ol>');
+                        inOrderedList = false;
+                    }
+                    let title = trimmedLine.replace(/^## /, '');
+                    title = processInlineFormatting(title);
+                    result.push(`<h2>${title}</h2>`);
+                    continue;
+                }
+
+                if (trimmedLine.match(/^# (.+)/)) {
+                    if (inUnorderedList) {
+                        result.push('</ul>');
+                        inUnorderedList = false;
+                    }
+                    if (inOrderedList) {
+                        result.push('</ol>');
+                        inOrderedList = false;
+                    }
+                    let title = trimmedLine.replace(/^# /, '');
+                    title = processInlineFormatting(title);
+                    result.push(`<h1>${title}</h1>`);
+                    continue;
+                }
+
+                // 处理无序列表 - 支持 -, *, + 三种标记
+                let unorderedMatch = trimmedLine.match(/^[\-\*\+]\s+(.+)/);
+                if (unorderedMatch) {
+                    // 如果当前在有序列表中，先结束有序列表
+                    if (inOrderedList) {
+                        result.push('</ol>');
+                        inOrderedList = false;
+                    }
+                    // 如果还未开始无序列表，开始一个新的
+                    if (!inUnorderedList) {
+                        result.push('<ul>');
+                        inUnorderedList = true;
+                    }
+                    let content = unorderedMatch[1];
+                    content = processInlineFormatting(content);
+                    result.push(`<li>${content}</li>`);
+                    continue;
+                }
+
+                // 处理有序列表
+                let orderedMatch = trimmedLine.match(/^\d+\.\s+(.+)/);
+                if (orderedMatch) {
+                    // 如果当前在无序列表中，先结束无序列表
+                    if (inUnorderedList) {
+                        result.push('</ul>');
+                        inUnorderedList = false;
+                    }
+                    // 如果还未开始有序列表，开始一个新的
+                    if (!inOrderedList) {
+                        result.push('<ol>');
+                        inOrderedList = true;
+                    }
+                    let content = orderedMatch[1];
+                    content = processInlineFormatting(content);
+                    result.push(`<li>${content}</li>`);
+                    continue;
+                }
+
+                // 如果到这里，说明不是列表项，需要结束当前的列表
+                if (inUnorderedList) {
+                    result.push('</ul>');
+                    inUnorderedList = false;
+                }
+                if (inOrderedList) {
+                    result.push('</ol>');
+                    inOrderedList = false;
+                }
+
+                // 处理普通段落
+                if (trimmedLine) {
+                    let content = processInlineFormatting(trimmedLine);
+                    result.push(`<p>${content}</p>`);
+                }
+            }
+
+            // 确保所有列表和表格都被正确关闭
+            if (inUnorderedList) {
+                result.push('</ul>');
+            }
+            if (inOrderedList) {
+                result.push('</ol>');
+            }
+            if (inTable) {
+                result.push('</tbody>');
+                result.push('</table>');
+            }
+
+            // 连接结果并清理
+            return result.join('\n')
+                .replace(/\n{3,}/g, '\n\n')  // 删除多余的空行
+                .trim();
+        }
+
+        // 处理行内格式化（粗体、斜体等）
+        function processInlineFormatting(text) {
+            if (!text) return '';
+
+            // 处理粗体 - 支持行内任意位置的 **粗体文本**
+            // 使用非贪婪匹配避免跨越多个粗体标记
+            text = text.replace(/\*\*([^\*]+?)\*\*/g, '<strong>$1</strong>');
+
+            // 处理斜体 - 单个星号，但要避免和粗体冲突
+            // 先匹配单独的星号（不是粗体标记的一部分）
+            text = text.replace(/(?<!\*)\*([^\*]+?)\*(?!\*)/g, '<em>$1</em>');
+
+            // 处理行内代码 - 反引号
+            text = text.replace(/`([^`]+?)`/g, '<code>$1</code>');
+
+            return text;
+        }
+
+        // 返回目录
+        function showTableOfContents() {
+            document.getElementById('tableOfContents').style.display = 'grid';
+            document.getElementById('contentArea').classList.remove('active');
+            document.querySelector('.book-info').style.display = 'block';
+            document.querySelector('.stats').style.display = 'block';
+        }
+
+        // 数字滚动动画
+        function animateNumber(element, finalNumber, duration = 2000) {
+            const startNumber = 0;
+            const startTime = performance.now();
+
+            function updateNumber(currentTime) {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+
+                // 使用缓动函数
+                const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+                const currentNumber = Math.floor(startNumber + (finalNumber - startNumber) * easeOutQuart);
+
+                if (element.textContent.includes('%')) {
+                    element.textContent = currentNumber + '%';
+                } else if (element.textContent.includes('-')) {
+                    element.textContent = currentNumber + '-' + (currentNumber + 3);
+                } else {
+                    element.textContent = currentNumber + '%';
+                }
+
+                if (progress < 1) {
+                    requestAnimationFrame(updateNumber);
+                }
+            }
+
+            requestAnimationFrame(updateNumber);
+        }
+
+        // 三件套专题页面功能
+        function showGoldenComboPage() {
+            const modal = document.getElementById('goldenComboModal');
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+
+            // 添加进入动画
+            setTimeout(() => {
+                modal.querySelector('.modal-content').style.transform = 'scale(1)';
+
+                // 启动数字动画
+                const statNumbers = modal.querySelectorAll('.stat-number');
+                setTimeout(() => {
+                    animateNumber(statNumbers[0], 95, 2000); // 95%
+                    animateNumber(statNumbers[1], 3, 2000);  // 3-6
+                    animateNumber(statNumbers[2], 80, 2000); // 80%
+                }, 500);
+            }, 50);
+
+            // 隐藏其他界面
+            document.getElementById('tableOfContents').style.display = 'none';
+            document.querySelector('.book-info').style.display = 'none';
+            document.querySelector('.stats').style.display = 'none';
+            document.querySelector('.medical-beauty-section').style.display = 'none';
+        }
+
+        function closeGoldenComboPage() {
+            const modal = document.getElementById('goldenComboModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+
+            // 显示其他界面
+            document.getElementById('tableOfContents').style.display = 'grid';
+            document.querySelector('.book-info').style.display = 'block';
+            document.querySelector('.stats').style.display = 'block';
+            document.querySelector('.medical-beauty-section').style.display = 'block';
+        }
+
+        // 自测功能
+        let currentStep = 0;
+        let assessmentData = {
+            rightCheek: null,
+            leftCheek: null,
+            nose: null,
+            chin: null
+        };
+
+        function showSelfTest() {
+            const modal = document.getElementById('selfTestModal');
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+
+            // 重置测试
+            currentStep = 0;
+            assessmentData = {
+                rightCheek: null,
+                leftCheek: null,
+                nose: null,
+                chin: null
+            };
+
+            showStep(0);
+            updateProgress();
+        }
+
+        function closeSelfTest() {
+            const modal = document.getElementById('selfTestModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function nextStep() {
+            if (currentStep < 5) {
+                currentStep++;
+                showStep(currentStep);
+                updateProgress();
+            }
+        }
+
+        function prevStep() {
+            if (currentStep > 0) {
+                currentStep--;
+                showStep(currentStep);
+                updateProgress();
+            }
+        }
+
+        function showStep(stepNumber) {
+            // 隐藏所有步骤
+            document.querySelectorAll('.assessment-step').forEach(step => {
+                step.classList.remove('active');
+            });
+
+            // 显示当前步骤
+            const currentStepElement = document.getElementById(`step${stepNumber}`);
+            if (currentStepElement) {
+                currentStepElement.classList.add('active');
+            }
+
+            // 如果是结果步骤，计算并显示结果
+            if (stepNumber === 5) {
+                calculateAndShowResults();
+            }
+        }
+
+        function selectScore(area, score, element) {
+            assessmentData[area] = score;
+
+            // 清除同组的选中状态
+            const options = element.parentNode.querySelectorAll('.score-option');
+            options.forEach(option => option.classList.remove('selected'));
+
+            // 标记当前选中
+            element.classList.add('selected');
+
+            // 启用下一步按钮
+            const nextButton = document.getElementById(`step${currentStep}Next`);
+            if (nextButton) {
+                nextButton.disabled = false;
+            }
+        }
+
+        function updateProgress() {
+            const progressFill = document.getElementById('progressFill');
+            const progressText = document.getElementById('progressText');
+
+            const progress = ((currentStep + 1) / 6) * 100;
+            progressFill.style.width = `${progress}%`;
+            progressText.textContent = `第 ${currentStep + 1} 步，共 6 步`;
+        }
+
+        function calculateAndShowResults() {
+            const totalScore = (assessmentData.rightCheek || 0) +
+                             (assessmentData.leftCheek || 0) +
+                             (assessmentData.nose || 0) +
+                             (assessmentData.chin || 0);
+
+            // 保存GAGS评分用于方案推荐
+            lastGagsScore = totalScore;
+
+            let severity, description, recommendations;
+
+            if (totalScore <= 2) {
+                severity = "轻度痤疮";
+                description = "皮肤状况良好，痤疮程度较轻";
+                recommendations = [
+                    "温和清洁，使用氨基酸洁面乳",
+                    "外用维A酸类药物（阿达帕林凝胶）",
+                    "注意防晒和保湿",
+                    "避免挤压痘痘",
+                    "调整作息，保持充足睡眠"
+                ];
+            } else if (totalScore <= 6) {
+                severity = "轻中度痤疮";
+                description = "需要积极治疗，建议就医咨询";
+                recommendations = [
+                    "外用维A酸类 + 过氧化苯甲酰",
+                    "考虑口服抗生素（多西环素）",
+                    "定期进行专业清洁护理",
+                    "低糖低奶制品饮食",
+                    "考虑轻度化学剥脱治疗"
+                ];
+            } else if (totalScore <= 12) {
+                severity = "中重度痤疮";
+                description = "需要系统性治疗，强烈建议就医";
+                recommendations = [
+                    "口服异维A酸或抗生素",
+                    "外用维A酸 + 抗菌药物",
+                    "考虑激光或光动力治疗",
+                    "🌟 推荐：三件套联合治疗（点击查看详情）",
+                    "心理支持和生活方式调整"
+                ];
+            } else {
+                severity = "重度痤疮";
+                description = "需要立即就医，接受系统治疗";
+                recommendations = [
+                    "立即就医，专业医生制定治疗方案",
+                    "口服异维A酸治疗",
+                    "激光、光动力等医美治疗",
+                    "🌟 强烈推荐：三件套联合治疗（点击查看详情）",
+                    "长期随访和维持治疗",
+                    "心理健康关注和支持"
+                ];
+            }
+
+            // 更新结果显示
+            document.getElementById('scoreDisplay').textContent = totalScore;
+            document.getElementById('severityLevel').textContent = severity;
+            document.getElementById('severityDescription').textContent = description;
+
+            const recommendationList = document.getElementById('recommendationList');
+            recommendationList.innerHTML = '';
+            recommendations.forEach(rec => {
+                const li = document.createElement('li');
+
+                if (rec.includes('三件套')) {
+                    li.innerHTML = rec;
+                    li.style.cursor = 'pointer';
+                    li.style.background = 'linear-gradient(135deg, #ffd700 0%, #ff8c00 100%)';
+                    li.style.color = '#2c3e50';
+                    li.style.fontWeight = 'bold';
+                    li.style.borderLeft = '4px solid #ff6b6b';
+                    li.style.transform = 'translateX(5px)';
+                    li.addEventListener('click', function() {
+                        closeSelfTest();
+                        setTimeout(() => {
+                            showGoldenComboPage();
+                        }, 300);
+                    });
+                } else {
+                    li.textContent = rec;
+                }
+
+                recommendationList.appendChild(li);
+            });
+        }
+
+        function restartTest() {
+            currentStep = 0;
+            assessmentData = {
+                rightCheek: null,
+                leftCheek: null,
+                nose: null,
+                chin: null
+            };
+
+            // 清除所有选择
+            document.querySelectorAll('.score-option').forEach(option => {
+                option.classList.remove('selected');
+            });
+
+            // 禁用下一步按钮
+            document.querySelectorAll('[id$="Next"]').forEach(btn => {
+                btn.disabled = true;
+            });
+
+            showStep(0);
+            updateProgress();
+        }
+
+        // 费用计算器功能
+
+        // 价格数据库
+        const treatmentPrices = {
+            oral: {
+                isotretinoin: { name: '异维A酸', min: 300, max: 800, unit: '月', frequency: 1 },
+                minocycline: { name: '米诺环素', min: 100, max: 300, unit: '月', frequency: 1 },
+                doxycycline: { name: '多西环素', min: 80, max: 250, unit: '月', frequency: 1 }
+            },
+            laser: {
+                fractional: { name: '点阵激光', min: 1500, max: 3000, unit: '次', frequency: 4 },
+                rfMicroneedling: { name: '射频微针', min: 2000, max: 5000, unit: '次', frequency: 6 },
+                goldMicroneedling: { name: '黄金微针', min: 1800, max: 4000, unit: '次', frequency: 6 }
+            },
+            peeling: {
+                aha: { name: '果酸焕肤', min: 300, max: 800, unit: '次', frequency: 4 },
+                bha: { name: '水杨酸焕肤', min: 200, max: 600, unit: '次', frequency: 4 },
+                mandelic: { name: '杏仁酸焕肤', min: 250, max: 700, unit: '次', frequency: 4 }
+            }
+        };
+
+        function showCostCalculator() {
+            const modal = document.getElementById('costCalculatorModal');
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            resetCalculator();
+            calculateTotal();
+        }
+
+        function closeCostCalculator() {
+            const modal = document.getElementById('costCalculatorModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function updateTreatmentType(type) {
+            // 更新按钮状态
+            document.querySelectorAll('.treatment-type-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.currentTarget.classList.add('active');
+
+            // 根据类型自动勾选治疗项目
+            const allCheckboxes = document.querySelectorAll('.treatment-checkbox input[type="checkbox"]');
+            allCheckboxes.forEach(cb => cb.checked = false);
+
+            if (type === 'basic') {
+                // 基础型：只选口服药物
+                document.getElementById('isotretinoin').checked = true;
+            } else if (type === 'standard') {
+                // 标准型：口服药物 + 刷酸
+                document.getElementById('isotretinoin').checked = true;
+                document.getElementById('aha').checked = true;
+            } else if (type === 'premium') {
+                // 高端型：三件套全选
+                document.getElementById('isotretinoin').checked = true;
+                document.getElementById('fractional').checked = true;
+                document.getElementById('aha').checked = true;
+            }
+
+            calculateTotal();
+        }
+
+        function calculateTotal() {
+            const duration = parseInt(document.getElementById('duration').value);
+            const cityLevel = parseFloat(document.getElementById('cityLevel').value);
+
+            let totalMin = 0;
+            let totalMax = 0;
+            let oralCost = { min: 0, max: 0 };
+            let laserCost = { min: 0, max: 0 };
+            let peelingCost = { min: 0, max: 0 };
+            let breakdown = [];
+
+            // 计算口服药物费用
+            Object.keys(treatmentPrices.oral).forEach(key => {
+                const checkbox = document.getElementById(key);
+                if (checkbox && checkbox.checked) {
+                    const item = treatmentPrices.oral[key];
+                    const monthlyMin = item.min * cityLevel;
+                    const monthlyMax = item.max * cityLevel;
+                    const itemMin = monthlyMin * duration;
+                    const itemMax = monthlyMax * duration;
+
+                    oralCost.min += itemMin;
+                    oralCost.max += itemMax;
+                    totalMin += itemMin;
+                    totalMax += itemMax;
+
+                    breakdown.push({
+                        name: item.name,
+                        min: itemMin,
+                        max: itemMax,
+                        type: 'oral'
+                    });
+                }
+            });
+
+            // 计算激光治疗费用
+            Object.keys(treatmentPrices.laser).forEach(key => {
+                const checkbox = document.getElementById(key);
+                if (checkbox && checkbox.checked) {
+                    const item = treatmentPrices.laser[key];
+                    const sessions = Math.ceil(duration / 3 * item.frequency / 4); // 根据周期计算疗程次数
+                    const itemMin = item.min * sessions * cityLevel;
+                    const itemMax = item.max * sessions * cityLevel;
+
+                    laserCost.min += itemMin;
+                    laserCost.max += itemMax;
+                    totalMin += itemMin;
+                    totalMax += itemMax;
+
+                    breakdown.push({
+                        name: `${item.name} (${sessions}次)`,
+                        min: itemMin,
+                        max: itemMax,
+                        type: 'laser'
+                    });
+                }
+            });
+
+            // 计算刷酸治疗费用
+            Object.keys(treatmentPrices.peeling).forEach(key => {
+                const checkbox = document.getElementById(key);
+                if (checkbox && checkbox.checked) {
+                    const item = treatmentPrices.peeling[key];
+                    const sessions = Math.ceil(duration / 3 * item.frequency / 4); // 根据周期计算疗程次数
+                    const itemMin = item.min * sessions * cityLevel;
+                    const itemMax = item.max * sessions * cityLevel;
+
+                    peelingCost.min += itemMin;
+                    peelingCost.max += itemMax;
+                    totalMin += itemMin;
+                    totalMax += itemMax;
+
+                    breakdown.push({
+                        name: `${item.name} (${sessions}次)`,
+                        min: itemMin,
+                        max: itemMax,
+                        type: 'peeling'
+                    });
+                }
+            });
+
+            // 更新总费用显示
+            const totalCostEl = document.getElementById('totalCost');
+            if (totalMin === 0 && totalMax === 0) {
+                totalCostEl.textContent = '¥0 - ¥0';
+            } else {
+                totalCostEl.textContent = `¥${totalMin.toLocaleString()} - ¥${totalMax.toLocaleString()}`;
+            }
+
+            // 更新费用明细
+            const breakdownEl = document.getElementById('costBreakdown');
+            if (breakdown.length === 0) {
+                breakdownEl.innerHTML = '<div style="text-align: center; color: #7f8c8d; padding: 30px;">请选择治疗项目</div>';
+            } else {
+                let html = '';
+                breakdown.forEach(item => {
+                    html += `
+                        <div style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #eee;">
+                            <span style="color: #555;">${item.name}</span>
+                            <span style="font-weight: bold; color: #2c3e50;">¥${item.min.toLocaleString()} - ¥${item.max.toLocaleString()}</span>
+                        </div>
+                    `;
+                });
+                breakdownEl.innerHTML = html;
+            }
+
+            // 更新费用分析
+            const monthlyAvg = totalMin > 0 ? Math.round((totalMin + totalMax) / 2 / duration) : 0;
+            const total = totalMin + totalMax;
+            const oralPercent = total > 0 ? Math.round((oralCost.min + oralCost.max) / total * 100) : 0;
+            const laserPercent = total > 0 ? Math.round((laserCost.min + laserCost.max) / total * 100) : 0;
+            const peelingPercent = total > 0 ? Math.round((peelingCost.min + peelingCost.max) / total * 100) : 0;
+
+            document.getElementById('monthlyCost').textContent = `¥${monthlyAvg.toLocaleString()}`;
+            document.getElementById('oralPercent').textContent = `${oralPercent}%`;
+            document.getElementById('laserPercent').textContent = `${laserPercent}%`;
+            document.getElementById('peelingPercent').textContent = `${peelingPercent}%`;
+        }
+
+        function resetCalculator() {
+            // 重置所有选择
+            document.querySelectorAll('.treatment-checkbox input[type="checkbox"]').forEach(cb => {
+                cb.checked = false;
+            });
+
+            // 重置治疗类型为基础型
+            document.querySelectorAll('.treatment-type-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector('.treatment-type-btn[data-type="basic"]').classList.add('active');
+
+            // 重置周期和城市
+            document.getElementById('duration').value = '6';
+            document.getElementById('cityLevel').value = '1.0';
+
+            // 重新计算
+            calculateTotal();
+        }
+
+        // 治疗方案数据
+        const treatmentPlans = [
+            {
+                id: 'economy',
+                name: '经济型方案',
+                costRange: '3,000-8,000元/年',
+                costMin: 3000,
+                costMax: 8000,
+                effectiveness: '60-75%',
+                effectivenessValue: 67.5,
+                duration: '6-12个月',
+                durationMonths: 9,
+                safety: 5,
+                convenience: 4,
+                treatments: [
+                    '外用维A酸类药物',
+                    '抗生素类药膏',
+                    '基础护肤品',
+                    '生活方式调整'
+                ],
+                pros: [
+                    '费用负担轻',
+                    '安全性高',
+                    '适合轻度痤疮',
+                    '副作用小'
+                ],
+                cons: [
+                    '见效较慢',
+                    '需要长期坚持',
+                    '不适合重度痤疮'
+                ],
+                suitable: '学生群体、轻度痤疮患者、预算有限者',
+                isSpecial: false
+            },
+            {
+                id: 'standard',
+                name: '标准型方案',
+                costRange: '8,000-20,000元/年',
+                costMin: 8000,
+                costMax: 20000,
+                effectiveness: '75-85%',
+                effectivenessValue: 80,
+                duration: '4-8个月',
+                durationMonths: 6,
+                safety: 4,
+                convenience: 4,
+                treatments: [
+                    '口服异维A酸',
+                    '外用药物',
+                    '定期刷酸治疗（4-6次）',
+                    '医学护肤品'
+                ],
+                pros: [
+                    '效果显著',
+                    '适用范围广',
+                    '性价比高',
+                    '中度痤疮首选'
+                ],
+                cons: [
+                    '需要医学监测',
+                    '可能有副作用',
+                    '需定期复诊'
+                ],
+                suitable: '中度痤疮患者、上班族、希望快速见效者',
+                isSpecial: false
+            },
+            {
+                id: 'premium',
+                name: '高端型方案',
+                costRange: '20,000-50,000元/年',
+                costMin: 20000,
+                costMax: 50000,
+                effectiveness: '85-95%',
+                effectivenessValue: 90,
+                duration: '3-6个月',
+                durationMonths: 4.5,
+                safety: 4,
+                convenience: 5,
+                treatments: [
+                    '口服药物治疗',
+                    '点阵激光（4-6次）',
+                    '射频微针（6-8次）',
+                    '定期刷酸',
+                    '高端医学护肤'
+                ],
+                pros: [
+                    '效果最佳',
+                    '见效快',
+                    '全面改善肤质',
+                    '专业监测'
+                ],
+                cons: [
+                    '费用较高',
+                    '需要时间配合',
+                    '部分治疗有恢复期'
+                ],
+                suitable: '重度痤疮患者、经济条件好、追求快速效果者',
+                isSpecial: false
+            },
+            {
+                id: 'triplet',
+                name: '黄金三件套',
+                costRange: '25,000-60,000元/年',
+                costMin: 25000,
+                costMax: 60000,
+                effectiveness: '90-95%',
+                effectivenessValue: 92.5,
+                duration: '3-6个月',
+                durationMonths: 4.5,
+                safety: 4,
+                convenience: 4,
+                treatments: [
+                    '口服药物（异维A酸）',
+                    '微针激光联合治疗',
+                    '系统化刷酸方案',
+                    '专业术后护理'
+                ],
+                pros: [
+                    '多靶点协同',
+                    '复发率最低',
+                    '全面改善',
+                    '效果持久'
+                ],
+                cons: [
+                    '投入较大',
+                    '治疗周期需配合',
+                    '需严格遵医嘱'
+                ],
+                suitable: '重度囊肿性痤疮、顽固性痤疮、对效果要求高者',
+                isSpecial: true
+            }
+        ];
+
+        let currentPlans = [...treatmentPlans];
+        let lastGagsScore = null;
+
+        function showTreatmentComparison() {
+            const modal = document.getElementById('comparisonModal');
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            renderComparisonTable();
+        }
+
+        function closeComparisonModal() {
+            const modal = document.getElementById('comparisonModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function closeComparisonAndShowSelfTest() {
+            closeComparisonModal();
+            setTimeout(() => showSelfTest(), 300);
+        }
+
+        function renderComparisonTable() {
+            const container = document.getElementById('comparisonTable');
+            const recommendedPlanId = getRecommendedPlan();
+
+            let html = '<div class="comparison-table">';
+
+            currentPlans.forEach(plan => {
+                const isRecommended = plan.id === recommendedPlanId;
+                const cardClass = `comparison-plan-card ${isRecommended ? 'recommended' : ''} ${plan.isSpecial ? 'special' : ''}`;
+
+                html += `
+                    <div class="${cardClass}" data-plan-id="${plan.id}">
+                        <div class="plan-name">${plan.name}</div>
+                        <div class="plan-cost">${plan.costRange}</div>
+
+                        <div class="comparison-row">
+                            <span class="comparison-label">治疗效果</span>
+                            ${renderProgressBar(plan.effectivenessValue, plan.effectiveness)}
+                        </div>
+
+                        <div class="comparison-row">
+                            <span class="comparison-label">治疗周期</span>
+                            <div class="comparison-value">${plan.duration}</div>
+                        </div>
+
+                        <div class="comparison-row">
+                            <span class="comparison-label">安全性评分</span>
+                            ${renderStarRating(plan.safety)}
+                        </div>
+
+                        <div class="comparison-row">
+                            <span class="comparison-label">便利程度</span>
+                            ${renderStarRating(plan.convenience)}
+                        </div>
+
+                        <div class="comparison-row">
+                            <span class="comparison-label">治疗项目</span>
+                            <ul class="treatment-list">
+                                ${plan.treatments.map(t => `<li>${t}</li>`).join('')}
+                            </ul>
+                        </div>
+
+                        <div class="pros-cons-toggle" onclick="toggleDetails('${plan.id}')">
+                            <div class="pros-cons-toggle-header">
+                                <span>查看优缺点</span>
+                                <span id="toggle-icon-${plan.id}">▼</span>
+                            </div>
+                            <div class="pros-cons-content" id="details-${plan.id}">
+                                <div>
+                                    <strong style="color: #27ae60;">优点：</strong>
+                                    <ul class="pros-list">
+                                        ${plan.pros.map(p => `<li>${p}</li>`).join('')}
+                                    </ul>
+                                </div>
+                                <div style="margin-top: 10px;">
+                                    <strong style="color: #e74c3c;">缺点：</strong>
+                                    <ul class="cons-list">
+                                        ${plan.cons.map(c => `<li>${c}</li>`).join('')}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="suitable-info">
+                            <strong>适用人群：</strong><br>
+                            ${plan.suitable}
+                        </div>
+
+                        <button class="consult-btn" onclick="alert('请联系专业皮肤科医生进行详细咨询')">
+                            一键咨询
+                        </button>
+                    </div>
+                `;
+            });
+
+            html += '</div>';
+            container.innerHTML = html;
+        }
+
+        function renderProgressBar(percentage, label) {
+            return `
+                <div class="progress-bar-container">
+                    <div class="progress-bar-fill" style="width: ${percentage}%">
+                        <span class="progress-bar-text">${label}</span>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderStarRating(score) {
+            let stars = '';
+            for (let i = 1; i <= 5; i++) {
+                stars += `<span class="star ${i <= score ? '' : 'empty'}">★</span>`;
+            }
+            return `<div class="star-rating">${stars}</div>`;
+        }
+
+        function toggleDetails(planId) {
+            const content = document.getElementById(`details-${planId}`);
+            const icon = document.getElementById(`toggle-icon-${planId}`);
+
+            if (content.classList.contains('active')) {
+                content.classList.remove('active');
+                icon.textContent = '▼';
+            } else {
+                content.classList.add('active');
+                icon.textContent = '▲';
+            }
+        }
+
+        function getRecommendedPlan() {
+            // 如果没有评估数据，返回null
+            if (!lastGagsScore) {
+                return null;
+            }
+
+            const budgetSlider = document.getElementById('budgetSlider');
+            const budget = budgetSlider ? parseInt(budgetSlider.value) : 60000;
+
+            // 根据GAGS评分和预算推荐方案
+            if (lastGagsScore <= 18) {
+                return 'economy';
+            } else if (lastGagsScore <= 30) {
+                return budget > 15000 ? 'standard' : 'economy';
+            } else if (lastGagsScore <= 38) {
+                return budget > 25000 ? 'triplet' : 'standard';
+            } else {
+                return 'triplet';
+            }
+        }
+
+        function filterPlansByBudget(value) {
+            const budgetValue = document.getElementById('budgetValue');
+            const budget = parseInt(value);
+
+            if (budget >= 60000) {
+                budgetValue.textContent = '¥60,000+';
+            } else {
+                budgetValue.textContent = `¥${budget.toLocaleString()}`;
+            }
+
+            // 筛选符合预算的方案
+            currentPlans = treatmentPlans.filter(plan => plan.costMin <= budget);
+            renderComparisonTable();
+        }
+
+        function sortPlans(sortBy) {
+            switch(sortBy) {
+                case 'effectiveness':
+                    currentPlans.sort((a, b) => b.effectivenessValue - a.effectivenessValue);
+                    break;
+                case 'cost':
+                    currentPlans.sort((a, b) => a.costMin - b.costMin);
+                    break;
+                case 'duration':
+                    currentPlans.sort((a, b) => a.durationMonths - b.durationMonths);
+                    break;
+                default:
+                    currentPlans = [...treatmentPlans];
+            }
+            renderComparisonTable();
+        }
+
+        // 搜索功能
+        function setupSearch() {
+            const searchInput = document.getElementById('searchInput');
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase();
+                const cards = document.querySelectorAll('.chapter-card');
+
+                cards.forEach(card => {
+                    const title = card.querySelector('.chapter-title').textContent.toLowerCase();
+                    const desc = card.querySelector('.chapter-desc').textContent.toLowerCase();
+
+                    if (title.includes(searchTerm) || desc.includes(searchTerm)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = searchTerm ? 'none' : 'block';
+                    }
+                });
+            });
+        }
+
+        // 初始化
+        document.addEventListener('DOMContentLoaded', async function() {
+            const toc = document.getElementById('tableOfContents');
+
+            // 显示加载状态
+            toc.innerHTML = '<div style="text-align: center; padding: 40px; color: #7f8c8d;"><div class="loading-icon icon icon--large"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2V6M12 18V22M4.93 4.93L7.76 7.76M16.24 16.24L19.07 19.07M2 12H6M18 12H22M4.93 19.07L7.76 16.24M16.24 7.76L19.07 4.93" stroke="var(--icon-color, #3498db)" stroke-width="2" stroke-linecap="round"/></svg></div><p>正在加载章节图标...</p></div>';
+
+            try {
+                // 清空加载提示，准备生成目录
+                toc.innerHTML = '';
+
+                await generateTableOfContents();
+                setupSearch();
+            } catch (error) {
+                console.error('Failed to initialize:', error);
+                toc.innerHTML = '<div style="text-align: center; padding: 40px; color: #e74c3c;"><p>加载失败，请刷新页面重试</p></div>';
+            }
+        });
+    </script>
+        // ========== 增强搜索功能 ==========
+        const categoryData = {
+            understanding: {
+                title: '认识痘痘',
+                chapters: ['01_true_face.md', '02_hidden_culprits.md'],
+                keywords: ['成因', '类型', '分级', '发病机制', '轻度', '中度', '重度']
+            },
+            treatment: {
+                title: '治疗方案',
+                chapters: ['04_professional_treatment.md', 'medical_beauty_guide.md'],
+                keywords: ['治疗', '药物', '激光', '点阵', '微针', '水杨酸', '刷酸']
+            },
+            daily_care: {
+                title: '日常护理',
+                chapters: ['05_skincare_methods.md', '06_makeup_guide.md', '08_diet_nutrition.md', '09_lifestyle_stress.md'],
+                keywords: ['护肤', '化妆', '饮食', '作息', '压力管理']
+            },
+            psychology: {
+                title: '心理支持',
+                chapters: ['03_psychological_impact.md', '11_rebuild_confidence.md', '12_family_social_support.md'],
+                keywords: ['心理', '自信', '焦虑', '社交', '家庭支持']
+            },
+            scar_repair: {
+                title: '痘坑修复',
+                chapters: ['07_scar_treatment.md', 'medical_beauty_guide.md'],
+                keywords: ['痘坑', '痘印', '瘢痕', '修复', '小针刀']
+            },
+            special_groups: {
+                title: '特殊人群',
+                chapters: ['13_teenage_management.md', '14_adult_women_management.md'],
+                keywords: ['青少年', '成年女性', '职场', '女性']
+            }
+        };
+
+        function performEnhancedSearch() {
+            const query = document.getElementById('enhancedSearchInput').value.trim();
+            if (!query) {
+                alert('请输入搜索关键词');
+                return;
+            }
+            quickSearch(query);
+        }
+
+        function quickSearch(keyword) {
+            document.getElementById('enhancedSearchInput').value = keyword;
+
+            const resultsDiv = document.getElementById('searchResults');
+            resultsDiv.style.display = 'block';
+            resultsDiv.innerHTML = '<div style="text-align: center; color: #667eea;"><p>🔍 搜索中...</p></div>';
+
+            setTimeout(() => {
+                const matches = chapters.filter(chapter =>
+                    chapter.title.includes(keyword) ||
+                    chapter.desc.includes(keyword) ||
+                    (chapter.file && chapter.file.includes(keyword.toLowerCase()))
+                );
+
+                const categoryMatches = Object.entries(categoryData).filter(([key, data]) =>
+                    data.keywords.some(k => k.includes(keyword) || keyword.includes(k))
+                );
+
+                if (matches.length === 0 && categoryMatches.length === 0) {
+                    resultsDiv.innerHTML = '<div style="text-align: center; color: #95a5a6;"><p>😔 未找到相关内容</p><p style="font-size: 0.9em;">试试其他关键词，如：激光、水杨酸、心理</p></div>';
+                    return;
+                }
+
+                const totalResults = matches.length + categoryMatches.length;
+                let html = '<h4 style="color: #2c3e50; margin-bottom: 15px;">找到 ' + totalResults + ' 个相关结果：</h4>';
+
+                matches.forEach(chapter => {
+                    html += '<div onclick="loadChapter(\'' + chapter.file + '\', \'' + chapter.title + '\')" style="background: white; padding: 15px; border-radius: 10px; margin-bottom: 10px; cursor: pointer; transition: all 0.3s; border-left: 4px solid #667eea;">';
+                    html += '<h5 style="color: #667eea; margin-bottom: 5px;">' + chapter.title + '</h5>';
+                    html += '<p style="font-size: 0.9em; color: #7f8c8d; margin: 0;">' + chapter.desc + '</p>';
+                    html += '</div>';
+                });
+
+                categoryMatches.forEach(([key, data]) => {
+                    html += '<div onclick="showCategoryContent(\'' + key + '\')" style="background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); padding: 15px; border-radius: 10px; margin-bottom: 10px; cursor: pointer;">';
+                    html += '<h5 style="color: #667eea; margin-bottom: 5px;">📁 ' + data.title + ' 专题</h5>';
+                    html += '<p style="font-size: 0.9em; color: #555; margin: 0;">包含 ' + data.chapters.length + ' 个相关章节</p>';
+                    html += '</div>';
+                });
+
+                resultsDiv.innerHTML = html;
+            }, 300);
+        }
+
+        function showCategoryContent(categoryKey) {
+            const category = categoryData[categoryKey];
+            if (!category) return;
+
+            const resultsDiv = document.getElementById('searchResults');
+            resultsDiv.style.display = 'block';
+            resultsDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+            let html = '<div style="margin-bottom: 20px;">';
+            html += '<h3 style="color: #2c3e50; margin-bottom: 10px;">📚 ' + category.title + '</h3>';
+            html += '<p style="color: #7f8c8d; margin-bottom: 20px;">该专题包含以下章节：</p>';
+            html += '</div>';
+
+            category.chapters.forEach(chapterFile => {
+                const chapter = chapters.find(c => c.file === chapterFile);
+                if (chapter) {
+                    html += '<div onclick="loadChapter(\'' + chapter.file + '\', \'' + chapter.title + '\')" style="background: white; padding: 18px; border-radius: 12px; margin-bottom: 12px; cursor: pointer; box-shadow: 0 2px 10px rgba(0,0,0,0.05); border-left: 4px solid #667eea;">';
+                    html += '<h4 style="color: #667eea; margin-bottom: 8px; font-size: 1.1em;">' + chapter.title + '</h4>';
+                    html += '<p style="font-size: 0.9em; color: #7f8c8d; margin: 0;">' + chapter.desc + '</p>';
+                    html += '</div>';
+                }
+            });
+
+            html += '<button onclick="document.getElementById(\'searchResults\').style.display=\'none\'" style="width: 100%; padding: 12px; background: #f0f0f0; border: none; border-radius: 10px; cursor: pointer; margin-top: 15px;">关闭</button>';
+
+            resultsDiv.innerHTML = html;
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('enhancedSearchInput');
+            if (searchInput) {
+                searchInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        performEnhancedSearch();
+                    }
+                });
+            }
+        });</body>
+</html>

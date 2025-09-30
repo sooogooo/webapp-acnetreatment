@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200" height="800" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="retinoidsGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#E8F5E8;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#C8E6C8;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="antibioticsGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#E3F2FD;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#BBDEFB;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="laserGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFF3E0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FFE0B2;stop-opacity:1" />
+    </linearGradient>
+    <radialGradient id="lightBeam" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#FFD54F;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#FF8F00;stop-opacity:0.2" />
+    </radialGradient>
+    <pattern id="molecularPattern" patternUnits="userSpaceOnUse" width="20" height="20">
+      <circle cx="10" cy="10" r="3" fill="#2196F3" opacity="0.3"/>
+      <circle cx="5" cy="5" r="2" fill="#4CAF50" opacity="0.3"/>
+      <circle cx="15" cy="15" r="2" fill="#FF9800" opacity="0.3"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="800" fill="#FAFAFA"/>
+
+  <!-- Title -->
+  <text x="600" y="30" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="24" font-weight="bold" fill="#2C3E50">痤疮治疗方法作用机制</text>
+
+  <!-- Retinoids Section -->
+  <g id="retinoids-section" transform="translate(50,70)">
+    <rect x="0" y="0" width="280" height="320" fill="url(#retinoidsGrad)" stroke="#4CAF50" stroke-width="2" rx="10"/>
+    <text x="140" y="20" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="16" font-weight="bold" fill="#2E7D32">外用维A酸类</text>
+
+    <!-- Before treatment follicle -->
+    <g transform="translate(30,40)">
+      <text x="50" y="15" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="12" fill="#2E7D32">治疗前</text>
+      <ellipse cx="50" cy="60" rx="12" ry="30" fill="#FFCDD2" stroke="#E74C3C" stroke-width="2"/>
+      <ellipse cx="50" cy="40" rx="8" ry="5" fill="#D35400"/>
+      <rect x="48" y="25" width="4" height="10" fill="#8B4513"/>
+    </g>
+
+    <!-- Mechanism arrows and molecules -->
+    <g transform="translate(110,50)">
+      <circle cx="30" cy="30" r="3" fill="#4CAF50"/>
+      <text x="35" y="35" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="8" fill="#2E7D32">维A酸</text>
+      <path d="M30,35 Q40,45 50,35" stroke="#4CAF50" stroke-width="2" fill="none" marker-end="url(#greenArrow)"/>
+    </g>
+
+    <!-- After treatment follicle -->
+    <g transform="translate(180,40)">
+      <text x="50" y="15" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="12" fill="#2E7D32">治疗后</text>
+      <ellipse cx="50" cy="60" rx="10" ry="30" fill="none" stroke="#4CAF50" stroke-width="2"/>
+      <rect x="48" y="25" width="4" height="15" fill="#8B4513"/>
+      <text x="50" y="100" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="9" fill="#2E7D32">毛囊通畅</text>
+    </g>
+
+    <!-- Molecular mechanism -->
+    <g transform="translate(20,120)">
+      <rect x="0" y="0" width="240" height="80" fill="#F1F8E9" stroke="#8BC34A" stroke-width="1" rx="5"/>
+      <text x="120" y="15" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="12" font-weight="bold" fill="#33691E">分子作用机制</text>
+
+      <!-- Keratinocyte differentiation -->
+      <g transform="translate(10,25)">
+        <rect x="0" y="0" width="15" height="10" fill="#FFCDD2" stroke="#F44336" stroke-width="1"/>
+        <text x="20" y="8" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="8" fill="#D32F2F">异常角质细胞</text>
+        <path d="M35,5 L65,5" stroke="#4CAF50" stroke-width="1" marker-end="url(#smallGreenArrow)"/>
+        <rect x="70" y="0" width="15" height="10" fill="#C8E6C9" stroke="#4CAF50" stroke-width="1"/>
+        <text x="90" y="8" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="8" fill="#2E7D32">正常分化</text>
+      </g>
+
+      <!-- Gene expression -->
+      <g transform="translate(10,45)">
+        <text x="0" y="8" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="9" fill="#33691E">• 激活维A酸受体(RAR/RXR)</text>
+        <text x="0" y="20" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="9" fill="#33691E">• 调控基因转录</text>
+        <text x="0" y="32" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="9" fill="#33691E">• 促进细胞更新</text>
+      </g>
+    </g>
+
+    <!-- Clinical effects -->
+    <g transform="translate(20,220)">
+      <rect x="0" y="0" width="240" height="80" fill="#E8F5E8" stroke="#4CAF50" stroke-width="1" rx="5"/>
+      <text x="120" y="15" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="12" font-weight="bold" fill="#2E7D32">临床效果</text>
+      <text x="10" y="30" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#2E7D32">✓ 减少角质栓塞形成</text>
+      <text x="10" y="45" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#2E7D32">✓ 疏通毛囊开口</text>
+      <text x="10" y="60" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#2E7D32">✓ 预防新的粉刺形成</text>
+      <text x="10" y="75" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#2E7D32">✓ 改善皮肤纹理</text>
+    </g>
+  </g>
+
+  <!-- Antibiotics Section -->
+  <g id="antibiotics-section" transform="translate(360,70)">
+    <rect x="0" y="0" width="280" height="320" fill="url(#antibioticsGrad)" stroke="#2196F3" stroke-width="2" rx="10"/>
+    <text x="140" y="20" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="16" font-weight="bold" fill="#1565C0">抗生素治疗</text>
+
+    <!-- Bacterial proliferation before -->
+    <g transform="translate(30,40)">
+      <text x="50" y="15" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="12" fill="#1565C0">治疗前</text>
+      <ellipse cx="50" cy="60" rx="15" ry="30" fill="#FFCDD2" stroke="#E74C3C" stroke-width="2"/>
+      <!-- Bacteria -->
+      <circle cx="40" cy="50" r="1.5" fill="#E74C3C"/>
+      <circle cx="60" cy="55" r="1.5" fill="#E74C3C"/>
+      <circle cx="45" cy="70" r="1.5" fill="#E74C3C"/>
+      <circle cx="55" cy="65" r="1.5" fill="#E74C3C"/>
+      <circle cx="50" cy="80" r="1.5" fill="#E74C3C"/>
+    </g>
+
+    <!-- Antibiotic molecules -->
+    <g transform="translate(110,50)">
+      <circle cx="30" cy="30" r="3" fill="#2196F3"/>
+      <text x="35" y="35" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="8" fill="#1565C0">抗生素</text>
+      <path d="M30,35 Q40,45 50,35" stroke="#2196F3" stroke-width="2" fill="none" marker-end="url(#blueArrow)"/>
+    </g>
+
+    <!-- After treatment -->
+    <g transform="translate(180,40)">
+      <text x="50" y="15" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="12" fill="#1565C0">治疗后</text>
+      <ellipse cx="50" cy="60" rx="12" ry="30" fill="#E3F2FD" stroke="#2196F3" stroke-width="2"/>
+      <!-- Reduced bacteria -->
+      <circle cx="45" cy="65" r="1" fill="#FF5722" opacity="0.5"/>
+      <circle cx="55" cy="70" r="1" fill="#FF5722" opacity="0.5"/>
+      <text x="50" y="100" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="9" fill="#1565C0">细菌减少</text>
+    </g>
+
+    <!-- Mechanism of action -->
+    <g transform="translate(20,120)">
+      <rect x="0" y="0" width="240" height="80" fill="#E8F4FD" stroke="#2196F3" stroke-width="1" rx="5"/>
+      <text x="120" y="15" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="12" font-weight="bold" fill="#0D47A1">作用机制</text>
+
+      <!-- Protein synthesis inhibition -->
+      <g transform="translate(10,25)">
+        <circle cx="15" cy="8" r="5" fill="#FFCDD2" stroke="#E74C3C" stroke-width="1"/>
+        <text x="25" y="12" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="8" fill="#D32F2F">P.acnes</text>
+        <path d="M35,8 L65,8" stroke="#FF5722" stroke-width="2"/>
+        <text x="70" y="12" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="8" fill="#FF5722">蛋白合成阻断</text>
+      </g>
+
+      <text x="10" y="45" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="9" fill="#0D47A1">• 抑制细菌蛋白质合成</text>
+      <text x="10" y="57" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="9" fill="#0D47A1">• 破坏细菌细胞壁</text>
+      <text x="10" y="69" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="9" fill="#0D47A1">• 抗炎作用</text>
+    </g>
+
+    <!-- Anti-inflammatory effects -->
+    <g transform="translate(20,220)">
+      <rect x="0" y="0" width="240" height="80" fill="#E3F2FD" stroke="#2196F3" stroke-width="1" rx="5"/>
+      <text x="120" y="15" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="12" font-weight="bold" fill="#1565C0">抗炎效果</text>
+      <text x="10" y="30" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#1565C0">✓ 减少炎症细胞浸润</text>
+      <text x="10" y="45" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#1565C0">✓ 降低炎症介质释放</text>
+      <text x="10" y="60" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#1565C0">✓ 缓解红肿疼痛</text>
+      <text x="10" y="75" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#1565C0">✓ 防止耐药性发生</text>
+    </g>
+  </g>
+
+  <!-- Laser Treatment Section -->
+  <g id="laser-section" transform="translate(670,70)">
+    <rect x="0" y="0" width="280" height="320" fill="url(#laserGrad)" stroke="#FF9800" stroke-width="2" rx="10"/>
+    <text x="140" y="20" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="16" font-weight="bold" fill="#E65100">激光治疗</text>
+
+    <!-- Laser beam visualization -->
+    <g transform="translate(40,40)">
+      <text x="50" y="15" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="12" fill="#E65100">激光照射</text>
+      <!-- Laser source -->
+      <rect x="45" y="20" width="10" height="5" fill="#FF5722"/>
+      <!-- Light beam -->
+      <polygon points="50,25 45,40 55,40" fill="url(#lightBeam)"/>
+      <polygon points="45,40 40,55 60,55" fill="url(#lightBeam)" opacity="0.7"/>
+      <polygon points="40,55 35,70 65,70" fill="url(#lightBeam)" opacity="0.5"/>
+
+      <!-- Target tissue -->
+      <ellipse cx="50" cy="75" rx="20" ry="15" fill="#FFCDD2" stroke="#E74C3C" stroke-width="1"/>
+    </g>
+
+    <!-- Photothermal effects -->
+    <g transform="translate(150,40)">
+      <text x="50" y="15" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="12" fill="#E65100">热效应</text>
+      <!-- Heat waves -->
+      <g stroke="#FF5722" stroke-width="1" fill="none">
+        <path d="M30,30 Q35,25 40,30 Q45,35 50,30"/>
+        <path d="M30,40 Q35,35 40,40 Q45,45 50,40"/>
+        <path d="M30,50 Q35,45 40,50 Q45,55 50,50"/>
+      </g>
+      <!-- Treated tissue -->
+      <ellipse cx="50" cy="75" rx="15" ry="12" fill="#FFE0B2" stroke="#FF9800" stroke-width="2"/>
+    </g>
+
+    <!-- Mechanism details -->
+    <g transform="translate(20,120)">
+      <rect x="0" y="0" width="240" height="80" fill="#FFF8E1" stroke="#FF9800" stroke-width="1" rx="5"/>
+      <text x="120" y="15" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="12" font-weight="bold" fill="#E65100">光热机制</text>
+
+      <!-- Wavelength specificity -->
+      <g transform="translate(10,25)">
+        <rect x="0" y="0" width="220" height="15" fill="none" stroke="#FF9800" stroke-width="1"/>
+        <rect x="0" y="0" width="50" fill="#E91E63" height="5"/>
+        <rect x="50" y="0" width="50" fill="#2196F3" height="5"/>
+        <rect x="100" y="0" width="50" fill="#4CAF50" height="5"/>
+        <rect x="150" y="0" width="50" fill="#FF5722" height="5"/>
+        <text x="110" y="25" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="8" fill="#E65100">特定波长选择性吸收</text>
+      </g>
+
+      <text x="10" y="50" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="9" fill="#E65100">• 血红蛋白/黑色素选择性加热</text>
+      <text x="10" y="62" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="9" fill="#E65100">• 热损伤皮脂腺</text>
+      <text x="10" y="74" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="9" fill="#E65100">• 刺激胶原重塑</text>
+    </g>
+
+    <!-- Clinical outcomes -->
+    <g transform="translate(20,220)">
+      <rect x="0" y="0" width="240" height="80" fill="#FFECB3" stroke="#FF9800" stroke-width="1" rx="5"/>
+      <text x="120" y="15" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="12" font-weight="bold" fill="#E65100">治疗效果</text>
+      <text x="10" y="30" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#E65100">✓ 减少皮脂分泌</text>
+      <text x="10" y="45" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#E65100">✓ 杀灭痤疮杆菌</text>
+      <text x="10" y="60" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#E65100">✓ 改善疤痕</text>
+      <text x="10" y="75" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#E65100">✓ 紧致毛孔</text>
+    </g>
+  </g>
+
+  <!-- Microneedling Section -->
+  <g id="microneedling-section" transform="translate(50,420)">
+    <rect x="0" y="0" width="280" height="270" fill="#F3E5F5" stroke="#9C27B0" stroke-width="2" rx="10"/>
+    <text x="140" y="20" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="16" font-weight="bold" fill="#6A1B9A">微针治疗</text>
+
+    <!-- Microneedling device -->
+    <g transform="translate(30,40)">
+      <text x="50" y="15" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="12" fill="#6A1B9A">微针刺入</text>
+      <!-- Device representation -->
+      <rect x="40" y="20" width="20" height="8" fill="#9C27B0"/>
+      <!-- Needles -->
+      <line x1="42" y1="28" x2="42" y2="45" stroke="#9C27B0" stroke-width="1"/>
+      <line x1="46" y1="28" x2="46" y2="45" stroke="#9C27B0" stroke-width="1"/>
+      <line x1="50" y1="28" x2="50" y2="45" stroke="#9C27B0" stroke-width="1"/>
+      <line x1="54" y1="28" x2="54" y2="45" stroke="#9C27B0" stroke-width="1"/>
+      <line x1="58" y1="28" x2="58" y2="45" stroke="#9C27B0" stroke-width="1"/>
+      <!-- Skin layers -->
+      <rect x="30" y="45" width="40" height="30" fill="#F5E6D3" stroke="#D4B896" stroke-width="1"/>
+      <!-- Microchannels -->
+      <line x1="42" y1="45" x2="42" y2="65" stroke="#9C27B0" stroke-width="0.5" stroke-dasharray="1,1"/>
+      <line x1="46" y1="45" x2="46" y2="65" stroke="#9C27B0" stroke-width="0.5" stroke-dasharray="1,1"/>
+      <line x1="50" y1="45" x2="50" y2="65" stroke="#9C27B0" stroke-width="0.5" stroke-dasharray="1,1"/>
+    </g>
+
+    <!-- Drug delivery -->
+    <g transform="translate(150,40)">
+      <text x="50" y="15" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="12" fill="#6A1B9A">药物导入</text>
+      <!-- Drug molecules -->
+      <circle cx="40" cy="30" r="2" fill="#4CAF50"/>
+      <circle cx="50" cy="25" r="2" fill="#4CAF50"/>
+      <circle cx="60" cy="30" r="2" fill="#4CAF50"/>
+      <!-- Penetration arrows -->
+      <path d="M40,35 L40,50" stroke="#4CAF50" stroke-width="1" marker-end="url(#greenArrow)"/>
+      <path d="M50,30 L50,50" stroke="#4CAF50" stroke-width="1" marker-end="url(#greenArrow)"/>
+      <path d="M60,35 L60,50" stroke="#4CAF50" stroke-width="1" marker-end="url(#greenArrow)"/>
+      <!-- Enhanced penetration -->
+      <rect x="30" y="50" width="40" height="25" fill="#E8F5E8" stroke="#4CAF50" stroke-width="1"/>
+    </g>
+
+    <!-- Wound healing response -->
+    <g transform="translate(20,120)">
+      <rect x="0" y="0" width="240" height="60" fill="#FCE4EC" stroke="#E91E63" stroke-width="1" rx="5"/>
+      <text x="120" y="15" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="12" font-weight="bold" fill="#AD1457">创伤愈合反应</text>
+      <text x="10" y="30" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="9" fill="#AD1457">• 胶原蛋白合成增加</text>
+      <text x="10" y="42" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="9" fill="#AD1457">• 血管新生促进</text>
+      <text x="10" y="54" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="9" fill="#AD1457">• 细胞增殖活化</text>
+    </g>
+
+    <!-- Clinical benefits -->
+    <g transform="translate(20,200)">
+      <rect x="0" y="0" width="240" height="60" fill="#F3E5F5" stroke="#9C27B0" stroke-width="1" rx="5"/>
+      <text x="120" y="15" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="12" font-weight="bold" fill="#6A1B9A">治疗优势</text>
+      <text x="10" y="30" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#6A1B9A">✓ 增强药物渗透</text>
+      <text x="10" y="42" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#6A1B9A">✓ 改善疤痕质地</text>
+      <text x="10" y="54" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#6A1B9A">✓ 刺激自然修复</text>
+    </g>
+  </g>
+
+  <!-- Chemical Peel Section -->
+  <g id="chemical-peel-section" transform="translate(360,420)">
+    <rect x="0" y="0" width="280" height="270" fill="#FFEBEE" stroke="#F44336" stroke-width="2" rx="10"/>
+    <text x="140" y="20" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="16" font-weight="bold" fill="#C62828">化学剥脱</text>
+
+    <!-- Acid penetration -->
+    <g transform="translate(30,40)">
+      <text x="50" y="15" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="12" fill="#C62828">酸性物质渗透</text>
+      <!-- Skin layers before -->
+      <rect x="20" y="20" width="60" height="8" fill="#F5E6D3"/>
+      <rect x="20" y="28" width="60" height="12" fill="#E8D5B0"/>
+      <rect x="20" y="40" width="60" height="20" fill="#D4B896"/>
+      <!-- Acid molecules -->
+      <g fill="#F44336" opacity="0.7">
+        <circle cx="30" cy="18" r="1"/>
+        <circle cx="40" cy="16" r="1"/>
+        <circle cx="50" cy="18" r="1"/>
+        <circle cx="60" cy="16" r="1"/>
+        <circle cx="70" cy="18" r="1"/>
+      </g>
+      <!-- Penetration arrows -->
+      <g stroke="#F44336" stroke-width="1" fill="none" opacity="0.7">
+        <path d="M30,20 L30,35" marker-end="url(#redArrow)"/>
+        <path d="M50,20 L50,35" marker-end="url(#redArrow)"/>
+        <path d="M70,20 L70,35" marker-end="url(#redArrow)"/>
+      </g>
+    </g>
+
+    <!-- Exfoliation process -->
+    <g transform="translate(150,40)">
+      <text x="50" y="15" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="12" fill="#C62828">角质剥脱</text>
+      <!-- Damaged/peeling skin -->
+      <path d="M20,25 Q30,20 40,25 Q50,30 60,25 Q70,20 80,25" stroke="#F44336" stroke-width="2" fill="none"/>
+      <path d="M25,30 Q35,25 45,30 Q55,35 65,30 Q75,25 85,30" stroke="#F44336" stroke-width="1" fill="none"/>
+      <!-- New skin underneath -->
+      <rect x="20" y="35" width="60" height="20" fill="#FFE0B2" stroke="#FF9800" stroke-width="1"/>
+      <text x="50" y="70" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="9" fill="#FF9800">新生皮肤</text>
+    </g>
+
+    <!-- Types of acids -->
+    <g transform="translate(20,120)">
+      <rect x="0" y="0" width="240" height="80" fill="#FFEBEE" stroke="#F44336" stroke-width="1" rx="5"/>
+      <text x="120" y="15" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="12" font-weight="bold" fill="#C62828">常用酸类</text>
+
+      <g transform="translate(10,25)">
+        <circle cx="5" cy="5" r="3" fill="#4CAF50"/>
+        <text x="15" y="8" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="9" fill="#4CAF50">水杨酸(BHA)</text>
+        <text x="15" y="18" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="8" fill="#4CAF50">脂溶性，深入毛囊</text>
+      </g>
+
+      <g transform="translate(120,25)">
+        <circle cx="5" cy="5" r="3" fill="#2196F3"/>
+        <text x="15" y="8" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="9" fill="#2196F3">果酸(AHA)</text>
+        <text x="15" y="18" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="8" fill="#2196F3">水溶性，表面剥脱</text>
+      </g>
+
+      <g transform="translate(10,50)">
+        <circle cx="5" cy="5" r="3" fill="#FF9800"/>
+        <text x="15" y="8" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="9" fill="#FF9800">三氯醋酸(TCA)</text>
+        <text x="15" y="18" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="8" fill="#FF9800">中度剥脱，真皮浅层</text>
+      </g>
+    </g>
+
+    <!-- Regeneration effects -->
+    <g transform="translate(20,220)">
+      <rect x="0" y="0" width="240" height="40" fill="#FFF3E0" stroke="#FF9800" stroke-width="1" rx="5"/>
+      <text x="120" y="15" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="12" font-weight="bold" fill="#E65100">再生效果</text>
+      <text x="10" y="30" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#E65100">✓ 加速细胞更新  ✓ 改善肤色质地  ✓ 减少炎症后色沉</text>
+    </g>
+  </g>
+
+  <!-- Combination Therapy Section -->
+  <g id="combination-section" transform="translate(670,420)">
+    <rect x="0" y="0" width="280" height="270" fill="#E0F2F1" stroke="#00695C" stroke-width="2" rx="10"/>
+    <text x="140" y="20" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="16" font-weight="bold" fill="#00695C">联合治疗策略</text>
+
+    <!-- Synergistic effects diagram -->
+    <g transform="translate(40,40)">
+      <circle cx="60" cy="60" r="40" fill="none" stroke="#00695C" stroke-width="2"/>
+      <circle cx="40" cy="40" r="15" fill="#4CAF50" opacity="0.7"/>
+      <circle cx="80" cy="40" r="15" fill="#2196F3" opacity="0.7"/>
+      <circle cx="40" cy="80" r="15" fill="#FF9800" opacity="0.7"/>
+      <circle cx="80" cy="80" r="15" fill="#9C27B0" opacity="0.7"/>
+
+      <text x="40" y="45" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="8" fill="#2E7D32">维A酸</text>
+      <text x="80" y="45" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="8" fill="#1565C0">抗生素</text>
+      <text x="40" y="85" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="8" fill="#E65100">激光</text>
+      <text x="80" y="85" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="8" fill="#6A1B9A">微针</text>
+
+      <text x="60" y="65" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#00695C" font-weight="bold">协同</text>
+      <text x="60" y="75" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#00695C" font-weight="bold">增效</text>
+    </g>
+
+    <!-- Treatment phases -->
+    <g transform="translate(20,140)">
+      <rect x="0" y="0" width="240" height="100" fill="#E8F5E8" stroke="#4CAF50" stroke-width="1" rx="5"/>
+      <text x="120" y="15" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="12" font-weight="bold" fill="#2E7D32">分阶段治疗</text>
+
+      <g transform="translate(10,25)">
+        <rect x="0" y="0" width="70" height="20" fill="#FFCDD2" stroke="#E74C3C" stroke-width="1"/>
+        <text x="35" y="12" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="9" fill="#C62828">急性期</text>
+        <text x="35" y="35" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="8" fill="#C62828">抗炎+抗菌</text>
+
+        <rect x="85" y="0" width="70" height="20" fill="#FFF3E0" stroke="#FF9800" stroke-width="1"/>
+        <text x="120" y="12" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="9" fill="#E65100">维持期</text>
+        <text x="120" y="35" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="8" fill="#E65100">维A酸+物理</text>
+
+        <rect x="170" y="0" width="70" height="20" fill="#E8F5E8" stroke="#4CAF50" stroke-width="1"/>
+        <text x="205" y="12" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="9" fill="#2E7D32">修复期</text>
+        <text x="205" y="35" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="8" fill="#2E7D32">再生+护理</text>
+      </g>
+
+      <text x="10" y="65" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="9" fill="#00695C">• 个体化方案制定</text>
+      <text x="10" y="77" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="9" fill="#00695C">• 定期评估调整</text>
+      <text x="10" y="89" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="9" fill="#00695C">• 长期维持管理</text>
+    </g>
+  </g>
+
+  <!-- Arrow markers -->
+  <defs>
+    <marker id="greenArrow" markerWidth="8" markerHeight="6" refX="0" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#4CAF50"/>
+    </marker>
+    <marker id="blueArrow" markerWidth="8" markerHeight="6" refX="0" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#2196F3"/>
+    </marker>
+    <marker id="redArrow" markerWidth="8" markerHeight="6" refX="0" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#F44336"/>
+    </marker>
+    <marker id="smallGreenArrow" markerWidth="6" markerHeight="4" refX="0" refY="2" orient="auto">
+      <polygon points="0 0, 6 2, 0 4" fill="#4CAF50"/>
+    </marker>
+  </defs>
+
+  <!-- Footer note -->
+  <text x="600" y="780" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="12" fill="#7F8C8D">* 治疗方案应基于痤疮严重程度、患者年龄和个体差异进行个性化选择</text>
+</svg>

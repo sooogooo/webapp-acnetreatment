@@ -1,0 +1,10 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="12" cy="12" r="7" stroke="var(--icon-color, #3498db)" stroke-width="2" fill="none"/>
+  <circle cx="12" cy="12" r="4" stroke="var(--icon-color, #3498db)" stroke-width="1" fill="none"/>
+  <path d="m16.5 16.5 3.5 3.5" stroke="var(--icon-color, #3498db)" stroke-width="2" stroke-linecap="round"/>
+  <!-- Bacteria shapes inside -->
+  <ellipse cx="10" cy="10" rx="1.5" ry="0.8" fill="var(--icon-color, #3498db)" opacity="0.6"/>
+  <ellipse cx="14" cy="11" rx="1" ry="1.5" fill="var(--icon-color, #3498db)" opacity="0.6"/>
+  <circle cx="12" cy="14" r="0.8" fill="var(--icon-color, #3498db)" opacity="0.7"/>
+  <ellipse cx="11" cy="12" rx="0.6" ry="1.2" fill="var(--icon-color, #3498db)" opacity="0.5"/>
+</svg>

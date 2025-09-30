@@ -1,0 +1,14 @@
+*.log
+*.pyc
+__pycache__/
+.DS_Store
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+node_modules/
+*.backup
+*.backup2
+server.log
+nohup.out

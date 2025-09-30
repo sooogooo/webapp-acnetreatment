@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1400" height="1000" viewBox="0 0 1400 1000" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="severityGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#E8F5E8;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#C8E6C8;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="severityGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#FFF3E0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FFE0B2;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="severityGrad3" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#FFEBEE;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FFCDD2;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="severityGrad4" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#F3E5F5;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#E1BEE7;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="2" dy="2" stdDeviation="3" flood-color="#000000" flood-opacity="0.1"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1400" height="1000" fill="#FAFAFA"/>
+
+  <!-- Title -->
+  <text x="700" y="30" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="24" font-weight="bold" fill="#2C3E50">痤疮治疗决策流程图</text>
+
+  <!-- Initial Assessment Box -->
+  <g id="initial-assessment" transform="translate(600,70)">
+    <rect x="0" y="0" width="200" height="80" fill="#E3F2FD" stroke="#1976D2" stroke-width="2" rx="10" filter="url(#shadow)"/>
+    <text x="100" y="20" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="14" font-weight="bold" fill="#1565C0">患者初始评估</text>
+    <text x="100" y="35" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="11" fill="#1565C0">• 病史采集</text>
+    <text x="100" y="48" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="11" fill="#1565C0">• 皮损检查</text>
+    <text x="100" y="61" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="11" fill="#1565C0">• GAGS评分</text>
+    <text x="100" y="74" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="11" fill="#1565C0">• 既往治疗史</text>
+  </g>
+
+  <!-- Age and Gender Assessment -->
+  <g id="age-gender-assessment" transform="translate(550,190)">
+    <rect x="0" y="0" width="300" height="60" fill="#FFF8E1" stroke="#F57F17" stroke-width="2" rx="10" filter="url(#shadow)"/>
+    <text x="150" y="20" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="14" font-weight="bold" fill="#E65100">年龄性别特殊考量</text>
+
+    <g transform="translate(20,30)">
+      <rect x="0" y="0" width="80" height="25" fill="#FFECB3" stroke="#FFA000" stroke-width="1" rx="5"/>
+      <text x="40" y="15" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#E65100">青少年期</text>
+    </g>
+
+    <g transform="translate(110,30)">
+      <rect x="0" y="0" width="80" height="25" fill="#FCE4EC" stroke="#E91E63" stroke-width="1" rx="5"/>
+      <text x="40" y="15" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#AD1457">成年女性</text>
+    </g>
+
+    <g transform="translate(200,30)">
+      <rect x="0" y="0" width="80" height="25" fill="#E8F5E8" stroke="#4CAF50" stroke-width="1" rx="5"/>
+      <text x="40" y="15" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#2E7D32">特殊情况</text>
+    </g>
+  </g>
+
+  <!-- GAGS Severity Classification -->
+  <g id="gags-classification" transform="translate(50,300)">
+    <rect x="0" y="0" width="1300" height="120" fill="#F5F5F5" stroke="#616161" stroke-width="2" rx="10" filter="url(#shadow)"/>
+    <text x="650" y="25" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="16" font-weight="bold" fill="#424242">GAGS严重程度分级评估</text>
+
+    <!-- Mild (1-18 points) -->
+    <g transform="translate(30,40)">
+      <rect x="0" y="0" width="280" height="70" fill="url(#severityGrad1)" stroke="#4CAF50" stroke-width="2" rx="8"/>
+      <text x="140" y="18" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="14" font-weight="bold" fill="#2E7D32">轻度 (1-18分)</text>
+      <text x="140" y="35" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="11" fill="#2E7D32">• 主要为粉刺</text>
+      <text x="140" y="48" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="11" fill="#2E7D32">• 少量炎性丘疹</text>
+      <text x="140" y="61" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="11" fill="#2E7D32">• 无结节囊肿</text>
+    </g>
+
+    <!-- Moderate (19-30 points) -->
+    <g transform="translate(340,40)">
+      <rect x="0" y="0" width="280" height="70" fill="url(#severityGrad2)" stroke="#FF9800" stroke-width="2" rx="8"/>
+      <text x="140" y="18" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="14" font-weight="bold" fill="#E65100">中度 (19-30分)</text>
+      <text x="140" y="35" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="11" fill="#E65100">• 粉刺+炎性丘疹</text>
+      <text x="140" y="48" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="11" fill="#E65100">• 脓疱较多</text>
+      <text x="140" y="61" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="11" fill="#E65100">• 偶有小结节</text>
+    </g>
+
+    <!-- Severe (31-38 points) -->
+    <g transform="translate(650,40)">
+      <rect x="0" y="0" width="280" height="70" fill="url(#severityGrad3)" stroke="#F44336" stroke-width="2" rx="8"/>
+      <text x="140" y="18" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="14" font-weight="bold" fill="#C62828">重度 (31-38分)</text>
+      <text x="140" y="35" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="11" fill="#C62828">• 大量炎性皮损</text>
+      <text x="140" y="48" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="11" fill="#C62828">• 结节明显</text>
+      <text x="140" y="61" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="11" fill="#C62828">• 开始形成疤痕</text>
+    </g>
+
+    <!-- Very Severe (>38 points) -->
+    <g transform="translate(960,40)">
+      <rect x="0" y="0" width="280" height="70" fill="url(#severityGrad4)" stroke="#9C27B0" stroke-width="2" rx="8"/>
+      <text x="140" y="18" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="14" font-weight="bold" fill="#6A1B9A">极重度 (>38分)</text>
+      <text x="140" y="35" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="11" fill="#6A1B9A">• 广泛囊肿结节</text>
+      <text x="140" y="48" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="11" fill="#6A1B9A">• 瘢痕形成</text>
+      <text x="140" y="61" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="11" fill="#6A1B9A">• 心理影响严重</text>
+    </g>
+  </g>
+
+  <!-- Treatment Pathways -->
+
+  <!-- Mild Treatment -->
+  <g id="mild-treatment" transform="translate(50,460)">
+    <rect x="0" y="0" width="280" height="200" fill="#E8F5E8" stroke="#4CAF50" stroke-width="2" rx="10" filter="url(#shadow)"/>
+    <text x="140" y="20" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="14" font-weight="bold" fill="#2E7D32">轻度治疗方案</text>
+
+    <!-- First line -->
+    <g transform="translate(10,35)">
+      <rect x="0" y="0" width="260" height="35" fill="#C8E6C9" stroke="#4CAF50" stroke-width="1" rx="5"/>
+      <text x="130" y="15" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="12" font-weight="bold" fill="#1B5E20">一线治疗</text>
+      <text x="130" y="28" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#1B5E20">外用维A酸 ± 过氧化苯甲酰</text>
+    </g>
+
+    <!-- Treatment options -->
+    <g transform="translate(10,80)">
+      <text x="0" y="12" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="11" fill="#2E7D32">• 阿达帕林凝胶 0.1% qn</text>
+      <text x="0" y="26" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="11" fill="#2E7D32">• 他扎罗汀凝胶 0.05-0.1%</text>
+      <text x="0" y="40" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="11" fill="#2E7D32">• 过氧化苯甲酰 2.5-5%</text>
+      <text x="0" y="54" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="11" fill="#2E7D32">• 水杨酸 0.5-2%</text>
+    </g>
+
+    <!-- Timeline -->
+    <g transform="translate(10,150)">
+      <rect x="0" y="0" width="260" height="40" fill="#A5D6A7" stroke="#4CAF50" stroke-width="1" rx="5"/>
+      <text x="130" y="15" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="11" font-weight="bold" fill="#1B5E20">评估时间点</text>
+      <text x="130" y="28" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#1B5E20">6-8周评估，12周显效</text>
+      <text x="130" y="38" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="9" fill="#1B5E20">无效考虑中度方案</text>
+    </g>
+  </g>
+
+  <!-- Moderate Treatment -->
+  <g id="moderate-treatment" transform="translate(370,460)">
+    <rect x="0" y="0" width="300" height="200" fill="#FFF8E1" stroke="#FF9800" stroke-width="2" rx="10" filter="url(#shadow)"/>
+    <text x="150" y="20" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="14" font-weight="bold" fill="#E65100">中度治疗方案</text>
+
+    <!-- First line -->
+    <g transform="translate(10,35)">
+      <rect x="0" y="0" width="280" height="35" fill="#FFECB3" stroke="#FF9800" stroke-width="1" rx="5"/>
+      <text x="140" y="15" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="12" font-weight="bold" fill="#BF360C">联合治疗</text>
+      <text x="140" y="28" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#BF360C">外用维A酸 + 外用抗生素</text>
+    </g>
+
+    <!-- Treatment options -->
+    <g transform="translate(10,80)">
+      <text x="0" y="12" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="11" fill="#E65100">• 阿达帕林 + 克林霉素</text>
+      <text x="0" y="26" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="11" fill="#E65100">• 维A酸 + 红霉素</text>
+      <text x="0" y="40" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="11" fill="#E65100">• 考虑口服抗生素</text>
+      <text x="0" y="54" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="11" fill="#E65100">  - 米诺环素 50-100mg bid</text>
+      <text x="0" y="68" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="11" fill="#E65100">  - 多西环素 40-100mg qd</text>
+    </g>
+
+    <!-- Additional options -->
+    <g transform="translate(10,150)">
+      <rect x="0" y="0" width="280" height="40" fill="#FFE0B2" stroke="#FF9800" stroke-width="1" rx="5"/>
+      <text x="140" y="15" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="11" font-weight="bold" fill="#BF360C">物理治疗选择</text>
+      <text x="140" y="28" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#BF360C">光动力、激光、化学剥脱</text>
+      <text x="140" y="38" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="9" fill="#BF360C">8-12周评估调整</text>
+    </g>
+  </g>
+
+  <!-- Severe Treatment -->
+  <g id="severe-treatment" transform="translate(700,460)">
+    <rect x="0" y="0" width="300" height="200" fill="#FFEBEE" stroke="#F44336" stroke-width="2" rx="10" filter="url(#shadow)"/>
+    <text x="150" y="20" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="14" font-weight="bold" fill="#C62828">重度治疗方案</text>
+
+    <!-- Systemic treatment -->
+    <g transform="translate(10,35)">
+      <rect x="0" y="0" width="280" height="35" fill="#FFCDD2" stroke="#F44336" stroke-width="1" rx="5"/>
+      <text x="140" y="15" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="12" font-weight="bold" fill="#B71C1C">系统性治疗</text>
+      <text x="140" y="28" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#B71C1C">口服异维A酸考虑</text>
+    </g>
+
+    <!-- Treatment details -->
+    <g transform="translate(10,80)">
+      <text x="0" y="12" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="11" fill="#C62828">• 异维A酸 0.5-1mg/kg/d</text>
+      <text x="0" y="26" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="11" fill="#C62828">• 疗程 4-6个月</text>
+      <text x="0" y="40" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="11" fill="#C62828">• 严密监测肝功能</text>
+      <text x="0" y="54" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="11" fill="#C62828">• 女性避孕要求</text>
+      <text x="0" y="68" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="11" fill="#C62828">• 配合外用维A酸</text>
+    </g>
+
+    <!-- Monitoring -->
+    <g transform="translate(10,150)">
+      <rect x="0" y="0" width="280" height="40" fill="#EF9A9A" stroke="#F44336" stroke-width="1" rx="5"/>
+      <text x="140" y="15" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="11" font-weight="bold" fill="#B71C1C">密切监测</text>
+      <text x="140" y="28" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#B71C1C">每月复查血常规、肝肾功能</text>
+      <text x="140" y="38" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="9" fill="#B71C1C">4周评估，调整剂量</text>
+    </g>
+  </g>
+
+  <!-- Very Severe Treatment -->
+  <g id="very-severe-treatment" transform="translate(1030,460)">
+    <rect x="0" y="0" width="320" height="200" fill="#F3E5F5" stroke="#9C27B0" stroke-width="2" rx="10" filter="url(#shadow)"/>
+    <text x="160" y="20" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="14" font-weight="bold" fill="#6A1B9A">极重度治疗方案</text>
+
+    <!-- Aggressive treatment -->
+    <g transform="translate(10,35)">
+      <rect x="0" y="0" width="300" height="35" fill="#E1BEE7" stroke="#9C27B0" stroke-width="1" rx="5"/>
+      <text x="150" y="15" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="12" font-weight="bold" fill="#4A148C">积极治疗</text>
+      <text x="150" y="28" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#4A148C">多学科协作管理</text>
+    </g>
+
+    <!-- Comprehensive treatment -->
+    <g transform="translate(10,80)">
+      <text x="0" y="12" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="11" fill="#6A1B9A">• 异维A酸 0.5-1mg/kg/d</text>
+      <text x="0" y="26" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="11" fill="#6A1B9A">• 短期口服激素</text>
+      <text x="0" y="40" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="11" fill="#6A1B9A">• 物理治疗联合</text>
+      <text x="0" y="54" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="11" fill="#6A1B9A">• 心理支持治疗</text>
+      <text x="0" y="68" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="11" fill="#6A1B9A">• 疤痕预防护理</text>
+    </g>
+
+    <!-- Multidisciplinary care -->
+    <g transform="translate(10,150)">
+      <rect x="0" y="0" width="300" height="40" fill="#CE93D8" stroke="#9C27B0" stroke-width="1" rx="5"/>
+      <text x="150" y="15" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="11" font-weight="bold" fill="#4A148C">多学科管理</text>
+      <text x="150" y="28" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#4A148C">皮肤科+内分泌科+心理科</text>
+      <text x="150" y="38" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="9" fill="#4A148C">每2-4周随访调整</text>
+    </g>
+  </g>
+
+  <!-- Follow-up and Monitoring -->
+  <g id="follow-up-section" transform="translate(200,700)">
+    <rect x="0" y="0" width="1000" height="120" fill="#E8F4FD" stroke="#2196F3" stroke-width="2" rx="10" filter="url(#shadow)"/>
+    <text x="500" y="25" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="16" font-weight="bold" fill="#1565C0">疗效评估与随访监测</text>
+
+    <!-- Efficacy evaluation -->
+    <g transform="translate(50,40)">
+      <rect x="0" y="0" width="200" height="70" fill="#BBDEFB" stroke="#2196F3" stroke-width="1" rx="5"/>
+      <text x="100" y="15" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="12" font-weight="bold" fill="#0D47A1">疗效评估</text>
+      <text x="100" y="30" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#0D47A1">• 皮损计数减少率</text>
+      <text x="100" y="42" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#0D47A1">• GAGS评分改善</text>
+      <text x="100" y="54" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#0D47A1">• 患者满意度评价</text>
+      <text x="100" y="66" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#0D47A1">• 生活质量改善</text>
+    </g>
+
+    <!-- Side effects monitoring -->
+    <g transform="translate(280,40)">
+      <rect x="0" y="0" width="200" height="70" fill="#FFF3E0" stroke="#FF9800" stroke-width="1" rx="5"/>
+      <text x="100" y="15" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="12" font-weight="bold" fill="#E65100">副作用监测</text>
+      <text x="100" y="30" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#E65100">• 皮肤刺激反应</text>
+      <text x="100" y="42" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#E65100">• 光敏感性</text>
+      <text x="100" y="54" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#E65100">• 肝肾功能异常</text>
+      <text x="100" y="66" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#E65100">• 心理状态变化</text>
+    </g>
+
+    <!-- Treatment adjustment -->
+    <g transform="translate(510,40)">
+      <rect x="0" y="0" width="200" height="70" fill="#E8F5E8" stroke="#4CAF50" stroke-width="1" rx="5"/>
+      <text x="100" y="15" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="12" font-weight="bold" fill="#2E7D32">方案调整</text>
+      <text x="100" y="30" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#2E7D32">• 无效：升级治疗</text>
+      <text x="100" y="42" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#2E7D32">• 有效：维持剂量</text>
+      <text x="100" y="54" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#2E7D32">• 副作用：减量/换药</text>
+      <text x="100" y="66" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#2E7D32">• 复发：重新评估</text>
+    </g>
+
+    <!-- Long-term maintenance -->
+    <g transform="translate(740,40)">
+      <rect x="0" y="0" width="200" height="70" fill="#FFEBEE" stroke="#F44336" stroke-width="1" rx="5"/>
+      <text x="100" y="15" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="12" font-weight="bold" fill="#C62828">长期维持</text>
+      <text x="100" y="30" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#C62828">• 维A酸维持治疗</text>
+      <text x="100" y="42" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#C62828">• 定期皮肤护理</text>
+      <text x="100" y="54" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#C62828">• 生活方式指导</text>
+      <text x="100" y="66" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#C62828">• 预防复发管理</text>
+    </g>
+  </g>
+
+  <!-- Special Considerations -->
+  <g id="special-considerations" transform="translate(200,850)">
+    <rect x="0" y="0" width="1000" height="100" fill="#F5F5F5" stroke="#757575" stroke-width="2" rx="10" filter="url(#shadow)"/>
+    <text x="500" y="25" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="16" font-weight="bold" fill="#424242">特殊情况处理原则</text>
+
+    <!-- Pregnancy considerations -->
+    <g transform="translate(50,40)">
+      <rect x="0" y="0" width="180" height="50" fill="#FCE4EC" stroke="#E91E63" stroke-width="1" rx="5"/>
+      <text x="90" y="15" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="12" font-weight="bold" fill="#AD1457">妊娠期处理</text>
+      <text x="90" y="30" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#AD1457">• 避免维A酸类</text>
+      <text x="90" y="42" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#AD1457">• 安全药物选择</text>
+    </g>
+
+    <!-- Hormonal considerations -->
+    <g transform="translate(250,40)">
+      <rect x="0" y="0" width="180" height="50" fill="#E3F2FD" stroke="#2196F3" stroke-width="1" rx="5"/>
+      <text x="90" y="15" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="12" font-weight="bold" fill="#1565C0">激素相关性</text>
+      <text x="90" y="30" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#1565C0">• 月经周期影响</text>
+      <text x="90" y="42" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#1565C0">• 内分泌检查</text>
+    </g>
+
+    <!-- Drug resistance -->
+    <g transform="translate(450,40)">
+      <rect x="0" y="0" width="180" height="50" fill="#FFF3E0" stroke="#FF9800" stroke-width="1" rx="5"/>
+      <text x="90" y="15" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="12" font-weight="bold" fill="#E65100">耐药性管理</text>
+      <text x="90" y="30" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#E65100">• 轮换抗生素</text>
+      <text x="90" y="42" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#E65100">• 避免单一用药</text>
+    </g>
+
+    <!-- Scar management -->
+    <g transform="translate(650,40)">
+      <rect x="0" y="0" width="180" height="50" fill="#E8F5E8" stroke="#4CAF50" stroke-width="1" rx="5"/>
+      <text x="90" y="15" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="12" font-weight="bold" fill="#2E7D32">疤痕管理</text>
+      <text x="90" y="30" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#2E7D32">• 早期干预</text>
+      <text x="90" y="42" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#2E7D32">• 激光修复</text>
+    </g>
+
+    <!-- Psychological support -->
+    <g transform="translate(850,40)">
+      <rect x="0" y="0" width="140" height="50" fill="#F3E5F5" stroke="#9C27B0" stroke-width="1" rx="5"/>
+      <text x="70" y="15" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="12" font-weight="bold" fill="#6A1B9A">心理支持</text>
+      <text x="70" y="30" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#6A1B9A">• 心理评估</text>
+      <text x="70" y="42" text-anchor="middle" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#6A1B9A">• 支持治疗</text>
+    </g>
+  </g>
+
+  <!-- Decision Flow Arrows -->
+  <defs>
+    <marker id="decisionArrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#424242"/>
+    </marker>
+  </defs>
+
+  <!-- Arrows from assessment to classification -->
+  <line x1="700" y1="150" x2="700" y2="290" stroke="#424242" stroke-width="2" marker-end="url(#decisionArrow)"/>
+
+  <!-- Arrows from classification to treatments -->
+  <line x1="190" y1="420" x2="190" y2="450" stroke="#4CAF50" stroke-width="2" marker-end="url(#decisionArrow)"/>
+  <line x1="480" y1="420" x2="520" y2="450" stroke="#FF9800" stroke-width="2" marker-end="url(#decisionArrow)"/>
+  <line x1="790" y1="420" x2="850" y2="450" stroke="#F44336" stroke-width="2" marker-end="url(#decisionArrow)"/>
+  <line x1="1100" y1="420" x2="1190" y2="450" stroke="#9C27B0" stroke-width="2" marker-end="url(#decisionArrow)"/>
+
+  <!-- Arrow to follow-up -->
+  <line x1="700" y1="670" x2="700" y2="690" stroke="#2196F3" stroke-width="2" marker-end="url(#decisionArrow)"/>
+
+  <!-- Title for decision points -->
+  <text x="50" y="985" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="12" fill="#7F8C8D">* 治疗决策应综合考虑患者年龄、性别、病程、既往治疗史、个人意愿及经济条件</text>
+</svg>

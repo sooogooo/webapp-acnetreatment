@@ -1,0 +1,59 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Stage 1: Normal follicle -->
+  <g transform="translate(1,0)">
+    <rect x="0" y="2" width="4" height="2" fill="var(--icon-color, #3498db)" opacity="0.3"/>
+    <circle cx="2" cy="5" r="0.8" fill="none" stroke="var(--icon-color, #3498db)" stroke-width="0.8"/>
+    <path d="M2 4.2V1" stroke="var(--icon-color, #3498db)" stroke-width="1"/>
+    <text x="0" y="8" font-family="Arial, sans-serif" font-size="4" fill="var(--icon-color, #3498db)">1</text>
+  </g>
+
+  <!-- Stage 2: Clogged pore -->
+  <g transform="translate(6,0)">
+    <rect x="0" y="2" width="4" height="2" fill="var(--icon-color, #3498db)" opacity="0.3"/>
+    <circle cx="2" cy="5" r="0.8" fill="var(--icon-color, #3498db)" opacity="0.5" stroke="var(--icon-color, #3498db)" stroke-width="0.8"/>
+    <path d="M2 4.2V1" stroke="var(--icon-color, #3498db)" stroke-width="1"/>
+    <circle cx="2" cy="1.5" r="0.5" fill="var(--icon-color, #3498db)" opacity="0.7"/>
+    <text x="0" y="8" font-family="Arial, sans-serif" font-size="4" fill="var(--icon-color, #3498db)">2</text>
+  </g>
+
+  <!-- Stage 3: Blackhead/Whitehead -->
+  <g transform="translate(11,0)">
+    <rect x="0" y="2" width="4" height="2" fill="var(--icon-color, #3498db)" opacity="0.3"/>
+    <circle cx="2" cy="5" r="1" fill="var(--icon-color, #3498db)" opacity="0.6" stroke="var(--icon-color, #3498db)" stroke-width="1"/>
+    <path d="M2 4V1" stroke="var(--icon-color, #3498db)" stroke-width="1"/>
+    <circle cx="2" cy="1.2" r="0.7" fill="var(--icon-color, #3498db)" opacity="0.8"/>
+    <text x="0" y="8" font-family="Arial, sans-serif" font-size="4" fill="var(--icon-color, #3498db)">3</text>
+  </g>
+
+  <!-- Stage 4: Inflamed acne -->
+  <g transform="translate(16,0)">
+    <rect x="0" y="2" width="4" height="2" fill="var(--icon-color, #3498db)" opacity="0.3"/>
+    <circle cx="2" cy="5" r="1.2" fill="var(--icon-color, #3498db)" opacity="0.7" stroke="var(--icon-color, #3498db)" stroke-width="1.2"/>
+    <path d="M2 3.8V1" stroke="var(--icon-color, #3498db)" stroke-width="1"/>
+    <circle cx="2" cy="1" r="0.8" fill="var(--icon-color, #3498db)"/>
+    <!-- Inflammation rays -->
+    <path d="M0.5 4L1.2 4.7" stroke="var(--icon-color, #3498db)" stroke-width="0.5" opacity="0.6"/>
+    <path d="M3.5 4L2.8 4.7" stroke="var(--icon-color, #3498db)" stroke-width="0.5" opacity="0.6"/>
+    <path d="M0.5 6L1.2 5.3" stroke="var(--icon-color, #3498db)" stroke-width="0.5" opacity="0.6"/>
+    <path d="M3.5 6L2.8 5.3" stroke="var(--icon-color, #3498db)" stroke-width="0.5" opacity="0.6"/>
+    <text x="0" y="8" font-family="Arial, sans-serif" font-size="4" fill="var(--icon-color, #3498db)">4</text>
+  </g>
+
+  <!-- Process arrows -->
+  <path d="M4.5 4L5.5 4" stroke="var(--icon-color, #3498db)" stroke-width="1" marker-end="url(#arrowhead)" opacity="0.7"/>
+  <path d="M9.5 4L10.5 4" stroke="var(--icon-color, #3498db)" stroke-width="1" marker-end="url(#arrowhead)" opacity="0.7"/>
+  <path d="M14.5 4L15.5 4" stroke="var(--icon-color, #3498db)" stroke-width="1" marker-end="url(#arrowhead)" opacity="0.7"/>
+
+  <!-- Arrow marker definition -->
+  <defs>
+    <marker id="arrowhead" markerWidth="6" markerHeight="4" refX="5" refY="2" orient="auto">
+      <polygon points="0 0, 6 2, 0 4" fill="var(--icon-color, #3498db)" opacity="0.7"/>
+    </marker>
+  </defs>
+
+  <!-- Title indicators -->
+  <text x="2" y="12" font-family="Arial, sans-serif" font-size="5" fill="var(--icon-color, #3498db)" opacity="0.8">Normal</text>
+  <text x="7" y="12" font-family="Arial, sans-serif" font-size="5" fill="var(--icon-color, #3498db)" opacity="0.8">Clogged</text>
+  <text x="11" y="12" font-family="Arial, sans-serif" font-size="4.5" fill="var(--icon-color, #3498db)" opacity="0.8">Comedone</text>
+  <text x="16" y="12" font-family="Arial, sans-serif" font-size="4.5" fill="var(--icon-color, #3498db)" opacity="0.8">Inflamed</text>
+</svg>
