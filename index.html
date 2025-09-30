@@ -35,6 +35,39 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .header-logo img {
+            max-width: 120px;
+            margin: 0;
+        }
+
+        .header-title {
+            text-align: left;
+        }
+
+        .header-title h1 {
+            font-size: 2em;
+            color: #2c3e50;
+            margin: 0 0 8px 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header-title p {
+            font-size: 0.95em;
+            color: #7f8c8d;
+            margin: 0;
+        }
+
         h1 {
             color: #2c3e50;
             font-size: 2.5em;
@@ -2017,6 +2050,23 @@
                 font-size: 1.8em;
             }
 
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .header-title {
+                text-align: center;
+            }
+
+            .header-title h1 {
+                font-size: 1.5em;
+            }
+
+            .header-title p {
+                font-size: 0.85em;
+            }
+
             .toc {
                 grid-template-columns: 1fr;
             }
@@ -2381,8 +2431,14 @@
 <body>
     <div class="container">
         <header>
-            <div class="header-logo">
-                <img src="logo.png" alt="联合丽格" style="max-width: 120px; margin-bottom: 20px;">
+            <div class="header-content">
+                <div class="header-logo">
+                    <img src="logo.png" alt="联合丽格">
+                </div>
+                <div class="header-title">
+                    <h1>痘痘再见，再也不见</h1>
+                    <p>联合丽格西南中心 · 专业医美科普</p>
+                </div>
             </div>
         </header>
         <!-- 增强版全局搜索区域 -->
