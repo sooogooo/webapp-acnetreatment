@@ -4626,21 +4626,23 @@
         // 搜索功能
         function setupSearch() {
             const searchInput = document.getElementById('searchInput');
-            searchInput.addEventListener('input', function() {
-                const searchTerm = this.value.toLowerCase();
-                const cards = document.querySelectorAll('.chapter-card');
+            if (searchInput) {
+                searchInput.addEventListener('input', function() {
+                    const searchTerm = this.value.toLowerCase();
+                    const cards = document.querySelectorAll('.chapter-card');
 
-                cards.forEach(card => {
-                    const title = card.querySelector('.chapter-title').textContent.toLowerCase();
-                    const desc = card.querySelector('.chapter-desc').textContent.toLowerCase();
+                    cards.forEach(card => {
+                        const title = card.querySelector('.chapter-title').textContent.toLowerCase();
+                        const desc = card.querySelector('.chapter-desc').textContent.toLowerCase();
 
-                    if (title.includes(searchTerm) || desc.includes(searchTerm)) {
-                        card.style.display = 'block';
-                    } else {
-                        card.style.display = searchTerm ? 'none' : 'block';
-                    }
+                        if (title.includes(searchTerm) || desc.includes(searchTerm)) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = searchTerm ? 'none' : 'block';
+                        }
+                    });
                 });
-            });
+            }
         }
 
         // 初始化
