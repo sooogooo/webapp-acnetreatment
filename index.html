@@ -2543,6 +2543,135 @@
             </div>
         </div>
 
+        <!-- 智能治疗方案推荐系统 -->
+        <div class="smart-recommendation-section" style="background: white; border-radius: 20px; padding: 40px; margin-bottom: 30px; box-shadow: 0 10px 40px rgba(0,0,0,0.08);">
+            <h3 style="text-align: center; color: #2c3e50; font-size: 1.8em; margin-bottom: 10px;">🎯 智能治疗方案推荐系统</h3>
+            <p style="text-align: center; color: #7f8c8d; margin-bottom: 35px;">基于GAGS评分，为您量身定制最适合的治疗方案</p>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 30px;">
+                <!-- 左侧：GAGS自测表单 -->
+                <div style="background: #f8f9fa; padding: 30px; border-radius: 15px;">
+                    <h4 style="color: #2c3e50; margin-bottom: 20px; font-size: 1.3em; border-bottom: 2px solid #667eea; padding-bottom: 10px;">📋 GAGS自测评分</h4>
+
+                    <div style="margin-bottom: 20px; padding: 15px; background: #e3f2fd; border-radius: 10px; border-left: 4px solid #2196f3;">
+                        <div style="font-weight: bold; color: #1976d2; margin-bottom: 8px;">评分标准：</div>
+                        <div style="font-size: 0.9em; color: #424242; line-height: 1.6;">
+                            <div>0分 = 无病灶</div>
+                            <div>1分 = 仅粉刺（≥1个）</div>
+                            <div>2分 = 丘疹（≥1个）</div>
+                            <div>3分 = 脓疱（≥1个）</div>
+                            <div>4分 = 结节/囊肿（≥1个）</div>
+                        </div>
+                    </div>
+
+                    <!-- 6个分区评分 -->
+                    <div id="gagsScoreForm">
+                        <!-- 额头 -->
+                        <div style="margin-bottom: 20px;">
+                            <label style="display: block; font-weight: bold; color: #2c3e50; margin-bottom: 8px;">额头（×2倍权重）</label>
+                            <select id="forehead" onchange="calculateGAGS()" style="width: 100%; padding: 10px; border: 2px solid #ddd; border-radius: 8px; font-size: 1em;">
+                                <option value="0">0分 - 无病灶</option>
+                                <option value="1">1分 - 仅粉刺</option>
+                                <option value="2">2分 - 丘疹</option>
+                                <option value="3">3分 - 脓疱</option>
+                                <option value="4">4分 - 结节/囊肿</option>
+                            </select>
+                        </div>
+
+                        <!-- 右脸颊 -->
+                        <div style="margin-bottom: 20px;">
+                            <label style="display: block; font-weight: bold; color: #2c3e50; margin-bottom: 8px;">右脸颊（×2倍权重）</label>
+                            <select id="rightCheek" onchange="calculateGAGS()" style="width: 100%; padding: 10px; border: 2px solid #ddd; border-radius: 8px; font-size: 1em;">
+                                <option value="0">0分 - 无病灶</option>
+                                <option value="1">1分 - 仅粉刺</option>
+                                <option value="2">2分 - 丘疹</option>
+                                <option value="3">3分 - 脓疱</option>
+                                <option value="4">4分 - 结节/囊肿</option>
+                            </select>
+                        </div>
+
+                        <!-- 左脸颊 -->
+                        <div style="margin-bottom: 20px;">
+                            <label style="display: block; font-weight: bold; color: #2c3e50; margin-bottom: 8px;">左脸颊（×2倍权重）</label>
+                            <select id="leftCheek" onchange="calculateGAGS()" style="width: 100%; padding: 10px; border: 2px solid #ddd; border-radius: 8px; font-size: 1em;">
+                                <option value="0">0分 - 无病灶</option>
+                                <option value="1">1分 - 仅粉刺</option>
+                                <option value="2">2分 - 丘疹</option>
+                                <option value="3">3分 - 脓疱</option>
+                                <option value="4">4分 - 结节/囊肿</option>
+                            </select>
+                        </div>
+
+                        <!-- 鼻部 -->
+                        <div style="margin-bottom: 20px;">
+                            <label style="display: block; font-weight: bold; color: #2c3e50; margin-bottom: 8px;">鼻部（×1倍权重）</label>
+                            <select id="nose" onchange="calculateGAGS()" style="width: 100%; padding: 10px; border: 2px solid #ddd; border-radius: 8px; font-size: 1em;">
+                                <option value="0">0分 - 无病灶</option>
+                                <option value="1">1分 - 仅粉刺</option>
+                                <option value="2">2分 - 丘疹</option>
+                                <option value="3">3分 - 脓疱</option>
+                                <option value="4">4分 - 结节/囊肿</option>
+                            </select>
+                        </div>
+
+                        <!-- 下巴 -->
+                        <div style="margin-bottom: 20px;">
+                            <label style="display: block; font-weight: bold; color: #2c3e50; margin-bottom: 8px;">下巴（×1倍权重）</label>
+                            <select id="chin" onchange="calculateGAGS()" style="width: 100%; padding: 10px; border: 2px solid #ddd; border-radius: 8px; font-size: 1em;">
+                                <option value="0">0分 - 无病灶</option>
+                                <option value="1">1分 - 仅粉刺</option>
+                                <option value="2">2分 - 丘疹</option>
+                                <option value="3">3分 - 脓疱</option>
+                                <option value="4">4分 - 结节/囊肿</option>
+                            </select>
+                        </div>
+
+                        <!-- 胸背部 -->
+                        <div style="margin-bottom: 20px;">
+                            <label style="display: block; font-weight: bold; color: #2c3e50; margin-bottom: 8px;">胸背部（×3倍权重）</label>
+                            <select id="chest" onchange="calculateGAGS()" style="width: 100%; padding: 10px; border: 2px solid #ddd; border-radius: 8px; font-size: 1em;">
+                                <option value="0">0分 - 无病灶</option>
+                                <option value="1">1分 - 仅粉刺</option>
+                                <option value="2">2分 - 丘疹</option>
+                                <option value="3">3分 - 脓疱</option>
+                                <option value="4">4分 - 结节/囊肿</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- GAGS总分显示 -->
+                    <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 20px; border-radius: 12px; text-align: center;">
+                        <div style="color: white; font-size: 0.9em; margin-bottom: 8px; opacity: 0.9;">GAGS总分</div>
+                        <div id="gagsTotal" style="color: white; font-size: 3em; font-weight: bold;">0</div>
+                        <div id="gagsSeverity" style="color: white; font-size: 1.1em; margin-top: 8px; opacity: 0.95;">暂无评估</div>
+                    </div>
+                </div>
+
+                <!-- 右侧：推荐结果 -->
+                <div style="background: #f8f9fa; padding: 30px; border-radius: 15px;">
+                    <h4 style="color: #2c3e50; margin-bottom: 20px; font-size: 1.3em; border-bottom: 2px solid #00b894; padding-bottom: 10px;">💡 推荐治疗方案</h4>
+
+                    <div id="recommendationResults" style="min-height: 400px;">
+                        <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 400px; color: #95a5a6;">
+                            <div style="font-size: 4em; margin-bottom: 15px;">📊</div>
+                            <div style="font-size: 1.1em; text-align: center; line-height: 1.6;">
+                                请在左侧完成GAGS自测评分<br>系统将自动为您推荐最适合的治疗方案
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 响应式样式 -->
+            <style>
+                @media (max-width: 768px) {
+                    .smart-recommendation-section > div:first-of-type {
+                        grid-template-columns: 1fr !important;
+                    }
+                }
+            </style>
+        </div>
+
         <!-- 痘痘问题分类专题 -->
         <div class="acne-categories-section" style="margin-bottom: 30px;">
             <h3 style="text-align: center; color: #2c3e50; font-size: 1.8em; margin-bottom: 25px;">📚 痘痘问题分类专题</h3>
@@ -5366,6 +5495,199 @@
                 closeSymptomModal();
             }
         });
+
+        // ========== 智能治疗方案推荐系统 ==========
+        function calculateGAGS() {
+            // 获取各部位评分
+            const forehead = parseInt(document.getElementById('forehead').value);
+            const rightCheek = parseInt(document.getElementById('rightCheek').value);
+            const leftCheek = parseInt(document.getElementById('leftCheek').value);
+            const nose = parseInt(document.getElementById('nose').value);
+            const chin = parseInt(document.getElementById('chin').value);
+            const chest = parseInt(document.getElementById('chest').value);
+
+            // 计算GAGS总分（考虑权重）
+            const total = (forehead * 2) + (rightCheek * 2) + (leftCheek * 2) + (nose * 1) + (chin * 1) + (chest * 3);
+
+            // 确定严重程度
+            let severity, severityText, severityColor, severityEmoji;
+            if (total === 0) {
+                severity = 'none';
+                severityText = '暂无评估';
+                severityColor = '#95a5a6';
+                severityEmoji = '😊';
+            } else if (total <= 18) {
+                severity = 'mild';
+                severityText = '轻度痤疮';
+                severityColor = '#56ab2f';
+                severityEmoji = '😊';
+            } else if (total <= 30) {
+                severity = 'moderate';
+                severityText = '中度痤疮';
+                severityColor = '#f39c12';
+                severityEmoji = '😐';
+            } else if (total <= 38) {
+                severity = 'severe';
+                severityText = '重度痤疮';
+                severityColor = '#e74c3c';
+                severityEmoji = '😟';
+            } else {
+                severity = 'very-severe';
+                severityText = '极重度痤疮';
+                severityColor = '#8e44ad';
+                severityEmoji = '😰';
+            }
+
+            // 更新总分显示
+            document.getElementById('gagsTotal').textContent = total;
+            document.getElementById('gagsSeverity').textContent = severityText;
+
+            // 生成推荐方案
+            if (total === 0) {
+                showEmptyRecommendation();
+            } else {
+                showRecommendations(severity, severityText, severityColor, severityEmoji, total);
+            }
+        }
+
+        function showEmptyRecommendation() {
+            const resultsDiv = document.getElementById('recommendationResults');
+            resultsDiv.innerHTML = `
+                <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 400px; color: #95a5a6;">
+                    <div style="font-size: 4em; margin-bottom: 15px;">✅</div>
+                    <div style="font-size: 1.1em; text-align: center; line-height: 1.6;">
+                        恭喜！您当前没有明显的痤疮问题<br>
+                        继续保持良好的生活习惯和护肤习惯
+                    </div>
+                </div>
+            `;
+        }
+
+        function showRecommendations(severity, severityText, severityColor, severityEmoji, totalScore) {
+            // 根据严重程度筛选推荐项目
+            const recommendedSingleItems = ACNE_REAL_DATA.singleItems.filter(item =>
+                item.severity && item.severity.includes(severity === 'mild' ? '轻度' :
+                                                         severity === 'moderate' ? '中度' :
+                                                         severity === 'severe' ? '重度' : '极重度')
+            );
+
+            const recommendedPackages = ACNE_REAL_DATA.packages.filter(pkg =>
+                pkg.severity && pkg.severity.includes(severity === 'mild' ? '轻度' :
+                                                       severity === 'moderate' ? '中度' :
+                                                       severity === 'severe' ? '重度' : '极重度')
+            );
+
+            const resultsDiv = document.getElementById('recommendationResults');
+
+            let content = `
+                <!-- 评估结果卡片 -->
+                <div style="background: linear-gradient(135deg, ${severityColor}15 0%, ${severityColor}30 100%); padding: 25px; border-radius: 15px; margin-bottom: 25px; border-left: 4px solid ${severityColor};">
+                    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+                        <div style="font-size: 3em;">${severityEmoji}</div>
+                        <div>
+                            <h4 style="color: ${severityColor}; font-size: 1.4em; margin: 0 0 5px 0;">${severityText}</h4>
+                            <div style="color: #2c3e50; font-size: 0.95em;">GAGS评分：${totalScore}分</div>
+                        </div>
+                    </div>
+                    <div style="background: white; padding: 15px; border-radius: 10px; margin-top: 15px;">
+                        <div style="font-weight: bold; color: #2c3e50; margin-bottom: 8px;">💡 治疗建议：</div>
+                        <div style="color: #555; line-height: 1.6; font-size: 0.95em;">
+                            ${getSeverityAdvice(severity)}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 推荐单品 -->
+                ${recommendedSingleItems.length > 0 ? `
+                    <div style="margin-bottom: 25px;">
+                        <h5 style="color: #2c3e50; font-size: 1.1em; margin-bottom: 15px; padding-bottom: 8px; border-bottom: 2px solid ${severityColor};">
+                            🏥 推荐单项治疗
+                        </h5>
+                        <div style="display: grid; gap: 12px;">
+                            ${recommendedSingleItems.slice(0, 3).map(item => `
+                                <div style="background: white; padding: 15px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); border-left: 3px solid ${severityColor};">
+                                    <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 8px;">
+                                        <div>
+                                            <h6 style="color: #2c3e50; margin: 0 0 5px 0; font-size: 1.05em;">${item.name}</h6>
+                                            <span style="background: ${severityColor}15; color: ${severityColor}; padding: 3px 10px; border-radius: 10px; font-size: 0.8em; font-weight: bold;">
+                                                ${item.category}
+                                            </span>
+                                        </div>
+                                        <div style="text-align: right;">
+                                            <div style="color: ${severityColor}; font-weight: bold; font-size: 1.2em;">¥${item.price_single}</div>
+                                            <div style="font-size: 0.75em; color: #95a5a6;">单次</div>
+                                        </div>
+                                    </div>
+                                    <p style="color: #7f8c8d; font-size: 0.9em; margin: 8px 0; line-height: 1.5;">${item.desc}</p>
+                                    <div style="display: flex; gap: 10px; margin-top: 10px; font-size: 0.85em; color: #95a5a6;">
+                                        <span>⏱ ${item.duration}</span>
+                                        <span>🔄 ${item.recovery}</span>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                ` : ''}
+
+                <!-- 推荐套餐 -->
+                ${recommendedPackages.length > 0 ? `
+                    <div style="margin-bottom: 20px;">
+                        <h5 style="color: #2c3e50; font-size: 1.1em; margin-bottom: 15px; padding-bottom: 8px; border-bottom: 2px solid ${severityColor};">
+                            📦 推荐组合套餐
+                        </h5>
+                        <div style="display: grid; gap: 12px;">
+                            ${recommendedPackages.slice(0, 2).map(pkg => `
+                                <div style="background: linear-gradient(135deg, ${severityColor}08 0%, ${severityColor}15 100%); padding: 15px; border-radius: 10px; border: 2px solid ${severityColor}30;">
+                                    <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 8px;">
+                                        <div>
+                                            <h6 style="color: #2c3e50; margin: 0 0 5px 0; font-size: 1.05em;">${pkg.name}</h6>
+                                            <span style="background: ${severityColor}; color: white; padding: 3px 10px; border-radius: 10px; font-size: 0.8em; font-weight: bold;">
+                                                ${pkg.level}
+                                            </span>
+                                        </div>
+                                        <div style="text-align: right;">
+                                            <div style="color: ${severityColor}; font-weight: bold; font-size: 1.3em;">¥${pkg.price_single}</div>
+                                            <div style="font-size: 0.75em; color: #95a5a6;">单次</div>
+                                        </div>
+                                    </div>
+                                    <div style="background: white; padding: 10px; border-radius: 8px; margin: 10px 0; font-size: 0.9em; color: #555;">
+                                        <strong>包含项目：</strong>${pkg.items}
+                                    </div>
+                                    <p style="color: #7f8c8d; font-size: 0.9em; margin: 8px 0; line-height: 1.5;">${pkg.desc}</p>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                ` : ''}
+
+                <!-- 查看更多按钮 -->
+                <div style="margin-top: 20px; text-align: center;">
+                    <button onclick="window.location.href='treatments.html'" style="background: linear-gradient(135deg, ${severityColor} 0%, ${severityColor}dd 100%); color: white; border: none; padding: 12px 30px; border-radius: 25px; font-size: 1em; cursor: pointer; font-weight: bold; box-shadow: 0 4px 15px ${severityColor}40;">
+                        查看所有治疗项目 →
+                    </button>
+                </div>
+
+                <!-- 温馨提示 -->
+                <div style="margin-top: 25px; padding: 15px; background: #fff3cd; border-radius: 10px; border-left: 4px solid #ffc107;">
+                    <div style="font-weight: bold; color: #856404; margin-bottom: 5px;">⚠️ 重要提示</div>
+                    <div style="color: #856404; font-size: 0.9em; line-height: 1.6;">
+                        以上推荐基于GAGS评分标准，仅供参考。实际治疗方案需要由专业医生根据您的具体情况制定，请务必预约专业皮肤科医生进行面诊。
+                    </div>
+                </div>
+            `;
+
+            resultsDiv.innerHTML = content;
+        }
+
+        function getSeverityAdvice(severity) {
+            const adviceMap = {
+                'mild': '轻度痤疮建议采用温和的治疗方式，如激光针清、红蓝光或水杨酸等基础项目。同时注意日常护肤，使用温和的洁面产品，避免用手挤压痘痘。',
+                'moderate': '中度痤疮建议尽快就医，制定系统治疗方案。可能需要口服药物配合医美项目治疗。定期接受激光或刷酸治疗，严格防晒，避免色素沉着加重。',
+                'severe': '重度痤疮需要立即就医，必须接受系统性治疗。需要口服药物（如异维A酸）配合多种医美项目综合治疗。严格遵医嘱，定期复诊，做好心理辅导和术后护理。',
+                'very-severe': '极重度痤疮属于紧急情况，必须由专业皮肤科医生制定方案。需要系统性口服药物治疗，配合多种医美项目联合治疗。需要长期治疗计划（6-12个月以上），并制定瘢痕修复的后续方案。'
+            };
+            return adviceMap[severity] || '';
+        }
     </script>
 
     <!-- 症状详情弹窗 -->
