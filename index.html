@@ -2476,6 +2476,73 @@
             <div id="searchResults" style="display: none; margin-top: 25px; max-height: 400px; overflow-y: auto; background: #f8f9fa; border-radius: 15px; padding: 20px;"></div>
         </div>
 
+        <!-- 症状自测对照库 -->
+        <div class="symptom-guide-section" style="background: white; border-radius: 20px; padding: 40px; margin-bottom: 30px; box-shadow: 0 10px 40px rgba(0,0,0,0.08);">
+            <h3 style="text-align: center; color: #2c3e50; font-size: 1.8em; margin-bottom: 10px;">🩺 症状自测对照库</h3>
+            <p style="text-align: center; color: #7f8c8d; margin-bottom: 35px;">根据GAGS评分标准，帮助您快速判断痤疮严重程度</p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+                <!-- 轻度痤疮 -->
+                <div class="symptom-card" onclick="showSymptomDetail('mild')" style="background: linear-gradient(135deg, #a8e6cf 0%, #56ab2f 100%); color: white; padding: 25px; border-radius: 15px; cursor: pointer; transition: all 0.3s; box-shadow: 0 5px 20px rgba(86,171,47,0.3);">
+                    <div style="font-size: 2.5em; margin-bottom: 10px;">😊</div>
+                    <h4 style="font-size: 1.3em; margin-bottom: 10px;">轻度痤疮</h4>
+                    <p style="font-size: 0.9em; opacity: 0.95; line-height: 1.6;">粉刺、少量丘疹</p>
+                    <div style="margin-top: 15px; font-size: 0.85em; opacity: 0.9;">
+                        <div>• 闭口粉刺 &lt; 20个</div>
+                        <div>• 炎性丘疹 &lt; 10个</div>
+                        <div>• 无结节或囊肿</div>
+                    </div>
+                    <button style="margin-top: 15px; background: rgba(255,255,255,0.3); border: 1px solid white; color: white; padding: 8px 20px; border-radius: 20px; cursor: pointer; font-weight: bold;">查看详情 →</button>
+                </div>
+
+                <!-- 中度痤疮 -->
+                <div class="symptom-card" onclick="showSymptomDetail('moderate')" style="background: linear-gradient(135deg, #ffd89b 0%, #f39c12 100%); color: white; padding: 25px; border-radius: 15px; cursor: pointer; transition: all 0.3s; box-shadow: 0 5px 20px rgba(243,156,18,0.3);">
+                    <div style="font-size: 2.5em; margin-bottom: 10px;">😐</div>
+                    <h4 style="font-size: 1.3em; margin-bottom: 10px;">中度痤疮</h4>
+                    <p style="font-size: 0.9em; opacity: 0.95; line-height: 1.6;">较多丘疹、脓疱</p>
+                    <div style="margin-top: 15px; font-size: 0.85em; opacity: 0.9;">
+                        <div>• 粉刺 20-50个</div>
+                        <div>• 丘疹/脓疱 10-40个</div>
+                        <div>• 少量结节 &lt; 5个</div>
+                    </div>
+                    <button style="margin-top: 15px; background: rgba(255,255,255,0.3); border: 1px solid white; color: white; padding: 8px 20px; border-radius: 20px; cursor: pointer; font-weight: bold;">查看详情 →</button>
+                </div>
+
+                <!-- 重度痤疮 -->
+                <div class="symptom-card" onclick="showSymptomDetail('severe')" style="background: linear-gradient(135deg, #ff9a9e 0%, #e74c3c 100%); color: white; padding: 25px; border-radius: 15px; cursor: pointer; transition: all 0.3s; box-shadow: 0 5px 20px rgba(231,76,60,0.3);">
+                    <div style="font-size: 2.5em; margin-bottom: 10px;">😟</div>
+                    <h4 style="font-size: 1.3em; margin-bottom: 10px;">重度痤疮</h4>
+                    <p style="font-size: 0.9em; opacity: 0.95; line-height: 1.6;">大量结节、囊肿</p>
+                    <div style="margin-top: 15px; font-size: 0.85em; opacity: 0.9;">
+                        <div>• 粉刺 &gt; 50个</div>
+                        <div>• 丘疹/脓疱 &gt; 40个</div>
+                        <div>• 结节/囊肿 &gt; 5个</div>
+                    </div>
+                    <button style="margin-top: 15px; background: rgba(255,255,255,0.3); border: 1px solid white; color: white; padding: 8px 20px; border-radius: 20px; cursor: pointer; font-weight: bold;">查看详情 →</button>
+                </div>
+
+                <!-- 极重度痤疮 -->
+                <div class="symptom-card" onclick="showSymptomDetail('very-severe')" style="background: linear-gradient(135deg, #a18cd1 0%, #8e44ad 100%); color: white; padding: 25px; border-radius: 15px; cursor: pointer; transition: all 0.3s; box-shadow: 0 5px 20px rgba(142,68,173,0.3);">
+                    <div style="font-size: 2.5em; margin-bottom: 10px;">😰</div>
+                    <h4 style="font-size: 1.3em; margin-bottom: 10px;">极重度痤疮</h4>
+                    <p style="font-size: 0.9em; opacity: 0.95; line-height: 1.6;">聚合性、暴发性</p>
+                    <div style="margin-top: 15px; font-size: 0.85em; opacity: 0.9;">
+                        <div>• 大量结节囊肿</div>
+                        <div>• 多处融合瘢痕</div>
+                        <div>• 疼痛、炎症严重</div>
+                    </div>
+                    <button style="margin-top: 15px; background: rgba(255,255,255,0.3); border: 1px solid white; color: white; padding: 8px 20px; border-radius: 20px; cursor: pointer; font-weight: bold;">查看详情 →</button>
+                </div>
+            </div>
+
+            <div style="margin-top: 30px; padding: 20px; background: #fff3cd; border-radius: 12px; border-left: 4px solid #ffc107;">
+                <div style="font-weight: bold; color: #856404; margin-bottom: 8px;">💡 温馨提示</div>
+                <div style="color: #856404; line-height: 1.6; font-size: 0.95em;">
+                    以上分级仅供参考。准确诊断需要专业医生评估，建议您预约专业皮肤科医生进行详细检查。
+                </div>
+            </div>
+        </div>
+
         <!-- 痘痘问题分类专题 -->
         <div class="acne-categories-section" style="margin-bottom: 30px;">
             <h3 style="text-align: center; color: #2c3e50; font-size: 1.8em; margin-bottom: 25px;">📚 痘痘问题分类专题</h3>
@@ -2578,6 +2645,17 @@
                 transform: translateY(-5px);
                 box-shadow: 0 15px 40px rgba(0,0,0,0.2) !important;
             }
+
+            /* 症状卡片样式 */
+            .symptom-card:hover {
+                transform: translateY(-8px) scale(1.02);
+                box-shadow: 0 15px 50px rgba(0,0,0,0.25) !important;
+            }
+            .symptom-card button:hover {
+                background: rgba(255,255,255,0.5) !important;
+                transform: scale(1.05);
+            }
+
             @media (max-width: 768px) {
                 .enhanced-search-section { padding: 20px 15px !important; }
                 .quick-search-tags { justify-content: flex-start !important; }
@@ -5002,6 +5080,302 @@
                 });
             }
         });
+
+        // ========== 症状详情弹窗系统 ==========
+        const SYMPTOM_DETAILS = {
+            mild: {
+                title: '轻度痤疮',
+                emoji: '😊',
+                gagsScore: '0-18分',
+                color: '#56ab2f',
+                description: '轻度痤疮主要表现为闭口粉刺和少量炎性丘疹，一般不会留下明显瘢痕。',
+                symptoms: [
+                    '闭口粉刺（白头）< 20个',
+                    '开放性粉刺（黑头）< 20个',
+                    '炎性丘疹 < 10个',
+                    '无结节或囊肿',
+                    '无明显疼痛感'
+                ],
+                gagsDetail: {
+                    forehead: '0-2分',
+                    rightCheek: '0-2分',
+                    leftCheek: '0-2分',
+                    nose: '0-2分',
+                    chin: '0-2分',
+                    chest: '0-2分'
+                },
+                recommendations: [
+                    '定期清洁皮肤，选择温和洁面产品',
+                    '使用含水杨酸或烟酰胺的护肤品',
+                    '避免用手挤压痘痘',
+                    '保持规律作息和健康饮食',
+                    '定期进行基础医美项目维护'
+                ],
+                treatmentOptions: ['激光针清/湿敷舒敏/红蓝光', '博乐达水杨酸面部', '1565非剥脱点阵', '三明治祛痘嫩肤', '痘清清A']
+            },
+            moderate: {
+                title: '中度痤疮',
+                emoji: '😐',
+                gagsScore: '19-30分',
+                color: '#f39c12',
+                description: '中度痤疮表现为较多丘疹和脓疱，可能出现少量结节，需要及时专业治疗。',
+                symptoms: [
+                    '粉刺数量 20-50个',
+                    '炎性丘疹和脓疱 10-40个',
+                    '少量结节 < 5个',
+                    '偶有轻微疼痛',
+                    '可能留下色素沉着'
+                ],
+                gagsDetail: {
+                    forehead: '3-4分',
+                    rightCheek: '3-4分',
+                    leftCheek: '3-4分',
+                    nose: '3-4分',
+                    chin: '3-4分',
+                    chest: '3-4分'
+                },
+                recommendations: [
+                    '尽快就医，制定系统治疗方案',
+                    '可能需要口服药物配合外用药',
+                    '定期接受医美项目治疗',
+                    '严格防晒，避免色素沉着加重',
+                    '调整生活方式，减轻心理压力',
+                    '避免使用刺激性化妆品'
+                ],
+                treatmentOptions: ['博乐达水杨酸面部', '小针刀剥离', '1565非剥脱点阵', '1550非剥脱点阵激光', '三明治祛痘嫩肤', '黄金微针4.0', '痘清清A', '痘清清B', '痘清清C']
+            },
+            severe: {
+                title: '重度痤疮',
+                emoji: '😟',
+                gagsScore: '31-38分',
+                color: '#e74c3c',
+                description: '重度痤疮伴有大量结节和囊肿，炎症明显，极易留下永久性瘢痕，需要积极治疗。',
+                symptoms: [
+                    '粉刺数量 > 50个',
+                    '炎性丘疹和脓疱 > 40个',
+                    '结节和囊肿 > 5个',
+                    '明显疼痛和压痛',
+                    '已形成部分痘坑瘢痕',
+                    '可能伴有色素沉着'
+                ],
+                gagsDetail: {
+                    forehead: '5-8分',
+                    rightCheek: '5-8分',
+                    leftCheek: '5-8分',
+                    nose: '5-8分',
+                    chin: '5-8分',
+                    chest: '5-8分'
+                },
+                recommendations: [
+                    '立即就医，必须接受系统性治疗',
+                    '需要口服药物（如异维A酸）',
+                    '配合多种医美项目综合治疗',
+                    '严格遵医嘱，定期复诊',
+                    '做好心理辅导和支持',
+                    '制定长期治疗和维护计划',
+                    '术后护理至关重要'
+                ],
+                treatmentOptions: ['小针刀剥离', '1550非剥脱点阵激光', '二氧化碳点阵激光', '黄金微针4.0', '痘清清C', '毛孔痘坑卡1.0', '毛孔痘坑卡3.0']
+            },
+            'very-severe': {
+                title: '极重度痤疮',
+                emoji: '😰',
+                gagsScore: '> 38分',
+                color: '#8e44ad',
+                description: '极重度痤疮为聚合性或暴发性痤疮，多处融合、炎症剧烈，会留下严重瘢痕，必须立即接受专业治疗。',
+                symptoms: [
+                    '大面积聚合性痤疮',
+                    '多处结节囊肿融合',
+                    '严重炎症和疼痛',
+                    '已形成显著瘢痕',
+                    '可能伴有全身症状（发热、淋巴结肿大）',
+                    '心理压力巨大'
+                ],
+                gagsDetail: {
+                    forehead: '> 8分',
+                    rightCheek: '> 8分',
+                    leftCheek: '> 8分',
+                    nose: '> 8分',
+                    chin: '> 8分',
+                    chest: '> 8分'
+                },
+                recommendations: [
+                    '紧急就医，由专业皮肤科医生制定方案',
+                    '必须系统性口服药物治疗',
+                    '可能需要多种医美项目联合治疗',
+                    '长期治疗计划（6-12个月以上）',
+                    '需要专业心理咨询支持',
+                    '家庭支持和理解至关重要',
+                    '严格遵医嘱，切勿自行用药',
+                    '制定瘢痕修复的后续方案'
+                ],
+                treatmentOptions: ['二氧化碳点阵激光', '黄金微针4.0', '毛孔痘坑卡1.0', '毛孔痘坑卡3.0']
+            }
+        };
+
+        function showSymptomDetail(severity) {
+            const detail = SYMPTOM_DETAILS[severity];
+            if (!detail) return;
+
+            const modal = document.getElementById('symptomDetailModal');
+            const modalBody = document.getElementById('symptomDetailModalBody');
+
+            // 从ACNE_REAL_DATA中筛选推荐的治疗方案
+            const recommendedItems = [];
+            detail.treatmentOptions.forEach(optionName => {
+                // 在singleItems中查找
+                const singleItem = ACNE_REAL_DATA.singleItems.find(item => item.name === optionName);
+                if (singleItem) {
+                    recommendedItems.push({ ...singleItem, type: 'single' });
+                }
+                // 在packages中查找
+                const packageItem = ACNE_REAL_DATA.packages.find(pkg => pkg.name === optionName);
+                if (packageItem) {
+                    recommendedItems.push({ ...packageItem, type: 'package' });
+                }
+            });
+
+            let content = `
+                <div style="text-align: center; margin-bottom: 30px;">
+                    <div style="font-size: 4em; margin-bottom: 15px;">${detail.emoji}</div>
+                    <h2 style="color: ${detail.color}; font-size: 2em; margin-bottom: 10px;">${detail.title}</h2>
+                    <div style="display: inline-block; background: ${detail.color}; color: white; padding: 8px 20px; border-radius: 20px; font-weight: bold;">
+                        GAGS评分：${detail.gagsScore}
+                    </div>
+                </div>
+
+                <div style="background: #f8f9fa; padding: 20px; border-radius: 12px; margin-bottom: 25px; border-left: 4px solid ${detail.color};">
+                    <p style="color: #2c3e50; line-height: 1.8; margin: 0; font-size: 1.05em;">${detail.description}</p>
+                </div>
+
+                <div style="margin-bottom: 30px;">
+                    <h3 style="color: #2c3e50; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid ${detail.color};">
+                        📋 典型症状特征
+                    </h3>
+                    <div style="display: grid; gap: 10px;">
+                        ${detail.symptoms.map(symptom => `
+                            <div style="background: white; padding: 12px 18px; border-radius: 8px; border-left: 3px solid ${detail.color};">
+                                <span style="color: ${detail.color}; margin-right: 8px;">•</span>
+                                <span style="color: #34495e;">${symptom}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 30px;">
+                    <h3 style="color: #2c3e50; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid ${detail.color};">
+                        📊 GAGS分区评分标准
+                    </h3>
+                    <div style="background: white; padding: 20px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px;">
+                            ${Object.entries(detail.gagsDetail).map(([area, score]) => {
+                                const areaNames = {
+                                    forehead: '额头',
+                                    rightCheek: '右脸颊',
+                                    leftCheek: '左脸颊',
+                                    nose: '鼻部',
+                                    chin: '下巴',
+                                    chest: '胸背部'
+                                };
+                                return `
+                                    <div style="text-align: center; padding: 15px; background: linear-gradient(135deg, ${detail.color}15 0%, ${detail.color}30 100%); border-radius: 10px;">
+                                        <div style="font-weight: bold; color: #2c3e50; margin-bottom: 5px;">${areaNames[area]}</div>
+                                        <div style="font-size: 1.3em; color: ${detail.color}; font-weight: bold;">${score}</div>
+                                    </div>
+                                `;
+                            }).join('')}
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 30px;">
+                    <h3 style="color: #2c3e50; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid ${detail.color};">
+                        💡 治疗建议
+                    </h3>
+                    <div style="display: grid; gap: 10px;">
+                        ${detail.recommendations.map((rec, idx) => `
+                            <div style="background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); display: flex; align-items: start; gap: 12px;">
+                                <div style="background: ${detail.color}; color: white; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0;">
+                                    ${idx + 1}
+                                </div>
+                                <div style="color: #34495e; line-height: 1.6; flex: 1;">${rec}</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 20px;">
+                    <h3 style="color: #2c3e50; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid ${detail.color};">
+                        🏥 推荐治疗项目
+                    </h3>
+                    <div style="display: grid; gap: 15px;">
+                        ${recommendedItems.map(item => {
+                            const displayPrice = item.type === 'single'
+                                ? `¥${item.price_single} / 单次`
+                                : `¥${item.price_single} / 单次`;
+                            const categoryLabel = item.category || item.level;
+                            return `
+                                <div style="background: white; padding: 20px; border-radius: 12px; box-shadow: 0 2px 15px rgba(0,0,0,0.08); border-top: 3px solid ${detail.color};">
+                                    <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 12px;">
+                                        <div>
+                                            <h4 style="color: #2c3e50; margin: 0 0 8px 0; font-size: 1.2em;">${item.name}</h4>
+                                            <span style="display: inline-block; background: ${detail.color}15; color: ${detail.color}; padding: 4px 12px; border-radius: 12px; font-size: 0.85em; font-weight: bold;">
+                                                ${categoryLabel}
+                                            </span>
+                                        </div>
+                                        <div style="text-align: right;">
+                                            <div style="font-size: 1.5em; font-weight: bold; color: ${detail.color};">${displayPrice}</div>
+                                        </div>
+                                    </div>
+                                    <p style="color: #7f8c8d; line-height: 1.6; margin: 12px 0;">${item.desc || item.详细说明}</p>
+                                    ${item.duration ? `
+                                        <div style="margin-top: 12px; padding-top: 12px; border-top: 1px solid #eee; display: flex; gap: 15px; flex-wrap: wrap; font-size: 0.9em;">
+                                            <span style="color: #95a5a6;">⏱ ${item.duration}</span>
+                                            <span style="color: #95a5a6;">🔄 ${item.recovery}</span>
+                                        </div>
+                                    ` : ''}
+                                </div>
+                            `;
+                        }).join('')}
+                    </div>
+                </div>
+
+                <div style="background: #fff3cd; padding: 20px; border-radius: 12px; border-left: 4px solid #ffc107; margin-top: 30px;">
+                    <div style="font-weight: bold; color: #856404; margin-bottom: 10px; font-size: 1.1em;">⚠️ 重要提示</div>
+                    <div style="color: #856404; line-height: 1.7;">
+                        以上信息仅供参考，不能替代专业医疗诊断。每个人的皮肤状况不同，具体治疗方案需要由专业医生根据您的实际情况制定。请务必预约皮肤科医生进行详细检查和评估。
+                    </div>
+                </div>
+            `;
+
+            modalBody.innerHTML = content;
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeSymptomModal() {
+            const modal = document.getElementById('symptomDetailModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // 点击背景关闭弹窗
+        window.addEventListener('click', function(e) {
+            const modal = document.getElementById('symptomDetailModal');
+            if (e.target === modal) {
+                closeSymptomModal();
+            }
+        });
     </script>
+
+    <!-- 症状详情弹窗 -->
+    <div id="symptomDetailModal" class="detail-modal">
+        <div class="detail-modal-content" onclick="event.stopPropagation();">
+            <button class="modal-close-btn" onclick="closeSymptomModal()" style="position: absolute; top: 20px; right: 20px; background: #f0f0f0; border: none; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; font-size: 20px; color: #666; display: flex; align-items: center; justify-content: center; transition: all 0.3s;">
+                ×
+            </button>
+            <div id="symptomDetailModalBody"></div>
+        </div>
+    </div>
 </body>
 </html>
