@@ -3633,6 +3633,126 @@
             </div>
         </div>
 
+        <!-- 治疗效果跟踪系统 -->
+        <div style="background: white; border-radius: 20px; padding: 40px; margin-bottom: 30px; box-shadow: 0 10px 40px rgba(0,0,0,0.1);">
+            <h3 style="text-align: center; color: #2c3e50; font-size: 2em; margin-bottom: 10px;">📊 治疗效果跟踪</h3>
+            <p style="text-align: center; color: #7f8c8d; margin-bottom: 30px;">记录治疗过程 | 对比前后变化 | 见证改善历程</p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 25px;">
+                <div onclick="openTrackingSystem()" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 15px; cursor: pointer; transition: all 0.3s; box-shadow: 0 5px 20px rgba(102,126,234,0.3); text-align: center;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 30px rgba(102,126,234,0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 5px 20px rgba(102,126,234,0.3)';">
+                    <div style="font-size: 3em; margin-bottom: 15px;">📷</div>
+                    <h4 style="margin: 0 0 10px 0; font-size: 1.3em;">打开跟踪系统</h4>
+                    <p style="margin: 0; opacity: 0.9; font-size: 0.9em;">记录治疗进度，查看效果对比</p>
+                </div>
+
+                <div style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); padding: 30px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.08);">
+                    <div style="text-align: center; margin-bottom: 15px;">
+                        <div style="font-size: 2.5em; color: #667eea;">📈</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 2em; font-weight: bold; color: #2c3e50; margin-bottom: 5px;" id="trackingRecordCount">0</div>
+                        <div style="color: #7f8c8d; font-size: 0.9em;">治疗记录</div>
+                    </div>
+                </div>
+
+                <div style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); padding: 30px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.08);">
+                    <div style="text-align: center; margin-bottom: 15px;">
+                        <div style="font-size: 2.5em; color: #f5576c;">🎯</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 2em; font-weight: bold; color: #2c3e50; margin-bottom: 5px;" id="trackingDaysCount">0</div>
+                        <div style="color: #7f8c8d; font-size: 0.9em;">治疗天数</div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="padding: 20px; background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%); border-radius: 10px; border-left: 4px solid #ffc107;">
+                <div style="font-weight: bold; color: #856404; margin-bottom: 8px;">💡 使用提示</div>
+                <div style="color: #856404; font-size: 0.9em; line-height: 1.8;">
+                    • 建议每周记录一次治疗进展<br>
+                    • 保持拍摄角度和光线一致，便于对比<br>
+                    • 可添加备注记录治疗项目和感受<br>
+                    • 数据保存在本地，保护您的隐私
+                </div>
+            </div>
+        </div>
+
+        <!-- 治疗效果跟踪弹窗 -->
+        <div id="trackingModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 10000; overflow-y: auto;">
+            <div style="max-width: 1000px; margin: 40px auto; background: white; border-radius: 20px; position: relative; box-shadow: 0 20px 60px rgba(0,0,0,0.3);">
+                <!-- 关闭按钮 -->
+                <button onclick="closeTrackingSystem()" style="position: absolute; top: 20px; right: 20px; width: 40px; height: 40px; border-radius: 50%; border: none; background: #f0f0f0; cursor: pointer; font-size: 1.5em; color: #666; transition: all 0.3s; z-index: 10;" onmouseover="this.style.background='#e74c3c'; this.style.color='white';" onmouseout="this.style.background='#f0f0f0'; this.style.color='#666';">×</button>
+
+                <!-- 头部 -->
+                <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px 40px; border-radius: 20px 20px 0 0;">
+                    <h2 style="margin: 0 0 10px 0;">📊 治疗效果跟踪系统</h2>
+                    <p style="margin: 0; opacity: 0.9;">记录每一步改变，见证蜕变之路</p>
+                </div>
+
+                <!-- 内容区 -->
+                <div style="padding: 30px 40px;">
+                    <!-- 添加记录按钮 -->
+                    <button onclick="showAddRecordForm()" style="width: 100%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; padding: 15px; border-radius: 10px; font-size: 1.1em; font-weight: bold; cursor: pointer; margin-bottom: 25px; transition: all 0.3s; box-shadow: 0 4px 15px rgba(102,126,234,0.3);" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(102,126,234,0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(102,126,234,0.3)';">
+                        ➕ 添加新记录
+                    </button>
+
+                    <!-- 添加记录表单（默认隐藏） -->
+                    <div id="addRecordForm" style="display: none; background: #f8f9fa; padding: 25px; border-radius: 15px; margin-bottom: 25px;">
+                        <h4 style="color: #2c3e50; margin: 0 0 20px 0;">记录治疗进展</h4>
+
+                        <div style="margin-bottom: 15px;">
+                            <label style="display: block; color: #555; font-weight: 600; margin-bottom: 8px;">记录日期</label>
+                            <input type="date" id="recordDate" style="width: 100%; padding: 10px; border: 2px solid #ddd; border-radius: 8px;" />
+                        </div>
+
+                        <div style="margin-bottom: 15px;">
+                            <label style="display: block; color: #555; font-weight: 600; margin-bottom: 8px;">治疗项目（可选）</label>
+                            <input type="text" id="recordTreatment" placeholder="例如：果酸焕肤第3次" style="width: 100%; padding: 10px; border: 2px solid #ddd; border-radius: 8px;" />
+                        </div>
+
+                        <div style="margin-bottom: 15px;">
+                            <label style="display: block; color: #555; font-weight: 600; margin-bottom: 8px;">痘痘数量评估</label>
+                            <select id="recordAcneCount" style="width: 100%; padding: 10px; border: 2px solid #ddd; border-radius: 8px;">
+                                <option value="0-5">0-5个</option>
+                                <option value="6-10">6-10个</option>
+                                <option value="11-20">11-20个</option>
+                                <option value="20+">20个以上</option>
+                            </select>
+                        </div>
+
+                        <div style="margin-bottom: 15px;">
+                            <label style="display: block; color: #555; font-weight: 600; margin-bottom: 8px;">严重程度</label>
+                            <select id="recordSeverity" style="width: 100%; padding: 10px; border: 2px solid #ddd; border-radius: 8px;">
+                                <option value="轻度">轻度（粉刺为主）</option>
+                                <option value="中度">中度（丘疹脓疱）</option>
+                                <option value="重度">重度（结节囊肿）</option>
+                            </select>
+                        </div>
+
+                        <div style="margin-bottom: 15px;">
+                            <label style="display: block; color: #555; font-weight: 600; margin-bottom: 8px;">备注</label>
+                            <textarea id="recordNotes" placeholder="记录今天的感受、副作用、护理情况等..." rows="3" style="width: 100%; padding: 10px; border: 2px solid #ddd; border-radius: 8px; resize: vertical;"></textarea>
+                        </div>
+
+                        <div style="display: flex; gap: 10px;">
+                            <button onclick="saveTrackingRecord()" style="flex: 1; background: #28a745; color: white; border: none; padding: 12px; border-radius: 8px; font-weight: bold; cursor: pointer;">保存记录</button>
+                            <button onclick="hideAddRecordForm()" style="background: #6c757d; color: white; border: none; padding: 12px 20px; border-radius: 8px; cursor: pointer;">取消</button>
+                        </div>
+                    </div>
+
+                    <!-- 记录列表 -->
+                    <div id="trackingRecordsList">
+                        <!-- 空状态 -->
+                        <div id="trackingEmptyState" style="text-align: center; padding: 60px 20px; color: #95a5a6;">
+                            <div style="font-size: 4em; margin-bottom: 15px;">📋</div>
+                            <p style="font-size: 1.1em; margin: 0;">还没有治疗记录</p>
+                            <p style="margin: 10px 0 0 0;">点击上方"添加新记录"开始记录您的治疗历程</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- 痘痘问题分类专题 -->
         <div class="acne-categories-section" style="margin-bottom: 30px;">
             <h3 style="text-align: center; color: #2c3e50; font-size: 1.8em; margin-bottom: 25px;">📚 痘痘问题分类专题</h3>
@@ -8104,6 +8224,202 @@
                 }, 800);
             }
         }
+
+        // ========== 治疗效果跟踪系统 ==========
+
+        let trackingRecords = JSON.parse(localStorage.getItem('acneTrackingRecords') || '[]');
+
+        // 打开跟踪系统
+        function openTrackingSystem() {
+            document.getElementById('trackingModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+            renderTrackingRecords();
+        }
+
+        // 关闭跟踪系统
+        function closeTrackingSystem() {
+            document.getElementById('trackingModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+            hideAddRecordForm();
+        }
+
+        // 显示添加记录表单
+        function showAddRecordForm() {
+            const form = document.getElementById('addRecordForm');
+            form.style.display = 'block';
+
+            // 设置默认日期为今天
+            document.getElementById('recordDate').value = new Date().toISOString().split('T')[0];
+
+            // 清空表单
+            document.getElementById('recordTreatment').value = '';
+            document.getElementById('recordNotes').value = '';
+        }
+
+        // 隐藏添加记录表单
+        function hideAddRecordForm() {
+            document.getElementById('addRecordForm').style.display = 'none';
+        }
+
+        // 保存跟踪记录
+        function saveTrackingRecord() {
+            const date = document.getElementById('recordDate').value;
+            const treatment = document.getElementById('recordTreatment').value;
+            const acneCount = document.getElementById('recordAcneCount').value;
+            const severity = document.getElementById('recordSeverity').value;
+            const notes = document.getElementById('recordNotes').value;
+
+            if (!date) {
+                alert('请选择记录日期');
+                return;
+            }
+
+            const record = {
+                id: new Date().getTime(),
+                date: date,
+                treatment: treatment || '未记录',
+                acneCount: acneCount,
+                severity: severity,
+                notes: notes,
+                timestamp: new Date().getTime()
+            };
+
+            trackingRecords.unshift(record);
+            localStorage.setItem('acneTrackingRecords', JSON.stringify(trackingRecords));
+
+            hideAddRecordForm();
+            renderTrackingRecords();
+            updateTrackingStats();
+
+            // 显示成功提示
+            showToast('记录保存成功！');
+        }
+
+        // 删除记录
+        function deleteTrackingRecord(id) {
+            if (!confirm('确定要删除这条记录吗？')) return;
+
+            trackingRecords = trackingRecords.filter(r => r.id !== id);
+            localStorage.setItem('acneTrackingRecords', JSON.stringify(trackingRecords));
+
+            renderTrackingRecords();
+            updateTrackingStats();
+            showToast('记录已删除');
+        }
+
+        // 渲染记录列表
+        function renderTrackingRecords() {
+            const container = document.getElementById('trackingRecordsList');
+            const emptyState = document.getElementById('trackingEmptyState');
+
+            if (trackingRecords.length === 0) {
+                emptyState.style.display = 'block';
+                // 移除所有记录卡片
+                const cards = container.querySelectorAll('.tracking-record-card');
+                cards.forEach(card => card.remove());
+                return;
+            }
+
+            emptyState.style.display = 'none';
+
+            const html = trackingRecords.map((record, index) => {
+                const severityColor = record.severity === '轻度' ? '#28a745' :
+                                     record.severity === '中度' ? '#ffc107' : '#e74c3c';
+
+                return `
+                    <div class="tracking-record-card" style="background: white; border: 2px solid #e9ecef; border-radius: 12px; padding: 20px; margin-bottom: 15px; position: relative; transition: all 0.3s;" onmouseover="this.style.borderColor='#667eea'; this.style.boxShadow='0 5px 15px rgba(0,0,0,0.1)';" onmouseout="this.style.borderColor='#e9ecef'; this.style.boxShadow='none';">
+                        <button onclick="deleteTrackingRecord(${record.id})" style="position: absolute; top: 15px; right: 15px; background: transparent; border: none; color: #e74c3c; cursor: pointer; font-size: 1.2em; padding: 5px;" title="删除记录">🗑️</button>
+
+                        <div style="display: flex; gap: 20px; align-items: start;">
+                            <div style="flex: 1;">
+                                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                                    <div style="font-size: 1.5em;">📅</div>
+                                    <div>
+                                        <div style="font-weight: bold; color: #2c3e50; font-size: 1.1em;">${new Date(record.date).toLocaleDateString('zh-CN', {year: 'numeric', month: 'long', day: 'numeric'})}</div>
+                                        <div style="color: #7f8c8d; font-size: 0.85em;">第 ${trackingRecords.length - index} 次记录</div>
+                                    </div>
+                                </div>
+
+                                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin: 15px 0;">
+                                    <div style="background: #f8f9fa; padding: 10px; border-radius: 8px;">
+                                        <div style="color: #7f8c8d; font-size: 0.85em; margin-bottom: 5px;">治疗项目</div>
+                                        <div style="color: #2c3e50; font-weight: bold;">${record.treatment}</div>
+                                    </div>
+                                    <div style="background: #f8f9fa; padding: 10px; border-radius: 8px;">
+                                        <div style="color: #7f8c8d; font-size: 0.85em; margin-bottom: 5px;">痘痘数量</div>
+                                        <div style="color: #2c3e50; font-weight: bold;">${record.acneCount}</div>
+                                    </div>
+                                    <div style="background: #f8f9fa; padding: 10px; border-radius: 8px;">
+                                        <div style="color: #7f8c8d; font-size: 0.85em; margin-bottom: 5px;">严重程度</div>
+                                        <div style="color: ${severityColor}; font-weight: bold;">${record.severity}</div>
+                                    </div>
+                                </div>
+
+                                ${record.notes ? `
+                                    <div style="background: #fffbf0; border-left: 3px solid #ffc107; padding: 12px; border-radius: 8px; margin-top: 15px;">
+                                        <div style="color: #856404; font-size: 0.85em; margin-bottom: 5px; font-weight: bold;">备注</div>
+                                        <div style="color: #555; line-height: 1.6;">${record.notes}</div>
+                                    </div>
+                                ` : ''}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            // 移除旧的记录卡片
+            const oldCards = container.querySelectorAll('.tracking-record-card');
+            oldCards.forEach(card => card.remove());
+
+            // 插入新的记录
+            container.insertAdjacentHTML('beforeend', html);
+        }
+
+        // 更新统计信息
+        function updateTrackingStats() {
+            const recordCount = trackingRecords.length;
+            document.getElementById('trackingRecordCount').textContent = recordCount;
+
+            // 计算治疗天数
+            let days = 0;
+            if (recordCount > 0) {
+                const sortedRecords = [...trackingRecords].sort((a, b) => new Date(a.date) - new Date(b.date));
+                const firstDate = new Date(sortedRecords[0].date);
+                const lastDate = new Date(sortedRecords[sortedRecords.length - 1].date);
+                days = Math.ceil((lastDate - firstDate) / (1000 * 60 * 60 * 24));
+            }
+            document.getElementById('trackingDaysCount').textContent = days;
+        }
+
+        // 显示提示消息
+        function showToast(message) {
+            const toast = document.createElement('div');
+            toast.style.cssText = `
+                position: fixed;
+                top: 80px;
+                right: 30px;
+                background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+                color: white;
+                padding: 15px 25px;
+                border-radius: 10px;
+                box-shadow: 0 5px 20px rgba(40,167,69,0.4);
+                z-index: 10001;
+                font-weight: bold;
+                animation: slideInRight 0.3s;
+            `;
+            toast.textContent = message;
+            document.body.appendChild(toast);
+
+            setTimeout(() => {
+                toast.style.animation = 'slideOutRight 0.3s';
+                setTimeout(() => toast.remove(), 300);
+            }, 2000);
+        }
+
+        // 页面加载时初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            updateTrackingStats();
+        });
 
         // ========== 预约咨询表单 ==========
 
