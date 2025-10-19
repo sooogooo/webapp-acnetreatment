@@ -2730,6 +2730,104 @@
             </div>
         </div>
 
+        <!-- 前后对比案例展示系统 -->
+        <div class="before-after-cases-section" style="background: white; border-radius: 20px; padding: 40px; margin-bottom: 30px; box-shadow: 0 10px 40px rgba(0,0,0,0.08);">
+            <h3 style="text-align: center; color: #2c3e50; font-size: 1.8em; margin-bottom: 10px;">📸 真实案例对比</h3>
+            <p style="text-align: center; color: #7f8c8d; margin-bottom: 35px;">看看其他患者的治疗效果，为您的治疗之路增添信心</p>
+
+            <!-- 筛选器 -->
+            <div style="display: flex; justify-content: center; gap: 10px; margin-bottom: 30px; flex-wrap: wrap;">
+                <button class="case-filter-btn active" data-filter="all" onclick="filterCases('all')" style="padding: 10px 20px; border: 2px solid #667eea; background: #667eea; color: white; border-radius: 20px; cursor: pointer; font-weight: bold; transition: all 0.3s;">
+                    全部案例
+                </button>
+                <button class="case-filter-btn" data-filter="mild" onclick="filterCases('mild')" style="padding: 10px 20px; border: 2px solid #56ab2f; background: white; color: #56ab2f; border-radius: 20px; cursor: pointer; font-weight: bold; transition: all 0.3s;">
+                    轻度痤疮
+                </button>
+                <button class="case-filter-btn" data-filter="moderate" onclick="filterCases('moderate')" style="padding: 10px 20px; border: 2px solid #f39c12; background: white; color: #f39c12; border-radius: 20px; cursor: pointer; font-weight: bold; transition: all 0.3s;">
+                    中度痤疮
+                </button>
+                <button class="case-filter-btn" data-filter="severe" onclick="filterCases('severe')" style="padding: 10px 20px; border: 2px solid #e74c3c; background: white; color: #e74c3c; border-radius: 20px; cursor: pointer; font-weight: bold; transition: all 0.3s;">
+                    重度痤疮
+                </button>
+                <button class="case-filter-btn" data-filter="scar" onclick="filterCases('scar')" style="padding: 10px 20px; border: 2px solid #9b59b6; background: white; color: #9b59b6; border-radius: 20px; cursor: pointer; font-weight: bold; transition: all 0.3s;">
+                    痘坑修复
+                </button>
+            </div>
+
+            <!-- 案例卡片网格 -->
+            <div id="casesGrid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px;">
+                <!-- 案例将通过JavaScript动态生成 -->
+            </div>
+
+            <style>
+                .case-filter-btn:hover {
+                    transform: translateY(-2px);
+                    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+                }
+                .case-filter-btn.active {
+                    background: #667eea !important;
+                    color: white !important;
+                }
+                .case-card {
+                    background: white;
+                    border-radius: 15px;
+                    overflow: hidden;
+                    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+                    transition: all 0.3s;
+                    cursor: pointer;
+                }
+                .case-card:hover {
+                    transform: translateY(-5px);
+                    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+                }
+                .before-after-container {
+                    position: relative;
+                    width: 100%;
+                    padding-top: 75%;
+                    background: #f8f9fa;
+                    overflow: hidden;
+                }
+                .before-after-images {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                }
+                .before-image, .after-image {
+                    flex: 1;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 3em;
+                    position: relative;
+                }
+                .before-image {
+                    background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
+                }
+                .after-image {
+                    background: linear-gradient(135deg, #a8e6cf 0%, #56ab2f 100%);
+                }
+                .image-label {
+                    position: absolute;
+                    top: 10px;
+                    left: 10px;
+                    background: rgba(0,0,0,0.6);
+                    color: white;
+                    padding: 5px 12px;
+                    border-radius: 15px;
+                    font-size: 0.3em;
+                    font-weight: bold;
+                }
+                @media (max-width: 768px) {
+                    #casesGrid {
+                        grid-template-columns: 1fr !important;
+                    }
+                }
+            </style>
+        </div>
+
         <!-- 痘痘问题分类专题 -->
         <div class="acne-categories-section" style="margin-bottom: 30px;">
             <h3 style="text-align: center; color: #2c3e50; font-size: 1.8em; margin-bottom: 25px;">📚 痘痘问题分类专题</h3>
@@ -6116,6 +6214,391 @@
             dtAnswers = {};
             document.getElementById('dtResults').style.display = 'none';
             document.getElementById('dtStart').style.display = 'block';
+        }
+
+        // ========== 前后对比案例展示系统 ==========
+        const BEFORE_AFTER_CASES = [
+            {
+                id: 1,
+                severity: 'mild',
+                age: 22,
+                gender: '女',
+                treatment: '激光针清 + 红蓝光',
+                sessions: 5,
+                duration: '2个月',
+                beforeDesc: '额头和下巴有较多闭口粉刺，偶尔出现红肿痘痘',
+                afterDesc: '闭口明显减少，肤质变得光滑细腻，新痘痘很少冒出',
+                improvement: '85%',
+                cost: '约1500元',
+                review: '效果超出预期！坚持治疗真的有用，现在皮肤状态好多了。',
+                tags: ['轻度痤疮', '闭口粉刺', '基础治疗']
+            },
+            {
+                id: 2,
+                severity: 'moderate',
+                age: 25,
+                gender: '女',
+                treatment: '博乐达水杨酸 + 1565点阵激光',
+                sessions: 6,
+                duration: '3个月',
+                beforeDesc: '两侧脸颊有大量丘疹和脓疱，部分有红色痘印',
+                afterDesc: '痘痘基本消退，痘印淡化明显，毛孔缩小，肤色更均匀',
+                improvement: '90%',
+                cost: '约5800元',
+                review: '医生很专业，方案制定合理。虽然花了点钱，但看到效果觉得很值得。',
+                tags: ['中度痤疮', '丘疹脓疱', '综合治疗']
+            },
+            {
+                id: 3,
+                severity: 'severe',
+                age: 28,
+                gender: '男',
+                treatment: '口服药物 + 黄金微针 + CO2点阵',
+                sessions: 8,
+                duration: '6个月',
+                beforeDesc: '全脸大量结节囊肿，部分融合，已形成明显痘坑',
+                afterDesc: '结节囊肿消退，痘坑明显变浅，整体肤质改善很大',
+                improvement: '80%',
+                cost: '约15000元',
+                review: '治疗过程比较漫长，但医生一直很耐心。现在终于敢抬头见人了。',
+                tags: ['重度痤疮', '结节囊肿', '长期治疗']
+            },
+            {
+                id: 4,
+                severity: 'scar',
+                age: 26,
+                gender: '女',
+                treatment: '小针刀剥离 + CO2点阵 + 1550点阵',
+                sessions: 10,
+                duration: '8个月',
+                beforeDesc: '脸颊有大量冰锥型和车厢型痘坑，非常明显',
+                afterDesc: '痘坑深度明显变浅，部分浅层痘坑基本看不出来了',
+                improvement: '70%',
+                cost: '约20000元',
+                review: '痘坑治疗确实需要耐心和投入，但看到一点点变好还是很开心的。',
+                tags: ['痘坑修复', '瘢痕治疗', '高端治疗']
+            },
+            {
+                id: 5,
+                severity: 'moderate',
+                age: 20,
+                gender: '女',
+                treatment: '三明治祛痘嫩肤',
+                sessions: 4,
+                duration: '1.5个月',
+                beforeDesc: '鼻子和额头油脂分泌旺盛，有较多黑头和白头',
+                afterDesc: '出油明显减少，黑头白头改善，皮肤不再那么粗糙',
+                improvement: '75%',
+                cost: '约4000元',
+                review: '作为学生党预算有限，选了性价比高的项目，效果还不错。',
+                tags: ['中度痤疮', '油性皮肤', '控油治疗']
+            },
+            {
+                id: 6,
+                severity: 'mild',
+                age: 24,
+                gender: '男',
+                treatment: '红蓝光 + 湿敷舒敏',
+                sessions: 6,
+                duration: '2个月',
+                beforeDesc: '下巴和鼻翼两侧反复长痘，有轻微炎症',
+                afterDesc: '痘痘反复的情况明显改善，皮肤没那么容易发红了',
+                improvement: '80%',
+                cost: '约1200元',
+                review: '温和的治疗方式，没有恢复期，很适合上班族。',
+                tags: ['轻度痤疮', '反复长痘', '无恢复期']
+            },
+            {
+                id: 7,
+                severity: 'severe',
+                age: 30,
+                gender: '女',
+                treatment: '口服异维A酸 + 痘清清C套餐',
+                sessions: 12,
+                duration: '10个月',
+                beforeDesc: '多年痤疮史，反复发作，脸颊和下巴有大量结节',
+                afterDesc: '终于控制住了！新痘痘很少，旧痘坑也在逐步修复中',
+                improvement: '85%',
+                cost: '约18000元',
+                review: '这么多年终于找到了适合自己的治疗方案，非常感谢医生的坚持。',
+                tags: ['重度痤疮', '反复发作', '系统治疗']
+            },
+            {
+                id: 8,
+                severity: 'scar',
+                age: 27,
+                gender: '男',
+                treatment: '毛孔痘坑卡3.0 顶级套餐',
+                sessions: 6,
+                duration: '5个月',
+                beforeDesc: '太阳穴和脸颊有严重痘坑，影响外观和自信',
+                afterDesc: '痘坑填平了很多，化妆后基本看不出来，很满意',
+                improvement: '75%',
+                cost: '约28000元',
+                review: '投资值得！现在照镜子都有信心了，工作面试也更有底气。',
+                tags: ['痘坑修复', '严重瘢痕', '顶级方案']
+            }
+        ];
+
+        let currentFilter = 'all';
+
+        // 页面加载时初始化案例展示
+        document.addEventListener('DOMContentLoaded', function() {
+            renderCases('all');
+        });
+
+        function filterCases(filter) {
+            currentFilter = filter;
+
+            // 更新按钮状态
+            document.querySelectorAll('.case-filter-btn').forEach(btn => {
+                if (btn.dataset.filter === filter) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+
+            // 重新渲染案例
+            renderCases(filter);
+        }
+
+        function renderCases(filter) {
+            const grid = document.getElementById('casesGrid');
+            let filteredCases = BEFORE_AFTER_CASES;
+
+            if (filter !== 'all') {
+                filteredCases = BEFORE_AFTER_CASES.filter(c => c.severity === filter);
+            }
+
+            if (filteredCases.length === 0) {
+                grid.innerHTML = `
+                    <div style="grid-column: 1/-1; text-align: center; padding: 60px 20px; color: #95a5a6;">
+                        <div style="font-size: 4em; margin-bottom: 15px;">🔍</div>
+                        <div style="font-size: 1.1em;">暂无该类型案例</div>
+                    </div>
+                `;
+                return;
+            }
+
+            grid.innerHTML = filteredCases.map(caseItem => `
+                <div class="case-card" onclick="showCaseDetail(${caseItem.id})" data-severity="${caseItem.severity}">
+                    <!-- 前后对比图片区域 -->
+                    <div class="before-after-container">
+                        <div class="before-after-images">
+                            <div class="before-image">
+                                <span class="image-label">治疗前</span>
+                                😟
+                            </div>
+                            <div class="after-image">
+                                <span class="image-label">治疗后</span>
+                                😊
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 案例信息 -->
+                    <div style="padding: 20px;">
+                        <!-- 标签 -->
+                        <div style="display: flex; gap: 8px; margin-bottom: 12px; flex-wrap: wrap;">
+                            ${caseItem.tags.map(tag => `
+                                <span style="background: ${getSeverityColor(caseItem.severity)}15; color: ${getSeverityColor(caseItem.severity)}; padding: 4px 10px; border-radius: 12px; font-size: 0.8em; font-weight: bold;">
+                                    ${tag}
+                                </span>
+                            `).join('')}
+                        </div>
+
+                        <!-- 基本信息 -->
+                        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 12px; font-size: 0.9em; color: #7f8c8d;">
+                            <div>👤 ${caseItem.age}岁 ${caseItem.gender}</div>
+                            <div>⏱ ${caseItem.duration}</div>
+                            <div>🔢 ${caseItem.sessions}次治疗</div>
+                            <div>💰 ${caseItem.cost}</div>
+                        </div>
+
+                        <!-- 治疗方案 -->
+                        <div style="background: #f8f9fa; padding: 12px; border-radius: 8px; margin-bottom: 12px;">
+                            <div style="font-size: 0.85em; color: #95a5a6; margin-bottom: 4px;">治疗方案</div>
+                            <div style="color: #2c3e50; font-weight: bold; font-size: 0.95em;">${caseItem.treatment}</div>
+                        </div>
+
+                        <!-- 改善程度 -->
+                        <div style="margin-bottom: 12px;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 5px; font-size: 0.9em;">
+                                <span style="color: #7f8c8d;">改善程度</span>
+                                <span style="color: ${getSeverityColor(caseItem.severity)}; font-weight: bold;">${caseItem.improvement}</span>
+                            </div>
+                            <div style="background: #e0e0e0; height: 8px; border-radius: 4px; overflow: hidden;">
+                                <div style="background: ${getSeverityColor(caseItem.severity)}; height: 100%; width: ${caseItem.improvement}; border-radius: 4px; transition: width 0.5s;"></div>
+                            </div>
+                        </div>
+
+                        <!-- 查看详情按钮 -->
+                        <button style="width: 100%; padding: 10px; background: linear-gradient(135deg, ${getSeverityColor(caseItem.severity)} 0%, ${getSeverityColor(caseItem.severity)}dd 100%); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">
+                            查看详细信息 →
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function getSeverityColor(severity) {
+            const colors = {
+                'mild': '#56ab2f',
+                'moderate': '#f39c12',
+                'severe': '#e74c3c',
+                'scar': '#9b59b6'
+            };
+            return colors[severity] || '#667eea';
+        }
+
+        function showCaseDetail(caseId) {
+            const caseItem = BEFORE_AFTER_CASES.find(c => c.id === caseId);
+            if (!caseItem) return;
+
+            const modal = document.getElementById('caseDetailModal');
+            if (!modal) {
+                // 创建弹窗
+                const modalHtml = `
+                    <div id="caseDetailModal" class="detail-modal">
+                        <div class="detail-modal-content" onclick="event.stopPropagation();">
+                            <button class="modal-close-btn" onclick="closeCaseDetailModal()" style="position: absolute; top: 20px; right: 20px; background: #f0f0f0; border: none; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; font-size: 20px; color: #666; display: flex; align-items: center; justify-content: center; transition: all 0.3s;">
+                                ×
+                            </button>
+                            <div id="caseDetailModalBody"></div>
+                        </div>
+                    </div>
+                `;
+                document.body.insertAdjacentHTML('beforeend', modalHtml);
+
+                // 点击背景关闭
+                document.getElementById('caseDetailModal').addEventListener('click', function(e) {
+                    if (e.target === this) {
+                        closeCaseDetailModal();
+                    }
+                });
+            }
+
+            const modalBody = document.getElementById('caseDetailModalBody');
+            const color = getSeverityColor(caseItem.severity);
+
+            modalBody.innerHTML = `
+                <div style="text-align: center; margin-bottom: 30px;">
+                    <div style="font-size: 4em; margin-bottom: 15px;">📸</div>
+                    <h2 style="color: #2c3e50; font-size: 1.8em; margin-bottom: 10px;">案例详情</h2>
+                    <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;">
+                        ${caseItem.tags.map(tag => `
+                            <span style="background: ${color}15; color: ${color}; padding: 5px 12px; border-radius: 15px; font-size: 0.9em; font-weight: bold;">
+                                ${tag}
+                            </span>
+                        `).join('')}
+                    </div>
+                </div>
+
+                <!-- 前后对比大图 -->
+                <div style="margin-bottom: 30px; background: #f8f9fa; border-radius: 15px; overflow: hidden;">
+                    <div style="display: flex; height: 300px;">
+                        <div style="flex: 1; background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%); display: flex; align-items: center; justify-content: center; position: relative;">
+                            <span style="position: absolute; top: 15px; left: 15px; background: rgba(0,0,0,0.6); color: white; padding: 8px 15px; border-radius: 20px; font-weight: bold;">治疗前</span>
+                            <div style="font-size: 5em;">😟</div>
+                        </div>
+                        <div style="flex: 1; background: linear-gradient(135deg, #a8e6cf 0%, #56ab2f 100%); display: flex; align-items: center; justify-content: center; position: relative;">
+                            <span style="position: absolute; top: 15px; left: 15px; background: rgba(0,0,0,0.6); color: white; padding: 8px 15px; border-radius: 20px; font-weight: bold;">治疗后</span>
+                            <div style="font-size: 5em;">😊</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 基本信息 -->
+                <div style="background: linear-gradient(135deg, ${color}15 0%, ${color}25 100%); padding: 25px; border-radius: 15px; margin-bottom: 25px; border-left: 4px solid ${color};">
+                    <h3 style="color: #2c3e50; margin-bottom: 15px; font-size: 1.3em;">👤 患者信息</h3>
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px;">
+                        <div style="background: white; padding: 15px; border-radius: 10px;">
+                            <div style="font-size: 0.85em; color: #7f8c8d; margin-bottom: 5px;">年龄性别</div>
+                            <div style="font-weight: bold; color: #2c3e50; font-size: 1.1em;">${caseItem.age}岁 ${caseItem.gender}</div>
+                        </div>
+                        <div style="background: white; padding: 15px; border-radius: 10px;">
+                            <div style="font-size: 0.85em; color: #7f8c8d; margin-bottom: 5px;">治疗周期</div>
+                            <div style="font-weight: bold; color: #2c3e50; font-size: 1.1em;">${caseItem.duration}</div>
+                        </div>
+                        <div style="background: white; padding: 15px; border-radius: 10px;">
+                            <div style="font-size: 0.85em; color: #7f8c8d; margin-bottom: 5px;">治疗次数</div>
+                            <div style="font-weight: bold; color: #2c3e50; font-size: 1.1em;">${caseItem.sessions}次</div>
+                        </div>
+                        <div style="background: white; padding: 15px; border-radius: 10px;">
+                            <div style="font-size: 0.85em; color: #7f8c8d; margin-bottom: 5px;">总费用</div>
+                            <div style="font-weight: bold; color: ${color}; font-size: 1.1em;">${caseItem.cost}</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 治疗方案 -->
+                <div style="margin-bottom: 25px;">
+                    <h3 style="color: #2c3e50; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid ${color}; font-size: 1.3em;">
+                        💊 治疗方案
+                    </h3>
+                    <div style="background: white; padding: 20px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+                        <div style="color: #2c3e50; font-size: 1.1em; font-weight: bold; line-height: 1.8;">${caseItem.treatment}</div>
+                    </div>
+                </div>
+
+                <!-- 治疗前后对比 -->
+                <div style="margin-bottom: 25px;">
+                    <h3 style="color: #2c3e50; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid ${color}; font-size: 1.3em;">
+                        📊 治疗前后对比
+                    </h3>
+                    <div style="display: grid; gap: 15px;">
+                        <div style="background: #fff3cd; padding: 18px; border-radius: 12px; border-left: 4px solid #ffc107;">
+                            <div style="font-weight: bold; color: #856404; margin-bottom: 8px;">治疗前</div>
+                            <div style="color: #856404; line-height: 1.7;">${caseItem.beforeDesc}</div>
+                        </div>
+                        <div style="background: #d4edda; padding: 18px; border-radius: 12px; border-left: 4px solid #28a745;">
+                            <div style="font-weight: bold; color: #155724; margin-bottom: 8px;">治疗后</div>
+                            <div style="color: #155724; line-height: 1.7;">${caseItem.afterDesc}</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 改善程度 -->
+                <div style="margin-bottom: 25px;">
+                    <h3 style="color: #2c3e50; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid ${color}; font-size: 1.3em;">
+                        📈 改善程度
+                    </h3>
+                    <div style="text-align: center; padding: 30px; background: linear-gradient(135deg, ${color}08 0%, ${color}15 100%); border-radius: 12px;">
+                        <div style="font-size: 3.5em; font-weight: bold; color: ${color}; margin-bottom: 10px;">${caseItem.improvement}</div>
+                        <div style="color: #7f8c8d;">综合改善程度</div>
+                    </div>
+                </div>
+
+                <!-- 患者评价 -->
+                <div style="margin-bottom: 20px;">
+                    <h3 style="color: #2c3e50; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid ${color}; font-size: 1.3em;">
+                        💬 患者评价
+                    </h3>
+                    <div style="background: #f8f9fa; padding: 20px; border-radius: 12px; border-left: 4px solid ${color};">
+                        <div style="color: #2c3e50; line-height: 1.8; font-style: italic;">"${caseItem.review}"</div>
+                    </div>
+                </div>
+
+                <!-- 免责声明 -->
+                <div style="background: #e7f3ff; padding: 15px; border-radius: 10px; border-left: 4px solid #2196f3;">
+                    <div style="font-weight: bold; color: #1565c0; margin-bottom: 5px;">📌 重要提示</div>
+                    <div style="color: #1565c0; font-size: 0.9em; line-height: 1.6;">
+                        以上案例为真实患者治疗经历，效果因个人体质、病情严重程度、配合程度等因素而异。具体治疗方案需由专业医生根据您的实际情况制定。
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('caseDetailModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeCaseDetailModal() {
+            const modal = document.getElementById('caseDetailModal');
+            if (modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
         }
     </script>
 
