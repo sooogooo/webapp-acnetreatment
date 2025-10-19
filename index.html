@@ -3551,6 +3551,16 @@
             <p>这是一本由专业女性皮肤科医生撰写的痘痘管理指南，涵盖医学诊疗、日常护理、心理支持等多个维度。本书以中国现实生活为背景，为受痘痘困扰的读者提供科学、实用、温暖的指导。</p>
         </div>
 
+        <!-- 继续阅读按钮 -->
+        <button
+            id="continueReadingBtn"
+            onclick="continueReading()"
+            style="display: none; width: 100%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; padding: 20px 25px; border-radius: 15px; cursor: pointer; margin-bottom: 30px; box-shadow: 0 10px 30px rgba(102,126,234,0.3); transition: all 0.3s; font-size: 1em; text-align: left;"
+            onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 15px 40px rgba(102,126,234,0.4)';"
+            onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 10px 30px rgba(102,126,234,0.3)';">
+            <!-- 按钮内容将由JavaScript动态生成 -->
+        </button>
+
         <div class="medical-beauty-section">
             <h3>专业医美指南</h3>
             <div class="medical-beauty-highlights">
@@ -4769,6 +4779,16 @@
                 document.getElementById('contentArea').classList.add('active');
                 document.querySelector('.book-info').style.display = 'none';
                 document.querySelector('.stats').style.display = 'none';
+
+                // 保存阅读进度
+                saveReadingProgress(filename, title);
+
+                // 恢复滚动位置
+                setTimeout(() => {
+                    restoreScrollPosition(filename);
+                    // 启动滚动监听
+                    startScrollTracking(filename);
+                }, 100);
             } catch (error) {
                 document.getElementById('chapterContent').innerHTML = `
                     <h1>加载失败</h1>
@@ -5026,6 +5046,9 @@
             document.getElementById('contentArea').classList.remove('active');
             document.querySelector('.book-info').style.display = 'block';
             document.querySelector('.stats').style.display = 'block';
+
+            // 停止滚动位置跟踪
+            stopScrollTracking();
         }
 
         // 数字滚动动画
@@ -7251,6 +7274,7 @@
             initAppointmentDate();
             updateBookmarkCount();
             renderBookmarkList();
+            updateContinueReadingButton();  // 初始化继续阅读按钮
         });
 
         // 切换收藏面板
@@ -7426,6 +7450,127 @@
         function addBookmarkButtonToTreatments() {
             // 这个函数会在渲染治疗项目时调用
             // 在每个治疗项目卡片上添加收藏按钮
+        }
+
+        // ========== 阅读进度记录 ==========
+
+        let scrollTrackingTimer = null;
+
+        // 保存阅读进度
+        function saveReadingProgress(filename, title) {
+            const progress = {
+                filename: filename,
+                title: title,
+                timestamp: new Date().getTime(),
+                scrollPosition: 0
+            };
+
+            localStorage.setItem('acneReadingProgress', JSON.stringify(progress));
+            updateContinueReadingButton();
+        }
+
+        // 恢复滚动位置
+        function restoreScrollPosition(filename) {
+            const progress = JSON.parse(localStorage.getItem('acneReadingProgress') || '{}');
+
+            if (progress.filename === filename && progress.scrollPosition) {
+                window.scrollTo({
+                    top: progress.scrollPosition,
+                    behavior: 'smooth'
+                });
+            }
+        }
+
+        // 启动滚动位置跟踪
+        function startScrollTracking(filename) {
+            // 移除旧的监听器
+            stopScrollTracking();
+
+            // 添加滚动监听
+            const scrollHandler = () => {
+                // 使用防抖，避免频繁保存
+                if (scrollTrackingTimer) {
+                    clearTimeout(scrollTrackingTimer);
+                }
+
+                scrollTrackingTimer = setTimeout(() => {
+                    const progress = JSON.parse(localStorage.getItem('acneReadingProgress') || '{}');
+                    if (progress.filename === filename) {
+                        progress.scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+                        progress.timestamp = new Date().getTime();
+                        localStorage.setItem('acneReadingProgress', JSON.stringify(progress));
+                    }
+                }, 500); // 500ms防抖
+            };
+
+            window.addEventListener('scroll', scrollHandler);
+            window._scrollHandler = scrollHandler; // 保存引用以便后续移除
+        }
+
+        // 停止滚动位置跟踪
+        function stopScrollTracking() {
+            if (window._scrollHandler) {
+                window.removeEventListener('scroll', window._scrollHandler);
+                window._scrollHandler = null;
+            }
+            if (scrollTrackingTimer) {
+                clearTimeout(scrollTrackingTimer);
+                scrollTrackingTimer = null;
+            }
+        }
+
+        // 获取阅读进度
+        function getReadingProgress() {
+            return JSON.parse(localStorage.getItem('acneReadingProgress') || '{}');
+        }
+
+        // 继续阅读
+        function continueReading() {
+            const progress = getReadingProgress();
+            if (progress.filename && progress.title) {
+                loadChapter(progress.filename, progress.title);
+            }
+        }
+
+        // 更新"继续阅读"按钮
+        function updateContinueReadingButton() {
+            const progress = getReadingProgress();
+            const button = document.getElementById('continueReadingBtn');
+
+            if (!button) return;
+
+            if (progress.filename && progress.title) {
+                button.style.display = 'block';
+                const timeAgo = formatTimeAgo(progress.timestamp);
+                button.innerHTML = `
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <div style="font-size: 2em;">📖</div>
+                        <div style="flex: 1; text-align: left;">
+                            <div style="font-weight: bold; font-size: 1em; margin-bottom: 3px;">继续阅读</div>
+                            <div style="font-size: 0.85em; opacity: 0.9;">${progress.title}</div>
+                            <div style="font-size: 0.75em; opacity: 0.7; margin-top: 2px;">${timeAgo}</div>
+                        </div>
+                        <div style="font-size: 1.5em;">→</div>
+                    </div>
+                `;
+            } else {
+                button.style.display = 'none';
+            }
+        }
+
+        // 格式化时间（多久之前）
+        function formatTimeAgo(timestamp) {
+            const now = new Date().getTime();
+            const diff = now - timestamp;
+            const minutes = Math.floor(diff / 60000);
+            const hours = Math.floor(diff / 3600000);
+            const days = Math.floor(diff / 86400000);
+
+            if (minutes < 1) return '刚刚';
+            if (minutes < 60) return `${minutes}分钟前`;
+            if (hours < 24) return `${hours}小时前`;
+            if (days < 7) return `${days}天前`;
+            return new Date(timestamp).toLocaleDateString('zh-CN');
         }
 
         // ========== 预约咨询表单 ==========
