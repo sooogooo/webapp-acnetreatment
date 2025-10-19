@@ -2441,6 +2441,114 @@
                 </div>
             </div>
         </header>
+
+        <!-- 收藏/书签浮动按钮 -->
+        <div id="bookmarkFloatBtn" onclick="toggleBookmarkPanel()" style="position: fixed; bottom: 80px; right: 30px; width: 60px; height: 60px; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 5px 20px rgba(245,87,108,0.4); z-index: 1000; transition: all 0.3s;">
+            <div style="position: relative;">
+                <span style="font-size: 1.8em;">⭐</span>
+                <span id="bookmarkCount" style="position: absolute; top: -8px; right: -8px; background: #e74c3c; color: white; border-radius: 50%; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; font-size: 0.7em; font-weight: bold;">0</span>
+            </div>
+        </div>
+
+        <!-- 收藏列表面板 -->
+        <div id="bookmarkPanel" style="display: none; position: fixed; top: 0; right: 0; width: 400px; height: 100vh; background: white; box-shadow: -5px 0 20px rgba(0,0,0,0.2); z-index: 1001; overflow-y: auto; animation: slideInRight 0.3s;">
+            <div style="position: sticky; top: 0; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; padding: 20px; z-index: 10;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <h3 style="margin: 0; font-size: 1.3em;">我的收藏 ⭐</h3>
+                    <button onclick="toggleBookmarkPanel()" style="background: rgba(255,255,255,0.2); border: none; color: white; width: 35px; height: 35px; border-radius: 50%; cursor: pointer; font-size: 1.2em; display: flex; align-items: center; justify-content: center;">
+                        ×
+                    </button>
+                </div>
+                <p style="margin: 10px 0 0 0; opacity: 0.9; font-size: 0.9em;">共 <span id="bookmarkTotalCount">0</span> 个收藏</p>
+            </div>
+
+            <!-- 分类标签 -->
+            <div style="padding: 20px; border-bottom: 1px solid #e0e0e0;">
+                <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                    <button class="bookmark-tab-btn active" data-tab="all" onclick="switchBookmarkTab('all')" style="padding: 8px 16px; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; border: none; border-radius: 20px; cursor: pointer; font-size: 0.9em; font-weight: bold; transition: all 0.3s;">
+                        全部
+                    </button>
+                    <button class="bookmark-tab-btn" data-tab="treatment" onclick="switchBookmarkTab('treatment')" style="padding: 8px 16px; background: #f0f0f0; color: #666; border: none; border-radius: 20px; cursor: pointer; font-size: 0.9em; font-weight: bold; transition: all 0.3s;">
+                        治疗项目
+                    </button>
+                    <button class="bookmark-tab-btn" data-tab="chapter" onclick="switchBookmarkTab('chapter')" style="padding: 8px 16px; background: #f0f0f0; color: #666; border: none; border-radius: 20px; cursor: pointer; font-size: 0.9em; font-weight: bold; transition: all 0.3s;">
+                        电子书章节
+                    </button>
+                </div>
+            </div>
+
+            <!-- 收藏列表 -->
+            <div id="bookmarkList" style="padding: 20px;">
+                <!-- 空状态 -->
+                <div id="bookmarkEmpty" style="text-align: center; padding: 60px 20px; color: #95a5a6;">
+                    <div style="font-size: 4em; margin-bottom: 15px;">📚</div>
+                    <p style="font-size: 1.1em;">还没有收藏任何内容</p>
+                    <p style="font-size: 0.9em; margin-top: 8px; opacity: 0.7;">点击内容上的⭐按钮即可收藏</p>
+                </div>
+            </div>
+
+            <style>
+                @keyframes slideInRight {
+                    from { transform: translateX(100%); }
+                    to { transform: translateX(0); }
+                }
+                #bookmarkFloatBtn:hover {
+                    transform: scale(1.1);
+                    box-shadow: 0 8px 30px rgba(245,87,108,0.5);
+                }
+                .bookmark-tab-btn.active {
+                    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%) !important;
+                    color: white !important;
+                }
+                .bookmark-tab-btn:hover {
+                    transform: translateY(-2px);
+                }
+                .bookmark-item {
+                    background: #f8f9fa;
+                    padding: 15px;
+                    border-radius: 10px;
+                    margin-bottom: 12px;
+                    position: relative;
+                    transition: all 0.3s;
+                    border-left: 4px solid #f093fb;
+                }
+                .bookmark-item:hover {
+                    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+                    transform: translateX(5px);
+                }
+                .bookmark-remove-btn {
+                    position: absolute;
+                    top: 10px;
+                    right: 10px;
+                    background: #e74c3c;
+                    color: white;
+                    border: none;
+                    width: 25px;
+                    height: 25px;
+                    border-radius: 50%;
+                    cursor: pointer;
+                    font-size: 0.8em;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+                @media (max-width: 768px) {
+                    #bookmarkPanel {
+                        width: 100% !important;
+                    }
+                    #bookmarkFloatBtn {
+                        bottom: 20px !important;
+                        right: 20px !important;
+                        width: 50px !important;
+                        height: 50px !important;
+                    }
+                }
+            </style>
+        </div>
+
+        <!-- 收藏遮罩层 -->
+        <div id="bookmarkBackdrop" onclick="toggleBookmarkPanel()" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000;"></div>
+
         <!-- 增强版全局搜索区域 -->
         <div class="enhanced-search-section" style="background: white; border-radius: 20px; padding: 30px; margin-bottom: 30px; box-shadow: 0 10px 40px rgba(0,0,0,0.08);">
             <div class="search-header" style="text-align: center; margin-bottom: 25px;">
@@ -4607,11 +4715,23 @@
             for (const chapter of chapters) {
                 const card = document.createElement('div');
                 card.className = chapter.isSpecial ? 'chapter-card special' : 'chapter-card';
+                card.style.position = 'relative';
 
                 // 加载SVG图标
                 const svgContent = await loadSVG(chapter.icon);
 
+                const chapterData = { id: chapters.indexOf(chapter), title: chapter.title, desc: chapter.desc, file: chapter.file };
+                const bookmarked = isBookmarked('chapter', chapterData.id);
+
                 card.innerHTML = `
+                    <button class="chapter-bookmark-btn"
+                            data-chapter-id="${chapterData.id}"
+                            style="position: absolute; top: 10px; right: 10px; background: transparent; border: none; font-size: 1.5em; cursor: pointer; padding: 5px; z-index: 10; transition: transform 0.2s;"
+                            title="收藏"
+                            onmouseover="this.style.transform='scale(1.2)'"
+                            onmouseout="this.style.transform='scale(1)'">
+                        ${bookmarked ? '⭐' : '☆'}
+                    </button>
                     <div class="chapter-header">
                         <div class="chapter-icon icon icon--large">
                             ${svgContent}
@@ -4620,6 +4740,15 @@
                     </div>
                     <div class="chapter-desc">${chapter.desc}</div>
                 `;
+
+                // 添加收藏按钮点击事件
+                const bookmarkBtn = card.querySelector('.chapter-bookmark-btn');
+                bookmarkBtn.onclick = (e) => {
+                    e.stopPropagation();
+                    const success = addBookmark('chapter', chapterData);
+                    bookmarkBtn.textContent = success ? '⭐' : '☆';
+                };
+
                 card.onclick = () => loadChapter(chapter.file, chapter.title);
                 toc.appendChild(card);
             }
@@ -6250,8 +6379,17 @@
                         </h5>
                         <div style="display: grid; gap: 12px;">
                             ${recommendedSingleItems.slice(0, 3).map(item => `
-                                <div style="background: white; padding: 15px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); border-left: 3px solid ${severityColor};">
-                                    <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 8px;">
+                                <div style="background: white; padding: 15px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); border-left: 3px solid ${severityColor}; position: relative;">
+                                    <!-- 收藏按钮 -->
+                                    <button
+                                        onclick="event.stopPropagation(); const success = addBookmark('treatment', ${JSON.stringify(item)}); this.textContent = success ? '⭐' : '☆';"
+                                        style="position: absolute; top: 10px; right: 10px; background: transparent; border: none; font-size: 1.5em; cursor: pointer; padding: 5px; transition: transform 0.2s;"
+                                        onmouseover="this.style.transform='scale(1.2)'"
+                                        onmouseout="this.style.transform='scale(1)'"
+                                        title="收藏">
+                                        ${isBookmarked('treatment', item.id) ? '⭐' : '☆'}
+                                    </button>
+                                    <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 8px; padding-right: 35px;">
                                         <div>
                                             <h6 style="color: #2c3e50; margin: 0 0 5px 0; font-size: 1.05em;">${item.name}</h6>
                                             <span style="background: ${severityColor}15; color: ${severityColor}; padding: 3px 10px; border-radius: 10px; font-size: 0.8em; font-weight: bold;">
@@ -6282,8 +6420,17 @@
                         </h5>
                         <div style="display: grid; gap: 12px;">
                             ${recommendedPackages.slice(0, 2).map(pkg => `
-                                <div style="background: linear-gradient(135deg, ${severityColor}08 0%, ${severityColor}15 100%); padding: 15px; border-radius: 10px; border: 2px solid ${severityColor}30;">
-                                    <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 8px;">
+                                <div style="background: linear-gradient(135deg, ${severityColor}08 0%, ${severityColor}15 100%); padding: 15px; border-radius: 10px; border: 2px solid ${severityColor}30; position: relative;">
+                                    <!-- 收藏按钮 -->
+                                    <button
+                                        onclick="event.stopPropagation(); const success = addBookmark('treatment', ${JSON.stringify(pkg)}); this.textContent = success ? '⭐' : '☆';"
+                                        style="position: absolute; top: 10px; right: 10px; background: transparent; border: none; font-size: 1.5em; cursor: pointer; padding: 5px; transition: transform 0.2s;"
+                                        onmouseover="this.style.transform='scale(1.2)'"
+                                        onmouseout="this.style.transform='scale(1)'"
+                                        title="收藏">
+                                        ${isBookmarked('treatment', pkg.id) ? '⭐' : '☆'}
+                                    </button>
+                                    <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 8px; padding-right: 35px;">
                                         <div>
                                             <h6 style="color: #2c3e50; margin: 0 0 5px 0; font-size: 1.05em;">${pkg.name}</h6>
                                             <span style="background: ${severityColor}; color: white; padding: 3px 10px; border-radius: 10px; font-size: 0.8em; font-weight: bold;">
@@ -7089,6 +7236,196 @@
                 modal.classList.remove('active');
                 document.body.style.overflow = 'auto';
             }
+        }
+
+        // ========== 收藏/书签功能 ==========
+
+        let bookmarks = JSON.parse(localStorage.getItem('acneBookmarks') || '[]');
+        let currentBookmarkTab = 'all';
+
+        // 页面加载时初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            renderCases('all');
+            initTimelineTreatmentSelect();
+            renderFAQ('all', '');
+            initAppointmentDate();
+            updateBookmarkCount();
+            renderBookmarkList();
+        });
+
+        // 切换收藏面板
+        function toggleBookmarkPanel() {
+            const panel = document.getElementById('bookmarkPanel');
+            const backdrop = document.getElementById('bookmarkBackdrop');
+            const isVisible = panel.style.display === 'block';
+
+            if (isVisible) {
+                panel.style.display = 'none';
+                backdrop.style.display = 'none';
+            } else {
+                panel.style.display = 'block';
+                backdrop.style.display = 'block';
+                renderBookmarkList();
+            }
+        }
+
+        // 切换收藏分类
+        function switchBookmarkTab(tab) {
+            currentBookmarkTab = tab;
+
+            // 更新按钮状态
+            document.querySelectorAll('.bookmark-tab-btn').forEach(btn => {
+                if (btn.dataset.tab === tab) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+
+            renderBookmarkList();
+        }
+
+        // 添加收藏
+        function addBookmark(type, item) {
+            // 检查是否已收藏
+            const exists = bookmarks.some(b => b.id === item.id && b.type === type);
+            if (exists) {
+                removeBookmark(type, item.id);
+                return false;
+            }
+
+            // 添加收藏
+            const bookmark = {
+                id: item.id,
+                type: type, // 'treatment' 或 'chapter'
+                name: item.name || item.title,
+                data: item,
+                timestamp: new Date().getTime()
+            };
+
+            bookmarks.unshift(bookmark);
+            localStorage.setItem('acneBookmarks', JSON.stringify(bookmarks));
+            updateBookmarkCount();
+
+            // 显示提示
+            showBookmarkToast('已添加到收藏 ⭐');
+            return true;
+        }
+
+        // 删除收藏
+        function removeBookmark(type, id) {
+            bookmarks = bookmarks.filter(b => !(b.id === id && b.type === type));
+            localStorage.setItem('acneBookmarks', JSON.stringify(bookmarks));
+            updateBookmarkCount();
+            renderBookmarkList();
+            showBookmarkToast('已取消收藏');
+        }
+
+        // 检查是否已收藏
+        function isBookmarked(type, id) {
+            return bookmarks.some(b => b.id === id && b.type === type);
+        }
+
+        // 更新收藏计数
+        function updateBookmarkCount() {
+            const count = bookmarks.length;
+            document.getElementById('bookmarkCount').textContent = count;
+            document.getElementById('bookmarkTotalCount').textContent = count;
+        }
+
+        // 渲染收藏列表
+        function renderBookmarkList() {
+            const container = document.getElementById('bookmarkList');
+            const emptyState = document.getElementById('bookmarkEmpty');
+
+            let filteredBookmarks = bookmarks;
+
+            // 根据tab筛选
+            if (currentBookmarkTab !== 'all') {
+                filteredBookmarks = bookmarks.filter(b => b.type === currentBookmarkTab);
+            }
+
+            // 显示空状态
+            if (filteredBookmarks.length === 0) {
+                emptyState.style.display = 'block';
+                // 移除所有书签项
+                const items = container.querySelectorAll('.bookmark-item');
+                items.forEach(item => item.remove());
+                return;
+            }
+
+            emptyState.style.display = 'none';
+
+            // 生成HTML
+            const html = filteredBookmarks.map(bookmark => {
+                const icon = bookmark.type === 'treatment' ? '💊' : '📖';
+                const typeName = bookmark.type === 'treatment' ? '治疗项目' : '电子书章节';
+                const time = new Date(bookmark.timestamp).toLocaleDateString('zh-CN');
+
+                return `
+                    <div class="bookmark-item">
+                        <button class="bookmark-remove-btn" onclick="removeBookmark('${bookmark.type}', ${bookmark.id})">×</button>
+                        <div style="display: flex; align-items: flex-start; gap: 12px;">
+                            <div style="font-size: 2em;">${icon}</div>
+                            <div style="flex: 1;">
+                                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 5px;">
+                                    <h4 style="margin: 0; color: #2c3e50; font-size: 1em;">${bookmark.name}</h4>
+                                    <span style="background: rgba(240,147,251,0.2); color: #f5576c; padding: 2px 8px; border-radius: 10px; font-size: 0.75em; font-weight: bold;">${typeName}</span>
+                                </div>
+                                <p style="margin: 5px 0 0 0; color: #7f8c8d; font-size: 0.85em;">收藏于 ${time}</p>
+                                ${bookmark.type === 'treatment' ? `
+                                    <div style="margin-top: 8px; font-size: 0.85em; color: #7f8c8d;">
+                                        💰 ${bookmark.data.price_single ? `¥${bookmark.data.price_single}` : '价格详询'}
+                                        ${bookmark.data.duration ? `&nbsp;&nbsp;⏱ ${bookmark.data.duration}` : ''}
+                                    </div>
+                                ` : bookmark.type === 'chapter' ? `
+                                    <div style="margin-top: 8px;">
+                                        <button onclick="loadChapter('${bookmark.data.file}', '${bookmark.data.title}'); toggleBookmarkPanel();" style="padding: 6px 12px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 0.85em;">
+                                            阅读章节
+                                        </button>
+                                    </div>
+                                ` : ''}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            // 更新列表
+            const items = container.querySelectorAll('.bookmark-item');
+            items.forEach(item => item.remove());
+            container.insertAdjacentHTML('afterbegin', html);
+        }
+
+        // 显示收藏提示
+        function showBookmarkToast(message) {
+            const toast = document.createElement('div');
+            toast.style.cssText = `
+                position: fixed;
+                top: 80px;
+                right: 30px;
+                background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+                color: white;
+                padding: 12px 20px;
+                border-radius: 8px;
+                box-shadow: 0 5px 20px rgba(245,87,108,0.4);
+                z-index: 10000;
+                animation: slideInRight 0.3s;
+                font-weight: bold;
+            `;
+            toast.textContent = message;
+            document.body.appendChild(toast);
+
+            setTimeout(() => {
+                toast.style.animation = 'slideOutRight 0.3s';
+                setTimeout(() => toast.remove(), 300);
+            }, 2000);
+        }
+
+        // 为医美项目添加收藏按钮
+        function addBookmarkButtonToTreatments() {
+            // 这个函数会在渲染治疗项目时调用
+            // 在每个治疗项目卡片上添加收藏按钮
         }
 
         // ========== 预约咨询表单 ==========
