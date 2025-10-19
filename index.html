@@ -2828,6 +2828,158 @@
             </style>
         </div>
 
+        <!-- 治疗时间线规划器 -->
+        <div class="timeline-planner-section" style="background: white; border-radius: 20px; padding: 40px; margin-bottom: 30px; box-shadow: 0 10px 40px rgba(0,0,0,0.08);">
+            <h3 style="text-align: center; color: #2c3e50; font-size: 1.8em; margin-bottom: 10px;">📅 治疗时间线规划器</h3>
+            <p style="text-align: center; color: #7f8c8d; margin-bottom: 35px;">智能规划您的疗程安排，合理分配治疗时间和间隔</p>
+
+            <div style="display: grid; grid-template-columns: 1fr 1.5fr; gap: 30px; max-width: 1200px; margin: 0 auto;">
+                <!-- 左侧：配置面板 -->
+                <div class="timeline-config" style="background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); padding: 30px; border-radius: 15px;">
+                    <h4 style="color: #2c3e50; margin-bottom: 20px; font-size: 1.2em;">⚙️ 规划设置</h4>
+
+                    <!-- 选择治疗项目 -->
+                    <div style="margin-bottom: 25px;">
+                        <label style="display: block; color: #34495e; font-weight: 600; margin-bottom: 10px;">选择治疗项目：</label>
+                        <select id="timelineTreatmentSelect" onchange="updateTimelinePreview()" style="width: 100%; padding: 12px; border: 2px solid #dfe6e9; border-radius: 10px; font-size: 1em; background: white; cursor: pointer;">
+                            <option value="">-- 请选择项目 --</option>
+                        </select>
+                    </div>
+
+                    <!-- 开始日期 -->
+                    <div style="margin-bottom: 25px;">
+                        <label style="display: block; color: #34495e; font-weight: 600; margin-bottom: 10px;">计划开始日期：</label>
+                        <input type="date" id="timelineStartDate" onchange="updateTimelinePreview()" style="width: 100%; padding: 12px; border: 2px solid #dfe6e9; border-radius: 10px; font-size: 1em;">
+                    </div>
+
+                    <!-- 疗程次数 -->
+                    <div style="margin-bottom: 25px;">
+                        <label style="display: block; color: #34495e; font-weight: 600; margin-bottom: 10px;">计划疗程次数：</label>
+                        <div style="display: flex; align-items: center; gap: 15px;">
+                            <input type="range" id="timelineSessionCount" min="1" max="12" value="3" oninput="document.getElementById('sessionCountDisplay').textContent = this.value; updateTimelinePreview();" style="flex: 1;">
+                            <span id="sessionCountDisplay" style="font-size: 1.5em; font-weight: bold; color: #667eea; min-width: 40px; text-align: center;">3</span>
+                            <span style="color: #7f8c8d;">次</span>
+                        </div>
+                    </div>
+
+                    <!-- 治疗间隔 -->
+                    <div style="margin-bottom: 25px;">
+                        <label style="display: block; color: #34495e; font-weight: 600; margin-bottom: 10px;">治疗间隔（天）：</label>
+                        <div style="display: flex; align-items: center; gap: 15px;">
+                            <input type="range" id="timelineInterval" min="7" max="60" value="21" step="7" oninput="document.getElementById('intervalDisplay').textContent = this.value; updateTimelinePreview();" style="flex: 1;">
+                            <span id="intervalDisplay" style="font-size: 1.5em; font-weight: bold; color: #667eea; min-width: 40px; text-align: center;">21</span>
+                            <span style="color: #7f8c8d;">天</span>
+                        </div>
+                    </div>
+
+                    <!-- 项目信息卡片 -->
+                    <div id="selectedTreatmentInfo" style="display: none; margin-top: 25px; padding: 20px; background: white; border-radius: 12px; border-left: 4px solid #667eea;">
+                        <h5 style="color: #2c3e50; margin: 0 0 12px 0;">项目信息</h5>
+                        <div id="treatmentInfoContent"></div>
+                    </div>
+
+                    <!-- 重置按钮 -->
+                    <button onclick="resetTimeline()" style="width: 100%; padding: 12px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; border-radius: 10px; font-size: 1em; font-weight: bold; cursor: pointer; margin-top: 20px; transition: all 0.3s;">
+                        🔄 重置规划
+                    </button>
+                </div>
+
+                <!-- 右侧：时间线预览 -->
+                <div class="timeline-preview" style="background: #ffffff; padding: 30px; border-radius: 15px; border: 2px solid #ecf0f1;">
+                    <h4 style="color: #2c3e50; margin-bottom: 20px; font-size: 1.2em;">📊 疗程时间线</h4>
+
+                    <!-- 空状态提示 -->
+                    <div id="timelineEmptyState" style="text-align: center; padding: 60px 20px; color: #95a5a6;">
+                        <div style="font-size: 4em; margin-bottom: 15px;">📅</div>
+                        <p style="font-size: 1.1em; margin: 0;">请选择治疗项目和开始日期</p>
+                        <p style="font-size: 0.9em; margin-top: 8px; opacity: 0.7;">系统将自动为您生成疗程时间表</p>
+                    </div>
+
+                    <!-- 时间线内容 -->
+                    <div id="timelineContent" style="display: none;">
+                        <!-- 疗程概览 -->
+                        <div id="timelineOverview" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; border-radius: 12px; margin-bottom: 25px;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
+                                <div>
+                                    <div style="font-size: 0.9em; opacity: 0.9;">总疗程时长</div>
+                                    <div id="totalDuration" style="font-size: 1.8em; font-weight: bold; margin-top: 5px;">--</div>
+                                </div>
+                                <div>
+                                    <div style="font-size: 0.9em; opacity: 0.9;">治疗次数</div>
+                                    <div id="totalSessions" style="font-size: 1.8em; font-weight: bold; margin-top: 5px;">--</div>
+                                </div>
+                                <div>
+                                    <div style="font-size: 0.9em; opacity: 0.9;">预计结束</div>
+                                    <div id="endDate" style="font-size: 1.1em; font-weight: bold; margin-top: 5px;">--</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 时间线列表 -->
+                        <div id="timelineList" style="max-height: 500px; overflow-y: auto; padding-right: 10px;">
+                            <!-- 时间线项将通过JavaScript动态生成 -->
+                        </div>
+
+                        <!-- 提示说明 -->
+                        <div style="margin-top: 20px; padding: 15px; background: #fff3cd; border-radius: 10px; border-left: 4px solid #ffc107;">
+                            <p style="margin: 0; color: #856404; font-size: 0.9em;">
+                                <strong>💡 温馨提示：</strong>实际治疗计划需根据个人皮肤状况和医生建议进行调整，此规划仅供参考。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <style>
+                .timeline-config select:hover,
+                .timeline-config input[type="date"]:hover {
+                    border-color: #667eea;
+                }
+                .timeline-config button:hover {
+                    transform: translateY(-2px);
+                    box-shadow: 0 5px 20px rgba(102,126,234,0.4);
+                }
+                .timeline-item {
+                    position: relative;
+                    padding: 20px;
+                    background: #f8f9fa;
+                    border-radius: 12px;
+                    margin-bottom: 15px;
+                    border-left: 4px solid #667eea;
+                    transition: all 0.3s;
+                }
+                .timeline-item:hover {
+                    transform: translateX(5px);
+                    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+                }
+                .timeline-item.recovery {
+                    border-left-color: #3498db;
+                    background: linear-gradient(135deg, #e3f2fd 0%, #f8f9fa 100%);
+                }
+                .timeline-item-number {
+                    position: absolute;
+                    left: -15px;
+                    top: 15px;
+                    width: 30px;
+                    height: 30px;
+                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                    color: white;
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-weight: bold;
+                    font-size: 0.9em;
+                    box-shadow: 0 3px 10px rgba(102,126,234,0.4);
+                }
+                @media (max-width: 768px) {
+                    .timeline-planner-section > div {
+                        grid-template-columns: 1fr !important;
+                    }
+                }
+            </style>
+        </div>
+
         <!-- 痘痘问题分类专题 -->
         <div class="acne-categories-section" style="margin-bottom: 30px;">
             <h3 style="text-align: center; color: #2c3e50; font-size: 1.8em; margin-bottom: 25px;">📚 痘痘问题分类专题</h3>
@@ -6346,6 +6498,7 @@
         // 页面加载时初始化案例展示
         document.addEventListener('DOMContentLoaded', function() {
             renderCases('all');
+            initTimelineTreatmentSelect();
         });
 
         function filterCases(filter) {
@@ -6601,6 +6754,281 @@
                 document.body.style.overflow = 'auto';
             }
         }
+
+        // ========== 治疗时间线规划器 ==========
+
+        // 初始化治疗项目下拉列表
+        function initTimelineTreatmentSelect() {
+            const select = document.getElementById('timelineTreatmentSelect');
+            if (!select) return;
+
+            // 清空现有选项（保留第一个提示选项）
+            while (select.options.length > 1) {
+                select.remove(1);
+            }
+
+            // 添加所有治疗项目
+            MEDICAL_TREATMENTS.forEach(treatment => {
+                const option = document.createElement('option');
+                option.value = treatment.id;
+                option.textContent = `${treatment.name} - ¥${treatment.price}`;
+                select.appendChild(option);
+            });
+
+            // 设置默认开始日期为今天
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('timelineStartDate').value = today;
+        }
+
+        // 更新时间线预览
+        function updateTimelinePreview() {
+            const treatmentId = document.getElementById('timelineTreatmentSelect').value;
+            const startDate = document.getElementById('timelineStartDate').value;
+            const sessionCount = parseInt(document.getElementById('timelineSessionCount').value);
+            const interval = parseInt(document.getElementById('timelineInterval').value);
+
+            // 如果未选择项目或未选择日期，显示空状态
+            if (!treatmentId || !startDate) {
+                document.getElementById('timelineEmptyState').style.display = 'block';
+                document.getElementById('timelineContent').style.display = 'none';
+                document.getElementById('selectedTreatmentInfo').style.display = 'none';
+                return;
+            }
+
+            // 查找选中的治疗项目
+            const treatment = MEDICAL_TREATMENTS.find(t => t.id == treatmentId);
+            if (!treatment) return;
+
+            // 显示项目信息
+            showTreatmentInfo(treatment);
+
+            // 生成时间线
+            generateTimeline(treatment, startDate, sessionCount, interval);
+
+            // 显示时间线内容，隐藏空状态
+            document.getElementById('timelineEmptyState').style.display = 'none';
+            document.getElementById('timelineContent').style.display = 'block';
+        }
+
+        // 显示治疗项目信息
+        function showTreatmentInfo(treatment) {
+            const infoDiv = document.getElementById('selectedTreatmentInfo');
+            const contentDiv = document.getElementById('treatmentInfoContent');
+
+            contentDiv.innerHTML = `
+                <div style="margin-bottom: 10px;">
+                    <strong style="color: #667eea;">项目名称：</strong>${treatment.name}
+                </div>
+                <div style="margin-bottom: 10px;">
+                    <strong style="color: #667eea;">单次价格：</strong>¥${treatment.price}
+                </div>
+                <div style="margin-bottom: 10px;">
+                    <strong style="color: #667eea;">推荐疗程：</strong>${treatment.course}
+                </div>
+                <div style="margin-bottom: 10px;">
+                    <strong style="color: #667eea;">恢复期：</strong>${treatment.recovery}
+                </div>
+                <div style="margin-bottom: 10px;">
+                    <strong style="color: #667eea;">适用范围：</strong>${treatment.symptoms?.join('、') || '多种痤疮症状'}
+                </div>
+            `;
+
+            infoDiv.style.display = 'block';
+        }
+
+        // 生成时间线
+        function generateTimeline(treatment, startDateStr, sessionCount, intervalDays) {
+            const startDate = new Date(startDateStr);
+            const timelineList = document.getElementById('timelineList');
+
+            // 清空现有时间线
+            timelineList.innerHTML = '';
+
+            // 计算总时长和结束日期
+            const totalDays = (sessionCount - 1) * intervalDays;
+            const endDate = new Date(startDate);
+            endDate.setDate(endDate.getDate() + totalDays);
+
+            // 更新概览信息
+            document.getElementById('totalDuration').textContent = `${totalDays}天`;
+            document.getElementById('totalSessions').textContent = `${sessionCount}次`;
+            document.getElementById('endDate').textContent = formatDate(endDate);
+
+            // 获取恢复期天数（从字符串解析）
+            const recoveryDays = parseRecoveryDays(treatment.recovery);
+
+            // 生成每次治疗的时间线项
+            for (let i = 0; i < sessionCount; i++) {
+                const sessionDate = new Date(startDate);
+                sessionDate.setDate(sessionDate.getDate() + i * intervalDays);
+
+                // 治疗日
+                const sessionItem = createTimelineItem({
+                    number: i + 1,
+                    date: sessionDate,
+                    title: `第${i + 1}次治疗`,
+                    description: `进行${treatment.name}治疗`,
+                    type: 'treatment',
+                    icon: '💉',
+                    details: [
+                        `治疗项目：${treatment.name}`,
+                        `单次费用：¥${treatment.price}`,
+                        `治疗时长：${treatment.duration || '30-60分钟'}`
+                    ]
+                });
+                timelineList.appendChild(sessionItem);
+
+                // 恢复期（如果有）
+                if (recoveryDays > 0) {
+                    const recoveryEndDate = new Date(sessionDate);
+                    recoveryEndDate.setDate(recoveryEndDate.getDate() + recoveryDays);
+
+                    const recoveryItem = createTimelineItem({
+                        date: recoveryEndDate,
+                        title: `恢复期结束`,
+                        description: `预计${recoveryDays}天恢复期`,
+                        type: 'recovery',
+                        icon: '🌱',
+                        details: [
+                            `恢复时间：${recoveryDays}天`,
+                            '注意防晒和补水',
+                            '避免化妆和剧烈运动'
+                        ]
+                    });
+                    timelineList.appendChild(recoveryItem);
+                }
+
+                // 间隔期提醒（不是最后一次）
+                if (i < sessionCount - 1) {
+                    const nextSessionDate = new Date(sessionDate);
+                    nextSessionDate.setDate(nextSessionDate.getDate() + intervalDays);
+
+                    const intervalItem = createTimelineItem({
+                        date: nextSessionDate,
+                        title: `准备下次治疗`,
+                        description: `距离上次治疗${intervalDays}天`,
+                        type: 'interval',
+                        icon: '⏰',
+                        details: [
+                            `治疗间隔：${intervalDays}天`,
+                            '观察皮肤状况',
+                            '提前预约下次治疗'
+                        ]
+                    });
+                    // 间隔项不单独显示，合并到下次治疗
+                }
+            }
+
+            // 添加疗程完成标记
+            const completionItem = createTimelineItem({
+                date: endDate,
+                title: '🎉 疗程完成',
+                description: `恭喜完成${sessionCount}次治疗`,
+                type: 'completion',
+                icon: '🎊',
+                details: [
+                    `总治疗次数：${sessionCount}次`,
+                    `总疗程时长：${totalDays}天`,
+                    `预计总费用：¥${treatment.price * sessionCount}`,
+                    '建议定期复查皮肤状况'
+                ]
+            });
+            timelineList.appendChild(completionItem);
+        }
+
+        // 创建时间线项元素
+        function createTimelineItem(config) {
+            const { number, date, title, description, type, icon, details } = config;
+
+            const item = document.createElement('div');
+            item.className = `timeline-item ${type}`;
+
+            let html = '';
+
+            // 如果有编号，显示编号徽章
+            if (number) {
+                html += `<div class="timeline-item-number">${number}</div>`;
+            }
+
+            html += `
+                <div style="display: flex; align-items: flex-start; gap: 15px;">
+                    <div style="font-size: 2em;">${icon}</div>
+                    <div style="flex: 1;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                            <h5 style="margin: 0; color: #2c3e50; font-size: 1.1em;">${title}</h5>
+                            <span style="color: #7f8c8d; font-size: 0.9em;">${formatDate(date)}</span>
+                        </div>
+                        <p style="margin: 0 0 12px 0; color: #7f8c8d; font-size: 0.95em;">${description}</p>
+            `;
+
+            if (details && details.length > 0) {
+                html += '<ul style="margin: 0; padding-left: 20px; color: #555;">';
+                details.forEach(detail => {
+                    html += `<li style="margin: 5px 0; font-size: 0.9em;">${detail}</li>`;
+                });
+                html += '</ul>';
+            }
+
+            html += `
+                    </div>
+                </div>
+            `;
+
+            item.innerHTML = html;
+            return item;
+        }
+
+        // 解析恢复期天数
+        function parseRecoveryDays(recoveryStr) {
+            if (!recoveryStr) return 0;
+
+            // 匹配 "X天" 或 "X-Y天" 格式
+            const match = recoveryStr.match(/(\d+)[-~]?(\d+)?天/);
+            if (match) {
+                // 如果是范围，取平均值
+                if (match[2]) {
+                    return Math.ceil((parseInt(match[1]) + parseInt(match[2])) / 2);
+                }
+                return parseInt(match[1]);
+            }
+
+            // 如果包含"无"或"不需要"，返回0
+            if (recoveryStr.includes('无') || recoveryStr.includes('不需要')) {
+                return 0;
+            }
+
+            // 默认返回3天
+            return 3;
+        }
+
+        // 格式化日期
+        function formatDate(date) {
+            const year = date.getFullYear();
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const day = String(date.getDate()).padStart(2, '0');
+            const weekdays = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
+            const weekday = weekdays[date.getDay()];
+
+            return `${year}/${month}/${day} ${weekday}`;
+        }
+
+        // 重置时间线
+        function resetTimeline() {
+            // 重置所有输入
+            document.getElementById('timelineTreatmentSelect').value = '';
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('timelineStartDate').value = today;
+            document.getElementById('timelineSessionCount').value = 3;
+            document.getElementById('sessionCountDisplay').textContent = '3';
+            document.getElementById('timelineInterval').value = 21;
+            document.getElementById('intervalDisplay').textContent = '21';
+
+            // 隐藏时间线内容，显示空状态
+            document.getElementById('timelineEmptyState').style.display = 'block';
+            document.getElementById('timelineContent').style.display = 'none';
+            document.getElementById('selectedTreatmentInfo').style.display = 'none';
+        }
+
     </script>
 
     <!-- 症状详情弹窗 -->
