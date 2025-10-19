@@ -1,0 +1,37 @@
+# robots.txt for 痘痘再见 - 联合丽格痤疮治疗指南
+
+# 允许所有搜索引擎索引
+User-agent: *
+Allow: /
+
+# 禁止索引的目录（如果有）
+# Disallow: /admin/
+# Disallow: /private/
+
+# Sitemap位置
+Sitemap: https://acne.yoursite.com/sitemap.xml
+
+# 爬虫速率限制（可选）
+Crawl-delay: 1
+
+# 特定搜索引擎优化
+
+# Google爬虫
+User-agent: Googlebot
+Allow: /
+
+# 百度爬虫
+User-agent: Baiduspider
+Allow: /
+
+# 搜狗爬虫
+User-agent: Sogou Spider
+Allow: /
+
+# 360搜索爬虫
+User-agent: 360Spider
+Allow: /
+
+# 必应爬虫
+User-agent: Bingbot
+Allow: /
