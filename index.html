@@ -2980,6 +2980,149 @@
             </style>
         </div>
 
+        <!-- 常见问题FAQ系统 -->
+        <div class="faq-section" style="background: white; border-radius: 20px; padding: 40px; margin-bottom: 30px; box-shadow: 0 10px 40px rgba(0,0,0,0.08);">
+            <h3 style="text-align: center; color: #2c3e50; font-size: 1.8em; margin-bottom: 10px;">❓ 常见问题解答</h3>
+            <p style="text-align: center; color: #7f8c8d; margin-bottom: 35px;">快速找到您关心的问题答案</p>
+
+            <!-- 搜索和分类筛选 -->
+            <div style="max-width: 900px; margin: 0 auto 30px;">
+                <!-- 搜索框 -->
+                <div style="position: relative; margin-bottom: 20px;">
+                    <input type="text" id="faqSearch" placeholder="🔍 搜索问题关键词..." onkeyup="searchFAQ()" style="width: 100%; padding: 15px 50px 15px 20px; border: 2px solid #e0e0e0; border-radius: 25px; font-size: 1em; transition: all 0.3s;">
+                    <button onclick="document.getElementById('faqSearch').value=''; searchFAQ();" style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); background: none; border: none; font-size: 1.2em; cursor: pointer; color: #999;">✕</button>
+                </div>
+
+                <!-- 分类标签 -->
+                <div style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
+                    <button class="faq-category-btn active" data-category="all" onclick="filterFAQCategory('all')" style="padding: 8px 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; border-radius: 20px; cursor: pointer; font-weight: bold; transition: all 0.3s;">
+                        全部问题
+                    </button>
+                    <button class="faq-category-btn" data-category="treatment" onclick="filterFAQCategory('treatment')" style="padding: 8px 20px; background: white; color: #667eea; border: 2px solid #667eea; border-radius: 20px; cursor: pointer; font-weight: bold; transition: all 0.3s;">
+                        治疗相关
+                    </button>
+                    <button class="faq-category-btn" data-category="price" onclick="filterFAQCategory('price')" style="padding: 8px 20px; background: white; color: #667eea; border: 2px solid #667eea; border-radius: 20px; cursor: pointer; font-weight: bold; transition: all 0.3s;">
+                        价格费用
+                    </button>
+                    <button class="faq-category-btn" data-category="effect" onclick="filterFAQCategory('effect')" style="padding: 8px 20px; background: white; color: #667eea; border: 2px solid #667eea; border-radius: 20px; cursor: pointer; font-weight: bold; transition: all 0.3s;">
+                        效果周期
+                    </button>
+                    <button class="faq-category-btn" data-category="safety" onclick="filterFAQCategory('safety')" style="padding: 8px 20px; background: white; color: #667eea; border: 2px solid #667eea; border-radius: 20px; cursor: pointer; font-weight: bold; transition: all 0.3s;">
+                        安全副作用
+                    </button>
+                    <button class="faq-category-btn" data-category="care" onclick="filterFAQCategory('care')" style="padding: 8px 20px; background: white; color: #667eea; border: 2px solid #667eea; border-radius: 20px; cursor: pointer; font-weight: bold; transition: all 0.3s;">
+                        护理建议
+                    </button>
+                </div>
+            </div>
+
+            <!-- FAQ列表 -->
+            <div id="faqList" style="max-width: 900px; margin: 0 auto;">
+                <!-- FAQ项将通过JavaScript动态生成 -->
+            </div>
+
+            <!-- 无结果提示 -->
+            <div id="faqNoResults" style="display: none; text-align: center; padding: 60px 20px; color: #95a5a6;">
+                <div style="font-size: 4em; margin-bottom: 15px;">🔍</div>
+                <p style="font-size: 1.1em; margin: 0;">没有找到相关问题</p>
+                <p style="font-size: 0.9em; margin-top: 8px; opacity: 0.7;">尝试使用其他关键词或浏览全部问题</p>
+            </div>
+
+            <style>
+                #faqSearch:focus {
+                    outline: none;
+                    border-color: #667eea;
+                    box-shadow: 0 0 0 3px rgba(102,126,234,0.1);
+                }
+                .faq-category-btn.active {
+                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+                    color: white !important;
+                    border-color: transparent !important;
+                }
+                .faq-category-btn:hover {
+                    transform: translateY(-2px);
+                    box-shadow: 0 4px 15px rgba(102,126,234,0.3);
+                }
+                .faq-item {
+                    background: #f8f9fa;
+                    border-radius: 12px;
+                    margin-bottom: 15px;
+                    overflow: hidden;
+                    border-left: 4px solid #667eea;
+                    transition: all 0.3s;
+                }
+                .faq-item:hover {
+                    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+                    transform: translateX(5px);
+                }
+                .faq-question {
+                    padding: 20px;
+                    cursor: pointer;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    background: white;
+                    transition: background 0.3s;
+                }
+                .faq-question:hover {
+                    background: #f8f9fa;
+                }
+                .faq-question-text {
+                    font-size: 1.05em;
+                    font-weight: 600;
+                    color: #2c3e50;
+                    flex: 1;
+                    padding-right: 20px;
+                }
+                .faq-icon {
+                    font-size: 1.5em;
+                    color: #667eea;
+                    transition: transform 0.3s;
+                }
+                .faq-item.active .faq-icon {
+                    transform: rotate(180deg);
+                }
+                .faq-answer {
+                    max-height: 0;
+                    overflow: hidden;
+                    transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+                    background: white;
+                }
+                .faq-item.active .faq-answer {
+                    max-height: 1000px;
+                    padding: 0 20px 20px 20px;
+                }
+                .faq-answer-content {
+                    color: #555;
+                    line-height: 1.8;
+                    font-size: 0.95em;
+                }
+                .faq-answer-content strong {
+                    color: #667eea;
+                    font-weight: 600;
+                }
+                .faq-category-tag {
+                    display: inline-block;
+                    padding: 4px 12px;
+                    background: rgba(102,126,234,0.1);
+                    color: #667eea;
+                    border-radius: 12px;
+                    font-size: 0.85em;
+                    font-weight: 600;
+                    margin-right: 10px;
+                }
+                @media (max-width: 768px) {
+                    .faq-section {
+                        padding: 25px 15px !important;
+                    }
+                    .faq-category-btn {
+                        font-size: 0.9em !important;
+                        padding: 6px 15px !important;
+                    }
+                }
+            </style>
+        </div>
+
         <!-- 痘痘问题分类专题 -->
         <div class="acne-categories-section" style="margin-bottom: 30px;">
             <h3 style="text-align: center; color: #2c3e50; font-size: 1.8em; margin-bottom: 25px;">📚 痘痘问题分类专题</h3>
@@ -6753,6 +6896,541 @@
                 modal.classList.remove('active');
                 document.body.style.overflow = 'auto';
             }
+        }
+
+        // ========== 常见问题FAQ系统 ==========
+
+        const FAQ_DATA = [
+            // 治疗相关
+            {
+                id: 1,
+                category: 'treatment',
+                categoryName: '治疗相关',
+                question: '痤疮治疗需要多长时间才能见效？',
+                answer: `<strong>见效时间因治疗方法和个人情况而异：</strong><br><br>
+                    • <strong>外用药物：</strong>通常需要4-8周才能看到明显改善<br>
+                    • <strong>口服药物：</strong>如异维A酸，一般2-3个月开始见效<br>
+                    • <strong>医美项目：</strong>如光子嫩肤、红蓝光，通常3-5次后明显改善<br>
+                    • <strong>激光治疗：</strong>点阵激光等，单次即可看到效果，完整疗程需3-6个月<br><br>
+                    <strong>重要提醒：</strong>痤疮治疗需要耐心，切忌频繁更换方案。建议坚持治疗至少2-3个月再评估效果。`,
+                tags: ['治疗周期', '见效时间']
+            },
+            {
+                id: 2,
+                category: 'treatment',
+                categoryName: '治疗相关',
+                question: '轻度、中度、重度痤疮分别适合什么治疗方案？',
+                answer: `<strong>根据GAGS评分建议的治疗方案：</strong><br><br>
+                    • <strong>轻度痤疮（1-18分）：</strong><br>
+                    &nbsp;&nbsp;- 外用维A酸类药物 + 日常护理<br>
+                    &nbsp;&nbsp;- 红蓝光治疗（消炎杀菌）<br>
+                    &nbsp;&nbsp;- 果酸焕肤（清洁毛孔）<br><br>
+                    • <strong>中度痤疮（19-30分）：</strong><br>
+                    &nbsp;&nbsp;- 口服抗生素 + 外用药物<br>
+                    &nbsp;&nbsp;- 光子嫩肤 + 红蓝光组合<br>
+                    &nbsp;&nbsp;- 水杨酸焕肤（深层清洁）<br><br>
+                    • <strong>重度痤疮（31-38分）：</strong><br>
+                    &nbsp;&nbsp;- 口服异维A酸（医生监督下）<br>
+                    &nbsp;&nbsp;- 光动力治疗（强效抗炎）<br>
+                    &nbsp;&nbsp;- 激光治疗 + 药物联合<br><br>
+                    • <strong>极重度痤疮（>38分）：</strong><br>
+                    &nbsp;&nbsp;- 系统性药物治疗为主<br>
+                    &nbsp;&nbsp;- 医美项目作为辅助<br>
+                    &nbsp;&nbsp;- 建议先就医评估`,
+                tags: ['治疗方案', '分级治疗', 'GAGS评分']
+            },
+            {
+                id: 3,
+                category: 'treatment',
+                categoryName: '治疗相关',
+                question: '医美项目和药物治疗可以同时进行吗？',
+                answer: `<strong>可以，但需要注意以下几点：</strong><br><br>
+                    <strong>✅ 可以联合的情况：</strong><br>
+                    • 外用药物 + 红蓝光治疗<br>
+                    • 口服抗生素 + 光子嫩肤<br>
+                    • 维A酸类药物 + 果酸焕肤（间隔使用）<br><br>
+                    <strong>⚠️ 需要谨慎的情况：</strong><br>
+                    • 口服异维A酸期间：避免激光治疗（停药半年后才能做）<br>
+                    • 刷酸期间：暂停外用刺激性药物<br>
+                    • 光动力治疗后：24-48小时内避免强光照射<br><br>
+                    <strong>💡 最佳建议：</strong>咨询专业医生，制定个性化联合治疗方案，避免过度治疗。`,
+                tags: ['联合治疗', '注意事项']
+            },
+            {
+                id: 4,
+                category: 'treatment',
+                categoryName: '治疗相关',
+                question: '敏感肌可以做医美项目吗？',
+                answer: `<strong>可以，但需要选择温和的项目：</strong><br><br>
+                    <strong>✅ 适合敏感肌的项目：</strong><br>
+                    • <strong>红蓝光治疗：</strong>无创、温和、消炎效果好<br>
+                    • <strong>舒敏修复项目：</strong>如舒敏面膜、冷喷<br>
+                    • <strong>低浓度果酸：</strong>从最低浓度（20%）开始尝试<br><br>
+                    <strong>⚠️ 需要谨慎的项目：</strong><br>
+                    • 激光治疗：建议先做小面积测试<br>
+                    • 高浓度刷酸：容易引起刺激反应<br>
+                    • 光动力：刺激性较强，敏感肌慎用<br><br>
+                    <strong>💡 敏感肌治疗建议：</strong><br>
+                    1. 先修复皮肤屏障<br>
+                    2. 选择低刺激性项目<br>
+                    3. 治疗前做过敏测试<br>
+                    4. 术后加强保湿和防晒`,
+                tags: ['敏感肌', '适合项目']
+            },
+
+            // 价格费用
+            {
+                id: 5,
+                category: 'price',
+                categoryName: '价格费用',
+                question: '治疗痤疮大概需要花费多少钱？',
+                answer: `<strong>费用因治疗方案和疗程而异：</strong><br><br>
+                    <strong>💊 药物治疗（每月）：</strong><br>
+                    • 外用药物：200-500元<br>
+                    • 口服抗生素：100-300元<br>
+                    • 异维A酸：300-800元<br><br>
+                    <strong>🏥 医美项目（单次）：</strong><br>
+                    • 红蓝光：200-500元<br>
+                    • 果酸焕肤：500-1200元<br>
+                    • 光子嫩肤：1500-3000元<br>
+                    • 激光治疗：2000-5000元<br>
+                    • 光动力：3000-8000元<br><br>
+                    <strong>💰 完整疗程预估：</strong><br>
+                    • 轻度痤疮：3000-8000元（3-6个月）<br>
+                    • 中度痤疮：8000-20000元（6-12个月）<br>
+                    • 重度痤疮：20000-50000元（12个月以上）<br><br>
+                    <strong>💡 省钱建议：</strong>选择套餐优惠、早期干预、坚持治疗避免反复。`,
+                tags: ['费用', '价格', '预算']
+            },
+            {
+                id: 6,
+                category: 'price',
+                categoryName: '价格费用',
+                question: '有哪些性价比高的治疗方案？',
+                answer: `<strong>根据预算推荐高性价比方案：</strong><br><br>
+                    <strong>💰 预算<500元/月：</strong><br>
+                    • 外用药物 + 规范护理<br>
+                    • 红蓝光治疗（每月1-2次）<br>
+                    • 重点在于坚持和耐心<br><br>
+                    <strong>💰 预算500-1500元/月：</strong><br>
+                    • 果酸焕肤（每月1次）<br>
+                    • 红蓝光 + 外用药物组合<br>
+                    • 性价比较高，适合中度痤疮<br><br>
+                    <strong>💰 预算1500-3000元/月：</strong><br>
+                    • 光子嫩肤（每月1次）<br>
+                    • 水杨酸焕肤 + 药物治疗<br>
+                    • 适合快速改善需求<br><br>
+                    <strong>💰 预算>3000元/月：</strong><br>
+                    • 激光治疗 + 光动力<br>
+                    • 综合治疗方案<br>
+                    • 适合重度痤疮或急需改善<br><br>
+                    <strong>🎁 省钱技巧：</strong><br>
+                    • 选择套餐优惠（通常便宜20-30%）<br>
+                    • 关注机构活动（节假日优惠）<br>
+                    • 联合治疗（提高效率，减少总疗程）`,
+                tags: ['性价比', '预算方案']
+            },
+            {
+                id: 7,
+                category: 'price',
+                categoryName: '价格费用',
+                question: '医美项目可以用医保报销吗？',
+                answer: `<strong>遗憾的是，大部分医美项目不能医保报销：</strong><br><br>
+                    <strong>❌ 不能报销的项目：</strong><br>
+                    • 光子嫩肤、激光治疗<br>
+                    • 果酸焕肤、水杨酸焕肤<br>
+                    • 红蓝光治疗（美容性质）<br>
+                    • 微针、光动力等医美项目<br><br>
+                    <strong>✅ 可能报销的项目：</strong><br>
+                    • 皮肤科门诊挂号费<br>
+                    • 口服药物（如抗生素、异维A酸）<br>
+                    • 外用药膏（需医生处方）<br>
+                    • 部分检查费用（如激素检查）<br><br>
+                    <strong>💡 报销建议：</strong><br>
+                    1. 先在正规医院皮肤科就诊<br>
+                    2. 使用医保药物治疗<br>
+                    3. 医美项目作为自费补充<br>
+                    4. 保存所有发票和病历，部分地区可申请商业保险理赔`,
+                tags: ['医保', '报销']
+            },
+
+            // 效果周期
+            {
+                id: 8,
+                category: 'effect',
+                categoryName: '效果周期',
+                question: '做完医美项目后多久能看到效果？',
+                answer: `<strong>不同项目见效时间不同：</strong><br><br>
+                    <strong>⚡ 即时见效（当天-3天）：</strong><br>
+                    • <strong>红蓝光：</strong>消炎效果当天可见，皮肤镇静<br>
+                    • <strong>清痘项目：</strong>炎症消退，皮肤平整<br><br>
+                    <strong>📅 短期见效（1-2周）：</strong><br>
+                    • <strong>果酸焕肤：</strong>3-7天皮肤明显光滑细腻<br>
+                    • <strong>光子嫩肤：</strong>1-2周炎症减轻，肤色提亮<br><br>
+                    <strong>📆 中期见效（1-2个月）：</strong><br>
+                    • <strong>激光治疗：</strong>1个月痘坑开始改善<br>
+                    • <strong>光动力：</strong>2-4周出油量明显减少<br><br>
+                    <strong>📈 长期效果（3-6个月）：</strong><br>
+                    • <strong>点阵激光：</strong>3-6个月痘坑填平70-80%<br>
+                    • <strong>完整疗程：</strong>6个月以上达到最佳稳定状态<br><br>
+                    <strong>💡 重要提示：</strong>单次效果有限，坚持完整疗程才能达到最佳效果。`,
+                tags: ['见效时间', '治疗周期']
+            },
+            {
+                id: 9,
+                category: 'effect',
+                categoryName: '效果周期',
+                question: '痤疮治好后会复发吗？如何预防？',
+                answer: `<strong>复发风险存在，但可以有效预防：</strong><br><br>
+                    <strong>📊 复发率统计：</strong><br>
+                    • 仅用药物治疗：复发率40-60%<br>
+                    • 药物+医美联合：复发率20-30%<br>
+                    • 规范治疗+长期维护：复发率<10%<br><br>
+                    <strong>⚠️ 易复发的原因：</strong><br>
+                    • 过早停止治疗<br>
+                    • 不良生活习惯（熬夜、高糖饮食）<br>
+                    • 护肤不当（过度清洁、使用刺激性产品）<br>
+                    • 激素波动（月经期、压力大）<br><br>
+                    <strong>🛡️ 预防复发的方法：</strong><br>
+                    1. <strong>维持治疗：</strong>症状改善后继续低强度治疗2-3个月<br>
+                    2. <strong>定期维护：</strong>每月1-2次红蓝光或果酸<br>
+                    3. <strong>规律作息：</strong>保证充足睡眠，避免熬夜<br>
+                    4. <strong>科学护肤：</strong>温和清洁，做好保湿和防晒<br>
+                    5. <strong>饮食调理：</strong>少吃高糖高油食物<br>
+                    6. <strong>压力管理：</strong>学会释放压力，保持心情愉悦<br><br>
+                    <strong>💡 复发后怎么办：</strong>及时就医，不要等恶化再治疗。`,
+                tags: ['复发', '预防', '维护']
+            },
+            {
+                id: 10,
+                category: 'effect',
+                categoryName: '效果周期',
+                question: '为什么有些项目需要多次治疗才有效？',
+                answer: `<strong>多次治疗的科学原理：</strong><br><br>
+                    <strong>🔬 皮肤代谢周期：</strong><br>
+                    • 表皮更新周期：28天<br>
+                    • 真皮层修复周期：3-6个月<br>
+                    • 胶原蛋白重建：6-12个月<br><br>
+                    <strong>📅 为什么需要多次：</strong><br>
+                    1. <strong>渐进式改善：</strong><br>
+                    &nbsp;&nbsp;- 单次治疗只能改善部分问题<br>
+                    &nbsp;&nbsp;- 多次累积效果更持久<br><br>
+                    2. <strong>避免过度刺激：</strong><br>
+                    &nbsp;&nbsp;- 单次能量过强易损伤皮肤<br>
+                    &nbsp;&nbsp;- 分次治疗更安全温和<br><br>
+                    3. <strong>深浅层兼顾：</strong><br>
+                    &nbsp;&nbsp;- 表层问题先解决（炎症、出油）<br>
+                    &nbsp;&nbsp;- 深层问题后改善（痘坑、痘印）<br><br>
+                    <strong>⏰ 推荐疗程次数：</strong><br>
+                    • 红蓝光：6-10次（每周1-2次）<br>
+                    • 果酸焕肤：4-6次（每月1次）<br>
+                    • 光子嫩肤：3-5次（每月1次）<br>
+                    • 激光治疗：3-5次（间隔1-3个月）<br><br>
+                    <strong>💡 坚持建议：</strong>把治疗当成马拉松而非百米冲刺，耐心完成疗程才能获得最佳效果。`,
+                tags: ['疗程次数', '治疗原理']
+            },
+
+            // 安全副作用
+            {
+                id: 11,
+                category: 'safety',
+                categoryName: '安全副作用',
+                question: '医美项目有副作用吗？安全吗？',
+                answer: `<strong>正规医美项目是安全的，但可能有暂时性反应：</strong><br><br>
+                    <strong>✅ 常见正常反应（会自行消退）：</strong><br>
+                    • <strong>轻度红肿：</strong>治疗后1-3天，属于正常炎症反应<br>
+                    • <strong>皮肤干燥：</strong>刷酸后常见，加强保湿即可<br>
+                    • <strong>轻微刺痛：</strong>治疗过程中可能出现，可忍受范围<br>
+                    • <strong>结痂脱皮：</strong>激光后3-7天，避免强行撕扯<br><br>
+                    <strong>⚠️ 需要警惕的副作用：</strong><br>
+                    • <strong>严重过敏：</strong>大面积红肿、瘙痒，需立即就医<br>
+                    • <strong>烫伤水疱：</strong>能量过高导致，选择正规机构可避免<br>
+                    • <strong>色素沉着：</strong>术后未做好防晒，可能需3-6个月恢复<br>
+                    • <strong>疤痕增生：</strong>极少数瘢痕体质者可能出现<br><br>
+                    <strong>🛡️ 如何确保安全：</strong><br>
+                    1. 选择有资质的正规医疗机构<br>
+                    2. 由专业医生操作，不要去美容院<br>
+                    3. 治疗前告知医生过敏史和用药史<br>
+                    4. 严格遵守术后护理要求<br>
+                    5. 出现异常及时联系医生<br><br>
+                    <strong>💡 特殊提醒：</strong>孕期、哺乳期、疤痕体质、光敏性皮肤病患者需特别谨慎。`,
+                tags: ['安全性', '副作用', '注意事项']
+            },
+            {
+                id: 12,
+                category: 'safety',
+                categoryName: '安全副作用',
+                question: '激光治疗会让皮肤变薄、变敏感吗？',
+                answer: `<strong>这是常见误区！正规激光治疗不会让皮肤变薄：</strong><br><br>
+                    <strong>❌ 误区澄清：</strong><br>
+                    • <strong>错误观念：</strong>"激光会把皮肤打薄"<br>
+                    • <strong>科学事实：</strong>激光是刺激胶原再生，让皮肤变厚变紧致<br><br>
+                    <strong>🔬 激光治疗原理：</strong><br>
+                    1. 激光选择性作用于目标组织<br>
+                    2. 刺激真皮层胶原蛋白增生<br>
+                    3. 促进皮肤新陈代谢和修复<br>
+                    4. 最终结果是皮肤变厚、变紧致<br><br>
+                    <strong>⚠️ 为什么有人觉得变敏感了：</strong><br>
+                    • 治疗后短期内角质层受损（会自然修复）<br>
+                    • 术后防晒不到位，皮肤屏障受损<br>
+                    • 过度频繁治疗，皮肤来不及恢复<br>
+                    • 治疗能量过高，操作不当<br><br>
+                    <strong>🛡️ 避免变敏感的方法：</strong><br>
+                    1. 选择正规机构和专业医生<br>
+                    2. 严格按照建议的间隔时间治疗<br>
+                    3. 术后加强保湿和防晒（SPF50+）<br>
+                    4. 避免使用刺激性护肤品<br>
+                    5. 给皮肤足够的恢复时间<br><br>
+                    <strong>💡 正确认识：</strong>规范的激光治疗是安全的，反而能改善皮肤质量。关键是选对机构、听从医嘱、做好护理。`,
+                tags: ['激光', '皮肤变薄', '敏感肌']
+            },
+            {
+                id: 13,
+                category: 'safety',
+                categoryName: '安全副作用',
+                question: '刷酸后为什么会爆痘？正常吗？',
+                answer: `<strong>刷酸后爆痘是正常的"爆发期"，通常1-2周会好转：</strong><br><br>
+                    <strong>🔬 爆痘的原因：</strong><br>
+                    1. <strong>加速代谢：</strong><br>
+                    &nbsp;&nbsp;- 果酸促进角质代谢<br>
+                    &nbsp;&nbsp;- 毛孔深处的粉刺加速排出<br>
+                    &nbsp;&nbsp;- 隐藏的闭口浮出表面<br><br>
+                    2. <strong>闭口开放：</strong><br>
+                    &nbsp;&nbsp;- 原本闭合的粉刺被"打开"<br>
+                    &nbsp;&nbsp;- 短期内看起来痘痘变多了<br>
+                    &nbsp;&nbsp;- 实际上是在彻底清理<br><br>
+                    <strong>✅ 正常爆痘 vs ⚠️ 异常爆痘：</strong><br>
+                    <strong>正常情况：</strong><br>
+                    • 爆痘位置是原本有闭口的区域<br>
+                    • 痘痘为小颗粒状，不红不肿<br>
+                    • 1-2周后明显好转<br>
+                    • 之后皮肤变光滑<br><br>
+                    <strong>异常情况（需就医）：</strong><br>
+                    • 大面积红肿、化脓<br>
+                    • 原本没有痘痘的地方也爆发<br>
+                    • 超过2周不见好转<br>
+                    • 伴随严重瘙痒、刺痛<br><br>
+                    <strong>💡 爆发期应对：</strong><br>
+                    1. 不要用手挤压<br>
+                    2. 加强保湿和防晒<br>
+                    3. 暂停其他刺激性产品<br>
+                    4. 耐心等待，坚持护理<br>
+                    5. 严重时可配合红蓝光消炎<br><br>
+                    <strong>🎯 预防建议：</strong>首次刷酸选择低浓度，逐步建立耐受，减少爆发反应。`,
+                tags: ['刷酸', '爆痘', '爆发期']
+            },
+
+            // 护理建议
+            {
+                id: 14,
+                category: 'care',
+                categoryName: '护理建议',
+                question: '治疗期间需要注意什么？',
+                answer: `<strong>治疗期间的护理直接影响效果：</strong><br><br>
+                    <strong>☀️ 防晒（最重要！）：</strong><br>
+                    • 每天使用SPF50+ PA++++防晒霜<br>
+                    • 每2-3小时补涂一次<br>
+                    • 物理防晒：遮阳帽、遮阳伞、墨镜<br>
+                    • 避免10:00-16:00户外暴晒<br><br>
+                    <strong>💧 保湿修复：</strong><br>
+                    • 使用温和无刺激的保湿产品<br>
+                    • 避免含酒精、香精、色素的产品<br>
+                    • 推荐成分：玻尿酸、神经酰胺、角鲨烷<br>
+                    • 早晚各一次保湿<br><br>
+                    <strong>🧼 温和清洁：</strong><br>
+                    • 使用氨基酸洁面，避免皂基<br>
+                    • 水温30-35℃，不要过热<br>
+                    • 轻柔按摩，不要用力搓揉<br>
+                    • 每天清洁2次（早晚）<br><br>
+                    <strong>❌ 禁忌事项：</strong><br>
+                    • 不要化浓妆，尤其是粉底<br>
+                    • 禁止桑拿、蒸脸、热敷<br>
+                    • 避免剧烈运动（大量出汗）<br>
+                    • 不要游泳（泳池氯水刺激）<br>
+                    • 禁止饮酒、吸烟<br>
+                    • 不要熬夜（影响皮肤修复）<br><br>
+                    <strong>🍎 饮食建议：</strong><br>
+                    • 多吃蔬菜水果（补充维生素）<br>
+                    • 少吃甜食、油炸、辛辣<br>
+                    • 多喝水（每天1.5-2L）<br>
+                    • 补充优质蛋白（鱼肉、鸡蛋）`,
+                tags: ['术后护理', '注意事项', '日常护理']
+            },
+            {
+                id: 15,
+                category: 'care',
+                categoryName: '护理建议',
+                question: '治疗后可以化妆吗？',
+                answer: `<strong>需要根据治疗项目和恢复情况判断：</strong><br><br>
+                    <strong>✅ 可以化妆的情况：</strong><br>
+                    • <strong>红蓝光治疗：</strong>当天即可化淡妆<br>
+                    • <strong>清痘项目：</strong>24小时后可以化妆<br>
+                    • <strong>果酸焕肤：</strong>3天后可化妆，避开刺激性产品<br><br>
+                    <strong>⚠️ 需要等待的项目：</strong><br>
+                    • <strong>光子嫩肤：</strong>3-5天后，皮肤无红肿<br>
+                    • <strong>激光治疗：</strong>7-14天后，结痂完全脱落<br>
+                    • <strong>光动力：</strong>3-7天后，脱皮结束<br><br>
+                    <strong>💄 化妆建议：</strong><br>
+                    1. <strong>产品选择：</strong><br>
+                    &nbsp;&nbsp;- 使用温和、无刺激的产品<br>
+                    &nbsp;&nbsp;- 避免含酒精、香精、防腐剂<br>
+                    &nbsp;&nbsp;- 优先选择医美品牌或药妆<br><br>
+                    2. <strong>化妆技巧：</strong><br>
+                    &nbsp;&nbsp;- 轻薄底妆，不要厚涂<br>
+                    &nbsp;&nbsp;- 避开有创口的部位<br>
+                    &nbsp;&nbsp;- 使用干净的化妆工具<br><br>
+                    3. <strong>卸妆护理：</strong><br>
+                    &nbsp;&nbsp;- 温和卸妆，彻底清洁<br>
+                    &nbsp;&nbsp;- 使用卸妆水/卸妆乳，避免卸妆油<br>
+                    &nbsp;&nbsp;- 卸妆后及时保湿<br><br>
+                    <strong>❌ 禁用产品：</strong><br>
+                    • 含酒精的化妆水<br>
+                    • 含激素的美白产品<br>
+                    • 重金属超标的三无产品<br>
+                    • 刺激性强的彩妆（如闪粉眼影）<br><br>
+                    <strong>💡 最佳建议：</strong>治疗期间尽量素颜，让皮肤充分呼吸和修复。如必须化妆，选择医美级产品，画淡妆即可。`,
+                tags: ['化妆', '术后护理', '产品选择']
+            },
+            {
+                id: 16,
+                category: 'care',
+                categoryName: '护理建议',
+                question: '夏天和冬天治疗有什么区别吗？',
+                answer: `<strong>季节确实会影响治疗效果和恢复：</strong><br><br>
+                    <strong>☀️ 夏季治疗（6-9月）：</strong><br>
+                    <strong>优点：</strong><br>
+                    • 出油多，更适合控油项目（光动力、刷酸）<br>
+                    • 炎症性痤疮治疗效果更明显<br><br>
+                    <strong>缺点：</strong><br>
+                    • 紫外线强，色沉风险高<br>
+                    • 容易出汗，影响伤口恢复<br>
+                    • 防晒压力大<br><br>
+                    <strong>建议：</strong><br>
+                    • 优先选择：红蓝光、光动力、刷酸<br>
+                    • 谨慎选择：激光治疗（易色沉）<br>
+                    • 必须做好严格防晒<br><br>
+                    <strong>❄️ 冬季治疗（11-3月）：</strong><br>
+                    <strong>优点：</strong><br>
+                    • 紫外线弱，色沉风险低<br>
+                    • 最适合做激光治疗<br>
+                    • 恢复期更舒适<br><br>
+                    <strong>缺点：</strong><br>
+                    • 皮肤容易干燥<br>
+                    • 需加强保湿<br><br>
+                    <strong>建议：</strong><br>
+                    • 最佳选择：点阵激光、光子嫩肤<br>
+                    • 加强保湿护理<br>
+                    • 防晒仍然不能忽视<br><br>
+                    <strong>🍂 春秋季（最佳治疗季）：</strong><br>
+                    • 温度适宜，恢复快<br>
+                    • 紫外线适中<br>
+                    • 各类项目都适合<br>
+                    • 皮肤状态稳定<br><br>
+                    <strong>💡 季节护理重点：</strong><br>
+                    • <strong>春季：</strong>抗过敏 + 防晒<br>
+                    • <strong>夏季：</strong>控油 + 强防晒<br>
+                    • <strong>秋季：</strong>补水 + 修复<br>
+                    • <strong>冬季：</strong>保湿 + 防干燥<br><br>
+                    <strong>🎯 总结：</strong>每个季节都可以治疗，关键是选对项目、做好护理。如果要做激光类项目，冬季最佳。`,
+                tags: ['季节', '夏季', '冬季', '最佳时间']
+            }
+        ];
+
+        let currentFAQCategory = 'all';
+
+        // 页面加载时初始化FAQ
+        document.addEventListener('DOMContentLoaded', function() {
+            renderCases('all');
+            initTimelineTreatmentSelect();
+            renderFAQ('all', '');
+        });
+
+        // 渲染FAQ列表
+        function renderFAQ(category, searchKeyword) {
+            const faqList = document.getElementById('faqList');
+            const noResults = document.getElementById('faqNoResults');
+
+            let filteredFAQs = FAQ_DATA;
+
+            // 分类筛选
+            if (category !== 'all') {
+                filteredFAQs = filteredFAQs.filter(faq => faq.category === category);
+            }
+
+            // 搜索筛选
+            if (searchKeyword) {
+                const keyword = searchKeyword.toLowerCase();
+                filteredFAQs = filteredFAQs.filter(faq =>
+                    faq.question.toLowerCase().includes(keyword) ||
+                    faq.answer.toLowerCase().includes(keyword) ||
+                    faq.tags.some(tag => tag.toLowerCase().includes(keyword))
+                );
+            }
+
+            // 显示结果或无结果提示
+            if (filteredFAQs.length === 0) {
+                faqList.style.display = 'none';
+                noResults.style.display = 'block';
+                return;
+            }
+
+            faqList.style.display = 'block';
+            noResults.style.display = 'none';
+
+            // 生成FAQ HTML
+            faqList.innerHTML = filteredFAQs.map(faq => `
+                <div class="faq-item" data-id="${faq.id}">
+                    <div class="faq-question" onclick="toggleFAQ(${faq.id})">
+                        <div class="faq-question-text">
+                            <span class="faq-category-tag">${faq.categoryName}</span>
+                            ${faq.question}
+                        </div>
+                        <div class="faq-icon">▼</div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            ${faq.answer}
+                            <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #e0e0e0;">
+                                ${faq.tags.map(tag => `<span style="display: inline-block; padding: 4px 10px; background: #f0f0f0; color: #666; border-radius: 10px; font-size: 0.85em; margin-right: 8px; margin-top: 5px;">#${tag}</span>`).join('')}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // 展开/折叠FAQ
+        function toggleFAQ(id) {
+            const item = document.querySelector(`.faq-item[data-id="${id}"]`);
+            if (item) {
+                item.classList.toggle('active');
+            }
+        }
+
+        // 分类筛选
+        function filterFAQCategory(category) {
+            currentFAQCategory = category;
+
+            // 更新按钮状态
+            document.querySelectorAll('.faq-category-btn').forEach(btn => {
+                if (btn.dataset.category === category) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+
+            // 获取当前搜索关键词
+            const searchKeyword = document.getElementById('faqSearch').value;
+
+            // 重新渲染
+            renderFAQ(category, searchKeyword);
+        }
+
+        // 搜索FAQ
+        function searchFAQ() {
+            const searchKeyword = document.getElementById('faqSearch').value;
+            renderFAQ(currentFAQCategory, searchKeyword);
         }
 
         // ========== 治疗时间线规划器 ==========
