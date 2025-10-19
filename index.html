@@ -2760,14 +2760,52 @@
                 </button>
             </div>
 
-            <!-- 快捷搜索标签 -->
-            <div class="quick-search-tags" style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 20px;">
-                <button onclick="quickSearch('轻度痘痘')" class="tag-btn">轻度痘痘</button>
-                <button onclick="quickSearch('痘坑修复')" class="tag-btn">痘坑修复</button>
-                <button onclick="quickSearch('激光治疗')" class="tag-btn">激光治疗</button>
-                <button onclick="quickSearch('水杨酸')" class="tag-btn">水杨酸</button>
-                <button onclick="quickSearch('费用价格')" class="tag-btn">费用价格</button>
-                <button onclick="quickSearch('心理支持')" class="tag-btn">心理支持</button>
+            <!-- 热门搜索词标签（分类展示） -->
+            <div style="margin-bottom: 20px;">
+                <div style="text-align: center; margin-bottom: 15px;">
+                    <span style="color: #7f8c8d; font-size: 0.9em; font-weight: 600;">🔥 热门搜索</span>
+                </div>
+
+                <!-- 痤疮类型相关 -->
+                <div style="margin-bottom: 15px;">
+                    <div style="text-align: center; color: #95a5a6; font-size: 0.85em; margin-bottom: 8px;">痤疮类型</div>
+                    <div class="quick-search-tags" style="display: flex; flex-wrap: wrap; gap: 8px; justify-content: center;">
+                        <button onclick="quickSearch('轻度痘痘')" class="tag-btn" style="background: linear-gradient(135deg, #a8e6cf 0%, #56ab2f 100%); color: white; border: none; padding: 6px 16px; border-radius: 20px; cursor: pointer; font-size: 0.9em; transition: all 0.3s; box-shadow: 0 2px 8px rgba(86,171,47,0.2);">😊 轻度痘痘</button>
+                        <button onclick="quickSearch('中度痤疮')" class="tag-btn" style="background: linear-gradient(135deg, #ffd89b 0%, #f39c12 100%); color: white; border: none; padding: 6px 16px; border-radius: 20px; cursor: pointer; font-size: 0.9em; transition: all 0.3s; box-shadow: 0 2px 8px rgba(243,156,18,0.2);">😐 中度痤疮</button>
+                        <button onclick="quickSearch('重度痤疮')" class="tag-btn" style="background: linear-gradient(135deg, #ff9a9e 0%, #e74c3c 100%); color: white; border: none; padding: 6px 16px; border-radius: 20px; cursor: pointer; font-size: 0.9em; transition: all 0.3s; box-shadow: 0 2px 8px rgba(231,76,60,0.2);">😰 重度痤疮</button>
+                        <button onclick="quickSearch('痘坑痘印')" class="tag-btn" style="background: linear-gradient(135deg, #a29bfe 0%, #6c5ce7 100%); color: white; border: none; padding: 6px 16px; border-radius: 20px; cursor: pointer; font-size: 0.9em; transition: all 0.3s; box-shadow: 0 2px 8px rgba(108,92,231,0.2);">🏔️ 痘坑痘印</button>
+                    </div>
+                </div>
+
+                <!-- 治疗方式相关 -->
+                <div style="margin-bottom: 15px;">
+                    <div style="text-align: center; color: #95a5a6; font-size: 0.85em; margin-bottom: 8px;">治疗方式</div>
+                    <div class="quick-search-tags" style="display: flex; flex-wrap: wrap; gap: 8px; justify-content: center;">
+                        <button onclick="quickSearch('激光治疗')" class="tag-btn" style="background: #fff; color: #667eea; border: 2px solid #667eea; padding: 6px 16px; border-radius: 20px; cursor: pointer; font-size: 0.9em; transition: all 0.3s;">💡 激光治疗</button>
+                        <button onclick="quickSearch('水杨酸')" class="tag-btn" style="background: #fff; color: #667eea; border: 2px solid #667eea; padding: 6px 16px; border-radius: 20px; cursor: pointer; font-size: 0.9em; transition: all 0.3s;">🧪 水杨酸</button>
+                        <button onclick="quickSearch('果酸焕肤')" class="tag-btn" style="background: #fff; color: #667eea; border: 2px solid #667eea; padding: 6px 16px; border-radius: 20px; cursor: pointer; font-size: 0.9em; transition: all 0.3s;">🍋 果酸焕肤</button>
+                        <button onclick="quickSearch('光动力')" class="tag-btn" style="background: #fff; color: #667eea; border: 2px solid #667eea; padding: 6px 16px; border-radius: 20px; cursor: pointer; font-size: 0.9em; transition: all 0.3s;">💫 光动力</button>
+                        <button onclick="quickSearch('微针')" class="tag-btn" style="background: #fff; color: #667eea; border: 2px solid #667eea; padding: 6px 16px; border-radius: 20px; cursor: pointer; font-size: 0.9em; transition: all 0.3s;">💉 微针</button>
+                    </div>
+                </div>
+
+                <!-- 关心问题相关 -->
+                <div>
+                    <div style="text-align: center; color: #95a5a6; font-size: 0.85em; margin-bottom: 8px;">常见问题</div>
+                    <div class="quick-search-tags" style="display: flex; flex-wrap: wrap; gap: 8px; justify-content: center;">
+                        <button onclick="quickSearch('费用价格')" class="tag-btn" style="background: #f8f9fa; color: #555; border: 1px solid #dee2e6; padding: 6px 16px; border-radius: 20px; cursor: pointer; font-size: 0.9em; transition: all 0.3s;">💰 费用价格</button>
+                        <button onclick="quickSearch('恢复期')" class="tag-btn" style="background: #f8f9fa; color: #555; border: 1px solid #dee2e6; padding: 6px 16px; border-radius: 20px; cursor: pointer; font-size: 0.9em; transition: all 0.3s;">⏰ 恢复期</button>
+                        <button onclick="quickSearch('副作用')" class="tag-btn" style="background: #f8f9fa; color: #555; border: 1px solid #dee2e6; padding: 6px 16px; border-radius: 20px; cursor: pointer; font-size: 0.9em; transition: all 0.3s;">⚠️ 副作用</button>
+                        <button onclick="quickSearch('护理方法')" class="tag-btn" style="background: #f8f9fa; color: #555; border: 1px solid #dee2e6; padding: 6px 16px; border-radius: 20px; cursor: pointer; font-size: 0.9em; transition: all 0.3s;">🌱 护理方法</button>
+                        <button onclick="quickSearch('治疗周期')" class="tag-btn" style="background: #f8f9fa; color: #555; border: 1px solid #dee2e6; padding: 6px 16px; border-radius: 20px; cursor: pointer; font-size: 0.9em; transition: all 0.3s;">📅 治疗周期</button>
+                        <button onclick="quickSearch('效果对比')" class="tag-btn" style="background: #f8f9fa; color: #555; border: 1px solid #dee2e6; padding: 6px 16px; border-radius: 20px; cursor: pointer; font-size: 0.9em; transition: all 0.3s;">📊 效果对比</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 搜索提示 -->
+            <div style="text-align: center; color: #95a5a6; font-size: 0.85em; margin-top: 15px;">
+                <span style="opacity: 0.8;">💡 提示：点击标签快速搜索，或在上方输入框自定义搜索</span>
             </div>
 
             <!-- 搜索结果显示区域 -->
