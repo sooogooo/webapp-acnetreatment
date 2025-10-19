@@ -2672,6 +2672,64 @@
             </style>
         </div>
 
+        <!-- 互动式治疗决策树 -->
+        <div class="decision-tree-section" style="background: white; border-radius: 20px; padding: 40px; margin-bottom: 30px; box-shadow: 0 10px 40px rgba(0,0,0,0.08);">
+            <h3 style="text-align: center; color: #2c3e50; font-size: 1.8em; margin-bottom: 10px;">🌳 智能治疗决策助手</h3>
+            <p style="text-align: center; color: #7f8c8d; margin-bottom: 35px;">回答几个简单问题，为您定制最适合的治疗方案</p>
+
+            <!-- 决策树容器 -->
+            <div id="decisionTreeContainer" style="max-width: 800px; margin: 0 auto;">
+                <!-- 开始页面 -->
+                <div id="dtStart" class="dt-screen">
+                    <div style="text-align: center; padding: 40px 20px;">
+                        <div style="font-size: 5em; margin-bottom: 20px;">🎯</div>
+                        <h4 style="color: #2c3e50; font-size: 1.5em; margin-bottom: 15px;">开始个性化方案定制</h4>
+                        <p style="color: #7f8c8d; line-height: 1.8; margin-bottom: 30px;">
+                            通过回答6个简单问题，我们将根据您的实际情况、预算和需求，<br>
+                            为您推荐最适合的痤疮治疗方案。
+                        </p>
+                        <button onclick="startDecisionTree()" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; padding: 15px 40px; border-radius: 25px; font-size: 1.1em; cursor: pointer; font-weight: bold; box-shadow: 0 5px 20px rgba(102,126,234,0.3); transition: all 0.3s;">
+                            开始问答 →
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 问题页面 -->
+                <div id="dtQuestions" class="dt-screen" style="display: none;">
+                    <!-- 进度条 -->
+                    <div style="margin-bottom: 30px;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                            <span style="font-size: 0.9em; color: #7f8c8d;">问题进度</span>
+                            <span id="dtProgress" style="font-size: 0.9em; color: #667eea; font-weight: bold;">1/6</span>
+                        </div>
+                        <div style="background: #e0e0e0; height: 8px; border-radius: 4px; overflow: hidden;">
+                            <div id="dtProgressBar" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); height: 100%; width: 16.67%; transition: width 0.3s;"></div>
+                        </div>
+                    </div>
+
+                    <!-- 问题内容 -->
+                    <div id="dtQuestionContent" style="min-height: 350px;">
+                        <!-- 问题将通过JavaScript动态生成 -->
+                    </div>
+
+                    <!-- 导航按钮 -->
+                    <div style="display: flex; justify-content: space-between; margin-top: 30px; padding-top: 20px; border-top: 2px solid #eee;">
+                        <button id="dtPrevBtn" onclick="previousQuestion()" style="background: #f0f0f0; color: #666; border: none; padding: 12px 30px; border-radius: 20px; font-size: 1em; cursor: pointer; font-weight: bold; display: none;">
+                            ← 上一题
+                        </button>
+                        <button id="dtNextBtn" onclick="nextQuestion()" disabled style="background: #ccc; color: white; border: none; padding: 12px 30px; border-radius: 20px; font-size: 1em; cursor: not-allowed; font-weight: bold; margin-left: auto;">
+                            下一题 →
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 结果页面 -->
+                <div id="dtResults" class="dt-screen" style="display: none;">
+                    <!-- 结果将通过JavaScript动态生成 -->
+                </div>
+            </div>
+        </div>
+
         <!-- 痘痘问题分类专题 -->
         <div class="acne-categories-section" style="margin-bottom: 30px;">
             <h3 style="text-align: center; color: #2c3e50; font-size: 1.8em; margin-bottom: 25px;">📚 痘痘问题分类专题</h3>
@@ -5687,6 +5745,377 @@
                 'very-severe': '极重度痤疮属于紧急情况，必须由专业皮肤科医生制定方案。需要系统性口服药物治疗，配合多种医美项目联合治疗。需要长期治疗计划（6-12个月以上），并制定瘢痕修复的后续方案。'
             };
             return adviceMap[severity] || '';
+        }
+
+        // ========== 互动式治疗决策树 ==========
+        const DECISION_TREE_QUESTIONS = [
+            {
+                id: 1,
+                question: '您的主要治疗目标是什么？',
+                emoji: '🎯',
+                options: [
+                    { value: 'acne', label: '控制活动性痘痘', desc: '减少新痘痘生成，消炎去红' },
+                    { value: 'scar', label: '修复痘坑痘印', desc: '改善已有的痘坑和色素沉着' },
+                    { value: 'skin', label: '改善整体肤质', desc: '提升肤质、缩小毛孔、改善粗糙' },
+                    { value: 'all', label: '综合改善', desc: '控痘+修复+肤质全面提升' }
+                ]
+            },
+            {
+                id: 2,
+                question: '您的单次治疗预算范围是？',
+                emoji: '💰',
+                options: [
+                    { value: 'low', label: '500元以内', desc: '基础治疗项目' },
+                    { value: 'medium', label: '500-1500元', desc: '常规医美项目' },
+                    { value: 'high', label: '1500-3000元', desc: '高端治疗项目' },
+                    { value: 'premium', label: '3000元以上', desc: '顶级综合方案' }
+                ]
+            },
+            {
+                id: 3,
+                question: '您对恢复期的要求是？',
+                emoji: '⏱️',
+                options: [
+                    { value: 'none', label: '无恢复期', desc: '治疗后可立即工作生活' },
+                    { value: 'short', label: '1-3天', desc: '可接受轻微红肿' },
+                    { value: 'medium', label: '3-7天', desc: '可接受结痂脱皮' },
+                    { value: 'long', label: '可接受更长', desc: '效果优先，恢复期不限' }
+                ]
+            },
+            {
+                id: 4,
+                question: '您对治疗过程中的痛感接受度？',
+                emoji: '😣',
+                options: [
+                    { value: 'no', label: '完全不能接受疼痛', desc: '只接受无痛或微痛治疗' },
+                    { value: 'mild', label: '轻微疼痛可以', desc: '类似针刺的轻微不适' },
+                    { value: 'moderate', label: '中度疼痛可以', desc: '能忍受一定程度疼痛' },
+                    { value: 'high', label: '效果优先无所谓', desc: '为了效果可以忍受' }
+                ]
+            },
+            {
+                id: 5,
+                question: '您希望的治疗频率是？',
+                emoji: '📅',
+                options: [
+                    { value: 'once', label: '希望单次见效', desc: '尽量一次解决问题' },
+                    { value: 'few', label: '可以做3-5次', desc: '接受短疗程治疗' },
+                    { value: 'many', label: '可以做6次以上', desc: '接受完整疗程' },
+                    { value: 'maintain', label: '长期维护', desc: '愿意长期定期治疗' }
+                ]
+            },
+            {
+                id: 6,
+                question: '您的皮肤敏感程度？',
+                emoji: '🌡️',
+                options: [
+                    { value: 'sensitive', label: '敏感肌', desc: '容易过敏泛红' },
+                    { value: 'normal', label: '正常肌肤', desc: '一般护肤品都能用' },
+                    { value: 'tolerant', label: '耐受性好', desc: '皮肤比较皮实' }
+                ]
+            }
+        ];
+
+        let dtCurrentQuestion = 0;
+        let dtAnswers = {};
+
+        function startDecisionTree() {
+            dtCurrentQuestion = 0;
+            dtAnswers = {};
+            document.getElementById('dtStart').style.display = 'none';
+            document.getElementById('dtQuestions').style.display = 'block';
+            showQuestion(0);
+        }
+
+        function showQuestion(index) {
+            const question = DECISION_TREE_QUESTIONS[index];
+            const content = document.getElementById('dtQuestionContent');
+
+            content.innerHTML = `
+                <div style="text-align: center; margin-bottom: 30px;">
+                    <div style="font-size: 4em; margin-bottom: 15px;">${question.emoji}</div>
+                    <h4 style="color: #2c3e50; font-size: 1.4em; margin-bottom: 10px;">${question.question}</h4>
+                </div>
+
+                <div style="display: grid; gap: 12px;">
+                    ${question.options.map((opt, idx) => `
+                        <div class="dt-option" data-value="${opt.value}" onclick="selectOption(${index}, '${opt.value}')" style="background: white; border: 2px solid #e0e0e0; padding: 18px; border-radius: 12px; cursor: pointer; transition: all 0.3s; ${dtAnswers[question.id] === opt.value ? 'border-color: #667eea; background: #667eea10;' : ''}">
+                            <div style="display: flex; align-items: center; gap: 12px;">
+                                <div style="width: 24px; height: 24px; border: 2px solid ${dtAnswers[question.id] === opt.value ? '#667eea' : '#ccc'}; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.3s;">
+                                    ${dtAnswers[question.id] === opt.value ? '<div style="width: 14px; height: 14px; background: #667eea; border-radius: 50%;"></div>' : ''}
+                                </div>
+                                <div style="flex: 1;">
+                                    <div style="font-weight: bold; color: #2c3e50; margin-bottom: 4px;">${opt.label}</div>
+                                    <div style="font-size: 0.9em; color: #7f8c8d;">${opt.desc}</div>
+                                </div>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+
+            // 更新进度
+            document.getElementById('dtProgress').textContent = `${index + 1}/6`;
+            document.getElementById('dtProgressBar').style.width = `${((index + 1) / 6) * 100}%`;
+
+            // 更新导航按钮
+            const prevBtn = document.getElementById('dtPrevBtn');
+            const nextBtn = document.getElementById('dtNextBtn');
+
+            prevBtn.style.display = index > 0 ? 'block' : 'none';
+
+            if (dtAnswers[question.id]) {
+                nextBtn.disabled = false;
+                nextBtn.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+                nextBtn.style.cursor = 'pointer';
+                if (index === 5) {
+                    nextBtn.textContent = '查看推荐 →';
+                } else {
+                    nextBtn.textContent = '下一题 →';
+                }
+            } else {
+                nextBtn.disabled = true;
+                nextBtn.style.background = '#ccc';
+                nextBtn.style.cursor = 'not-allowed';
+            }
+        }
+
+        function selectOption(questionIndex, value) {
+            const question = DECISION_TREE_QUESTIONS[questionIndex];
+            dtAnswers[question.id] = value;
+
+            // 更新UI
+            const options = document.querySelectorAll('.dt-option');
+            options.forEach(opt => {
+                if (opt.dataset.value === value) {
+                    opt.style.borderColor = '#667eea';
+                    opt.style.background = '#667eea10';
+                    const radio = opt.querySelector('div > div > div');
+                    if (radio.parentElement) {
+                        radio.parentElement.style.borderColor = '#667eea';
+                        radio.innerHTML = '<div style="width: 14px; height: 14px; background: #667eea; border-radius: 50%;"></div>';
+                    }
+                } else {
+                    opt.style.borderColor = '#e0e0e0';
+                    opt.style.background = 'white';
+                    const radio = opt.querySelector('div > div > div');
+                    if (radio.parentElement) {
+                        radio.parentElement.style.borderColor = '#ccc';
+                        radio.innerHTML = '';
+                    }
+                }
+            });
+
+            // 启用下一题按钮
+            const nextBtn = document.getElementById('dtNextBtn');
+            nextBtn.disabled = false;
+            nextBtn.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+            nextBtn.style.cursor = 'pointer';
+            if (questionIndex === 5) {
+                nextBtn.textContent = '查看推荐 →';
+            }
+        }
+
+        function previousQuestion() {
+            if (dtCurrentQuestion > 0) {
+                dtCurrentQuestion--;
+                showQuestion(dtCurrentQuestion);
+            }
+        }
+
+        function nextQuestion() {
+            if (dtCurrentQuestion < 5) {
+                dtCurrentQuestion++;
+                showQuestion(dtCurrentQuestion);
+            } else {
+                // 显示结果
+                showDecisionTreeResults();
+            }
+        }
+
+        function showDecisionTreeResults() {
+            document.getElementById('dtQuestions').style.display = 'none';
+
+            // 根据用户回答筛选推荐项目
+            const recommendations = getRecommendationsFromAnswers(dtAnswers);
+
+            const resultsDiv = document.getElementById('dtResults');
+            resultsDiv.style.display = 'block';
+
+            resultsDiv.innerHTML = `
+                <div style="text-align: center; margin-bottom: 30px;">
+                    <div style="font-size: 5em; margin-bottom: 15px;">✨</div>
+                    <h4 style="color: #2c3e50; font-size: 1.6em; margin-bottom: 10px;">为您定制的治疗方案</h4>
+                    <p style="color: #7f8c8d;">基于您的需求和条件，我们为您推荐以下方案</p>
+                </div>
+
+                <!-- 用户画像总结 -->
+                <div style="background: linear-gradient(135deg, #667eea15 0%, #764ba230 100%); padding: 25px; border-radius: 15px; margin-bottom: 30px; border-left: 4px solid #667eea;">
+                    <h5 style="color: #2c3e50; margin-bottom: 15px; font-size: 1.2em;">📋 您的需求总结</h5>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px;">
+                        ${getSummaryItems(dtAnswers).map(item => `
+                            <div style="background: white; padding: 12px; border-radius: 8px;">
+                                <div style="font-size: 0.85em; color: #7f8c8d; margin-bottom: 4px;">${item.label}</div>
+                                <div style="font-weight: bold; color: #2c3e50;">${item.value}</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+
+                ${recommendations.recommended.length > 0 ? `
+                    <div style="margin-bottom: 30px;">
+                        <h5 style="color: #2c3e50; font-size: 1.2em; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid #667eea;">
+                            ⭐ 最推荐方案
+                        </h5>
+                        <div style="display: grid; gap: 15px;">
+                            ${recommendations.recommended.slice(0, 3).map(item => generateItemCard(item, '#667eea', true)).join('')}
+                        </div>
+                    </div>
+                ` : ''}
+
+                ${recommendations.alternative.length > 0 ? `
+                    <div style="margin-bottom: 30px;">
+                        <h5 style="color: #2c3e50; font-size: 1.2em; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid #00b894;">
+                            💡 备选方案
+                        </h5>
+                        <div style="display: grid; gap: 12px;">
+                            ${recommendations.alternative.slice(0, 2).map(item => generateItemCard(item, '#00b894', false)).join('')}
+                        </div>
+                    </div>
+                ` : ''}
+
+                <!-- 专业建议 -->
+                <div style="background: #fff3cd; padding: 20px; border-radius: 12px; border-left: 4px solid #ffc107; margin-bottom: 25px;">
+                    <div style="font-weight: bold; color: #856404; margin-bottom: 10px;">💡 专业建议</div>
+                    <div style="color: #856404; line-height: 1.7; font-size: 0.95em;">
+                        ${getPersonalizedAdvice(dtAnswers)}
+                    </div>
+                </div>
+
+                <!-- 操作按钮 -->
+                <div style="display: flex; gap: 15px; justify-content: center;">
+                    <button onclick="restartDecisionTree()" style="background: #f0f0f0; color: #666; border: none; padding: 12px 30px; border-radius: 20px; font-size: 1em; cursor: pointer; font-weight: bold;">
+                        🔄 重新测试
+                    </button>
+                    <button onclick="window.location.href='treatments.html'" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; padding: 12px 30px; border-radius: 20px; font-size: 1em; cursor: pointer; font-weight: bold; box-shadow: 0 4px 15px rgba(102,126,234,0.3);">
+                        查看价格详情 →
+                    </button>
+                </div>
+            `;
+        }
+
+        function getRecommendationsFromAnswers(answers) {
+            const recommended = [];
+            const alternative = [];
+
+            ACNE_REAL_DATA.singleItems.forEach(item => {
+                let score = 0;
+
+                // 根据治疗目标评分
+                if (answers[1] === 'acne' && ['基础治疗', '刷酸治疗', '综合治疗'].includes(item.category)) score += 3;
+                if (answers[1] === 'scar' && ['痘坑修复', '激光治疗', '射频微针'].includes(item.category)) score += 3;
+                if (answers[1] === 'skin' && ['激光治疗', '综合治疗'].includes(item.category)) score += 2;
+                if (answers[1] === 'all') score += 1;
+
+                // 根据预算评分
+                if (answers[2] === 'low' && item.price_single <= 500) score += 3;
+                if (answers[2] === 'medium' && item.price_single > 500 && item.price_single <= 1500) score += 3;
+                if (answers[2] === 'high' && item.price_single > 1500 && item.price_single <= 3000) score += 3;
+                if (answers[2] === 'premium' && item.price_single > 3000) score += 3;
+
+                // 根据恢复期评分
+                if (answers[3] === 'none' && item.recovery === '无恢复期') score += 2;
+                if (answers[3] === 'short' && (item.recovery.includes('1-3天') || item.recovery.includes('2-3天') || item.recovery.includes('2-4天'))) score += 2;
+                if (answers[3] === 'medium' && item.recovery.includes('天')) score += 1;
+
+                if (score >= 5) {
+                    recommended.push({ ...item, score });
+                } else if (score >= 3) {
+                    alternative.push({ ...item, score });
+                }
+            });
+
+            // 排序
+            recommended.sort((a, b) => b.score - a.score);
+            alternative.sort((a, b) => b.score - a.score);
+
+            return { recommended, alternative };
+        }
+
+        function getSummaryItems(answers) {
+            const labels = {
+                1: { label: '治疗目标', values: { acne: '控制痘痘', scar: '修复痘坑', skin: '改善肤质', all: '综合改善' } },
+                2: { label: '预算范围', values: { low: '500元内', medium: '500-1500元', high: '1500-3000元', premium: '3000元以上' } },
+                3: { label: '恢复期', values: { none: '无恢复期', short: '1-3天', medium: '3-7天', long: '可接受更长' } },
+                4: { label: '痛感接受', values: { no: '不能接受', mild: '轻微可以', moderate: '中度可以', high: '无所谓' } },
+                5: { label: '治疗频率', values: { once: '单次见效', few: '3-5次', many: '6次以上', maintain: '长期维护' } },
+                6: { label: '皮肤类型', values: { sensitive: '敏感肌', normal: '正常肌肤', tolerant: '耐受性好' } }
+            };
+
+            return Object.keys(answers).map(key => ({
+                label: labels[key].label,
+                value: labels[key].values[answers[key]]
+            }));
+        }
+
+        function generateItemCard(item, color, isHighlight) {
+            return `
+                <div style="background: ${isHighlight ? `linear-gradient(135deg, ${color}08 0%, ${color}15 100%)` : 'white'}; border: 2px solid ${isHighlight ? color : '#e0e0e0'}; padding: 20px; border-radius: 12px; box-shadow: ${isHighlight ? `0 4px 20px ${color}20` : '0 2px 10px rgba(0,0,0,0.05)'};">
+                    <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 12px;">
+                        <div>
+                            <h6 style="color: #2c3e50; margin: 0 0 8px 0; font-size: 1.2em;">${item.name}</h6>
+                            <span style="background: ${color}; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.85em; font-weight: bold;">
+                                ${item.category}
+                            </span>
+                        </div>
+                        <div style="text-align: right;">
+                            <div style="color: ${color}; font-weight: bold; font-size: 1.4em;">¥${item.price_single}</div>
+                            <div style="font-size: 0.8em; color: #95a5a6;">单次</div>
+                        </div>
+                    </div>
+                    <p style="color: #7f8c8d; font-size: 0.95em; margin: 12px 0; line-height: 1.6;">${item.desc}</p>
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 15px; padding-top: 15px; border-top: 1px solid #eee;">
+                        <div>
+                            <div style="font-size: 0.85em; color: #95a5a6; margin-bottom: 4px;">⏱ 疗程</div>
+                            <div style="font-size: 0.9em; color: #2c3e50; font-weight: bold;">${item.duration}</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 0.85em; color: #95a5a6; margin-bottom: 4px;">🔄 恢复期</div>
+                            <div style="font-size: 0.9em; color: #2c3e50; font-weight: bold;">${item.recovery}</div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function getPersonalizedAdvice(answers) {
+            let advice = [];
+
+            if (answers[2] === 'low') {
+                advice.push('根据您的预算，建议从基础治疗项目开始，循序渐进。');
+            }
+            if (answers[3] === 'none') {
+                advice.push('您选择无恢复期的项目，这类项目通常需要多次治疗才能见效，请保持耐心。');
+            }
+            if (answers[6] === 'sensitive') {
+                advice.push('敏感肌肤建议先做局部测试，选择温和的治疗方式，避免过度刺激。');
+            }
+            if (answers[5] === 'once') {
+                advice.push('单次见效的期望可能较难实现，痤疮治疗通常需要一个疗程（3-6次）才能达到理想效果。');
+            }
+
+            if (advice.length === 0) {
+                advice.push('建议您先预约专业医生进行面诊，根据实际皮肤状况制定详细治疗方案。治疗期间请遵医嘱，配合日常护肤，保持良好的生活习惯。');
+            }
+
+            return advice.join(' ');
+        }
+
+        function restartDecisionTree() {
+            dtCurrentQuestion = 0;
+            dtAnswers = {};
+            document.getElementById('dtResults').style.display = 'none';
+            document.getElementById('dtStart').style.display = 'block';
         }
     </script>
 
