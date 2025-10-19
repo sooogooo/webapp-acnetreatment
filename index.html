@@ -3424,6 +3424,64 @@
             </style>
         </div>
 
+        <!-- 术后护理指南 -->
+        <div style="background: white; border-radius: 20px; padding: 40px; margin-bottom: 30px; box-shadow: 0 10px 40px rgba(0,0,0,0.1);">
+            <h3 style="text-align: center; color: #2c3e50; font-size: 2em; margin-bottom: 10px;">🩹 术后护理指南</h3>
+            <p style="text-align: center; color: #7f8c8d; margin-bottom: 40px;">专业护理建议 | 分项目详解 | 助力最佳疗效</p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+                <!-- 激光类护理 -->
+                <div onclick="showCareGuide('laser')" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; border-radius: 12px; cursor: pointer; transition: all 0.3s; box-shadow: 0 4px 15px rgba(102,126,234,0.3);" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 8px 25px rgba(102,126,234,0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(102,126,234,0.3)';">
+                    <div style="font-size: 2em; margin-bottom: 10px;">✨</div>
+                    <h4 style="margin: 0 0 8px 0; font-size: 1.1em;">激光类项目</h4>
+                    <p style="margin: 0; font-size: 0.9em; opacity: 0.9;">点阵激光、光子嫩肤</p>
+                </div>
+
+                <!-- 刷酸类护理 -->
+                <div onclick="showCareGuide('acid')" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; padding: 20px; border-radius: 12px; cursor: pointer; transition: all 0.3s; box-shadow: 0 4px 15px rgba(245,87,108,0.3);" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 8px 25px rgba(245,87,108,0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(245,87,108,0.3)';">
+                    <div style="font-size: 2em; margin-bottom: 10px;">💧</div>
+                    <h4 style="margin: 0 0 8px 0; font-size: 1.1em;">刷酸类项目</h4>
+                    <p style="margin: 0; font-size: 0.9em; opacity: 0.9;">水杨酸、果酸焕肤</p>
+                </div>
+
+                <!-- 微针类护理 -->
+                <div onclick="showCareGuide('microneedle')" style="background: linear-gradient(135deg, #a8e6cf 0%, #56ab2f 100%); color: white; padding: 20px; border-radius: 12px; cursor: pointer; transition: all 0.3s; box-shadow: 0 4px 15px rgba(86,171,47,0.3);" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 8px 25px rgba(86,171,47,0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(86,171,47,0.3)';">
+                    <div style="font-size: 2em; margin-bottom: 10px;">⚡</div>
+                    <h4 style="margin: 0 0 8px 0; font-size: 1.1em;">微针类项目</h4>
+                    <p style="margin: 0; font-size: 0.9em; opacity: 0.9;">黄金微针、射频微针</p>
+                </div>
+
+                <!-- 光动力护理 -->
+                <div onclick="showCareGuide('photodynamic')" style="background: linear-gradient(135deg, #ffd89b 0%, #f39c12 100%); color: white; padding: 20px; border-radius: 12px; cursor: pointer; transition: all 0.3s; box-shadow: 0 4px 15px rgba(243,156,18,0.3);" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 8px 25px rgba(243,156,18,0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(243,156,18,0.3)';">
+                    <div style="font-size: 2em; margin-bottom: 10px;">💡</div>
+                    <h4 style="margin: 0 0 8px 0; font-size: 1.1em;">光动力疗法</h4>
+                    <p style="margin: 0; font-size: 0.9em; opacity: 0.9;">ALA-PDT光动力</p>
+                </div>
+            </div>
+
+            <div style="margin-top: 25px; padding: 20px; background: #fff3cd; border-radius: 10px; border-left: 4px solid #ffc107;">
+                <div style="font-weight: bold; color: #856404; margin-bottom: 8px;">⚠️ 重要提示</div>
+                <div style="color: #856404; font-size: 0.9em; line-height: 1.8;">
+                    • 术后护理直接影响治疗效果，请严格遵医嘱<br>
+                    • 不同项目护理要求不同，请选择对应项目查看<br>
+                    • 如出现异常反应，请立即联系医生
+                </div>
+            </div>
+        </div>
+
+        <!-- 术后护理详情弹窗 -->
+        <div id="careGuideModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 10000; overflow-y: auto; padding: 20px;">
+            <div style="max-width: 900px; margin: 40px auto; background: white; border-radius: 20px; position: relative; box-shadow: 0 20px 60px rgba(0,0,0,0.3);">
+                <!-- 关闭按钮 -->
+                <button onclick="closeCareGuide()" style="position: absolute; top: 20px; right: 20px; width: 40px; height: 40px; border-radius: 50%; border: none; background: #f0f0f0; cursor: pointer; font-size: 1.5em; color: #666; transition: all 0.3s;" onmouseover="this.style.background='#e74c3c'; this.style.color='white';" onmouseout="this.style.background='#f0f0f0'; this.style.color='#666';">×</button>
+
+                <!-- 内容区域 -->
+                <div id="careGuideContent" style="padding: 40px;">
+                    <!-- 内容将由JavaScript动态生成 -->
+                </div>
+            </div>
+        </div>
+
         <!-- 痘痘问题分类专题 -->
         <div class="acne-categories-section" style="margin-bottom: 30px;">
             <h3 style="text-align: center; color: #2c3e50; font-size: 1.8em; margin-bottom: 25px;">📚 痘痘问题分类专题</h3>
@@ -7571,6 +7629,311 @@
             if (hours < 24) return `${hours}小时前`;
             if (days < 7) return `${days}天前`;
             return new Date(timestamp).toLocaleDateString('zh-CN');
+        }
+
+        // ========== 术后护理指南 ==========
+
+        const CARE_GUIDES = {
+            laser: {
+                title: '激光类项目术后护理',
+                icon: '✨',
+                color: '#667eea',
+                projects: ['点阵激光', '光子嫩肤', 'CO2点阵'],
+                timeline: [
+                    {
+                        period: '治疗后即刻（0-2小时）',
+                        items: [
+                            '✅ 治疗部位会有轻微红肿热感，属正常现象',
+                            '✅ 可用冰袋冷敷15-20分钟，缓解不适',
+                            '✅ 避免用手触碰治疗部位',
+                            '❌ 不要立即洗脸或化妆'
+                        ]
+                    },
+                    {
+                        period: '第1-3天',
+                        items: [
+                            '✅ 可能出现结痂，属正常反应，不要用手撕',
+                            '✅ 温和洁面，使用温和洁面产品',
+                            '✅ 早晚使用医用修复面膜或舒缓产品',
+                            '✅ 严格防晒（SPF50+），避免色素沉着',
+                            '❌ 禁止使用刺激性护肤品（美白、去角质等）',
+                            '❌ 避免热水洗脸、桑拿、剧烈运动'
+                        ]
+                    },
+                    {
+                        period: '第4-7天',
+                        items: [
+                            '✅ 结痂自然脱落，露出新生皮肤',
+                            '✅ 继续做好保湿和防晒',
+                            '✅ 可适当补充维生素C',
+                            '✅ 饮食清淡，多喝水',
+                            '❌ 不要使用磨砂类产品',
+                            '❌ 避免游泳、温泉等'
+                        ]
+                    },
+                    {
+                        period: '第2-4周',
+                        items: [
+                            '✅ 皮肤基本恢复，可恢复正常护肤',
+                            '✅ 继续严格防晒3个月',
+                            '✅ 可使用温和美白产品',
+                            '✅ 定期回诊，评估效果'
+                        ]
+                    }
+                ],
+                warnings: [
+                    '⚠️ 如出现严重红肿、感染迹象，立即联系医生',
+                    '⚠️ 结痂过程中绝不可用手撕扯，否则可能留疤',
+                    '⚠️ 防晒不到位可能导致色素沉着或反黑'
+                ],
+                products: [
+                    '💧 医用修复面膜（薇诺娜、芙清等）',
+                    '🧴 温和洁面（氨基酸洁面）',
+                    '☀️ 物理防晒霜（SPF50+）',
+                    '💊 维生素C/E补充剂（可选）'
+                ]
+            },
+            acid: {
+                title: '刷酸类项目术后护理',
+                icon: '💧',
+                color: '#f5576c',
+                projects: ['水杨酸焕肤', '果酸焕肤', '复合酸'],
+                timeline: [
+                    {
+                        period: '刷酸后即刻',
+                        items: [
+                            '✅ 面部会有刺痛、发红、发热感',
+                            '✅ 医生会进行中和处理',
+                            '✅ 离院前医生会涂抹舒缓产品',
+                            '❌ 当天不要洗脸、不要化妆'
+                        ]
+                    },
+                    {
+                        period: '第1-3天（脱皮期）',
+                        items: [
+                            '✅ 第二天可温和洁面',
+                            '✅ 会出现轻微脱皮，属正常现象',
+                            '✅ 使用医用保湿喷雾或修复产品',
+                            '✅ 严格防晒（物理防晒优先）',
+                            '❌ 不要撕扯脱皮',
+                            '❌ 禁用任何功效性护肤品',
+                            '❌ 避免化妆（前3天）'
+                        ]
+                    },
+                    {
+                        period: '第4-7天',
+                        items: [
+                            '✅ 脱皮基本结束，皮肤变光滑',
+                            '✅ 继续保湿和防晒',
+                            '✅ 可使用淡妆',
+                            '✅ 饮食清淡，少糖少油',
+                            '❌ 仍需避免美白、去角质类产品'
+                        ]
+                    },
+                    {
+                        period: '第2周后',
+                        items: [
+                            '✅ 可恢复正常护肤流程',
+                            '✅ 建议间隔2-4周再次刷酸',
+                            '✅ 持续防晒至少1个月',
+                            '✅ 评估疗程安排'
+                        ]
+                    }
+                ],
+                warnings: [
+                    '⚠️ 刷酸后1周内皮肤屏障较弱，严禁晒太阳',
+                    '⚠️ 出现严重刺痛、水疱需立即就医',
+                    '⚠️ 不要自行在家刷酸，容易烧伤皮肤'
+                ],
+                products: [
+                    '💧 医用舒缓喷雾',
+                    '🧴 无刺激洁面（温水洗脸最佳）',
+                    '💦 医用保湿霜',
+                    '☀️ 物理防晒（帽子、口罩、防晒霜）'
+                ]
+            },
+            microneedle: {
+                title: '微针类项目术后护理',
+                icon: '⚡',
+                color: '#56ab2f',
+                projects: ['黄金微针', '射频微针', '水光针'],
+                timeline: [
+                    {
+                        period: '治疗后即刻',
+                        items: [
+                            '✅ 会有针刺感和轻微出血点',
+                            '✅ 医生会涂抹修复精华和舒缓面膜',
+                            '✅ 可能有轻微肿胀',
+                            '❌ 6小时内不要碰水'
+                        ]
+                    },
+                    {
+                        period: '第1-2天',
+                        items: [
+                            '✅ 6小时后可用温水轻柔洁面',
+                            '✅ 使用医用修复产品',
+                            '✅ 避免化妆',
+                            '✅ 多喝水，促进代谢',
+                            '❌ 不要用力搓揉面部',
+                            '❌ 避免剧烈运动、出汗'
+                        ]
+                    },
+                    {
+                        period: '第3-7天',
+                        items: [
+                            '✅ 针孔基本愈合',
+                            '✅ 可淡妆（避开针孔）',
+                            '✅ 加强保湿和防晒',
+                            '✅ 可正常洗脸，动作轻柔',
+                            '❌ 避免去角质、刷酸',
+                            '❌ 避免桑拿、汗蒸'
+                        ]
+                    },
+                    {
+                        period: '2周后',
+                        items: [
+                            '✅ 完全恢复，可正常护肤',
+                            '✅ 效果逐渐显现',
+                            '✅ 建议1个月后做第二次',
+                            '✅ 持续防晒'
+                        ]
+                    }
+                ],
+                warnings: [
+                    '⚠️ 术后24小时内禁止沾水，防止感染',
+                    '⚠️ 出现红肿加重、化脓需立即就医',
+                    '⚠️ 微针后1周内不要做其他激光项目'
+                ],
+                products: [
+                    '💧 无菌生理盐水（清洁用）',
+                    '🧴 医用修复精华',
+                    '💦 EGF生长因子面膜',
+                    '☀️ 温和防晒'
+                ]
+            },
+            photodynamic: {
+                title: '光动力疗法术后护理',
+                icon: '💡',
+                color: '#f39c12',
+                projects: ['ALA-PDT', '红蓝光治疗'],
+                timeline: [
+                    {
+                        period: '治疗当天',
+                        items: [
+                            '✅ 避光是关键！涂抹光敏剂后48小时内严格避光',
+                            '✅ 戴遮阳帽、墨镜，尽量待在室内',
+                            '✅ 室内也要拉窗帘，避免日光灯直射',
+                            '✅ 会有轻微刺痛、发红',
+                            '❌ 绝对不能晒太阳',
+                            '❌ 不要洗脸、化妆'
+                        ]
+                    },
+                    {
+                        period: '第1-3天',
+                        items: [
+                            '✅ 继续严格避光',
+                            '✅ 温和清洁，使用修复产品',
+                            '✅ 可能出现脱皮、结痂',
+                            '✅ 多喝水，清淡饮食',
+                            '❌ 不要撕扯结痂',
+                            '❌ 避免使用任何功效性护肤品'
+                        ]
+                    },
+                    {
+                        period: '第4-7天',
+                        items: [
+                            '✅ 结痂脱落，新皮再生',
+                            '✅ 继续避光（室外必须打伞）',
+                            '✅ 加强保湿',
+                            '✅ 可淡妆',
+                            '❌ 仍需避免强光照射'
+                        ]
+                    },
+                    {
+                        period: '2周后',
+                        items: [
+                            '✅ 基本恢复，效果显现',
+                            '✅ 炎症型痤疮明显改善',
+                            '✅ 可逐步恢复正常活动',
+                            '✅ 但仍需防晒1-3个月'
+                        ]
+                    }
+                ],
+                warnings: [
+                    '⚠️ 光动力后48小时严格避光，否则可能灼伤',
+                    '⚠️ 室内也要避免强光（关灯或拉窗帘）',
+                    '⚠️ 出现严重水肿、水疱立即就医',
+                    '⚠️ 治疗后1个月内不要做其他光类项目'
+                ],
+                products: [
+                    '🧴 医用舒缓洁面',
+                    '💧 医用修复面膜',
+                    '💦 保湿精华',
+                    '☀️ 高倍数防晒+物理遮挡',
+                    '🧢 遮阳帽、太阳镜'
+                ]
+            }
+        };
+
+        function showCareGuide(type) {
+            const guide = CARE_GUIDES[type];
+            if (!guide) return;
+
+            const modal = document.getElementById('careGuideModal');
+            const content = document.getElementById('careGuideContent');
+
+            let html = `
+                <!-- 标题 -->
+                <div style="text-align: center; margin-bottom: 30px;">
+                    <div style="font-size: 3em; margin-bottom: 10px;">${guide.icon}</div>
+                    <h2 style="color: ${guide.color}; margin: 0 0 10px 0;">${guide.title}</h2>
+                    <p style="color: #7f8c8d; margin: 0;">适用项目：${guide.projects.join('、')}</p>
+                </div>
+
+                <!-- 时间线 -->
+                <h3 style="color: #2c3e50; margin: 30px 0 20px 0; padding-bottom: 10px; border-bottom: 2px solid ${guide.color};">📅 护理时间线</h3>
+                ${guide.timeline.map((phase, index) => `
+                    <div style="margin-bottom: 25px; padding: 20px; background: ${index % 2 === 0 ? '#f8f9fa' : '#fff'}; border-left: 4px solid ${guide.color}; border-radius: 8px;">
+                        <h4 style="color: ${guide.color}; margin: 0 0 15px 0;">${phase.period}</h4>
+                        <div style="line-height: 2; color: #555;">
+                            ${phase.items.map(item => `<div>${item}</div>`).join('')}
+                        </div>
+                    </div>
+                `).join('')}
+
+                <!-- 警告提示 -->
+                <h3 style="color: #e74c3c; margin: 30px 0 20px 0; padding-bottom: 10px; border-bottom: 2px solid #e74c3c;">⚠️ 重要警告</h3>
+                <div style="background: #fff3cd; padding: 20px; border-radius: 10px; border-left: 4px solid #ffc107;">
+                    ${guide.warnings.map(warning => `<div style="margin-bottom: 10px; line-height: 1.8; color: #856404;">${warning}</div>`).join('')}
+                </div>
+
+                <!-- 推荐产品 -->
+                <h3 style="color: #667eea; margin: 30px 0 20px 0; padding-bottom: 10px; border-bottom: 2px solid #667eea;">🛒 推荐产品</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px;">
+                    ${guide.products.map(product => `
+                        <div style="padding: 12px; background: #f8f9fa; border-radius: 8px; border-left: 3px solid #667eea; font-size: 0.9em; color: #555;">
+                            ${product}
+                        </div>
+                    `).join('')}
+                </div>
+
+                <!-- 底部提示 -->
+                <div style="margin-top: 30px; padding: 20px; background: linear-gradient(135deg, ${guide.color}15 0%, ${guide.color}30 100%); border-radius: 10px; text-align: center;">
+                    <p style="margin: 0; color: #555; line-height: 1.8;">
+                        💡 以上护理建议仅供参考，具体护理方案请以医生面诊指导为准<br>
+                        如有任何疑问或不适，请及时联系您的主治医生
+                    </p>
+                </div>
+            `;
+
+            content.innerHTML = html;
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeCareGuide() {
+            document.getElementById('careGuideModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
         }
 
         // ========== 预约咨询表单 ==========
