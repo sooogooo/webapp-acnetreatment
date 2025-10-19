@@ -113,17 +113,55 @@
     }
     </script>
     <style>
+        /* CSS变量 - 浅色模式（默认） */
+        :root {
+            --bg-gradient-start: #f5f7fa;
+            --bg-gradient-end: #c3cfe2;
+            --text-primary: #333;
+            --text-secondary: #666;
+            --text-muted: #999;
+            --bg-white: #ffffff;
+            --bg-card: rgba(255, 255, 255, 0.9);
+            --bg-hover: rgba(255, 255, 255, 0.95);
+            --border-color: #e9ecef;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+            --shadow-hover: rgba(0, 0, 0, 0.15);
+            --input-bg: white;
+            --input-border: #ddd;
+            --modal-bg: rgba(0, 0, 0, 0.5);
+        }
+
+        /* 深色模式 */
+        [data-theme="dark"] {
+            --bg-gradient-start: #1a1a2e;
+            --bg-gradient-end: #16213e;
+            --text-primary: #e0e0e0;
+            --text-secondary: #b0b0b0;
+            --text-muted: #808080;
+            --bg-white: #2a2a3e;
+            --bg-card: rgba(42, 42, 62, 0.95);
+            --bg-hover: rgba(50, 50, 70, 0.98);
+            --border-color: #3a3a4e;
+            --shadow-color: rgba(0, 0, 0, 0.3);
+            --shadow-hover: rgba(0, 0, 0, 0.4);
+            --input-bg: #2a2a3e;
+            --input-border: #3a3a4e;
+            --modal-bg: rgba(0, 0, 0, 0.7);
+        }
+
+        /* 平滑过渡 */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
         }
 
         body {
             font-family: 'Microsoft YaHei', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: var(--text-primary);
+            background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
             min-height: 100vh;
         }
 
@@ -136,10 +174,50 @@
         header {
             text-align: center;
             padding: 40px 0;
-            background: rgba(255, 255, 255, 0.9);
+            background: var(--bg-card);
             border-radius: 15px;
             margin-bottom: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px var(--shadow-color);
+            position: relative;
+        }
+
+        /* 主题切换按钮 */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--bg-card);
+            border: 2px solid var(--border-color);
+            box-shadow: 0 4px 15px var(--shadow-color);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1) rotate(20deg);
+            box-shadow: 0 6px 20px var(--shadow-hover);
+        }
+
+        .theme-toggle:active {
+            transform: scale(0.95);
+        }
+
+        /* 主题切换动画 */
+        .theme-icon {
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .theme-icon.hide {
+            transform: rotate(180deg);
+            opacity: 0;
         }
 
         .header-content {
@@ -2536,6 +2614,11 @@
     </style>
 </head>
 <body>
+    <!-- 主题切换按钮 -->
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="切换主题">
+        <span class="theme-icon" id="themeIcon">🌙</span>
+    </button>
+
     <div class="container">
         <header>
             <div class="header-content">
@@ -9756,6 +9839,119 @@
             }
         `;
         document.head.appendChild(pwaStyles);
+    </script>
+
+    <!-- 主题切换功能 -->
+    <script>
+        // 主题管理
+        const themeManager = {
+            // 获取当前主题
+            getCurrentTheme() {
+                return localStorage.getItem('theme') || this.getSystemTheme();
+            },
+
+            // 获取系统主题偏好
+            getSystemTheme() {
+                if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    return 'dark';
+                }
+                return 'light';
+            },
+
+            // 设置主题
+            setTheme(theme) {
+                document.documentElement.setAttribute('data-theme', theme);
+                localStorage.setItem('theme', theme);
+                this.updateThemeIcon(theme);
+                console.log(`[Theme] 主题已切换为: ${theme}`);
+            },
+
+            // 更新主题图标
+            updateThemeIcon(theme) {
+                const icon = document.getElementById('themeIcon');
+                if (!icon) return;
+
+                if (theme === 'dark') {
+                    icon.textContent = '☀️'; // 深色模式显示太阳图标
+                } else {
+                    icon.textContent = '🌙'; // 浅色模式显示月亮图标
+                }
+            },
+
+            // 切换主题
+            toggle() {
+                const currentTheme = this.getCurrentTheme();
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                this.setTheme(newTheme);
+
+                // 显示切换提示
+                this.showThemeToast(newTheme);
+            },
+
+            // 显示切换提示
+            showThemeToast(theme) {
+                const toast = document.createElement('div');
+                const themeText = theme === 'dark' ? '深色模式' : '浅色模式';
+                toast.style.cssText = `
+                    position: fixed;
+                    top: 80px;
+                    right: 30px;
+                    background: ${theme === 'dark' ? '#2a2a3e' : '#ffffff'};
+                    color: ${theme === 'dark' ? '#e0e0e0' : '#333'};
+                    padding: 15px 25px;
+                    border-radius: 10px;
+                    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+                    z-index: 10001;
+                    font-weight: bold;
+                    animation: slideInRight 0.3s;
+                `;
+                toast.textContent = `已切换到${themeText}`;
+                document.body.appendChild(toast);
+
+                setTimeout(() => {
+                    toast.style.animation = 'slideOutRight 0.3s';
+                    setTimeout(() => toast.remove(), 300);
+                }, 2000);
+            },
+
+            // 初始化
+            init() {
+                const currentTheme = this.getCurrentTheme();
+                this.setTheme(currentTheme);
+
+                // 监听系统主题变化
+                if (window.matchMedia) {
+                    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+                        // 如果用户没有手动设置过主题，跟随系统
+                        if (!localStorage.getItem('theme')) {
+                            const newTheme = e.matches ? 'dark' : 'light';
+                            this.setTheme(newTheme);
+                            console.log('[Theme] 跟随系统主题:', newTheme);
+                        }
+                    });
+                }
+
+                console.log('[Theme] 主题管理器初始化完成，当前主题:', currentTheme);
+            }
+        };
+
+        // 主题切换函数（供HTML调用）
+        function toggleTheme() {
+            themeManager.toggle();
+        }
+
+        // 页面加载时初始化主题
+        (function() {
+            themeManager.init();
+        })();
+
+        // 添加键盘快捷键：Ctrl/Cmd + Shift + T 切换主题
+        document.addEventListener('keydown', (e) => {
+            if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === 'T') {
+                e.preventDefault();
+                toggleTheme();
+            }
+        });
     </script>
 </body>
 </html>
