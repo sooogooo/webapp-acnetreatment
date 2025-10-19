@@ -40,6 +40,10 @@
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#667eea">
+
     <!-- Structured Data (JSON-LD) -->
     <script type="application/ld+json">
     {
@@ -9474,5 +9478,284 @@
             <div id="symptomDetailModalBody"></div>
         </div>
     </div>
+
+    <!-- PWA 安装提示横幅 -->
+    <div id="pwaInstallBanner" style="display: none; position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 15px 25px; border-radius: 15px; box-shadow: 0 10px 30px rgba(102,126,234,0.5); z-index: 9999; max-width: 90%; width: 500px; animation: slideUp 0.5s;">
+        <div style="display: flex; align-items: center; gap: 15px;">
+            <div style="font-size: 2em;">📱</div>
+            <div style="flex: 1;">
+                <div style="font-weight: bold; margin-bottom: 5px;">安装到主屏幕</div>
+                <div style="font-size: 0.9em; opacity: 0.9;">像APP一样使用，支持离线访问</div>
+            </div>
+            <button onclick="installPWA()" style="background: white; color: #667eea; border: none; padding: 10px 20px; border-radius: 8px; font-weight: bold; cursor: pointer; transition: all 0.3s;">
+                安装
+            </button>
+            <button onclick="closePWABanner()" style="background: transparent; color: white; border: 1px solid rgba(255,255,255,0.3); padding: 10px 15px; border-radius: 8px; cursor: pointer; transition: all 0.3s;">
+                稍后
+            </button>
+        </div>
+    </div>
+
+    <!-- PWA 安装成功提示 -->
+    <div id="pwaInstallSuccess" style="display: none; position: fixed; top: 80px; right: 30px; background: linear-gradient(135deg, #28a745 0%, #20c997 100%); color: white; padding: 15px 25px; border-radius: 10px; box-shadow: 0 5px 20px rgba(40,167,69,0.4); z-index: 10001; animation: slideInRight 0.3s;">
+        <div style="display: flex; align-items: center; gap: 10px;">
+            <div style="font-size: 1.5em;">✅</div>
+            <div>
+                <div style="font-weight: bold;">安装成功！</div>
+                <div style="font-size: 0.9em; opacity: 0.9;">现在可以离线访问了</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PWA 离线提示 -->
+    <div id="pwaOfflineNotice" style="display: none; position: fixed; top: 0; left: 0; right: 0; background: #ffc107; color: #333; padding: 10px; text-align: center; z-index: 10000; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+        <span style="font-weight: bold;">📡 您当前处于离线状态</span> - 正在使用缓存内容
+    </div>
+
+    <!-- Service Worker 注册代码 -->
+    <script>
+        // PWA相关变量
+        let deferredPrompt;
+        let isInstalled = false;
+
+        // 检查是否已安装为PWA
+        function checkIfPWAInstalled() {
+            // 检查是否在standalone模式下运行
+            if (window.matchMedia('(display-mode: standalone)').matches) {
+                isInstalled = true;
+                console.log('[PWA] 应用已安装');
+                return true;
+            }
+
+            // iOS Safari检测
+            if (window.navigator.standalone === true) {
+                isInstalled = true;
+                console.log('[PWA] 应用已安装（iOS）');
+                return true;
+            }
+
+            return false;
+        }
+
+        // 注册Service Worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then((registration) => {
+                        console.log('[PWA] Service Worker注册成功:', registration.scope);
+
+                        // 检查更新
+                        registration.addEventListener('updatefound', () => {
+                            const newWorker = registration.installing;
+                            console.log('[PWA] 发现新版本');
+
+                            newWorker.addEventListener('statechange', () => {
+                                if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                                    console.log('[PWA] 新版本已准备好');
+                                    // 可以在这里提示用户刷新页面
+                                    if (confirm('发现新版本，是否立即更新？')) {
+                                        newWorker.postMessage({ type: 'SKIP_WAITING' });
+                                        window.location.reload();
+                                    }
+                                }
+                            });
+                        });
+
+                        // 监听Service Worker控制器变化
+                        navigator.serviceWorker.addEventListener('controllerchange', () => {
+                            console.log('[PWA] Service Worker已更新');
+                        });
+                    })
+                    .catch((error) => {
+                        console.error('[PWA] Service Worker注册失败:', error);
+                    });
+            });
+
+            // 监听在线/离线状态
+            window.addEventListener('online', () => {
+                console.log('[PWA] 已恢复网络连接');
+                document.getElementById('pwaOfflineNotice').style.display = 'none';
+            });
+
+            window.addEventListener('offline', () => {
+                console.log('[PWA] 网络连接已断开');
+                document.getElementById('pwaOfflineNotice').style.display = 'block';
+            });
+
+            // 初始检查网络状态
+            if (!navigator.onLine) {
+                document.getElementById('pwaOfflineNotice').style.display = 'block';
+            }
+        }
+
+        // 监听PWA安装提示事件
+        window.addEventListener('beforeinstallprompt', (e) => {
+            console.log('[PWA] 安装提示事件触发');
+            // 阻止默认的安装提示
+            e.preventDefault();
+            deferredPrompt = e;
+
+            // 如果还没安装，显示自定义安装横幅
+            if (!checkIfPWAInstalled()) {
+                // 延迟3秒显示，避免打扰用户
+                setTimeout(() => {
+                    const banner = document.getElementById('pwaInstallBanner');
+                    if (banner && !localStorage.getItem('pwa_banner_dismissed')) {
+                        banner.style.display = 'block';
+                    }
+                }, 3000);
+            }
+        });
+
+        // PWA安装函数
+        async function installPWA() {
+            if (!deferredPrompt) {
+                console.log('[PWA] 安装提示不可用');
+                alert('您的浏览器不支持PWA安装，或者已经安装了。');
+                return;
+            }
+
+            // 显示安装提示
+            deferredPrompt.prompt();
+
+            // 等待用户响应
+            const { outcome } = await deferredPrompt.userChoice;
+            console.log(`[PWA] 用户选择: ${outcome}`);
+
+            if (outcome === 'accepted') {
+                console.log('[PWA] 用户接受安装');
+                closePWABanner();
+                showPWAInstallSuccess();
+            } else {
+                console.log('[PWA] 用户拒绝安装');
+            }
+
+            // 清除deferredPrompt
+            deferredPrompt = null;
+        }
+
+        // 关闭PWA横幅
+        function closePWABanner() {
+            const banner = document.getElementById('pwaInstallBanner');
+            if (banner) {
+                banner.style.animation = 'slideDown 0.3s';
+                setTimeout(() => {
+                    banner.style.display = 'none';
+                }, 300);
+            }
+            // 记录用户已关闭，7天内不再显示
+            localStorage.setItem('pwa_banner_dismissed', Date.now());
+        }
+
+        // 显示安装成功提示
+        function showPWAInstallSuccess() {
+            const successNotice = document.getElementById('pwaInstallSuccess');
+            if (successNotice) {
+                successNotice.style.display = 'block';
+                setTimeout(() => {
+                    successNotice.style.animation = 'slideOutRight 0.3s';
+                    setTimeout(() => {
+                        successNotice.style.display = 'none';
+                    }, 300);
+                }, 3000);
+            }
+        }
+
+        // 监听PWA安装完成事件
+        window.addEventListener('appinstalled', () => {
+            console.log('[PWA] PWA已成功安装');
+            isInstalled = true;
+            closePWABanner();
+            showPWAInstallSuccess();
+        });
+
+        // 页面加载时检查PWA横幅是否应该显示
+        document.addEventListener('DOMContentLoaded', () => {
+            checkIfPWAInstalled();
+
+            // 检查横幅关闭记录
+            const dismissedTime = localStorage.getItem('pwa_banner_dismissed');
+            if (dismissedTime) {
+                const sevenDays = 7 * 24 * 60 * 60 * 1000;
+                if (Date.now() - parseInt(dismissedTime) > sevenDays) {
+                    // 超过7天，清除记录
+                    localStorage.removeItem('pwa_banner_dismissed');
+                }
+            }
+        });
+
+        // 添加PWA相关的CSS动画
+        const pwaStyles = document.createElement('style');
+        pwaStyles.textContent = `
+            @keyframes slideUp {
+                from {
+                    transform: translateX(-50%) translateY(100px);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateX(-50%) translateY(0);
+                    opacity: 1;
+                }
+            }
+
+            @keyframes slideDown {
+                from {
+                    transform: translateX(-50%) translateY(0);
+                    opacity: 1;
+                }
+                to {
+                    transform: translateX(-50%) translateY(100px);
+                    opacity: 0;
+                }
+            }
+
+            @keyframes slideInRight {
+                from {
+                    transform: translateX(400px);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+
+            @keyframes slideOutRight {
+                from {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+                to {
+                    transform: translateX(400px);
+                    opacity: 0;
+                }
+            }
+
+            /* 移动端适配 */
+            @media (max-width: 768px) {
+                #pwaInstallBanner {
+                    bottom: 10px;
+                    padding: 12px 15px;
+                    width: 95%;
+                }
+
+                #pwaInstallBanner > div {
+                    flex-direction: column;
+                    text-align: center;
+                }
+
+                #pwaInstallBanner button {
+                    width: 100%;
+                    margin-top: 8px;
+                }
+
+                #pwaInstallSuccess {
+                    right: 10px;
+                    left: 10px;
+                }
+            }
+        `;
+        document.head.appendChild(pwaStyles);
+    </script>
 </body>
 </html>
