@@ -4168,13 +4168,14 @@
             // 统一换行符处理
             let text = markdown.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
 
-            // 按行分割并去掉前后空白
+            // 按行分割
             let lines = text.split('\n');
             let result = [];
             let inUnorderedList = false;
             let inOrderedList = false;
             let inTable = false;
             let inCodeBlock = false;
+            let inBlockquote = false;
             let codeBlockContent = [];
             let codeBlockLang = '';
 
@@ -4185,7 +4186,11 @@
                 // 处理代码块
                 if (trimmedLine.startsWith('```')) {
                     if (!inCodeBlock) {
-                        // 开始代码块
+                        // 开始代码块 - 先结束其他状态
+                        if (inUnorderedList) { result.push('</ul>'); inUnorderedList = false; }
+                        if (inOrderedList) { result.push('</ol>'); inOrderedList = false; }
+                        if (inBlockquote) { result.push('</blockquote>'); inBlockquote = false; }
+
                         inCodeBlock = true;
                         codeBlockLang = trimmedLine.substring(3).trim();
                         codeBlockContent = [];
@@ -4210,17 +4215,45 @@
                     continue;
                 }
 
+                // 处理引用块
+                if (trimmedLine.startsWith('>')) {
+                    if (inUnorderedList) { result.push('</ul>'); inUnorderedList = false; }
+                    if (inOrderedList) { result.push('</ol>'); inOrderedList = false; }
+
+                    if (!inBlockquote) {
+                        result.push('<blockquote>');
+                        inBlockquote = true;
+                    }
+                    let content = trimmedLine.substring(1).trim();
+                    content = processInlineFormatting(content);
+                    result.push(`<p>${content}</p>`);
+                    continue;
+                } else if (inBlockquote) {
+                    result.push('</blockquote>');
+                    inBlockquote = false;
+                }
+
+                // 处理水平分隔线
+                if (trimmedLine.match(/^[\-\*_]{3,}$/)) {
+                    if (inUnorderedList) { result.push('</ul>'); inUnorderedList = false; }
+                    if (inOrderedList) { result.push('</ol>'); inOrderedList = false; }
+                    result.push('<hr>');
+                    continue;
+                }
+
                 // 处理表格
                 if (trimmedLine.startsWith('|') && trimmedLine.endsWith('|')) {
                     // 检查是否是分隔行 (|---|---|)
                     if (trimmedLine.match(/^\|[\s\-:]+\|$/)) {
-                        // 这是表头分隔行，已经在表格中
                         continue;
                     }
 
                     // 如果还未开始表格，检查下一行是否是分隔行
                     if (!inTable) {
                         if (i + 1 < lines.length && lines[i + 1].trim().match(/^\|[\s\-:]+\|$/)) {
+                            if (inUnorderedList) { result.push('</ul>'); inUnorderedList = false; }
+                            if (inOrderedList) { result.push('</ol>'); inOrderedList = false; }
+
                             // 开始表格，这是表头
                             result.push('<table class="markdown-table">');
                             result.push('<thead>');
@@ -4249,155 +4282,123 @@
 
                 // 处理空行 - 结束当前列表状态
                 if (trimmedLine === '') {
-                    if (inUnorderedList) {
-                        result.push('</ul>');
-                        inUnorderedList = false;
-                    }
-                    if (inOrderedList) {
-                        result.push('</ol>');
-                        inOrderedList = false;
-                    }
-                    // 添加段落间距，但不添加空的p标签
+                    if (inUnorderedList) { result.push('</ul>'); inUnorderedList = false; }
+                    if (inOrderedList) { result.push('</ol>'); inOrderedList = false; }
                     if (result.length > 0 && result[result.length - 1] !== '') {
                         result.push('');
                     }
                     continue;
                 }
 
-                // 处理标题 - 必须在行首
-                if (trimmedLine.match(/^### (.+)/)) {
-                    // 结束任何活动的列表
-                    if (inUnorderedList) {
-                        result.push('</ul>');
-                        inUnorderedList = false;
-                    }
-                    if (inOrderedList) {
-                        result.push('</ol>');
-                        inOrderedList = false;
-                    }
+                // 处理标题 - 按照优先级从长到短匹配
+                if (trimmedLine.match(/^#### /)) {
+                    if (inUnorderedList) { result.push('</ul>'); inUnorderedList = false; }
+                    if (inOrderedList) { result.push('</ol>'); inOrderedList = false; }
+                    let title = trimmedLine.replace(/^#### /, '');
+                    result.push(`<h4>${processInlineFormatting(title)}</h4>`);
+                    continue;
+                }
+                if (trimmedLine.match(/^### /)) {
+                    if (inUnorderedList) { result.push('</ul>'); inUnorderedList = false; }
+                    if (inOrderedList) { result.push('</ol>'); inOrderedList = false; }
                     let title = trimmedLine.replace(/^### /, '');
-                    title = processInlineFormatting(title);
-                    result.push(`<h3>${title}</h3>`);
+                    result.push(`<h3>${processInlineFormatting(title)}</h3>`);
                     continue;
                 }
-
-                if (trimmedLine.match(/^## (.+)/)) {
-                    if (inUnorderedList) {
-                        result.push('</ul>');
-                        inUnorderedList = false;
-                    }
-                    if (inOrderedList) {
-                        result.push('</ol>');
-                        inOrderedList = false;
-                    }
+                if (trimmedLine.match(/^## /)) {
+                    if (inUnorderedList) { result.push('</ul>'); inUnorderedList = false; }
+                    if (inOrderedList) { result.push('</ol>'); inOrderedList = false; }
                     let title = trimmedLine.replace(/^## /, '');
-                    title = processInlineFormatting(title);
-                    result.push(`<h2>${title}</h2>`);
+                    result.push(`<h2>${processInlineFormatting(title)}</h2>`);
                     continue;
                 }
-
-                if (trimmedLine.match(/^# (.+)/)) {
-                    if (inUnorderedList) {
-                        result.push('</ul>');
-                        inUnorderedList = false;
-                    }
-                    if (inOrderedList) {
-                        result.push('</ol>');
-                        inOrderedList = false;
-                    }
+                if (trimmedLine.match(/^# /)) {
+                    if (inUnorderedList) { result.push('</ul>'); inUnorderedList = false; }
+                    if (inOrderedList) { result.push('</ol>'); inOrderedList = false; }
                     let title = trimmedLine.replace(/^# /, '');
-                    title = processInlineFormatting(title);
-                    result.push(`<h1>${title}</h1>`);
+                    result.push(`<h1>${processInlineFormatting(title)}</h1>`);
                     continue;
                 }
 
                 // 处理无序列表 - 支持 -, *, + 三种标记
                 let unorderedMatch = trimmedLine.match(/^[\-\*\+]\s+(.+)/);
                 if (unorderedMatch) {
-                    // 如果当前在有序列表中，先结束有序列表
-                    if (inOrderedList) {
-                        result.push('</ol>');
-                        inOrderedList = false;
-                    }
-                    // 如果还未开始无序列表，开始一个新的
+                    if (inOrderedList) { result.push('</ol>'); inOrderedList = false; }
                     if (!inUnorderedList) {
                         result.push('<ul>');
                         inUnorderedList = true;
                     }
-                    let content = unorderedMatch[1];
-                    content = processInlineFormatting(content);
-                    result.push(`<li>${content}</li>`);
+                    result.push(`<li>${processInlineFormatting(unorderedMatch[1])}</li>`);
                     continue;
                 }
 
                 // 处理有序列表
                 let orderedMatch = trimmedLine.match(/^\d+\.\s+(.+)/);
                 if (orderedMatch) {
-                    // 如果当前在无序列表中，先结束无序列表
-                    if (inUnorderedList) {
-                        result.push('</ul>');
-                        inUnorderedList = false;
-                    }
-                    // 如果还未开始有序列表，开始一个新的
+                    if (inUnorderedList) { result.push('</ul>'); inUnorderedList = false; }
                     if (!inOrderedList) {
                         result.push('<ol>');
                         inOrderedList = true;
                     }
-                    let content = orderedMatch[1];
-                    content = processInlineFormatting(content);
-                    result.push(`<li>${content}</li>`);
+                    result.push(`<li>${processInlineFormatting(orderedMatch[1])}</li>`);
                     continue;
                 }
 
                 // 如果到这里，说明不是列表项，需要结束当前的列表
-                if (inUnorderedList) {
-                    result.push('</ul>');
-                    inUnorderedList = false;
-                }
-                if (inOrderedList) {
-                    result.push('</ol>');
-                    inOrderedList = false;
-                }
+                if (inUnorderedList) { result.push('</ul>'); inUnorderedList = false; }
+                if (inOrderedList) { result.push('</ol>'); inOrderedList = false; }
 
                 // 处理普通段落
                 if (trimmedLine) {
-                    let content = processInlineFormatting(trimmedLine);
-                    result.push(`<p>${content}</p>`);
+                    result.push(`<p>${processInlineFormatting(trimmedLine)}</p>`);
                 }
             }
 
-            // 确保所有列表和表格都被正确关闭
-            if (inUnorderedList) {
-                result.push('</ul>');
-            }
-            if (inOrderedList) {
-                result.push('</ol>');
-            }
-            if (inTable) {
-                result.push('</tbody>');
-                result.push('</table>');
-            }
+            // 确保所有块级元素都被正确关闭
+            if (inUnorderedList) result.push('</ul>');
+            if (inOrderedList) result.push('</ol>');
+            if (inTable) { result.push('</tbody>'); result.push('</table>'); }
+            if (inBlockquote) result.push('</blockquote>');
 
             // 连接结果并清理
-            return result.join('\n')
-                .replace(/\n{3,}/g, '\n\n')  // 删除多余的空行
-                .trim();
+            return result.join('\n').replace(/\n{3,}/g, '\n\n').trim();
         }
 
-        // 处理行内格式化（粗体、斜体等）
+        // 处理行内格式化（粗体、斜体、链接等）
         function processInlineFormatting(text) {
             if (!text) return '';
 
-            // 处理粗体 - 支持行内任意位置的 **粗体文本**
-            // 使用非贪婪匹配避免跨越多个粗体标记
-            text = text.replace(/\*\*([^\*]+?)\*\*/g, '<strong>$1</strong>');
+            // 转义HTML特殊字符（除了已经是HTML标签的）
+            text = text.replace(/&/g, '&amp;')
+                      .replace(/</g, '&lt;')
+                      .replace(/>/g, '&gt;');
 
-            // 处理斜体 - 单个星号，但要避免和粗体冲突
-            // 先匹配单独的星号（不是粗体标记的一部分）
-            text = text.replace(/(?<!\*)\*([^\*]+?)\*(?!\*)/g, '<em>$1</em>');
+            // 处理链接 [文本](url)
+            text = text.replace(/\[([^\]]+)\]\(([^\)]+)\)/g, '<a href="$2" target="_blank">$1</a>');
 
-            // 处理行内代码 - 反引号
+            // 处理图片 ![alt](url)
+            text = text.replace(/!\[([^\]]*)\]\(([^\)]+)\)/g, '<img src="$2" alt="$1" style="max-width: 100%; height: auto;">');
+
+            // 处理粗体 **text** 或 __text__
+            text = text.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+            text = text.replace(/__(.+?)__/g, '<strong>$1</strong>');
+
+            // 处理斜体 *text* 或 _text_（但不匹配粗体）
+            // 先处理下划线斜体，避免和粗体冲突
+            text = text.replace(/(?<!_)_([^_]+?)_(?!_)/g, '<em>$1</em>');
+            // 处理星号斜体，使用更简单的方法
+            text = text.replace(/\*([^\*]+?)\*/g, '<em>$1</em>');
+
+            // 处理删除线 ~~text~~
+            text = text.replace(/~~(.+?)~~/g, '<del>$1</del>');
+
+            // 处理行内代码 `code`
             text = text.replace(/`([^`]+?)`/g, '<code>$1</code>');
+
+            // 还原被转义的HTML（在链接和图片中）
+            text = text.replace(/&lt;a /g, '<a ')
+                      .replace(/&lt;\/a&gt;/g, '</a>')
+                      .replace(/&lt;img /g, '<img ');
 
             return text;
         }
