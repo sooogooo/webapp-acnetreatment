@@ -5590,8 +5590,14 @@
                 // 保存阅读进度
                 saveReadingProgress(filename, title);
 
-                // 恢复滚动位置
+                // 滚动到内容区域，确保用户能看到加载的章节
                 setTimeout(() => {
+                    const contentArea = document.getElementById('contentArea');
+                    if (contentArea) {
+                        contentArea.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+
+                    // 恢复滚动位置
                     restoreScrollPosition(filename);
                     // 启动滚动监听
                     startScrollTracking(filename);
@@ -5602,6 +5608,14 @@
                     <p>抱歉，无法加载章节内容。请稍后重试。</p>
                 `;
                 document.getElementById('contentArea').classList.add('active');
+
+                // 确保错误信息也在可视区域
+                setTimeout(() => {
+                    const contentArea = document.getElementById('contentArea');
+                    if (contentArea) {
+                        contentArea.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                }, 100);
             }
         }
 
@@ -6739,31 +6753,49 @@
             resultsDiv.innerHTML = '<div style="text-align: center; color: #667eea;"><p>🔍 搜索中...</p></div>';
 
             setTimeout(() => {
+                // 搜索章节
                 const matches = chapters.filter(chapter =>
                     chapter.title.includes(keyword) ||
                     chapter.desc.includes(keyword) ||
                     (chapter.file && chapter.file.includes(keyword.toLowerCase()))
                 );
 
+                // 搜索专题分类
                 const categoryMatches = Object.entries(categoryData).filter(([key, data]) =>
                     data.keywords.some(k => k.includes(keyword) || keyword.includes(k))
                 );
 
-                if (matches.length === 0 && categoryMatches.length === 0) {
+                // 搜索FAQ
+                const faqMatches = FAQ_DATA.filter(faq =>
+                    faq.question.includes(keyword) ||
+                    faq.answer.includes(keyword) ||
+                    faq.tags.some(tag => tag.includes(keyword) || keyword.includes(tag))
+                );
+
+                // 搜索护理指南
+                const careGuideMatches = Object.entries(CARE_GUIDES).filter(([key, guide]) =>
+                    guide.title.includes(keyword) ||
+                    guide.projects.some(project => project.includes(keyword) || keyword.includes(project))
+                );
+
+                const totalResults = matches.length + categoryMatches.length + faqMatches.length + careGuideMatches.length;
+
+                if (totalResults === 0) {
                     resultsDiv.innerHTML = '<div style="text-align: center; color: #95a5a6;"><p>😔 未找到相关内容</p><p style="font-size: 0.9em;">试试其他关键词，如：激光、水杨酸、心理</p></div>';
                     return;
                 }
 
-                const totalResults = matches.length + categoryMatches.length;
                 let html = '<h4 style="color: #2c3e50; margin-bottom: 15px;">找到 ' + totalResults + ' 个相关结果：</h4>';
 
+                // 显示章节结果
                 matches.forEach(chapter => {
                     html += '<div onclick="loadChapter(\'' + chapter.file + '\', \'' + chapter.title + '\')" style="background: white; padding: 15px; border-radius: 10px; margin-bottom: 10px; cursor: pointer; transition: all 0.3s; border-left: 4px solid #667eea;">';
-                    html += '<h5 style="color: #667eea; margin-bottom: 5px;">' + chapter.title + '</h5>';
+                    html += '<h5 style="color: #667eea; margin-bottom: 5px;">📖 ' + chapter.title + '</h5>';
                     html += '<p style="font-size: 0.9em; color: #7f8c8d; margin: 0;">' + chapter.desc + '</p>';
                     html += '</div>';
                 });
 
+                // 显示专题分类结果
                 categoryMatches.forEach(([key, data]) => {
                     html += '<div onclick="showCategoryContent(\'' + key + '\')" style="background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); padding: 15px; border-radius: 10px; margin-bottom: 10px; cursor: pointer;">';
                     html += '<h5 style="color: #667eea; margin-bottom: 5px;">📁 ' + data.title + ' 专题</h5>';
@@ -6771,8 +6803,58 @@
                     html += '</div>';
                 });
 
+                // 显示FAQ结果
+                faqMatches.forEach(faq => {
+                    html += '<div onclick="scrollToFAQ(\'' + faq.category + '\', ' + faq.id + ')" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); padding: 15px; border-radius: 10px; margin-bottom: 10px; cursor: pointer; transition: all 0.3s;">';
+                    html += '<h5 style="color: #e74c3c; margin-bottom: 5px;">❓ ' + faq.question + '</h5>';
+                    html += '<p style="font-size: 0.9em; color: #555; margin: 0;">分类：' + faq.categoryName + '</p>';
+                    html += '</div>';
+                });
+
+                // 显示护理指南结果
+                careGuideMatches.forEach(([key, guide]) => {
+                    html += '<div onclick="showCareGuide(\'' + key + '\')" style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); padding: 15px; border-radius: 10px; margin-bottom: 10px; cursor: pointer; transition: all 0.3s;">';
+                    html += '<h5 style="color: #e67e22; margin-bottom: 5px;">' + guide.icon + ' ' + guide.title + '</h5>';
+                    html += '<p style="font-size: 0.9em; color: #555; margin: 0;">包含项目：' + guide.projects.join('、') + '</p>';
+                    html += '</div>';
+                });
+
                 resultsDiv.innerHTML = html;
             }, 300);
+        }
+
+        // 滚动到FAQ问题
+        function scrollToFAQ(category, faqId) {
+            // 先滚动到FAQ区域
+            const faqSection = document.querySelector('h2');
+            if (faqSection && faqSection.textContent.includes('常见问题')) {
+                faqSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+
+            // 延迟一点后打开对应的FAQ
+            setTimeout(() => {
+                // 渲染对应分类的FAQ
+                renderFAQ(category);
+
+                // 再延迟一点，找到对应的FAQ项并高亮
+                setTimeout(() => {
+                    const faqItems = document.querySelectorAll('.faq-item');
+                    faqItems.forEach(item => {
+                        const questionText = item.querySelector('h4');
+                        const faq = FAQ_DATA.find(f => f.id === faqId);
+                        if (faq && questionText && questionText.textContent.includes(faq.question)) {
+                            item.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                            // 高亮效果
+                            item.style.background = 'linear-gradient(135deg, #fff9e6 0%, #ffe6e6 100%)';
+                            item.style.border = '2px solid #e74c3c';
+                            setTimeout(() => {
+                                item.style.background = 'white';
+                                item.style.border = '1px solid #e0e0e0';
+                            }, 2000);
+                        }
+                    });
+                }, 500);
+            }, 600);
         }
 
         function showCategoryContent(categoryKey) {
