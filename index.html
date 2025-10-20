@@ -44,6 +44,9 @@
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#667eea">
 
+    <!-- jsPDF库 - 用于生成PDF报告 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
     <!-- Structured Data (JSON-LD) -->
     <script type="application/ld+json">
     {
@@ -3632,6 +3635,77 @@
                 <button onclick="scrollToAppointment()" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; padding: 12px 30px; border-radius: 25px; font-size: 1em; font-weight: bold; cursor: pointer; transition: all 0.3s; box-shadow: 0 4px 15px rgba(102,126,234,0.3);" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(102,126,234,0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(102,126,234,0.3)';">
                     立即咨询专业医生 →
                 </button>
+            </div>
+        </div>
+
+        <!-- 个性化治疗方案生成器 -->
+        <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 20px; padding: 50px 40px; margin-bottom: 30px; box-shadow: 0 10px 40px rgba(102,126,234,0.3); color: white;">
+            <div style="text-align: center; margin-bottom: 40px;">
+                <h3 style="font-size: 2em; margin-bottom: 10px;">📋 生成我的治疗方案</h3>
+                <p style="opacity: 0.95; font-size: 1.05em;">综合您的评估数据，生成专属PDF治疗方案报告</p>
+            </div>
+
+            <div style="background: rgba(255,255,255,0.15); border-radius: 15px; padding: 30px; backdrop-filter: blur(10px); margin-bottom: 30px;">
+                <h4 style="margin: 0 0 20px 0; font-size: 1.3em;">📊 方案将包含以下内容：</h4>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <div style="width: 40px; height: 40px; background: rgba(255,255,255,0.3); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.3em;">✅</div>
+                        <div>
+                            <strong>GAGS评分结果</strong>
+                            <p style="margin: 3px 0 0 0; opacity: 0.9; font-size: 0.9em;">痤疮严重程度评估</p>
+                        </div>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <div style="width: 40px; height: 40px; background: rgba(255,255,255,0.3); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.3em;">💊</div>
+                        <div>
+                            <strong>推荐治疗方案</strong>
+                            <p style="margin: 3px 0 0 0; opacity: 0.9; font-size: 0.9em;">个性化治疗项目清单</p>
+                        </div>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <div style="width: 40px; height: 40px; background: rgba(255,255,255,0.3); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.3em;">📅</div>
+                        <div>
+                            <strong>治疗时间规划</strong>
+                            <p style="margin: 3px 0 0 0; opacity: 0.9; font-size: 0.9em;">疗程次数与时间安排</p>
+                        </div>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <div style="width: 40px; height: 40px; background: rgba(255,255,255,0.3); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.3em;">💰</div>
+                        <div>
+                            <strong>预估费用范围</strong>
+                            <p style="margin: 3px 0 0 0; opacity: 0.9; font-size: 0.9em;">治疗总费用预算参考</p>
+                        </div>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <div style="width: 40px; height: 40px; background: rgba(255,255,255,0.3); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.3em;">🌱</div>
+                        <div>
+                            <strong>护理注意事项</strong>
+                            <p style="margin: 3px 0 0 0; opacity: 0.9; font-size: 0.9em;">术前准备与术后护理</p>
+                        </div>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <div style="width: 40px; height: 40px; background: rgba(255,255,255,0.3); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.3em;">⚕️</div>
+                        <div>
+                            <strong>专家建议</strong>
+                            <p style="margin: 3px 0 0 0; opacity: 0.9; font-size: 0.9em;">医生专业指导意见</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center;">
+                <button onclick="generatePDFReport()" style="background: white; color: #667eea; border: none; padding: 18px 50px; border-radius: 30px; font-size: 1.2em; font-weight: bold; cursor: pointer; transition: all 0.3s; box-shadow: 0 8px 25px rgba(0,0,0,0.2);" onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 12px 35px rgba(0,0,0,0.3)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 8px 25px rgba(0,0,0,0.2)';">
+                    📥 立即生成PDF方案报告
+                </button>
+                <p style="margin-top: 15px; opacity: 0.9; font-size: 0.9em;">
+                    💡 提示：报告基于您已填写的GAGS评分、决策树选择等数据生成
+                </p>
+            </div>
+
+            <div style="margin-top: 30px; padding: 20px; background: rgba(255,255,255,0.1); border-radius: 10px; border-left: 4px solid rgba(255,255,255,0.5);">
+                <p style="margin: 0; font-size: 0.95em; line-height: 1.6;">
+                    <strong>📌 温馨提示：</strong>生成的PDF报告仅供参考，具体治疗方案需要面诊后由专业医师根据您的实际情况制定。建议携带此报告到院咨询，以便医生更好地了解您的需求。
+                </p>
             </div>
         </div>
 
@@ -10053,6 +10127,334 @@
             }
         `;
         document.head.appendChild(pwaStyles);
+    </script>
+
+    <!-- PDF报告生成器 -->
+    <script>
+        // PDF报告生成函数
+        async function generatePDFReport() {
+            try {
+                // 检查jsPDF是否加载
+                if (typeof window.jspdf === 'undefined') {
+                    alert('⚠️ PDF生成库加载失败，请刷新页面重试');
+                    return;
+                }
+
+                // 显示生成中提示
+                const loadingToast = showToast('⏳ 正在生成PDF报告...', 'info', 0);
+
+                // 收集数据
+                const gagsResult = localStorage.getItem('gagsAssessmentResult');
+                const decisionTreeAnswers = localStorage.getItem('decisionTreeAnswers');
+                const bookmarks = JSON.parse(localStorage.getItem('bookmarks') || '[]');
+                const trackingRecords = JSON.parse(localStorage.getItem('trackingRecords') || '[]');
+
+                // 解析GAGS评分数据
+                let gagsData = null;
+                if (gagsResult) {
+                    try {
+                        gagsData = JSON.parse(gagsResult);
+                    } catch (e) {
+                        console.warn('GAGS数据解析失败:', e);
+                    }
+                }
+
+                // 解析决策树数据
+                let decisionData = null;
+                if (decisionTreeAnswers) {
+                    try {
+                        decisionData = JSON.parse(decisionTreeAnswers);
+                    } catch (e) {
+                        console.warn('决策树数据解析失败:', e);
+                    }
+                }
+
+                // 创建PDF文档
+                const { jsPDF } = window.jspdf;
+                const doc = new jsPDF({
+                    orientation: 'portrait',
+                    unit: 'mm',
+                    format: 'a4'
+                });
+
+                let yPosition = 20;
+                const pageWidth = 210; // A4宽度
+                const pageHeight = 297; // A4高度
+                const marginLeft = 20;
+                const marginRight = 20;
+                const contentWidth = pageWidth - marginLeft - marginRight;
+
+                // 添加新页面的函数
+                function addNewPageIfNeeded(requiredSpace) {
+                    if (yPosition + requiredSpace > pageHeight - 20) {
+                        doc.addPage();
+                        yPosition = 20;
+                        return true;
+                    }
+                    return false;
+                }
+
+                // 设置文本函数（由于jsPDF中文支持限制，使用基础字体）
+                function addTitle(text, fontSize = 20) {
+                    doc.setFontSize(fontSize);
+                    doc.setFont('helvetica', 'bold');
+                    doc.text(text, pageWidth / 2, yPosition, { align: 'center' });
+                    yPosition += 10;
+                }
+
+                function addSectionTitle(text, fontSize = 14) {
+                    addNewPageIfNeeded(15);
+                    doc.setFontSize(fontSize);
+                    doc.setFont('helvetica', 'bold');
+                    doc.text(text, marginLeft, yPosition);
+                    yPosition += 8;
+                }
+
+                function addText(text, fontSize = 11) {
+                    doc.setFontSize(fontSize);
+                    doc.setFont('helvetica', 'normal');
+
+                    // 文本换行处理
+                    const lines = doc.splitTextToSize(text, contentWidth);
+                    for (let i = 0; i < lines.length; i++) {
+                        addNewPageIfNeeded(7);
+                        doc.text(lines[i], marginLeft, yPosition);
+                        yPosition += 6;
+                    }
+                }
+
+                function addBulletPoint(text, fontSize = 11) {
+                    addNewPageIfNeeded(7);
+                    doc.setFontSize(fontSize);
+                    doc.setFont('helvetica', 'normal');
+
+                    const bulletWidth = 5;
+                    doc.text('•', marginLeft, yPosition);
+
+                    const lines = doc.splitTextToSize(text, contentWidth - bulletWidth);
+                    for (let i = 0; i < lines.length; i++) {
+                        if (i > 0) addNewPageIfNeeded(7);
+                        doc.text(lines[i], marginLeft + bulletWidth, yPosition);
+                        yPosition += 6;
+                    }
+                }
+
+                function addDivider() {
+                    addNewPageIfNeeded(5);
+                    doc.setDrawColor(200, 200, 200);
+                    doc.line(marginLeft, yPosition, pageWidth - marginRight, yPosition);
+                    yPosition += 8;
+                }
+
+                // ========== 报告标题 ==========
+                addTitle('Acne Treatment Plan Report', 22);
+                addText('Personalized Treatment Recommendation', 12);
+                addText('Generated: ' + new Date().toLocaleString('zh-CN'), 10);
+                yPosition += 5;
+                addDivider();
+
+                // ========== 1. GAGS评分结果 ==========
+                addSectionTitle('1. GAGS Assessment Results');
+                if (gagsData && gagsData.totalScore !== undefined) {
+                    addBulletPoint('Total Score: ' + gagsData.totalScore + ' points');
+                    addBulletPoint('Severity Level: ' + (gagsData.severity || 'Not assessed'));
+
+                    if (gagsData.details) {
+                        yPosition += 3;
+                        addText('Score Details:', 11);
+                        Object.keys(gagsData.details).forEach(area => {
+                            const score = gagsData.details[area];
+                            addBulletPoint(`  ${area}: ${score} points`);
+                        });
+                    }
+                } else {
+                    addText('No GAGS assessment data found. Please complete the assessment first.');
+                }
+                yPosition += 5;
+                addDivider();
+
+                // ========== 2. 推荐治疗方案 ==========
+                addSectionTitle('2. Recommended Treatment Plan');
+
+                // 从决策树获取推荐方案
+                if (decisionData && decisionData.recommendedTreatments) {
+                    addText('Based on your assessment, the following treatments are recommended:');
+                    yPosition += 2;
+                    decisionData.recommendedTreatments.forEach(treatment => {
+                        addBulletPoint(treatment.name || treatment);
+                    });
+                } else if (bookmarks.length > 0) {
+                    addText('Based on your bookmarked treatments:');
+                    yPosition += 2;
+                    bookmarks.forEach(bookmark => {
+                        addBulletPoint(bookmark.title || bookmark);
+                    });
+                } else {
+                    addText('No specific treatment recommendations yet.');
+                    addText('Please complete the decision tree or bookmark treatments of interest.');
+                }
+
+                yPosition += 5;
+                addDivider();
+
+                // ========== 3. 治疗时间规划 ==========
+                addSectionTitle('3. Treatment Timeline');
+                addText('General Treatment Duration Guidelines:');
+                yPosition += 2;
+
+                if (gagsData && gagsData.totalScore) {
+                    const score = gagsData.totalScore;
+                    if (score < 19) {
+                        addBulletPoint('Mild acne: 3-6 months treatment cycle');
+                        addBulletPoint('Recommended sessions: 3-5 sessions');
+                        addBulletPoint('Session interval: 2-4 weeks');
+                    } else if (score < 31) {
+                        addBulletPoint('Moderate acne: 6-12 months treatment cycle');
+                        addBulletPoint('Recommended sessions: 6-10 sessions');
+                        addBulletPoint('Session interval: 3-4 weeks');
+                    } else {
+                        addBulletPoint('Severe acne: 12-18 months treatment cycle');
+                        addBulletPoint('Recommended sessions: 10-15 sessions');
+                        addBulletPoint('Session interval: 3-4 weeks');
+                    }
+                } else {
+                    addBulletPoint('Please complete GAGS assessment for personalized timeline');
+                }
+
+                yPosition += 5;
+                addDivider();
+
+                // ========== 4. 预估费用范围 ==========
+                addSectionTitle('4. Estimated Cost Range');
+                addText('Cost estimates are based on typical treatment requirements:');
+                yPosition += 2;
+
+                if (gagsData && gagsData.totalScore) {
+                    const score = gagsData.totalScore;
+                    if (score < 19) {
+                        addBulletPoint('Mild acne treatment: RMB 3,000 - 8,000');
+                        addBulletPoint('Per session average: RMB 800 - 1,500');
+                    } else if (score < 31) {
+                        addBulletPoint('Moderate acne treatment: RMB 8,000 - 20,000');
+                        addBulletPoint('Per session average: RMB 1,200 - 2,500');
+                    } else {
+                        addBulletPoint('Severe acne treatment: RMB 20,000 - 50,000+');
+                        addBulletPoint('Per session average: RMB 2,000 - 4,000');
+                    }
+                } else {
+                    addBulletPoint('Please complete assessment for cost estimation');
+                }
+
+                yPosition += 2;
+                addText('Note: Final pricing depends on specific treatments, clinic location, and individual conditions.', 9);
+
+                yPosition += 5;
+                addDivider();
+
+                // ========== 5. 护理注意事项 ==========
+                addSectionTitle('5. Care Instructions');
+                addText('Pre-treatment Preparation:');
+                yPosition += 2;
+                addBulletPoint('Avoid sun exposure 2 weeks before treatment');
+                addBulletPoint('Stop using retinoids/acids 1 week before');
+                addBulletPoint('Inform doctor of any medications or allergies');
+
+                yPosition += 3;
+                addText('Post-treatment Care:');
+                yPosition += 2;
+                addBulletPoint('Gentle cleansing with mild cleanser');
+                addBulletPoint('Apply sunscreen (SPF 30+) daily');
+                addBulletPoint('Avoid makeup for 24-48 hours post-treatment');
+                addBulletPoint('Keep skin moisturized');
+                addBulletPoint('Avoid picking or squeezing');
+
+                yPosition += 5;
+                addDivider();
+
+                // ========== 6. 专家建议 ==========
+                addSectionTitle('6. Expert Recommendations');
+                addText('Important Reminders:');
+                yPosition += 2;
+                addBulletPoint('This report is for reference only and not a medical diagnosis');
+                addBulletPoint('In-person consultation required for final treatment plan');
+                addBulletPoint('Treatment effectiveness varies by individual');
+                addBulletPoint('Maintain healthy lifestyle: adequate sleep, balanced diet');
+                addBulletPoint('Be patient - acne treatment requires time');
+
+                yPosition += 3;
+                addText('Next Steps:');
+                yPosition += 2;
+                addBulletPoint('Book an appointment with our dermatology specialists');
+                addBulletPoint('Bring this report to your consultation');
+                addBulletPoint('Discuss treatment options and expected outcomes');
+                addBulletPoint('Follow prescribed treatment plan consistently');
+
+                yPosition += 10;
+                addDivider();
+
+                // ========== 页脚信息 ==========
+                addNewPageIfNeeded(20);
+                doc.setFontSize(9);
+                doc.setFont('helvetica', 'italic');
+                doc.text('United Liggett Southwest Center - Medical Aesthetics Division', pageWidth / 2, yPosition, { align: 'center' });
+                yPosition += 5;
+                doc.text('Report generated by online assessment system', pageWidth / 2, yPosition, { align: 'center' });
+                yPosition += 5;
+                doc.text('For appointment: consultation hotline or online booking', pageWidth / 2, yPosition, { align: 'center' });
+
+                // 保存PDF
+                const fileName = `Acne_Treatment_Plan_${new Date().getTime()}.pdf`;
+                doc.save(fileName);
+
+                // 关闭加载提示，显示成功消息
+                if (loadingToast) loadingToast.remove();
+                showToast('✅ PDF报告已生成并下载！', 'success', 3000);
+
+                // 记录生成事件
+                console.log('[PDF Generator] 报告生成成功:', fileName);
+
+            } catch (error) {
+                console.error('[PDF Generator] 生成失败:', error);
+                alert('❌ PDF生成失败: ' + error.message);
+            }
+        }
+
+        // Toast提示函数
+        function showToast(message, type = 'info', duration = 3000) {
+            const toast = document.createElement('div');
+
+            const bgColors = {
+                'info': 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                'success': 'linear-gradient(135deg, #28a745 0%, #20c997 100%)',
+                'error': 'linear-gradient(135deg, #dc3545 0%, #c82333 100%)'
+            };
+
+            toast.style.cssText = `
+                position: fixed;
+                top: 80px;
+                right: 30px;
+                background: ${bgColors[type] || bgColors.info};
+                color: white;
+                padding: 15px 25px;
+                border-radius: 10px;
+                box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+                z-index: 10001;
+                font-weight: bold;
+                animation: slideInRight 0.3s;
+                max-width: 350px;
+            `;
+            toast.textContent = message;
+            document.body.appendChild(toast);
+
+            if (duration > 0) {
+                setTimeout(() => {
+                    toast.style.animation = 'slideOutRight 0.3s';
+                    setTimeout(() => toast.remove(), 300);
+                }, duration);
+            }
+
+            return toast;
+        }
     </script>
 
     <!-- 主题切换功能 -->
