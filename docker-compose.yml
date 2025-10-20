@@ -1,0 +1,56 @@
+version: '3.8'
+
+services:
+  acne-webapp:
+    # 使用当前目录的Dockerfile构建
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    # 容器名称
+    container_name: acne-treatment-webapp
+
+    # 端口映射：主机端口:容器端口
+    ports:
+      - "8080:80"
+
+    # 环境变量
+    environment:
+      - TZ=Asia/Shanghai
+
+    # 重启策略
+    restart: unless-stopped
+
+    # 健康检查
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+    # 资源限制（可选）
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 256M
+        reservations:
+          cpus: '0.25'
+          memory: 128M
+
+    # 日志配置
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+    # 网络配置
+    networks:
+      - acne-network
+
+# 网络定义
+networks:
+  acne-network:
+    driver: bridge
