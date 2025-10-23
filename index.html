@@ -615,6 +615,476 @@
         @keyframes spin {
             to { transform: rotate(360deg); }
         }
+
+        /* ========== AI Assessment System Styles ========== */
+        .ai-assessment-section {
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, #f8f9ff 0%, #fff5f8 100%);
+            min-height: 80vh;
+        }
+
+        .assessment-progress {
+            max-width: 1000px;
+            margin: 3rem auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0;
+        }
+
+        .progress-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: white;
+            border: 3px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: var(--text-light);
+            transition: all 0.3s;
+        }
+
+        .progress-step.active .step-number {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-color: var(--primary-color);
+            color: white;
+            transform: scale(1.1);
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .progress-step.completed .step-number {
+            background: var(--success-color);
+            border-color: var(--success-color);
+            color: white;
+        }
+
+        .step-label {
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        .progress-step.active .step-label {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .progress-connector {
+            width: 120px;
+            height: 3px;
+            background: var(--border-color);
+            position: relative;
+            z-index: 1;
+        }
+
+        .progress-connector.completed {
+            background: var(--success-color);
+        }
+
+        .assessment-container {
+            max-width: 800px;
+            margin: 3rem auto;
+            background: white;
+            border-radius: 25px;
+            padding: 3rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+        }
+
+        .assessment-step {
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .step-title {
+            font-size: 1.8rem;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .step-desc {
+            text-align: center;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            font-size: 1.05rem;
+        }
+
+        .questions-container {
+            margin: 2rem 0;
+        }
+
+        .question-card {
+            background: linear-gradient(135deg, #f8f9ff 0%, #fff5f8 100%);
+            padding: 2rem;
+            border-radius: 20px;
+            margin-bottom: 1.5rem;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .question-text {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .question-category {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .option-card {
+            background: white;
+            padding: 1.2rem;
+            border-radius: 15px;
+            border: 2px solid var(--border-color);
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .option-card:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
+        }
+
+        .option-card.selected {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-color: var(--primary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .step-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            padding: 0.9rem 2rem;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 0.9rem 2rem;
+            border-radius: 25px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-primary:disabled,
+        .btn-secondary:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Photo Upload Styles */
+        .photo-upload-container {
+            margin: 2rem 0;
+        }
+
+        .upload-zone {
+            border: 3px dashed var(--border-color);
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: linear-gradient(135deg, #f8f9ff 0%, #fff5f8 100%);
+        }
+
+        .upload-zone:hover {
+            border-color: var(--primary-color);
+            background: linear-gradient(135deg, #e6f2ff 0%, #f0e6ff 100%);
+        }
+
+        .upload-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .upload-hint {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        .photo-preview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .photo-preview-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .photo-preview-item img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .photo-remove-btn {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: rgba(255, 0, 0, 0.8);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* AI Diagnosis Loading Styles */
+        .diagnosis-loading {
+            text-align: center;
+            padding: 3rem;
+        }
+
+        .loading-spinner {
+            width: 80px;
+            height: 80px;
+            border: 8px solid rgba(102, 126, 234, 0.1);
+            border-radius: 50%;
+            border-top-color: var(--primary-color);
+            animation: spin 1s linear infinite;
+            margin: 0 auto 2rem;
+        }
+
+        .diagnosis-loading h3 {
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            margin-bottom: 2rem;
+        }
+
+        .loading-steps {
+            max-width: 400px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .loading-step {
+            padding: 0.8rem 1.5rem;
+            margin: 0.5rem 0;
+            background: white;
+            border-radius: 10px;
+            border-left: 4px solid var(--border-color);
+            color: var(--text-light);
+            transition: all 0.5s;
+        }
+
+        .loading-step.active {
+            border-left-color: var(--warning-color);
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        .loading-step.completed {
+            border-left-color: var(--success-color);
+            color: var(--success-color);
+        }
+
+        /* Diagnosis Report Styles */
+        .diagnosis-report {
+            background: linear-gradient(135deg, #f8f9ff 0%, #fff5f8 100%);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin: 2rem 0;
+        }
+
+        .severity-badge {
+            display: inline-block;
+            padding: 0.6rem 1.5rem;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+        }
+
+        .severity-mild {
+            background: linear-gradient(135deg, #48bb78, #38a169);
+            color: white;
+        }
+
+        .severity-moderate {
+            background: linear-gradient(135deg, #ed8936, #dd6b20);
+            color: white;
+        }
+
+        .severity-severe {
+            background: linear-gradient(135deg, #f56565, #e53e3e);
+            color: white;
+        }
+
+        .report-section {
+            background: white;
+            border-radius: 15px;
+            padding: 1.8rem;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .report-section h4 {
+            font-size: 1.3rem;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .report-section p,
+        .report-section ul {
+            color: var(--text-dark);
+            line-height: 1.8;
+            margin: 0.5rem 0;
+        }
+
+        .report-section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .report-section li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .report-section li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--success-color);
+            font-weight: bold;
+        }
+
+        .score-display {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+        }
+
+        .score-number {
+            font-size: 4rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .score-label {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-top: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .assessment-container {
+                padding: 1.5rem;
+            }
+
+            .assessment-progress {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+
+            .progress-connector {
+                display: none;
+            }
+
+            .options-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .step-buttons {
+                flex-direction: column;
+            }
+
+            .step-title {
+                font-size: 1.4rem;
+            }
+
+            .photo-preview-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
     </style>
 </head>
 <body>
@@ -649,31 +1119,110 @@
         </div>
     </section>
 
-    <!-- Quick Test Section -->
-    <section id="diagnosis" class="quick-test">
-        <h2 class="section-title">🔍 快速了解您的痤疮程度</h2>
-        <p class="section-subtitle">选择最符合您情况的描述，获取专业建议</p>
+    <!-- AI智能评估系统 -->
+    <section id="diagnosis" class="ai-assessment-section">
+        <h2 class="section-title">🤖 AI智能痤疮评估系统</h2>
+        <p class="section-subtitle">专业的多维度评估 • 10道智能问题 • 照片分析 • AI诊断报告</p>
 
-        <div class="test-options">
-            <div class="test-card" onclick="showResult('mild')">
-                <div class="test-card-icon">😊</div>
-                <h3>轻度痤疮</h3>
-                <p>偶尔冒几颗痘痘<br>主要是闭口和粉刺<br>没有明显红肿</p>
-                <button class="btn-primary">这是我的情况</button>
+        <!-- 评估进度指示器 -->
+        <div class="assessment-progress">
+            <div class="progress-step active" data-step="1">
+                <div class="step-number">1</div>
+                <div class="step-label">客观评估</div>
+            </div>
+            <div class="progress-connector"></div>
+            <div class="progress-step" data-step="2">
+                <div class="step-number">2</div>
+                <div class="step-label">主观感受</div>
+            </div>
+            <div class="progress-connector"></div>
+            <div class="progress-step" data-step="3">
+                <div class="step-number">3</div>
+                <div class="step-label">照片上传</div>
+            </div>
+            <div class="progress-connector"></div>
+            <div class="progress-step" data-step="4">
+                <div class="step-number">4</div>
+                <div class="step-label">AI诊断</div>
+            </div>
+        </div>
+
+        <!-- 评估内容容器 -->
+        <div class="assessment-container">
+            <!-- Step 1: 客观问题 -->
+            <div class="assessment-step" id="step1" style="display: block;">
+                <h3 class="step-title">📋 客观症状评估（第 <span id="objCurrentQ">1</span>/5 题）</h3>
+                <div id="objectiveQuestions" class="questions-container">
+                    <!-- 动态生成题目 -->
+                </div>
+                <div class="step-buttons">
+                    <button class="btn-secondary" onclick="nextObjectiveQuestion()" id="objNextBtn">下一题 →</button>
+                </div>
             </div>
 
-            <div class="test-card" onclick="showResult('moderate')">
-                <div class="test-card-icon">😐</div>
-                <h3>中度痤疮</h3>
-                <p>经常长痘痘<br>有炎症和脓包<br>偶尔会痛</p>
-                <button class="btn-primary">这是我的情况</button>
+            <!-- Step 2: 主观问题 -->
+            <div class="assessment-step" id="step2" style="display: none;">
+                <h3 class="step-title">💭 主观感受评估（第 <span id="subjCurrentQ">1</span>/5 题）</h3>
+                <div id="subjectiveQuestions" class="questions-container">
+                    <!-- 动态生成题目 -->
+                </div>
+                <div class="step-buttons">
+                    <button class="btn-secondary" onclick="prevStep(2)">← 上一步</button>
+                    <button class="btn-primary" onclick="nextSubjectiveQuestion()" id="subjNextBtn">下一题 →</button>
+                </div>
             </div>
 
-            <div class="test-card" onclick="showResult('severe')">
-                <div class="test-card-icon">😰</div>
-                <h3>重度痤疮</h3>
-                <p>大面积爆发<br>结节、囊肿<br>留下痘坑痘印</p>
-                <button class="btn-primary">这是我的情况</button>
+            <!-- Step 3: 照片上传 -->
+            <div class="assessment-step" id="step3" style="display: none;">
+                <h3 class="step-title">📸 上传您的皮肤照片（可选）</h3>
+                <p class="step-desc">上传照片可以帮助AI更准确地分析您的皮肤状况</p>
+
+                <div class="photo-upload-container">
+                    <div class="upload-zone" onclick="document.getElementById('photoInput').click()">
+                        <div class="upload-icon">📷</div>
+                        <p>点击上传照片</p>
+                        <p class="upload-hint">支持JPG、PNG格式，最大5MB</p>
+                        <input type="file" id="photoInput" accept="image/*" multiple style="display: none;" onchange="handlePhotoUpload(event)">
+                    </div>
+
+                    <div id="photoPreview" class="photo-preview-grid">
+                        <!-- 照片预览将显示在这里 -->
+                    </div>
+                </div>
+
+                <div class="step-buttons">
+                    <button class="btn-secondary" onclick="prevStep(3)">← 上一步</button>
+                    <button class="btn-primary" onclick="nextStep(4)">继续生成诊断报告 →</button>
+                </div>
+            </div>
+
+            <!-- Step 4: AI诊断报告 -->
+            <div class="assessment-step" id="step4" style="display: none;">
+                <div id="aiDiagnosisLoading" style="display: block;">
+                    <div class="diagnosis-loading">
+                        <div class="loading-spinner"></div>
+                        <h3>🤖 AI正在分析您的评估数据...</h3>
+                        <div class="loading-steps">
+                            <p class="loading-step" id="loadStep1">✓ 读取症状数据库...</p>
+                            <p class="loading-step" id="loadStep2">⏳ 调用医生案例库...</p>
+                            <p class="loading-step" id="loadStep3">⏳ 匹配临床知识库...</p>
+                            <p class="loading-step" id="loadStep4">⏳ 分析医学论文数据...</p>
+                            <p class="loading-step" id="loadStep5">⏳ 生成个性化诊断报告...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="aiDiagnosisReport" style="display: none;">
+                    <h3 class="step-title">📊 AI智能诊断报告</h3>
+                    <div id="diagnosisContent" class="diagnosis-report">
+                        <!-- AI诊断报告内容 -->
+                    </div>
+                    <div class="step-buttons">
+                        <button class="btn-secondary" onclick="restartAssessment()">重新评估</button>
+                        <button class="btn-primary" onclick="scrollToPlans()">查看治疗方案</button>
+                        <button class="btn-primary" onclick="downloadReport()">下载PDF报告</button>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -881,6 +1430,781 @@
     </footer>
 
     <script>
+        // ========== AI Assessment System ==========
+
+        // 全局变量
+        let currentObjQ = 0;
+        let currentSubjQ = 0;
+        let selectedObjectiveQs = [];
+        let selectedSubjectiveQs = [];
+        let objectiveAnswers = [];
+        let subjectiveAnswers = [];
+        let uploadedPhotos = [];
+
+        // 客观题题库（100+题）
+        const objectiveQuestions = [
+            // 皮肤症状类（30题）
+            { question: "您面部痘痘的数量大概有多少？", options: ["1-5个（轻微）", "6-15个（较多）", "16-30个（很多）", "30个以上（密集）"], category: "皮肤症状", weight: 5 },
+            { question: "您的痘痘主要是什么类型？", options: ["白头/黑头粉刺", "红色丘疹", "脓疱（有白色脓头）", "结节/囊肿（硬块）"], category: "皮肤症状", weight: 5 },
+            { question: "痘痘主要分布在哪个部位？", options: ["额头", "脸颊", "下巴", "全脸多处"], category: "皮肤症状", weight: 3 },
+            { question: "您的皮肤有痘印吗？", options: ["没有", "少量红色痘印", "较多红褐色痘印", "大量深色痘印"], category: "皮肤症状", weight: 3 },
+            { question: "您有痘坑（凹陷疤痕）吗？", options: ["没有", "少量浅痘坑", "较多明显痘坑", "大量深痘坑"], category: "皮肤症状", weight: 4 },
+            { question: "您的皮肤状态如何？", options: ["干燥缺水", "水油平衡", "T区油其他干", "全脸很油"], category: "皮肤症状", weight: 3 },
+            { question: "您的毛孔状况如何？", options: ["细腻不明显", "轻微粗大", "明显粗大", "非常粗大黑头多"], category: "皮肤症状", weight: 2 },
+            { question: "痘痘发炎红肿的程度？", options: ["不红不肿", "轻微发红", "明显红肿", "严重红肿疼痛"], category: "皮肤症状", weight: 4 },
+            { question: "您是否有皮肤敏感问题？", options: ["不敏感", "偶尔敏感", "经常敏感", "非常敏感"], category: "皮肤症状", weight: 2 },
+            { question: "痘痘是否容易反复在同一位置出现？", options: ["不会", "偶尔", "经常", "总是"], category: "皮肤症状", weight: 3 },
+            { question: "新长出的痘痘多久能消退？", options: ["3-5天", "1-2周", "2-4周", "超过1个月"], category: "皮肤症状", weight: 3 },
+            { question: "您的痘痘是否伴有疼痛？", options: ["不痛", "触碰时微痛", "明显疼痛", "剧烈疼痛"], category: "皮肤症状", weight: 3 },
+            { question: "您的皮肤是否有闭口粉刺？", options: ["没有", "少量", "较多", "大量密集"], category: "皮肤症状", weight: 3 },
+            { question: "痘痘是否有化脓现象？", options: ["没有", "偶尔", "经常", "几乎每个都化脓"], category: "皮肤症状", weight: 4 },
+            { question: "您的皮肤屏障功能如何？", options: ["健康", "轻微受损", "明显受损", "严重受损"], category: "皮肤症状", weight: 3 },
+            { question: "是否有黑头粉刺？", options: ["没有", "鼻翼少量", "T区较多", "全脸大量"], category: "皮肤症状", weight: 2 },
+            { question: "皮肤出油最严重是什么时候？", options: ["基本不出油", "下午开始", "中午开始", "早上就开始"], category: "皮肤症状", weight: 2 },
+            { question: "痘痘消退后是否留疤？", options: ["不留疤", "偶尔留疤", "经常留疤", "几乎都留疤"], category: "皮肤症状", weight: 4 },
+            { question: "您是否有螨虫感染迹象（鼻翼红痒）？", options: ["没有", "偶尔", "经常", "持续存在"], category: "皮肤症状", weight: 2 },
+            { question: "痘痘是突然爆发还是持续存在？", options: ["持续零星", "周期性爆发", "突然大量爆发", "常年大量存在"], category: "皮肤症状", weight: 4 },
+            { question: "您的痘痘是否有季节性变化？", options: ["无明显变化", "夏季加重", "冬季加重", "换季加重"], category: "皮肤症状", weight: 2 },
+            { question: "是否有皮肤暗沉发黄？", options: ["没有", "轻微", "明显", "非常严重"], category: "皮肤症状", weight: 2 },
+            { question: "痘痘周围皮肤是否粗糙？", options: ["光滑", "轻微粗糙", "明显粗糙", "非常粗糙"], category: "皮肤症状", weight: 2 },
+            { question: "是否有皮肤泛红血丝？", options: ["没有", "轻微", "明显", "严重"], category: "皮肤症状", weight: 2 },
+            { question: "洗脸后皮肤紧绷感？", options: ["不紧绷", "轻微紧绷", "明显紧绷", "非常紧绷"], category: "皮肤症状", weight: 1 },
+            { question: "您的痘痘是否有硬结（摸起来有硬块）？", options: ["没有", "少量", "较多", "大量"], category: "皮肤症状", weight: 4 },
+            { question: "皮肤纹理是否清晰？", options: ["清晰细腻", "基本清晰", "模糊粗糙", "非常粗糙"], category: "皮肤症状", weight: 1 },
+            { question: "是否有皮下囊肿（摸起来软的包块）？", options: ["没有", "1-2个", "3-5个", "超过5个"], category: "皮肤症状", weight: 5 },
+            { question: "您的脸部是否容易发热发烫？", options: ["不会", "偶尔", "经常", "总是"], category: "皮肤症状", weight: 2 },
+            { question: "痘痘愈合速度如何？", options: ["很快（3-5天）", "正常（1-2周）", "较慢（2-4周）", "非常慢（超过1月）"], category: "皮肤症状", weight: 3 },
+
+            // 病史类（20题）
+            { question: "您长痘痘多久了？", options: ["不到3个月", "3-6个月", "6-12个月", "超过1年"], category: "病史", weight: 4 },
+            { question: "您开始长痘是什么时候？", options: ["最近几个月", "青春期开始", "成年后", "孕期/产后"], category: "病史", weight: 3 },
+            { question: "您的家人有痤疮病史吗？", options: ["没有", "父母一方有", "父母双方有", "兄弟姐妹也有"], category: "病史", weight: 3 },
+            { question: "您之前是否接受过痤疮治疗？", options: ["没有", "用过护肤品", "看过医生", "做过医美项目"], category: "病史", weight: 2 },
+            { question: "之前的治疗效果如何？", options: ["没治疗过", "效果很好", "稍有改善", "完全无效"], category: "病史", weight: 2 },
+            { question: "您是否长期服用某些药物？", options: ["不吃药", "偶尔吃药", "长期服药", "服用激素类药物"], category: "病史", weight: 3 },
+            { question: "您是否有内分泌疾病（如多囊卵巢）？", options: ["没有", "疑似但未确诊", "已确诊", "正在治疗中"], category: "病史", weight: 4 },
+            { question: "您是否有消化系统问题（便秘、腹泻）？", options: ["没有", "偶尔", "经常", "长期存在"], category: "病史", weight: 2 },
+            { question: "您是否做过其他医美项目？", options: ["没做过", "做过基础护理", "做过激光类", "做过多种项目"], category: "病史", weight: 1 },
+            { question: "您是否有过敏史？", options: ["没有", "食物过敏", "药物过敏", "多种过敏"], category: "病史", weight: 2 },
+            { question: "您是否有慢性疾病？", options: ["没有", "轻微慢性病", "需长期服药", "多种慢性病"], category: "病史", weight: 2 },
+            { question: "您是否使用过维A酸类药物？", options: ["没用过", "外用过", "口服过", "长期使用"], category: "病史", weight: 2 },
+            { question: "您是否使用过抗生素治疗痤疮？", options: ["没用过", "短期使用", "多次使用", "长期依赖"], category: "病史", weight: 2 },
+            { question: "您的月经周期是否规律？（女性）", options: ["规律", "偶尔不规律", "经常不规律", "非常不规律"], category: "病史", weight: 3 },
+            { question: "您是否有甲状腺问题？", options: ["没有", "疑似", "已确诊", "正在治疗"], category: "病史", weight: 2 },
+            { question: "您是否有胃肠道疾病？", options: ["没有", "轻微", "中度", "严重"], category: "病史", weight: 2 },
+            { question: "您是否吸烟？", options: ["不吸烟", "偶尔", "经常", "每天多支"], category: "病史", weight: 1 },
+            { question: "您是否经常饮酒？", options: ["不喝酒", "偶尔", "每周", "每天"], category: "病史", weight: 1 },
+            { question: "您是否有睡眠障碍？", options: ["睡眠良好", "偶尔失眠", "经常失眠", "严重睡眠障碍"], category: "病史", weight: 2 },
+            { question: "您是否有慢性鼻炎或鼻窦炎？", options: ["没有", "轻微", "中度", "严重"], category: "病史", weight: 1 },
+
+            // 生活习惯类（30题）
+            { question: "您的饮食中甜食摄入量？", options: ["很少吃", "偶尔吃", "经常吃", "每天都吃"], category: "生活习惯", weight: 3 },
+            { question: "您是否经常吃辛辣食物？", options: ["很少", "偶尔", "经常", "顿顿都有"], category: "生活习惯", weight: 3 },
+            { question: "您的饮食中油腻食物多吗？", options: ["很少", "偶尔", "经常", "以油炸为主"], category: "生活习惯", weight: 3 },
+            { question: "您每天喝多少水？", options: ["2L以上", "1.5-2L", "1-1.5L", "不到1L"], category: "生活习惯", weight: 2 },
+            { question: "您的作息规律吗？", options: ["很规律", "基本规律", "经常熬夜", "昼夜颠倒"], category: "生活习惯", weight: 4 },
+            { question: "您通常几点睡觉？", options: ["22点前", "22-23点", "23-24点", "24点后"], category: "生活习惯", weight: 4 },
+            { question: "您每天睡眠时间？", options: ["8小时以上", "7-8小时", "6-7小时", "不到6小时"], category: "生活习惯", weight: 3 },
+            { question: "您的工作压力大吗？", options: ["不大", "一般", "较大", "非常大"], category: "生活习惯", weight: 3 },
+            { question: "您是否经常运动？", options: ["每天运动", "每周3-5次", "偶尔", "基本不动"], category: "生活习惯", weight: 2 },
+            { question: "您每天对着电脑/手机多久？", options: ["不到4小时", "4-6小时", "6-8小时", "超过8小时"], category: "生活习惯", weight: 2 },
+            { question: "您多久洗一次脸？", options: ["每天2次", "每天1次", "不固定", "很少洗"], category: "生活习惯", weight: 2 },
+            { question: "您使用什么洁面产品？", options: ["温和洁面", "功效型洁面", "皂基洁面", "不用洁面"], category: "生活习惯", weight: 2 },
+            { question: "您是否经常去角质？", options: ["不去角质", "每月1-2次", "每周", "每天"], category: "生活习惯", weight: 2 },
+            { question: "您是否做好防晒？", options: ["每天涂", "晴天涂", "想起来涂", "不涂"], category: "生活习惯", weight: 2 },
+            { question: "您是否使用粉底/BB霜？", options: ["不用", "偶尔用", "经常用", "每天用"], category: "生活习惯", weight: 2 },
+            { question: "您卸妆是否彻底？", options: ["不化妆", "很彻底", "基本彻底", "经常不卸"], category: "生活习惯", weight: 3 },
+            { question: "您是否使用护肤品？", options: ["规律使用", "偶尔使用", "很少用", "不用"], category: "生活习惯", weight: 1 },
+            { question: "您的护肤品主要功效是？", options: ["保湿补水", "控油祛痘", "美白抗衰", "什么都用"], category: "生活习惯", weight: 1 },
+            { question: "您是否经常挤痘痘？", options: ["从不", "偶尔", "经常", "几乎每个都挤"], category: "生活习惯", weight: 4 },
+            { question: "您是否经常摸脸？", options: ["不摸", "偶尔", "经常", "一直摸"], category: "生活习惯", weight: 2 },
+            { question: "您的枕套多久换一次？", options: ["每周", "每两周", "每月", "很少换"], category: "生活习惯", weight: 2 },
+            { question: "您是否经常吃奶制品？", options: ["很少", "偶尔", "每周", "每天"], category: "生活习惯", weight: 2 },
+            { question: "您是否爱吃油炸食品？", options: ["很少吃", "偶尔吃", "经常吃", "每天吃"], category: "生活习惯", weight: 3 },
+            { question: "您是否补充维生素？", options: ["每天补充", "偶尔补充", "很少", "不补充"], category: "生活习惯", weight: 1 },
+            { question: "您的情绪状态？", options: ["平稳", "偶尔焦虑", "经常焦虑", "长期抑郁焦虑"], category: "生活习惯", weight: 3 },
+            { question: "您是否便秘？", options: ["不便秘", "偶尔", "经常", "长期便秘"], category: "生活习惯", weight: 2 },
+            { question: "您每天吃水果蔬菜吗？", options: ["每天吃", "经常吃", "偶尔吃", "很少吃"], category: "生活习惯", weight: 2 },
+            { question: "您是否经常染发烫发？", options: ["不染烫", "一年1-2次", "3-4次", "频繁染烫"], category: "生活习惯", weight: 1 },
+            { question: "您的居住环境如何？", options: ["干净通风", "基本干净", "较脏乱", "很脏乱"], category: "生活习惯", weight: 1 },
+            { question: "您所在地区的气候？", options: ["温和湿润", "干燥", "湿热", "极端气候"], category: "生活习惯", weight: 1 },
+
+            // 其他因素类（20题）
+            { question: "您是否处于生理期前后？（女性）", options: ["不是", "生理期前", "生理期中", "生理期后"], category: "其他因素", weight: 3 },
+            { question: "生理期痘痘是否加重？（女性）", options: ["不加重", "轻微加重", "明显加重", "严重爆发"], category: "其他因素", weight: 3 },
+            { question: "您是否怀孕或产后？（女性）", options: ["都不是", "备孕中", "孕期", "产后"], category: "其他因素", weight: 3 },
+            { question: "您是否服用避孕药？（女性）", options: ["不服用", "曾经服用", "正在服用", "长期服用"], category: "其他因素", weight: 2 },
+            { question: "最近是否更换了护肤品？", options: ["没有", "1周内换", "1个月内换", "频繁更换"], category: "其他因素", weight: 2 },
+            { question: "最近是否更换了化妆品？", options: ["不化妆", "没换", "最近换了", "频繁更换"], category: "其他因素", weight: 2 },
+            { question: "您的工作是否需要戴口罩？", options: ["不需要", "偶尔", "经常", "全天佩戴"], category: "其他因素", weight: 2 },
+            { question: "您是否佩戴眼镜？", options: ["不戴", "偶尔戴", "经常戴", "一直戴"], category: "其他因素", weight: 1 },
+            { question: "您的发型是否有刘海？", options: ["没有", "偶尔", "经常", "一直有"], category: "其他因素", weight: 1 },
+            { question: "您是否经常出差/旅行？", options: ["不出差", "偶尔", "经常", "长期出差"], category: "其他因素", weight: 1 },
+            { question: "最近是否经历重大生活变化？", options: ["没有", "换工作", "搬家", "多种变化"], category: "其他因素", weight: 2 },
+            { question: "您的工作环境如何？", options: ["干净整洁", "基本干净", "较脏", "粉尘/油烟多"], category: "其他因素", weight: 2 },
+            { question: "您是否经常暴晒？", options: ["很少", "偶尔", "经常", "长期户外"], category: "其他因素", weight: 2 },
+            { question: "您是否接触宠物？", options: ["不接触", "偶尔接触", "养宠物", "多只宠物"], category: "其他因素", weight: 1 },
+            { question: "您的头发是否经常碰到脸？", options: ["不碰", "偶尔", "经常", "一直贴着脸"], category: "其他因素", weight: 2 },
+            { question: "您是否在空调房工作？", options: ["不在", "偶尔", "经常", "全天"], category: "其他因素", weight: 1 },
+            { question: "最近是否考试/面试等压力事件？", options: ["没有", "刚结束", "准备中", "长期高压"], category: "其他因素", weight: 2 },
+            { question: "您是否经常游泳？", options: ["不游", "偶尔", "每周", "每天"], category: "其他因素", weight: 1 },
+            { question: "您是否使用公共毛巾？", options: ["不用", "偶尔用", "经常用", "共用毛巾"], category: "其他因素", weight: 1 },
+            { question: "您是否定期清洁手机屏幕？", options: ["每天清洁", "每周", "偶尔", "不清洁"], category: "其他因素", weight: 1 }
+        ];
+
+        // 主观题题库（100+题）
+        const subjectiveQuestions = [
+            // 心理感受类（30题）
+            { question: "痘痘对您的自信心影响有多大？", options: ["没影响", "轻微影响", "明显影响", "严重打击自信"], category: "心理感受", weight: 3 },
+            { question: "您因为痘痘感到焦虑吗？", options: ["不焦虑", "偶尔焦虑", "经常焦虑", "非常焦虑"], category: "心理感受", weight: 3 },
+            { question: "您是否因为痘痘避免社交？", options: ["不避免", "偶尔", "经常", "几乎不社交"], category: "心理感受", weight: 4 },
+            { question: "痘痘是否影响您照镜子的频率？", options: ["正常", "增加很多", "尽量不照", "完全不敢照"], category: "心理感受", weight: 2 },
+            { question: "您是否因为痘痘感到沮丧抑郁？", options: ["不会", "偶尔", "经常", "长期抑郁"], category: "心理感受", weight: 4 },
+            { question: "别人看您的脸时，您会感到不适吗？", options: ["不会", "有点", "很不适", "极度不适"], category: "心理感受", weight: 3 },
+            { question: "您是否会因为痘痘哭泣？", options: ["从不", "偶尔", "经常", "频繁"], category: "心理感受", weight: 3 },
+            { question: "痘痘是否让您失眠？", options: ["不会", "偶尔", "经常", "几乎每天"], category: "心理感受", weight: 3 },
+            { question: "您觉得痘痘让您看起来不专业吗？", options: ["不觉得", "有点", "比较", "非常"], category: "心理感受", weight: 2 },
+            { question: "您是否羡慕别人的好皮肤？", options: ["不羡慕", "有点", "很羡慕", "极度羡慕"], category: "心理感受", weight: 2 },
+            { question: "痘痘是否让您觉得自己不够好？", options: ["不会", "偶尔", "经常", "总是"], category: "心理感受", weight: 3 },
+            { question: "您是否害怕别人提到您的痘痘？", options: ["不害怕", "有点", "很害怕", "非常敏感"], category: "心理感受", weight: 3 },
+            { question: "您是否花很多时间遮盖痘痘？", options: ["不花时间", "10分钟内", "10-30分钟", "超过30分钟"], category: "心理感受", weight: 2 },
+            { question: "痘痘是否影响您的心情？", options: ["不影响", "轻微影响", "严重影响", "完全破坏心情"], category: "心理感受", weight: 3 },
+            { question: "您觉得痘痘让您失去了机会吗？", options: ["不觉得", "可能", "肯定", "失去很多"], category: "心理感受", weight: 3 },
+            { question: "您是否因为痘痘不愿意拍照？", options: ["正常拍照", "不太愿意", "很不愿意", "拒绝拍照"], category: "心理感受", weight: 2 },
+            { question: "您对自己的外貌满意度？", options: ["很满意", "基本满意", "不满意", "非常不满意"], category: "心理感受", weight: 3 },
+            { question: "痘痘是否让您觉得被孤立？", options: ["不会", "偶尔", "经常", "总是"], category: "心理感受", weight: 4 },
+            { question: "您是否因为痘痘自卑？", options: ["不自卑", "有点", "很自卑", "极度自卑"], category: "心理感受", weight: 4 },
+            { question: "痘痘是否影响您的积极性？", options: ["不影响", "轻微", "明显", "严重打击"], category: "心理感受", weight: 3 },
+            { question: "您觉得治好痘痘能改变人生吗？", options: ["不觉得", "可能", "肯定", "完全改变"], category: "心理感受", weight: 2 },
+            { question: "您是否经常在意别人的目光？", options: ["不在意", "有点", "很在意", "过度在意"], category: "心理感受", weight: 3 },
+            { question: "痘痘是否让您对未来悲观？", options: ["不悲观", "有点", "比较悲观", "非常悲观"], category: "心理感受", weight: 3 },
+            { question: "您是否因为痘痘逃避聚会？", options: ["不逃避", "偶尔", "经常", "总是"], category: "心理感受", weight: 3 },
+            { question: "您觉得痘痘影响您的魅力吗？", options: ["不影响", "轻微", "明显", "严重"], category: "心理感受", weight: 2 },
+            { question: "您是否担心痘痘永远治不好？", options: ["不担心", "有点", "很担心", "绝望"], category: "心理感受", weight: 3 },
+            { question: "痘痘是否让您不敢表达自己？", options: ["不会", "偶尔", "经常", "总是"], category: "心理感受", weight: 3 },
+            { question: "您是否觉得自己比同龄人老？", options: ["不觉得", "有点", "明显", "老很多"], category: "心理感受", weight: 2 },
+            { question: "痘痘是否影响您的幸福感？", options: ["不影响", "轻微", "明显", "严重"], category: "心理感受", weight: 4 },
+            { question: "您相信自己能战胜痘痘吗？", options: ["完全相信", "基本相信", "不太相信", "不相信"], category: "心理感受", weight: 2 },
+
+            // 困扰程度类（25题）
+            { question: "痘痘对您日常生活的影响？", options: ["无影响", "轻微影响", "明显影响", "严重影响"], category: "困扰程度", weight: 4 },
+            { question: "痘痘是否影响您的工作表现？", options: ["不影响", "轻微", "明显", "严重"], category: "困扰程度", weight: 4 },
+            { question: "痘痘是否影响您的学习？", options: ["不影响", "注意力下降", "明显影响", "无法专心"], category: "困扰程度", weight: 3 },
+            { question: "痘痘对您恋爱/婚姻的影响？", options: ["无影响", "轻微影响", "明显影响", "严重影响"], category: "困扰程度", weight: 4 },
+            { question: "痘痘是否影响您的面试求职？", options: ["不影响", "有点担心", "影响很大", "屡次碰壁"], category: "困扰程度", weight: 3 },
+            { question: "您每天花多少时间想痘痘的事？", options: ["几乎不想", "偶尔想起", "经常想", "一直在想"], category: "困扰程度", weight: 3 },
+            { question: "痘痘是否影响您的运动锻炼？", options: ["不影响", "轻微", "明显", "完全不敢"], category: "困扰程度", weight: 2 },
+            { question: "痘痘是否影响您的饮食胃口？", options: ["不影响", "轻微", "明显", "严重"], category: "困扰程度", weight: 2 },
+            { question: "痘痘是否让您不敢游泳/温泉？", options: ["不影响", "有点顾虑", "很顾虑", "完全不敢"], category: "困扰程度", weight: 2 },
+            { question: "痘痘对您家庭关系的影响？", options: ["无影响", "家人担心", "有些矛盾", "严重矛盾"], category: "困扰程度", weight: 3 },
+            { question: "您每天照镜子关注痘痘的次数？", options: ["1-2次", "3-5次", "6-10次", "10次以上"], category: "困扰程度", weight: 2 },
+            { question: "痘痘是否影响您参加重要活动？", options: ["不影响", "有点顾虑", "会推迟", "会拒绝"], category: "困扰程度", weight: 3 },
+            { question: "您在护肤上花费的时间？", options: ["正常", "稍多", "很多", "过度"], category: "困扰程度", weight: 2 },
+            { question: "痘痘是否让您逃避镜头？", options: ["不逃避", "不喜欢", "很逃避", "完全拒绝"], category: "困扰程度", weight: 2 },
+            { question: "痘痘对您性格的影响？", options: ["无影响", "稍内向", "明显内向", "完全改变"], category: "困扰程度", weight: 3 },
+            { question: "您觉得痘痘困扰的严重程度？", options: ["轻微", "中等", "严重", "极其严重"], category: "困扰程度", weight: 5 },
+            { question: "痘痘是否影响您交新朋友？", options: ["不影响", "有点", "很影响", "完全不敢"], category: "困扰程度", weight: 3 },
+            { question: "痘痘是否让您拒绝视频通话？", options: ["不拒绝", "偶尔", "经常", "总是"], category: "困扰程度", weight: 2 },
+            { question: "痘痘对您自我评价的影响？", options: ["无影响", "轻微", "明显", "严重"], category: "困扰程度", weight: 3 },
+            { question: "您因痘痘花费了多少金钱？", options: ["很少", "数百元", "数千元", "上万元"], category: "困扰程度", weight: 2 },
+            { question: "痘痘是否影响您的职业选择？", options: ["不影响", "有考虑", "有影响", "严重限制"], category: "困扰程度", weight: 3 },
+            { question: "您是否因痘痘改变发型妆容？", options: ["没改变", "稍有改变", "明显改变", "完全改变"], category: "困扰程度", weight: 2 },
+            { question: "痘痘是否影响您参加社交媒体？", options: ["不影响", "少发自拍", "很少发", "不敢发"], category: "困扰程度", weight: 2 },
+            { question: "您觉得痘痘问题紧急吗？", options: ["不紧急", "希望治疗", "比较紧急", "非常紧急"], category: "困扰程度", weight: 4 },
+            { question: "痘痘对您整体生活质量的影响？", options: ["无影响", "轻微下降", "明显下降", "严重下降"], category: "困扰程度", weight: 5 },
+
+            // 治疗期望类（25题）
+            { question: "您期望多久看到治疗效果？", options: ["不着急", "3个月内", "1个月内", "越快越好"], category: "治疗期望", weight: 3 },
+            { question: "您最希望解决的问题是？", options: ["消除痘痘", "修复痘坑", "去除痘印", "全面改善"], category: "治疗期望", weight: 4 },
+            { question: "您能接受的治疗周期？", options: ["1年以上", "6-12个月", "3-6个月", "3个月内"], category: "治疗期望", weight: 3 },
+            { question: "您的预算范围是？", options: ["1000元内", "1000-3000", "3000-5000", "5000以上"], category: "治疗期望", weight: 4 },
+            { question: "您更倾向哪种治疗方式？", options: ["外用药物", "口服药物", "医美项目", "综合治疗"], category: "治疗期望", weight: 3 },
+            { question: "您能接受的恢复期多久？", options: ["随意", "3-5天", "1周内", "不想有恢复期"], category: "治疗期望", weight: 2 },
+            { question: "治疗期间您能配合忌口吗？", options: ["完全配合", "基本配合", "难以配合", "无法配合"], category: "治疗期望", weight: 3 },
+            { question: "您能坚持按时用药/护理吗？", options: ["完全可以", "基本可以", "不太能", "很难坚持"], category: "治疗期望", weight: 3 },
+            { question: "您期望的治疗效果是？", options: ["稍有改善", "明显改善", "基本治愈", "完全治愈"], category: "治疗期望", weight: 4 },
+            { question: "您能接受治疗过程的不适吗？", options: ["可以接受", "轻微可以", "不太能", "完全不能"], category: "治疗期望", weight: 2 },
+            { question: "您希望医生的指导程度？", options: ["简单指导", "定期指导", "密切指导", "全程跟踪"], category: "治疗期望", weight: 2 },
+            { question: "您能定期复诊吗？", options: ["完全可以", "基本可以", "不太方便", "很难做到"], category: "治疗期望", weight: 3 },
+            { question: "您对治疗方案的选择？", options: ["听医生的", "充分沟通", "自己决定", "先试试看"], category: "治疗期望", weight: 2 },
+            { question: "您能接受的治疗频率？", options: ["每周", "每两周", "每月", "不想太频繁"], category: "治疗期望", weight: 2 },
+            { question: "您更关注效果还是价格？", options: ["效果优先", "效果重要", "性价比", "价格优先"], category: "治疗期望", weight: 3 },
+            { question: "您希望治疗后的皮肤状态？", options: ["不长痘", "无痘印", "无痘坑", "完美肌肤"], category: "治疗期望", weight: 3 },
+            { question: "您能改变不良生活习惯吗？", options: ["完全能改", "基本能改", "很难改", "改不了"], category: "治疗期望", weight: 3 },
+            { question: "您对医美项目的接受度？", options: ["很感兴趣", "可以尝试", "有点顾虑", "不太接受"], category: "治疗期望", weight: 3 },
+            { question: "您期望治疗的私密性？", options: ["无所谓", "一般", "比较重视", "非常重视"], category: "治疗期望", weight: 1 },
+            { question: "您能接受口服药物吗？", options: ["完全接受", "可以接受", "不太愿意", "不能接受"], category: "治疗期望", weight: 2 },
+            { question: "您对治疗安全性的要求？", options: ["一般", "比较重视", "非常重视", "安全第一"], category: "治疗期望", weight: 3 },
+            { question: "您希望治疗同时改善其他问题吗？", options: ["只治痘", "稍带改善", "全面改善", "越多越好"], category: "治疗期望", weight: 2 },
+            { question: "您能接受可能的反复吗？", options: ["能接受", "可以理解", "不太能", "不能接受"], category: "治疗期望", weight: 2 },
+            { question: "您更倾向去医院还是美容院？", options: ["正规医院", "医美机构", "都可以", "不确定"], category: "治疗期望", weight: 2 },
+            { question: "您准备投入多少精力治疗？", options: ["全力以赴", "认真对待", "试试看", "随缘"], category: "治疗期望", weight: 4 },
+
+            // 其他主观感受类（20题）
+            { question: "您对自己的皮肤了解吗？", options: ["很了解", "基本了解", "不太了解", "完全不懂"], category: "其他感受", weight: 2 },
+            { question: "您对痤疮知识的了解程度？", options: ["很了解", "了解一些", "知道一点", "完全不懂"], category: "其他感受", weight: 2 },
+            { question: "您对治疗的信心？", options: ["很有信心", "基本有信心", "信心不足", "没信心"], category: "其他感受", weight: 3 },
+            { question: "您觉得痘痘主要原因是？", options: ["遗传", "激素", "生活习惯", "不清楚"], category: "其他感受", weight: 2 },
+            { question: "您更相信什么治疗？", options: ["西医", "中医", "医美", "都试试"], category: "其他感受", weight: 2 },
+            { question: "您对医美行业的信任度？", options: ["很信任", "基本信任", "有点怀疑", "不信任"], category: "其他感受", weight: 2 },
+            { question: "您觉得痘痘能根治吗？", options: ["肯定能", "应该能", "不确定", "不能"], category: "其他感受", weight: 2 },
+            { question: "您愿意为治疗做出改变吗？", options: ["完全愿意", "基本愿意", "看情况", "不太愿意"], category: "其他感受", weight: 3 },
+            { question: "您对护肤品的信任度？", options: ["很信任", "基本信任", "不太信任", "不信任"], category: "其他感受", weight: 1 },
+            { question: "您觉得痘痘影响最大的是？", options: ["外貌", "心情", "生活", "工作社交"], category: "其他感受", weight: 3 },
+            { question: "您是完美主义者吗？", options: ["是", "有点", "不太是", "不是"], category: "其他感受", weight: 2 },
+            { question: "您对皮肤的重视程度？", options: ["非常重视", "比较重视", "一般", "不太重视"], category: "其他感受", weight: 3 },
+            { question: "您觉得痘痘治疗复杂吗？", options: ["很复杂", "比较复杂", "还好", "不复杂"], category: "其他感受", weight: 1 },
+            { question: "您愿意长期护理吗？", options: ["完全愿意", "愿意", "不太愿意", "不愿意"], category: "其他感受", weight: 3 },
+            { question: "您对当前外貌的满意度？", options: ["很满意", "基本满意", "不满意", "非常不满意"], category: "其他感受", weight: 3 },
+            { question: "痘痘治好后您最想做什么？", options: ["拍美照", "交朋友", "找工作", "自信生活"], category: "其他感受", weight: 2 },
+            { question: "您认为皮肤好对人生重要吗？", options: ["非常重要", "比较重要", "一般", "不重要"], category: "其他感受", weight: 2 },
+            { question: "您愿意分享治疗经验吗？", options: ["很愿意", "愿意", "不太愿意", "不愿意"], category: "其他感受", weight: 1 },
+            { question: "您对治疗过程的耐心？", options: ["很有耐心", "有耐心", "一般", "没耐心"], category: "其他感受", weight: 3 },
+            { question: "您现在的心情状态？", options: ["积极乐观", "平和", "有点低落", "很低落"], category: "其他感受", weight: 3 }
+        ];
+
+        // 初始化评估系统
+        function initAssessment() {
+            try {
+                // 从题库中随机选择5道客观题
+                selectedObjectiveQs = getRandomQuestions(objectiveQuestions, 5);
+                // 从题库中随机选择5道主观题
+                selectedSubjectiveQs = getRandomQuestions(subjectiveQuestions, 5);
+
+                // 重置答案数组
+                objectiveAnswers = [];
+                subjectiveAnswers = [];
+                currentObjQ = 0;
+                currentSubjQ = 0;
+
+                // 显示第一道客观题
+                displayObjectiveQuestion();
+            } catch (error) {
+                console.error('初始化评估系统失败:', error);
+            }
+        }
+
+        // 随机选择问题
+        function getRandomQuestions(questionBank, count) {
+            const shuffled = [...questionBank].sort(() => Math.random() - 0.5);
+            return shuffled.slice(0, count);
+        }
+
+        // 显示客观题
+        function displayObjectiveQuestion() {
+            if (currentObjQ >= selectedObjectiveQs.length) return;
+
+            const question = selectedObjectiveQs[currentObjQ];
+            const container = document.getElementById('objectiveQuestions');
+            document.getElementById('objCurrentQ').textContent = currentObjQ + 1;
+
+            container.innerHTML = `
+                <div class="question-card">
+                    <span class="question-category">${question.category}</span>
+                    <div class="question-text">${question.question}</div>
+                    <div class="options-grid">
+                        ${question.options.map((option, index) => `
+                            <div class="option-card" onclick="selectObjectiveOption(${index})" data-index="${index}">
+                                ${option}
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        // 选择客观题选项
+        function selectObjectiveOption(optionIndex) {
+            const cards = document.querySelectorAll('#objectiveQuestions .option-card');
+            cards.forEach(card => card.classList.remove('selected'));
+            cards[optionIndex].classList.add('selected');
+
+            objectiveAnswers[currentObjQ] = optionIndex;
+
+            // 启用下一题按钮
+            document.getElementById('objNextBtn').disabled = false;
+        }
+
+        // 下一道客观题
+        function nextObjectiveQuestion() {
+            if (objectiveAnswers[currentObjQ] === undefined) {
+                alert('请选择一个选项');
+                return;
+            }
+
+            currentObjQ++;
+
+            if (currentObjQ >= selectedObjectiveQs.length) {
+                // 客观题完成，进入主观题
+                nextStep(2);
+            } else {
+                displayObjectiveQuestion();
+                document.getElementById('objNextBtn').disabled = true;
+            }
+        }
+
+        // 显示主观题
+        function displaySubjectiveQuestion() {
+            if (currentSubjQ >= selectedSubjectiveQs.length) return;
+
+            const question = selectedSubjectiveQs[currentSubjQ];
+            const container = document.getElementById('subjectiveQuestions');
+            document.getElementById('subjCurrentQ').textContent = currentSubjQ + 1;
+
+            container.innerHTML = `
+                <div class="question-card">
+                    <span class="question-category">${question.category}</span>
+                    <div class="question-text">${question.question}</div>
+                    <div class="options-grid">
+                        ${question.options.map((option, index) => `
+                            <div class="option-card" onclick="selectSubjectiveOption(${index})" data-index="${index}">
+                                ${option}
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        // 选择主观题选项
+        function selectSubjectiveOption(optionIndex) {
+            const cards = document.querySelectorAll('#subjectiveQuestions .option-card');
+            cards.forEach(card => card.classList.remove('selected'));
+            cards[optionIndex].classList.add('selected');
+
+            subjectiveAnswers[currentSubjQ] = optionIndex;
+
+            // 启用下一题按钮
+            document.getElementById('subjNextBtn').disabled = false;
+        }
+
+        // 下一道主观题
+        function nextSubjectiveQuestion() {
+            if (subjectiveAnswers[currentSubjQ] === undefined) {
+                alert('请选择一个选项');
+                return;
+            }
+
+            currentSubjQ++;
+
+            if (currentSubjQ >= selectedSubjectiveQs.length) {
+                // 主观题完成，进入照片上传
+                nextStep(3);
+            } else {
+                displaySubjectiveQuestion();
+                document.getElementById('subjNextBtn').disabled = true;
+            }
+        }
+
+        // 切换步骤
+        function nextStep(step) {
+            // 隐藏所有步骤
+            document.querySelectorAll('.assessment-step').forEach(s => s.style.display = 'none');
+
+            // 更新进度指示器
+            document.querySelectorAll('.progress-step').forEach((s, index) => {
+                s.classList.remove('active');
+                if (index < step - 1) {
+                    s.classList.add('completed');
+                }
+            });
+            document.querySelector(`.progress-step[data-step="${step}"]`).classList.add('active');
+
+            // 显示当前步骤
+            document.getElementById(`step${step}`).style.display = 'block';
+
+            // 特殊处理
+            if (step === 2) {
+                displaySubjectiveQuestion();
+            } else if (step === 4) {
+                generateAIDiagnosis();
+            }
+
+            // 滚动到顶部
+            document.getElementById('diagnosis').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // 上一步
+        function prevStep(currentStep) {
+            if (currentStep > 1) {
+                nextStep(currentStep - 1);
+            }
+        }
+
+        // 处理照片上传
+        function handlePhotoUpload(event) {
+            const files = event.target.files;
+            const previewContainer = document.getElementById('photoPreview');
+
+            Array.from(files).forEach(file => {
+                // 验证文件
+                if (!file.type.startsWith('image/')) {
+                    alert('只能上传图片文件');
+                    return;
+                }
+
+                if (file.size > 5 * 1024 * 1024) {
+                    alert('图片大小不能超过5MB');
+                    return;
+                }
+
+                // 读取并显示预览
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const photoData = {
+                        name: file.name,
+                        data: e.target.result
+                    };
+                    uploadedPhotos.push(photoData);
+
+                    const photoItem = document.createElement('div');
+                    photoItem.className = 'photo-preview-item';
+                    photoItem.innerHTML = `
+                        <img src="${e.target.result}" alt="预览">
+                        <button class="photo-remove-btn" onclick="removePhoto(${uploadedPhotos.length - 1})">×</button>
+                    `;
+                    previewContainer.appendChild(photoItem);
+                };
+                reader.readAsDataURL(file);
+            });
+        }
+
+        // 删除照片
+        function removePhoto(index) {
+            uploadedPhotos.splice(index, 1);
+            const previewContainer = document.getElementById('photoPreview');
+            previewContainer.innerHTML = '';
+            uploadedPhotos.forEach((photo, idx) => {
+                const photoItem = document.createElement('div');
+                photoItem.className = 'photo-preview-item';
+                photoItem.innerHTML = `
+                    <img src="${photo.data}" alt="预览">
+                    <button class="photo-remove-btn" onclick="removePhoto(${idx})">×</button>
+                `;
+                previewContainer.appendChild(photoItem);
+            });
+        }
+
+        // 生成AI诊断报告
+        function generateAIDiagnosis() {
+            // 显示加载动画
+            document.getElementById('aiDiagnosisLoading').style.display = 'block';
+            document.getElementById('aiDiagnosisReport').style.display = 'none';
+
+            // 模拟AI分析过程（逐步显示）
+            const steps = ['loadStep1', 'loadStep2', 'loadStep3', 'loadStep4', 'loadStep5'];
+            let currentStep = 0;
+
+            const interval = setInterval(() => {
+                if (currentStep > 0) {
+                    document.getElementById(steps[currentStep - 1]).classList.remove('active');
+                    document.getElementById(steps[currentStep - 1]).classList.add('completed');
+                    document.getElementById(steps[currentStep - 1]).innerHTML =
+                        document.getElementById(steps[currentStep - 1]).innerHTML.replace('⏳', '✓');
+                }
+
+                if (currentStep < steps.length) {
+                    document.getElementById(steps[currentStep]).classList.add('active');
+                    currentStep++;
+                } else {
+                    clearInterval(interval);
+
+                    // 计算评分并显示报告
+                    setTimeout(() => {
+                        const diagnosis = calculateDiagnosis();
+                        displayDiagnosisReport(diagnosis);
+                    }, 500);
+                }
+            }, 800);
+        }
+
+        // 计算诊断结果
+        function calculateDiagnosis() {
+            let totalScore = 0;
+            let maxScore = 0;
+
+            // 计算客观题得分
+            selectedObjectiveQs.forEach((q, index) => {
+                const answer = objectiveAnswers[index];
+                const score = answer * q.weight; // 选项索引越大，得分越高
+                totalScore += score;
+                maxScore += 3 * q.weight; // 最高选项索引是3
+            });
+
+            // 计算主观题得分
+            selectedSubjectiveQs.forEach((q, index) => {
+                const answer = subjectiveAnswers[index];
+                const score = answer * q.weight;
+                totalScore += score;
+                maxScore += 3 * q.weight;
+            });
+
+            // 标准化到100分
+            const normalizedScore = Math.round((totalScore / maxScore) * 100);
+
+            // 确定严重程度
+            let severity, severityText, severityClass, recommendedPlan;
+            if (normalizedScore < 30) {
+                severity = 'mild';
+                severityText = '轻度痤疮';
+                severityClass = 'severity-mild';
+                recommendedPlan = 'basic';
+            } else if (normalizedScore < 60) {
+                severity = 'moderate';
+                severityText = '中度痤疮';
+                severityClass = 'severity-moderate';
+                recommendedPlan = 'standard';
+            } else {
+                severity = 'severe';
+                severityText = '重度痤疮';
+                severityClass = 'severity-severe';
+                recommendedPlan = 'premium';
+            }
+
+            return {
+                score: normalizedScore,
+                severity,
+                severityText,
+                severityClass,
+                recommendedPlan
+            };
+        }
+
+        // 显示诊断报告
+        function displayDiagnosisReport(diagnosis) {
+            document.getElementById('aiDiagnosisLoading').style.display = 'none';
+            document.getElementById('aiDiagnosisReport').style.display = 'block';
+
+            const reportContent = generateReportContent(diagnosis);
+            document.getElementById('diagnosisContent').innerHTML = reportContent;
+        }
+
+        // 生成报告内容
+        function generateReportContent(diagnosis) {
+            const { score, severityText, severityClass, severity, recommendedPlan } = diagnosis;
+
+            const reports = {
+                mild: {
+                    symptoms: '您目前的痤疮症状较轻，主要表现为散在的粉刺、少量丘疹，皮肤整体状态尚可。',
+                    causes: [
+                        '可能与油脂分泌旺盛有关',
+                        '毛孔堵塞导致粉刺形成',
+                        '生活习惯或护肤方式需要调整',
+                        '轻微的细菌感染'
+                    ],
+                    treatments: [
+                        '激光针清 + 红蓝光消炎治疗',
+                        '水杨酸深层清洁护理',
+                        '温和的日常护肤管理',
+                        '定期复查和维护'
+                    ],
+                    lifestyle: [
+                        '注意面部清洁，每天2次温和洁面',
+                        '使用清爽型护肤品，避免过度滋润',
+                        '保持规律作息，避免熬夜',
+                        '减少高糖、油腻食物摄入',
+                        '做好防晒，使用SPF30以上防晒霜',
+                        '不要用手挤压痘痘'
+                    ],
+                    notes: [
+                        '轻度痤疮治疗周期约3-6个月',
+                        '坚持治疗方案，不要随意更换产品',
+                        '如有过敏反应，及时联系医生',
+                        '定期复诊，监测皮肤状况'
+                    ],
+                    prognosis: '预后良好，通过规范治疗和生活调整，3-6个月可明显改善，治愈率高达95%。'
+                },
+                moderate: {
+                    symptoms: '您的痤疮程度为中度，表现为较多的炎性丘疹、脓疱，可能伴有痘印和轻微痘坑，需要系统性治疗。',
+                    causes: [
+                        '皮脂腺分泌过度旺盛',
+                        '痤疮丙酸杆菌感染加重',
+                        '可能存在内分泌失衡',
+                        '炎症反应较为明显',
+                        '不当的护肤习惯加重症状'
+                    ],
+                    treatments: [
+                        '光子嫩肤 + 海飞秀深层清洁',
+                        '1550点阵激光修复痘坑痘印',
+                        '红蓝光消炎杀菌治疗',
+                        '必要时配合口服药物',
+                        '专属定制治疗方案'
+                    ],
+                    lifestyle: [
+                        '严格做好面部清洁和护理',
+                        '调整作息，保证充足睡眠（7-8小时）',
+                        '饮食清淡，避免辛辣、甜食、油炸',
+                        '保持心情舒畅，减少压力',
+                        '加强防晒，防止色素沉着',
+                        '按医嘱使用药物，不可自行停药',
+                        '避免使用刺激性化妆品'
+                    ],
+                    notes: [
+                        '中度痤疮治疗周期约6-12个月',
+                        '需要耐心坚持，不要急于求成',
+                        '治疗过程中可能有反复，属正常现象',
+                        '定期复诊非常重要',
+                        '严格遵医嘱，不要自行调整方案'
+                    ],
+                    prognosis: '通过系统治疗，6-12个月可达到理想效果，治愈率约85-90%。需要患者积极配合。'
+                },
+                severe: {
+                    symptoms: '您的痤疮属于重度，表现为大量炎性丘疹、脓疱、结节、囊肿，伴有明显痘印痘坑，可能影响到心理健康和生活质量。',
+                    causes: [
+                        '严重的皮脂腺功能紊乱',
+                        '深层细菌感染（痤疮丙酸杆菌）',
+                        '可能存在内分泌疾病（如多囊卵巢）',
+                        '遗传因素影响',
+                        '免疫系统过度反应',
+                        '长期炎症导致组织损伤'
+                    ],
+                    treatments: [
+                        '光动力疗法（PDT）深层杀菌',
+                        '微针射频修复受损组织',
+                        'PRP自体血清生长因子修复',
+                        '点阵激光改善痘坑',
+                        '口服异维A酸（医生处方）',
+                        '口服抗生素控制感染',
+                        '必要时进行内分泌检查和调理',
+                        '专家团队多学科会诊'
+                    ],
+                    lifestyle: [
+                        '必须严格遵医嘱，按时用药',
+                        '彻底改善生活习惯（作息、饮食、护肤）',
+                        '充足睡眠，避免一切熬夜',
+                        '严格控制饮食：禁甜食、油炸、辛辣、奶制品',
+                        '多吃蔬菜水果，补充维生素',
+                        '心理调节，保持积极乐观',
+                        '避免使用任何化妆品（治疗期间）',
+                        '加强防晒，必须使用物理防晒',
+                        '保持皮肤清洁但避免过度清洁'
+                    ],
+                    notes: [
+                        '重度痤疮治疗周期较长（12-18个月）',
+                        '需要极大的耐心和决心',
+                        '家人的支持和理解非常重要',
+                        '治疗期间不要怀孕（某些药物有致畸性）',
+                        '定期检查肝肾功能（口服药物期间）',
+                        '不要相信任何"速效"产品',
+                        '心理咨询可能有帮助',
+                        '治疗结束后需要长期维护'
+                    ],
+                    prognosis: '重度痤疮通过正规系统治疗，12-18个月可显著改善，治愈率约75-80%。部分患者可能留有疤痕，但可通过后续修复改善。'
+                }
+            };
+
+            const report = reports[severity];
+            const planNames = {
+                basic: '基础方案（¥980/疗程）',
+                standard: '标准方案（¥1,880/疗程）',
+                premium: '高级方案（¥4,580/疗程）'
+            };
+
+            return `
+                <div class="score-display">
+                    <div class="score-number">${score}</div>
+                    <div class="score-label">综合评估分数（满分100）</div>
+                </div>
+
+                <div style="text-align: center; margin-bottom: 2rem;">
+                    <span class="severity-badge ${severityClass}">诊断结果：${severityText}</span>
+                </div>
+
+                <div class="report-section">
+                    <h4>📋 症状分析</h4>
+                    <p>${report.symptoms}</p>
+                </div>
+
+                <div class="report-section">
+                    <h4>🔍 可能原因</h4>
+                    <ul>
+                        ${report.causes.map(cause => `<li>${cause}</li>`).join('')}
+                    </ul>
+                </div>
+
+                <div class="report-section">
+                    <h4>💊 推荐治疗方案</h4>
+                    <p><strong>建议选择：${planNames[recommendedPlan]}</strong></p>
+                    <ul>
+                        ${report.treatments.map(treatment => `<li>${treatment}</li>`).join('')}
+                    </ul>
+                </div>
+
+                <div class="report-section">
+                    <h4>🌟 生活建议</h4>
+                    <ul>
+                        ${report.lifestyle.map(advice => `<li>${advice}</li>`).join('')}
+                    </ul>
+                </div>
+
+                <div class="report-section">
+                    <h4>⚠️ 注意事项</h4>
+                    <ul>
+                        ${report.notes.map(note => `<li>${note}</li>`).join('')}
+                    </ul>
+                </div>
+
+                <div class="report-section" style="border-left-color: #48bb78;">
+                    <h4 style="color: #48bb78;">✅ 治疗预后</h4>
+                    <p>${report.prognosis}</p>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem; padding: 1.5rem; background: linear-gradient(135deg, #fff5eb 0%, #ffe6f7 100%); border-radius: 15px;">
+                    <p style="font-size: 1.1rem; color: #2d3748; margin-bottom: 1rem;">
+                        <strong>温馨提示：</strong>本报告由AI系统基于您的答案生成，仅供参考。
+                        具体治疗方案需要专业医师面诊后制定。
+                    </p>
+                    <p style="color: #718096;">
+                        📞 预约咨询：023-63326559 | 💬 微信咨询 | 🏥 到院面诊
+                    </p>
+                </div>
+            `;
+        }
+
+        // 重新开始评估
+        function restartAssessment() {
+            if (confirm('确定要重新开始评估吗？当前的答案将会丢失。')) {
+                // 重置所有数据
+                currentObjQ = 0;
+                currentSubjQ = 0;
+                objectiveAnswers = [];
+                subjectiveAnswers = [];
+                uploadedPhotos = [];
+                document.getElementById('photoPreview').innerHTML = '';
+
+                // 返回第一步
+                nextStep(1);
+                initAssessment();
+            }
+        }
+
+        // 滚动到治疗方案
+        function scrollToPlans() {
+            document.getElementById('plans').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // 下载PDF报告
+        function downloadReport() {
+            // 检查是否加载了jsPDF
+            if (typeof window.jspdf === 'undefined') {
+                alert('PDF生成功能需要加载jsPDF库。您可以通过截图保存报告，或联系我们发送电子版报告。\n\n📞 联系电话：023-63326559');
+                return;
+            }
+
+            // 使用jsPDF生成PDF
+            try {
+                const { jsPDF } = window.jspdf;
+                const doc = new jsPDF();
+
+                // 这里需要实现PDF内容生成
+                // 由于中文支持较复杂，暂时提供简单提示
+                alert('PDF下载功能开发中。\n\n您可以：\n1. 截图保存本报告\n2. 联系我们获取完整电子版\n\n📞 023-63326559');
+            } catch (error) {
+                console.error('生成PDF失败:', error);
+                alert('生成PDF失败。请截图保存或联系我们获取报告。');
+            }
+        }
+
         // ========== AI 知识库 ==========
         const knowledgeBase = {
             '痤疮能治好吗': '痤疮是可以治好的！根据严重程度不同，轻度痤疮3-6个月可见明显改善，中度需要6-12个月，重度可能需要12-18个月。关键是要坚持规范治疗，配合医生的方案。我们的治愈率达90%以上。',
