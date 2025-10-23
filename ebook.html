@@ -2635,6 +2635,32 @@
             </div>
         </header>
 
+        <!-- 目录浮动按钮 -->
+        <div id="tocFloatBtn" onclick="toggleTOCPanel()" style="position: fixed; bottom: 160px; right: 30px; width: 60px; height: 60px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4); z-index: 1000; transition: all 0.3s;" onmouseover="this.style.transform='scale(1.1)'; this.style.boxShadow='0 8px 25px rgba(102, 126, 234, 0.5)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 5px 20px rgba(102, 126, 234, 0.4)';">
+            <span style="font-size: 1.8em; color: white;">📚</span>
+        </div>
+
+        <!-- 目录面板 -->
+        <div id="tocPanel" style="display: none; position: fixed; top: 0; right: 0; width: 420px; height: 100vh; background: white; box-shadow: -5px 0 20px rgba(0,0,0,0.2); z-index: 1001; overflow-y: auto; animation: slideInRight 0.3s;">
+            <div style="position: sticky; top: 0; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; z-index: 10;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <h3 style="margin: 0; font-size: 1.3em;">📚 电子书目录</h3>
+                    <button onclick="toggleTOCPanel()" style="background: rgba(255,255,255,0.2); border: none; color: white; width: 35px; height: 35px; border-radius: 50%; cursor: pointer; font-size: 1.2em; display: flex; align-items: center; justify-content: center;">
+                        ×
+                    </button>
+                </div>
+                <p style="margin: 10px 0 0 0; opacity: 0.9; font-size: 0.9em;">快速导航到任意章节</p>
+            </div>
+
+            <!-- 目录列表 -->
+            <div id="tocList" style="padding: 15px;">
+                <!-- 章节列表将通过JavaScript动态生成 -->
+            </div>
+        </div>
+
+        <!-- 目录面板背景遮罩 -->
+        <div id="tocBackdrop" onclick="toggleTOCPanel()" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000;"></div>
+
         <!-- 收藏/书签浮动按钮 -->
         <div id="bookmarkFloatBtn" onclick="toggleBookmarkPanel()" style="position: fixed; bottom: 80px; right: 30px; width: 60px; height: 60px; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 5px 20px rgba(245,87,108,0.4); z-index: 1000; transition: all 0.3s;">
             <div style="position: relative;">
@@ -8180,6 +8206,79 @@
                 backdrop.style.display = 'block';
                 renderBookmarkList();
             }
+        }
+
+        // 切换目录面板
+        function toggleTOCPanel() {
+            const panel = document.getElementById('tocPanel');
+            const backdrop = document.getElementById('tocBackdrop');
+            const isVisible = panel.style.display === 'block';
+
+            if (isVisible) {
+                panel.style.display = 'none';
+                backdrop.style.display = 'none';
+            } else {
+                panel.style.display = 'block';
+                backdrop.style.display = 'block';
+                renderTOCList();
+            }
+        }
+
+        // 渲染目录列表
+        function renderTOCList() {
+            const tocList = document.getElementById('tocList');
+            if (!tocList) return;
+
+            // 清空现有内容
+            tocList.innerHTML = '';
+
+            // 遍历chapters数组生成目录项
+            chapters.forEach((chapter, index) => {
+                const tocItem = document.createElement('div');
+                tocItem.style.cssText = `
+                    padding: 15px;
+                    margin-bottom: 10px;
+                    background: ${chapter.isSpecial ? 'linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%)' : '#f8f9fa'};
+                    border-radius: 12px;
+                    cursor: pointer;
+                    transition: all 0.3s;
+                    border-left: 4px solid ${chapter.isSpecial ? '#f5576c' : '#667eea'};
+                `;
+
+                tocItem.innerHTML = `
+                    <div style="display: flex; align-items: flex-start; gap: 12px;">
+                        <div style="font-size: 1.5em; flex-shrink: 0;">
+                            ${chapter.isSpecial ? '⭐' : '📖'}
+                        </div>
+                        <div style="flex: 1;">
+                            <div style="font-weight: bold; color: #2c3e50; margin-bottom: 5px; font-size: 1.05em;">
+                                ${chapter.title}
+                            </div>
+                            <div style="font-size: 0.85em; color: #7f8c8d; line-height: 1.4;">
+                                ${chapter.desc}
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                // 鼠标悬停效果
+                tocItem.onmouseover = function() {
+                    this.style.transform = 'translateX(-5px)';
+                    this.style.boxShadow = '0 5px 15px rgba(0,0,0,0.1)';
+                };
+                tocItem.onmouseout = function() {
+                    this.style.transform = 'translateX(0)';
+                    this.style.boxShadow = 'none';
+                };
+
+                // 点击加载章节
+                tocItem.onclick = async function() {
+                    await loadChapter(chapter.file, chapter.title);
+                    toggleTOCPanel(); // 关闭面板
+                };
+
+                tocList.appendChild(tocItem);
+            });
         }
 
         // 切换收藏分类

@@ -10,6 +10,7 @@ RUN rm -rf /usr/share/nginx/html/*
 
 # 复制项目文件到nginx默认目录
 COPY index.html /usr/share/nginx/html/
+COPY ebook.html /usr/share/nginx/html/
 COPY chapters/ /usr/share/nginx/html/chapters/
 COPY manifest.json /usr/share/nginx/html/
 COPY service-worker.js /usr/share/nginx/html/
