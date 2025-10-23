@@ -566,14 +566,15 @@
             color: white;
         }
 
-        /* ========== Mobile Responsive ========== */
+        /* ========== Mobile Optimization ========== */
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2rem;
+            /* Header & Navigation */
+            .header-container {
+                padding: 1rem;
             }
 
-            .hero p {
-                font-size: 1rem;
+            .logo {
+                font-size: 1.2rem;
             }
 
             .nav {
@@ -581,22 +582,254 @@
             }
 
             .mobile-menu-btn {
-                display: block;
+                display: block !important;
                 background: none;
                 border: none;
-                font-size: 1.5rem;
+                font-size: 1.8rem;
                 cursor: pointer;
+                padding: 0.5rem;
+                color: var(--primary-color);
             }
 
+            /* Mobile Menu */
+            .mobile-menu {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                z-index: 9999;
+                display: none;
+            }
+
+            .mobile-menu.active {
+                display: block;
+            }
+
+            .mobile-menu-overlay {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0,0,0,0.5);
+                backdrop-filter: blur(4px);
+            }
+
+            .mobile-menu-content {
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 80%;
+                max-width: 320px;
+                height: 100%;
+                background: white;
+                box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+                animation: slideInRight 0.3s ease-out;
+            }
+
+            @keyframes slideInRight {
+                from { transform: translateX(100%); }
+                to { transform: translateX(0); }
+            }
+
+            .mobile-menu-header {
+                padding: 1.5rem;
+                border-bottom: 1px solid #e2e8f0;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .mobile-menu-close {
+                background: none;
+                border: none;
+                font-size: 2rem;
+                cursor: pointer;
+                color: #718096;
+                width: 44px;
+                height: 44px;
+            }
+
+            .mobile-menu-nav {
+                padding: 1rem 0;
+            }
+
+            .mobile-menu-nav a {
+                display: block;
+                padding: 1rem 1.5rem;
+                text-decoration: none;
+                color: var(--text-dark);
+                font-size: 1.1rem;
+                font-weight: 500;
+                transition: all 0.3s;
+                min-height: 44px;
+            }
+
+            .mobile-menu-nav a:hover {
+                background: #f7fafc;
+                color: var(--primary-color);
+            }
+
+            .mobile-menu-cta {
+                margin: 1rem 1.5rem;
+                padding: 1rem !important;
+                background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+                color: white !important;
+                border-radius: 10px;
+                text-align: center;
+                min-height: 48px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            /* Hero Section */
+            .hero h1 {
+                font-size: 1.8rem !important;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .hero-badges {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.5rem;
+            }
+
+            .badge {
+                font-size: 0.85rem;
+                padding: 0.6rem 0.8rem;
+            }
+
+            /* Section Titles */
             .section-title {
                 font-size: 1.8rem;
+            }
+
+            /* Assessment System */
+            .assessment-progress {
+                padding: 1rem 0.5rem;
+            }
+
+            .progress-step {
+                font-size: 0.75rem;
+            }
+
+            .step-number {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+
+            .progress-connector {
+                width: 20px;
+            }
+
+            .step-label {
+                font-size: 0.75rem;
+            }
+
+            .assessment-container {
+                padding: 1.5rem 1rem;
+            }
+
+            .step-title {
+                font-size: 1.3rem;
+            }
+
+            .question-card {
+                padding: 1.5rem 1rem;
+            }
+
+            .question-text {
+                font-size: 1.1rem;
+            }
+
+            .option-card {
+                padding: 1rem;
+                min-height: 44px;
+                font-size: 0.95rem;
+            }
+
+            .step-buttons {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+
+            .step-buttons button {
+                width: 100%;
+                min-height: 48px;
+                font-size: 1rem;
+            }
+
+            /* Photo Upload */
+            .upload-zone {
+                padding: 2rem 1rem;
+            }
+
+            .photo-preview-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            /* Diagnosis Report */
+            .diagnosis-section {
+                padding: 1rem;
+            }
+
+            .diagnosis-section h4 {
+                font-size: 1.1rem;
+            }
+
+            /* Treatment Plans */
+            .plans-container {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .plan-card {
+                padding: 1.5rem;
             }
 
             .plan-card.recommended {
                 transform: scale(1);
             }
 
-            .plans-container {
+            /* AI Chat */
+            .chat-input-container {
+                padding: 1rem;
+            }
+
+            .chat-input {
+                font-size: 16px; /* 避免iOS自动缩放 */
+                min-height: 44px;
+            }
+
+            .btn-send {
+                min-height: 44px;
+                min-width: 60px;
+            }
+
+            /* Footer */
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+        }
+
+        /* Extra Small Devices (< 375px) */
+        @media (max-width: 375px) {
+            .hero h1 {
+                font-size: 1.5rem !important;
+            }
+
+            .assessment-container {
+                padding: 1rem 0.75rem;
+            }
+
+            .photo-preview-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -1055,36 +1288,6 @@
             margin-top: 0.5rem;
         }
 
-        @media (max-width: 768px) {
-            .assessment-container {
-                padding: 1.5rem;
-            }
-
-            .assessment-progress {
-                flex-wrap: wrap;
-                gap: 1rem;
-            }
-
-            .progress-connector {
-                display: none;
-            }
-
-            .options-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .step-buttons {
-                flex-direction: column;
-            }
-
-            .step-title {
-                font-size: 1.4rem;
-            }
-
-            .photo-preview-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
     </style>
 </head>
 <body>
@@ -1102,6 +1305,24 @@
             <button class="mobile-menu-btn" style="display: none;">☰</button>
         </div>
     </header>
+
+    <!-- 移动端侧滑菜单 -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-overlay" onclick="toggleMobileMenu()"></div>
+        <div class="mobile-menu-content">
+            <div class="mobile-menu-header">
+                <div class="logo">💊 痘痘再见</div>
+                <button class="mobile-menu-close" onclick="toggleMobileMenu()">×</button>
+            </div>
+            <nav class="mobile-menu-nav">
+                <a href="#diagnosis" onclick="toggleMobileMenu()">快速诊断</a>
+                <a href="#plans" onclick="toggleMobileMenu()">治疗方案</a>
+                <a href="#ai-chat" onclick="toggleMobileMenu()">AI咨询</a>
+                <a href="#ebook" onclick="toggleMobileMenu()">电子书</a>
+                <a href="tel:023-63326559" class="mobile-menu-cta">📞 立即预约</a>
+            </nav>
+        </div>
+    </div>
 
     <!-- Hero Section -->
     <section class="hero">
@@ -1182,7 +1403,7 @@
                         <div class="upload-icon">📷</div>
                         <p>点击上传照片</p>
                         <p class="upload-hint">支持JPG、PNG格式，最大5MB</p>
-                        <input type="file" id="photoInput" accept="image/*" multiple style="display: none;" onchange="handlePhotoUpload(event)">
+                        <input type="file" id="photoInput" accept="image/*" multiple capture="environment" style="display: none;" onchange="handlePhotoUpload(event)">
                     </div>
 
                     <div id="photoPreview" class="photo-preview-grid">
@@ -2327,6 +2548,19 @@
             });
         });
 
+        // ========== Mobile Menu Toggle ==========
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('active');
+
+            // 防止背景滚动
+            if (menu.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        }
+
         // ========== 页面加载完成后的初始化 ==========
         document.addEventListener('DOMContentLoaded', function() {
             console.log('痘痘再见 - 用户友好版首页已加载');
@@ -2334,6 +2568,12 @@
 
             // 初始化AI评估系统
             initAssessment();
+
+            // 移动端菜单按钮事件
+            const menuBtn = document.querySelector('.mobile-menu-btn');
+            if (menuBtn) {
+                menuBtn.addEventListener('click', toggleMobileMenu);
+            }
         });
     </script>
 </body>
