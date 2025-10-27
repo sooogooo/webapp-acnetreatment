@@ -25,6 +25,8 @@ class CostDashboard {
 
         this.currentPeriod = 'today'; // 'today' | 'week' | 'month'
         this.refreshTimer = null;
+        this.currentView = 'simple'; // 'simple' | 'advanced'
+        this.advancedCharts = null; // Will be initialized when needed
 
         this.log('info', 'CostDashboard初始化完成');
     }
@@ -61,24 +63,42 @@ class CostDashboard {
 
                 <!-- 仪表盘标题 -->
                 <div class="dashboard-header">
-                    <h2>💰 费用统计</h2>
-                    <p class="dashboard-subtitle">实时追踪API调用费用</p>
+                    <div>
+                        <h2>💰 费用统计</h2>
+                        <p class="dashboard-subtitle">实时追踪API调用费用</p>
+                    </div>
+                    <div class="view-toggle">
+                        <button class="view-btn ${this.currentView === 'simple' ? 'active' : ''}" onclick="window.costDashboard.switchView('simple')">
+                            📊 简单视图
+                        </button>
+                        <button class="view-btn ${this.currentView === 'advanced' ? 'active' : ''}" onclick="window.costDashboard.switchView('advanced')">
+                            📈 高级图表
+                        </button>
+                    </div>
                 </div>
 
                 <!-- 时间段选择 -->
                 ${this.generateTabs()}
 
-                <!-- 统计卡片 -->
-                ${this.generateStats()}
+                <!-- 简单视图 -->
+                <div id="simple-view" style="display: ${this.currentView === 'simple' ? 'block' : 'none'};">
+                    <!-- 统计卡片 -->
+                    ${this.generateStats()}
 
-                <!-- 预算进度 -->
-                ${this.generateBudget()}
+                    <!-- 预算进度 -->
+                    ${this.generateBudget()}
 
-                <!-- 模型分布图 -->
-                ${this.generateChart()}
+                    <!-- 模型分布图 -->
+                    ${this.generateChart()}
 
-                <!-- 详细记录表格 -->
-                ${this.generateTable()}
+                    <!-- 详细记录表格 -->
+                    ${this.generateTable()}
+                </div>
+
+                <!-- 高级图表视图 -->
+                <div id="advanced-view" style="display: ${this.currentView === 'advanced' ? 'block' : 'none'};">
+                    <div id="advanced-charts-container"></div>
+                </div>
 
                 <!-- 操作按钮 -->
                 <div class="dashboard-actions">
@@ -250,8 +270,14 @@ class CostDashboard {
                 }
 
                 .dashboard-header {
-                    text-align: center;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
                     margin-bottom: 30px;
+                }
+
+                .dashboard-header > div:first-child {
+                    text-align: left;
                 }
 
                 .dashboard-header h2 {
@@ -263,6 +289,35 @@ class CostDashboard {
                 .dashboard-subtitle {
                     color: #6b7280;
                     font-size: 1.05em;
+                }
+
+                .view-toggle {
+                    display: flex;
+                    gap: 10px;
+                }
+
+                .view-btn {
+                    padding: 10px 20px;
+                    border: 2px solid #e5e7eb;
+                    border-radius: 8px;
+                    background: white;
+                    color: #6b7280;
+                    font-size: 0.95em;
+                    font-weight: 600;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                }
+
+                .view-btn:hover {
+                    border-color: #667eea;
+                    color: #667eea;
+                    transform: translateY(-2px);
+                }
+
+                .view-btn.active {
+                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                    color: white;
+                    border-color: transparent;
                 }
 
                 /* ========== 时间段标签 ========== */
@@ -862,6 +917,47 @@ class CostDashboard {
         URL.revokeObjectURL(url);
         this.showToast('CSV已导出', 'success');
         this.log('info', `CSV已导出: ${period}`);
+    }
+
+    /**
+     * 切换视图
+     * @param {string} view - 'simple' | 'advanced'
+     */
+    switchView(view) {
+        if (view === this.currentView) return;
+
+        this.currentView = view;
+        this.log('info', `切换到${view}视图`);
+
+        // 更新按钮状态
+        document.querySelectorAll('.view-btn').forEach(btn => {
+            const btnView = btn.textContent.includes('简单') ? 'simple' : 'advanced';
+            btn.classList.toggle('active', btnView === view);
+        });
+
+        // 切换视图显示
+        const simpleView = document.getElementById('simple-view');
+        const advancedView = document.getElementById('advanced-view');
+
+        if (view === 'simple') {
+            simpleView.style.display = 'block';
+            advancedView.style.display = 'none';
+        } else {
+            simpleView.style.display = 'none';
+            advancedView.style.display = 'block';
+
+            // 初始化高级图表（如果还未初始化）
+            if (!this.advancedCharts && typeof AdvancedCharts !== 'undefined') {
+                this.advancedCharts = new AdvancedCharts(this.costTracker, {
+                    containerId: 'advanced-charts-container'
+                });
+                this.advancedCharts.render();
+                this.log('info', 'AdvancedCharts已初始化');
+            } else if (this.advancedCharts) {
+                // 如果已经初始化，刷新数据
+                this.advancedCharts.renderAllCharts();
+            }
+        }
     }
 
     /**
