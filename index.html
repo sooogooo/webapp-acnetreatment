@@ -38,7 +38,7 @@
         /* ========== Header ========== */
         .header {
             background: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -47,24 +47,28 @@
         .header-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 1rem 2rem;
+            padding: 1.2rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-emoji {
+            font-size: 1.8rem;
         }
 
         .nav {
             display: flex;
-            gap: 2rem;
+            gap: 3rem;
             align-items: center;
         }
 
@@ -72,11 +76,28 @@
             text-decoration: none;
             color: var(--text-dark);
             font-weight: 500;
-            transition: color 0.3s;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            position: relative;
         }
 
-        .nav a:hover {
+        .nav a:not(.btn-consult):hover {
             color: var(--primary-color);
+        }
+
+        .nav a:not(.btn-consult)::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav a:not(.btn-consult):hover::after {
+            width: 100%;
         }
 
         .btn-primary {
@@ -97,45 +118,84 @@
             box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
         }
 
+        .btn-consult {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.65rem 1.8rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.2);
+        }
+
+        .btn-consult:hover {
+            background: var(--secondary-color);
+            box-shadow: 0 4px 12px rgba(118, 75, 162, 0.3);
+            transform: translateY(-1px);
+        }
+
         /* ========== Hero Section ========== */
         .hero {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 6rem 2rem;
+            padding: 5rem 2rem 4rem;
             text-align: center;
         }
 
         .hero-container {
-            max-width: 1000px;
+            max-width: 900px;
             margin: 0 auto;
         }
 
         .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            font-weight: 800;
+            font-size: 2.8rem;
+            margin-bottom: 1.2rem;
+            font-weight: 700;
+            line-height: 1.3;
         }
 
         .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
             opacity: 0.95;
+            font-weight: 400;
+        }
+
+        .hero-cta {
+            display: inline-block;
+            background: white;
+            color: var(--primary-color);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
         }
 
         .hero-badges {
             display: flex;
             justify-content: center;
-            gap: 2rem;
+            gap: 2.5rem;
             flex-wrap: wrap;
-            margin-top: 2rem;
+            margin-top: 3rem;
         }
 
         .badge {
-            background: rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.15);
             backdrop-filter: blur(10px);
-            padding: 1rem 2rem;
-            border-radius: 15px;
-            font-size: 1.1rem;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 500;
+            border: 1px solid rgba(255,255,255,0.2);
         }
 
         /* ========== Quick Test ========== */
@@ -674,7 +734,7 @@
             .mobile-menu-cta {
                 margin: 1rem 1.5rem;
                 padding: 1rem !important;
-                background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+                background: var(--primary-color);
                 color: white !important;
                 border-radius: 10px;
                 text-align: center;
@@ -682,25 +742,37 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
+                font-weight: 600;
+                box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
             }
 
             /* Hero Section */
+            .hero {
+                padding: 3rem 1.5rem 2.5rem;
+            }
+
             .hero h1 {
-                font-size: 1.8rem !important;
+                font-size: 2rem !important;
             }
 
             .hero p {
                 font-size: 1rem;
+                margin-bottom: 1.8rem;
+            }
+
+            .hero-cta {
+                font-size: 1rem;
+                padding: 0.9rem 2rem;
             }
 
             .hero-badges {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 0.5rem;
+                gap: 1rem;
+                margin-top: 2rem;
             }
 
             .badge {
-                font-size: 0.85rem;
-                padding: 0.6rem 0.8rem;
+                font-size: 0.9rem;
+                padding: 0.7rem 1.2rem;
             }
 
             /* Section Titles */
@@ -1294,13 +1366,14 @@
     <!-- Header -->
     <header class="header">
         <div class="header-container">
-            <div class="logo">💊 痘痘再见</div>
+            <div class="logo">
+                <span class="logo-emoji">💊</span>
+                <span>痘痘再见</span>
+            </div>
             <nav class="nav">
-                <a href="#diagnosis">快速诊断</a>
+                <a href="#diagnosis">痘痘测试</a>
                 <a href="#plans">治疗方案</a>
-                <a href="#ai-chat">AI咨询</a>
-                <a href="#ebook">电子书</a>
-                <a href="tel:023-63326559" class="btn-primary">📞 立即预约</a>
+                <a href="#ai-chat" class="btn-consult">💬 在线咨询</a>
             </nav>
             <button class="mobile-menu-btn" style="display: none;">☰</button>
         </div>
@@ -1311,15 +1384,16 @@
         <div class="mobile-menu-overlay" onclick="toggleMobileMenu()"></div>
         <div class="mobile-menu-content">
             <div class="mobile-menu-header">
-                <div class="logo">💊 痘痘再见</div>
+                <div class="logo">
+                    <span class="logo-emoji">💊</span>
+                    <span>痘痘再见</span>
+                </div>
                 <button class="mobile-menu-close" onclick="toggleMobileMenu()">×</button>
             </div>
             <nav class="mobile-menu-nav">
-                <a href="#diagnosis" onclick="toggleMobileMenu()">快速诊断</a>
+                <a href="#diagnosis" onclick="toggleMobileMenu()">痘痘测试</a>
                 <a href="#plans" onclick="toggleMobileMenu()">治疗方案</a>
-                <a href="#ai-chat" onclick="toggleMobileMenu()">AI咨询</a>
-                <a href="#ebook" onclick="toggleMobileMenu()">电子书</a>
-                <a href="tel:023-63326559" class="mobile-menu-cta">📞 立即预约</a>
+                <a href="#ai-chat" class="mobile-menu-cta" onclick="toggleMobileMenu()">💬 在线咨询</a>
             </nav>
         </div>
     </div>
@@ -1327,15 +1401,14 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-container">
-            <h1>🌟 告别痘痘，重拾自信</h1>
-            <p>专业医美团队 × AI智能诊断 × 个性化治疗方案</p>
-            <a href="#diagnosis" class="btn-primary" style="padding: 1rem 2.5rem; font-size: 1.2rem;">开始免费评估</a>
+            <h1>告别痘痘，重拾自信</h1>
+            <p>专业医美团队 · AI智能诊断 · 个性化治疗方案</p>
+            <a href="#diagnosis" class="hero-cta">开始免费评估 →</a>
 
             <div class="hero-badges">
-                <div class="badge">✅ 21天见效</div>
-                <div class="badge">💰 价格透明</div>
-                <div class="badge">🏥 专业医师</div>
-                <div class="badge">🎯 效果保障</div>
+                <div class="badge">✓ 21天见效</div>
+                <div class="badge">✓ 价格透明</div>
+                <div class="badge">✓ 专业团队</div>
             </div>
         </div>
     </section>
