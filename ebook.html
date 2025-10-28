@@ -5600,7 +5600,14 @@
         // 加载章节内容
         async function loadChapter(filename, title) {
             try {
-                const response = await fetch(filename);
+                // 确保文件路径包含 chapters/ 前缀
+                const filePath = filename.startsWith('chapters/') ? filename : `chapters/${filename}`;
+                const response = await fetch(filePath);
+
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+
                 const text = await response.text();
                 const content = markdownToHtml(text);
 
@@ -5629,9 +5636,12 @@
                     startScrollTracking(filename);
                 }, 100);
             } catch (error) {
+                console.error('Failed to load chapter:', error);
                 document.getElementById('chapterContent').innerHTML = `
                     <h1>加载失败</h1>
-                    <p>抱歉，无法加载章节内容。请稍后重试。</p>
+                    <p>抱歉，无法加载章节内容。</p>
+                    <p style="color: #999; font-size: 0.9em;">错误信息: ${error.message}</p>
+                    <button onclick="location.reload()" style="margin-top: 20px; padding: 10px 20px; background: var(--primary-color); color: white; border: none; border-radius: 8px; cursor: pointer;">刷新页面</button>
                 `;
                 document.getElementById('contentArea').classList.add('active');
 
