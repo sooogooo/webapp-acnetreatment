@@ -1361,19 +1361,35 @@
         }
 
     </style>
+
+    <!-- Favicon -->
+    <link rel="icon" href="assets/images/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="assets/images/favicon.png">
+
+    <!-- 配置和主题系统 -->
+    <script src="js/config.js"></script>
+    <script src="js/theme-manager.js"></script>
+    <script src="js/settings-panel.js"></script>
 </head>
 <body>
     <!-- Header -->
     <header class="header">
         <div class="header-container">
             <div class="logo">
-                <span class="logo-emoji">💊</span>
+                <img src="assets/images/logo.png" alt="联合丽格" style="height: 32px; margin-right: 8px;">
                 <span>痘痘再见</span>
             </div>
             <nav class="nav">
                 <a href="#diagnosis">痘痘测试</a>
                 <a href="#plans">治疗方案</a>
                 <a href="#ai-chat" class="btn-consult">💬 在线咨询</a>
+                <button onclick="window.settingsPanel?.open()"
+                        style="background: none; border: none; font-size: 1.3rem; cursor: pointer; padding: 0.5rem; color: var(--text-dark); transition: all 0.2s;"
+                        onmouseover="this.style.color='var(--primary-color)'"
+                        onmouseout="this.style.color='var(--text-dark)'"
+                        title="设置">
+                    ⚙️
+                </button>
             </nav>
             <button class="mobile-menu-btn" style="display: none;">☰</button>
         </div>
@@ -1385,7 +1401,7 @@
         <div class="mobile-menu-content">
             <div class="mobile-menu-header">
                 <div class="logo">
-                    <span class="logo-emoji">💊</span>
+                    <img src="assets/images/logo.png" alt="联合丽格" style="height: 28px; margin-right: 8px;">
                     <span>痘痘再见</span>
                 </div>
                 <button class="mobile-menu-close" onclick="toggleMobileMenu()">×</button>
@@ -1394,6 +1410,9 @@
                 <a href="#diagnosis" onclick="toggleMobileMenu()">痘痘测试</a>
                 <a href="#plans" onclick="toggleMobileMenu()">治疗方案</a>
                 <a href="#ai-chat" class="mobile-menu-cta" onclick="toggleMobileMenu()">💬 在线咨询</a>
+                <a href="#" onclick="toggleMobileMenu(); window.settingsPanel?.open();" style="border-top: 1px solid var(--border-light); padding-top: 1rem; margin-top: 1rem;">
+                    ⚙️ 设置
+                </a>
             </nav>
         </div>
     </div>
