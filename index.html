@@ -557,49 +557,193 @@
         }
 
         /* ========== Footer ========== */
+        /* ========== Footer ========== */
         .footer {
-            background: #2d3748;
-            color: white;
-            padding: 3rem 2rem 1rem;
+            background: linear-gradient(135deg, var(--surface-light, #F5F4F1) 0%, var(--background, #FAF9F6) 100%);
+            padding: 3rem 0 2rem;
+            border-top: 1px solid var(--border, #E8E6E3);
         }
 
         .footer-container {
             max-width: 1200px;
             margin: 0 auto;
+            padding: 0 2rem;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .footer-section {
+            display: flex;
+            flex-direction: column;
         }
 
         .footer-section h3 {
-            margin-bottom: 1rem;
-            font-size: 1.2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text, #4A4A4A);
+            margin-bottom: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-size: 0.9rem;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .footer-logo img {
+            height: 36px;
+        }
+
+        .footer-logo-text {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary, #9FA8B8);
+        }
+
+        .footer-description {
+            color: var(--text-secondary, #8B8B8B);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.6rem;
+            margin-bottom: 0.8rem;
+            color: var(--text-secondary, #8B8B8B);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .footer-contact-icon {
+            color: var(--highlight, #D4A5A5);
+            font-size: 1.1rem;
+            margin-top: 2px;
         }
 
         .footer-section ul {
             list-style: none;
+            padding: 0;
+            margin: 0;
         }
 
         .footer-section ul li {
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
         }
 
         .footer-section a {
-            color: #cbd5e0;
+            color: var(--text-secondary, #8B8B8B);
             text-decoration: none;
-            transition: color 0.3s;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+            display: inline-block;
         }
 
         .footer-section a:hover {
-            color: white;
+            color: var(--primary, #9FA8B8);
+            transform: translateX(4px);
+        }
+
+        .footer-qr {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1.2rem;
+            background: white;
+            border-radius: 12px;
+            border: 1px solid var(--border, #E8E6E3);
+            transition: all 0.3s ease;
+        }
+
+        .footer-qr:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transform: translateY(-2px);
+        }
+
+        .footer-qr img {
+            width: 120px;
+            height: 120px;
+            border-radius: 8px;
+        }
+
+        .footer-qr-text {
+            margin-top: 0.8rem;
+            font-size: 0.85rem;
+            color: var(--text-secondary, #8B8B8B);
+            text-align: center;
+            line-height: 1.4;
         }
 
         .footer-bottom {
+            max-width: 1200px;
+            margin: 2rem auto 0;
+            padding: 1.5rem 2rem 0;
+            border-top: 1px solid var(--border-light, #F0EEE9);
             text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid #4a5568;
-            color: #cbd5e0;
+            color: var(--text-light, #B8B8B8);
+            font-size: 0.85rem;
+        }
+
+        .footer-copyright {
+            margin-bottom: 0.5rem;
+        }
+
+        /* 备案信息 - 在Footer外面，底部 */
+        .beian-info {
+            background: var(--surface-light, #F5F4F1);
+            padding: 1rem 2rem;
+            text-align: center;
+            font-size: 0.75rem;
+            color: var(--text-secondary, #8B8B8B);
+            opacity: 0.6;
+            line-height: 1.6;
+        }
+
+        .beian-info a {
+            color: inherit;
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+
+        .beian-info a:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+
+        .beian-divider {
+            margin: 0 0.5rem;
+            opacity: 0.5;
+        }
+
+        @media (max-width: 1024px) {
+            .footer-container {
+                grid-template-columns: 2fr 1fr;
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+
+            .footer-qr {
+                max-width: 200px;
+                margin: 0 auto;
+            }
+
+            .beian-info {
+                font-size: 0.7rem;
+                padding: 0.8rem 1rem;
+            }
         }
 
         /* ========== Quick Questions ========== */
@@ -1701,46 +1845,84 @@
     </section>
 
     <!-- Footer -->
+    <!-- Footer -->
     <footer class="footer">
         <div class="footer-container">
+            <!-- 企业信息 -->
             <div class="footer-section">
-                <h3>关于我们</h3>
-                <p>重庆联合丽格第五医疗美容医院专注于痤疮治疗，拥有专业的医师团队和先进的治疗设备。</p>
+                <div class="footer-logo">
+                    <img src="assets/images/logo.png" alt="联合丽格">
+                    <span class="footer-logo-text">痘痘再见</span>
+                </div>
+                <p class="footer-description">
+                    重庆联合丽格第五医疗美容医院专注于痤疮治疗，拥有专业的医师团队和先进的治疗设备，致力于为每位患者提供个性化的治疗方案。
+                </p>
+                <div class="footer-contact-item">
+                    <span class="footer-contact-icon">📍</span>
+                    <span>重庆市渝中区临江支路28号</span>
+                </div>
+                <div class="footer-contact-item">
+                    <span class="footer-contact-icon">📞</span>
+                    <span>023-68726872</span>
+                </div>
+                <div class="footer-contact-item">
+                    <span class="footer-contact-icon">📧</span>
+                    <span>bccsw@cqlhlg.work</span>
+                </div>
             </div>
 
+            <!-- 快速链接 -->
             <div class="footer-section">
-                <h3>快速链接</h3>
+                <h3>快速导航</h3>
                 <ul>
-                    <li><a href="#diagnosis">快速诊断</a></li>
+                    <li><a href="#diagnosis">痘痘测试</a></li>
                     <li><a href="#plans">治疗方案</a></li>
-                    <li><a href="#ai-chat">AI咨询</a></li>
-                    <li><a href="ebook.html">完整电子书</a></li>
+                    <li><a href="#ai-chat">AI在线咨询</a></li>
+                    <li><a href="ebook.html">电子书</a></li>
                     <li><a href="treatments.html">项目价格</a></li>
                 </ul>
             </div>
 
+            <!-- 关于我们 -->
             <div class="footer-section">
-                <h3>联系我们</h3>
+                <h3>关于我们</h3>
                 <ul>
-                    <li>📞 电话：023-63326559</li>
-                    <li>📧 邮箱：yuxiaodong@beaucare.org</li>
-                    <li>📍 地址：重庆市江北区</li>
-                    <li>⏰ 营业时间：9:00-18:00</li>
+                    <li><a href="#" onclick="alert('功能开发中'); return false;">使用说明</a></li>
+                    <li><a href="#" onclick="alert('功能开发中'); return false;">关于我们</a></li>
+                    <li><a href="#" onclick="window.settingsPanel?.open(); return false;">设置</a></li>
+                    <li><a href="#" onclick="alert('功能开发中'); return false;">隐私政策</a></li>
+                    <li><a href="#" onclick="alert('功能开发中'); return false;">服务条款</a></li>
                 </ul>
             </div>
 
+            <!-- 企业微信二维码 -->
             <div class="footer-section">
-                <h3>关注我们</h3>
-                <p>扫码添加微信客服<br>获取一对一专业咨询</p>
-                <p style="margin-top: 1rem; font-size: 2rem;">📱</p>
+                <h3>在线咨询</h3>
+                <a href="https://work.weixin.qq.com/kfid/kfcfc2a809493f31e8f"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="footer-qr">
+                    <img src="assets/images/consultant-qr.png" alt="企业微信咨询">
+                    <div class="footer-qr-text">
+                        扫码添加企业微信<br>
+                        专业医美顾问在线
+                    </div>
+                </a>
             </div>
         </div>
 
         <div class="footer-bottom">
-            <p>© 2025 重庆联合丽格第五医疗美容医院 版权所有</p>
-            <p style="margin-top: 0.5rem; font-size: 0.9rem;">本网站仅供信息参考，不构成医疗建议</p>
+            <p class="footer-copyright">© 2025 重庆联合丽格第五医疗美容医院 版权所有</p>
+            <p style="opacity: 0.8; margin-top: 0.3rem;">本网站仅供信息参考，不构成医疗建议</p>
         </div>
     </footer>
+
+    <!-- 备案信息 - Footer外部，页面底部 -->
+    <div class="beian-info">
+        <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer">渝ICP备15004871号</a>
+        <span class="beian-divider">|</span>
+        <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=50010302001456" target="_blank" rel="noopener noreferrer">渝公网安备 50010302001456号</a>
+    </div>
 
     <script>
         // ========== AI Assessment System ==========
