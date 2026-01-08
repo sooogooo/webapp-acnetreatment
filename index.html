@@ -39,12 +39,29 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://unpkg.com">
 
-    <!-- Google Fonts: Inter (英文) & Noto Sans SC (中文) -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Noto+Sans+SC:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Preload critical assets -->
+    <link rel="preload" href="/css/design-system.css" as="style">
+    <link rel="preload" href="/css/components.css" as="style">
+    <link rel="preload" href="/logo.png" as="image">
+    <link rel="preload" href="/assets/hero-image.jpg" as="image">
 
-    <!-- Phosphor Icons -->
-    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.0.3/src/regular/style.css">
-    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.0.3/src/bold/style.css">
+    <!-- DNS Prefetch for external resources -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://unpkg.com">
+
+    <!-- Google Fonts: Inter (英文) & Noto Sans SC (中文) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Noto+Sans+SC:wght@300;400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Noto+Sans+SC:wght@300;400;500;600&display=swap" rel="stylesheet">
+    </noscript>
+
+    <!-- Phosphor Icons - Deferred loading -->
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.0.3/src/regular/style.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.0.3/src/bold/style.css" media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.0.3/src/regular/style.css">
+        <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.0.3/src/bold/style.css">
+    </noscript>
 
     <!-- Design System CSS -->
     <link rel="stylesheet" href="/css/design-system.css">
@@ -2062,5 +2079,78 @@
         </div>
     </footer>
     </main>
+
+    <!-- Performance Monitoring -->
+    <script>
+        // 性能监控 - 记录页面加载性能指标
+        window.addEventListener('load', function() {
+            // 等待所有资源加载完成后测量
+            setTimeout(function() {
+                if (window.performance && window.performance.timing) {
+                    const perfData = window.performance.timing;
+                    const pageLoadTime = perfData.loadEventEnd - perfData.navigationStart;
+                    const connectTime = perfData.responseEnd - perfData.requestStart;
+                    const renderTime = perfData.domComplete - perfData.domLoading;
+                    const dnsTime = perfData.domainLookupEnd - perfData.domainLookupStart;
+
+                    // 开发环境下输出性能数据
+                    if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
+                        console.log('=== 页面性能指标 ===');
+                        console.log('页面总加载时间:', pageLoadTime + 'ms');
+                        console.log('DNS查询时间:', dnsTime + 'ms');
+                        console.log('服务器响应时间:', connectTime + 'ms');
+                        console.log('DOM渲染时间:', renderTime + 'ms');
+                    }
+
+                    // 如果有Web Vitals API，记录核心性能指标
+                    if ('PerformanceObserver' in window) {
+                        // First Contentful Paint (FCP)
+                        const fcpObserver = new PerformanceObserver((list) => {
+                            for (const entry of list.getEntries()) {
+                                if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
+                                    console.log('FCP (首次内容绘制):', entry.startTime + 'ms');
+                                }
+                            }
+                        });
+                        try {
+                            fcpObserver.observe({ entryTypes: ['paint'] });
+                        } catch (e) {
+                            // Silently fail if not supported
+                        }
+
+                        // Largest Contentful Paint (LCP)
+                        const lcpObserver = new PerformanceObserver((list) => {
+                            const entries = list.getEntries();
+                            const lastEntry = entries[entries.length - 1];
+                            if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
+                                console.log('LCP (最大内容绘制):', lastEntry.renderTime + 'ms');
+                            }
+                        });
+                        try {
+                            lcpObserver.observe({ entryTypes: ['largest-contentful-paint'] });
+                        } catch (e) {
+                            // Silently fail if not supported
+                        }
+                    }
+                }
+            }, 0);
+        });
+
+        // 图片懒加载优化
+        if ('IntersectionObserver' in window) {
+            const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+            const imageObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        // 图片进入视口时已自动加载，但可以在这里添加额外逻辑
+                        imageObserver.unobserve(img);
+                    }
+                });
+            });
+
+            lazyImages.forEach(img => imageObserver.observe(img));
+        }
+    </script>
 </body>
 </html>
