@@ -100,49 +100,30 @@
 </head>
 <body>
     <!-- Header -->
-    <header class="header">
+    <header class="header" id="header">
         <div class="header-container">
-            <div class="logo">
-                <img src="assets/images/logo.png" alt="联合丽格" style="height: 32px; margin-right: 8px;">
-                <span>痘痘再见</span>
-            </div>
-            <nav class="nav">
-                <a href="#diagnosis">痘痘测试</a>
-                <a href="#plans">治疗方案</a>
-                <a href="#ai-chat" class="btn-consult">💬 在线咨询</a>
-                <button onclick="window.settingsPanel?.open()"
-                        style="background: none; border: none; font-size: 1.3rem; cursor: pointer; padding: 0.5rem; color: var(--text-dark); transition: all 0.2s;"
-                        onmouseover="this.style.color='var(--primary-color)'"
-                        onmouseout="this.style.color='var(--text-dark)'"
-                        title="设置">
-                    ⚙️
-                </button>
+            <!-- Logo -->
+            <a href="/" class="header-logo">
+                <img src="/logo.png" alt="联合丽格Logo" class="header-logo-img">
+                <span class="header-logo-text">联合丽格</span>
+            </a>
+
+            <!-- Navigation -->
+            <nav class="header-nav" id="headerNav">
+                <a href="#about">关于我们</a>
+                <a href="#services">服务项目</a>
+                <a href="#gags">GAGS评分</a>
+                <a href="#cases">真实案例</a>
+                <a href="#faq">常见问题</a>
+                <a href="#contact" class="btn btn-primary">立即咨询</a>
             </nav>
-            <button class="mobile-menu-btn" style="display: none;">☰</button>
+
+            <!-- Mobile Menu Toggle -->
+            <button class="btn-icon header-menu-toggle" id="menuToggle" aria-label="菜单">
+                <i class="ph ph-list" style="font-size: 24px;"></i>
+            </button>
         </div>
     </header>
-
-    <!-- 移动端侧滑菜单 -->
-    <div class="mobile-menu" id="mobileMenu">
-        <div class="mobile-menu-overlay" onclick="toggleMobileMenu()"></div>
-        <div class="mobile-menu-content">
-            <div class="mobile-menu-header">
-                <div class="logo">
-                    <img src="assets/images/logo.png" alt="联合丽格" style="height: 28px; margin-right: 8px;">
-                    <span>痘痘再见</span>
-                </div>
-                <button class="mobile-menu-close" onclick="toggleMobileMenu()">×</button>
-            </div>
-            <nav class="mobile-menu-nav">
-                <a href="#diagnosis" onclick="toggleMobileMenu()">痘痘测试</a>
-                <a href="#plans" onclick="toggleMobileMenu()">治疗方案</a>
-                <a href="#ai-chat" class="mobile-menu-cta" onclick="toggleMobileMenu()">💬 在线咨询</a>
-                <a href="#" onclick="toggleMobileMenu(); window.settingsPanel?.open();" style="border-top: 1px solid var(--border-light); padding-top: 1rem; margin-top: 1rem;">
-                    ⚙️ 设置
-                </a>
-            </nav>
-        </div>
-    </div>
 
     <!-- Hero Section -->
     <section class="hero">
@@ -1418,6 +1399,50 @@
             }
         }
 
+        // ========== Header滚动效果和移动端菜单 ==========
+        // Header scroll effect
+        const header = document.getElementById('header');
+        let lastScroll = 0;
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+
+            if (currentScroll > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+
+            lastScroll = currentScroll;
+        });
+
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const headerNav = document.getElementById('headerNav');
+
+        if (menuToggle && headerNav) {
+            menuToggle.addEventListener('click', () => {
+                headerNav.classList.toggle('active');
+                const icon = menuToggle.querySelector('i');
+                if (headerNav.classList.contains('active')) {
+                    icon.className = 'ph-bold ph-x';
+                } else {
+                    icon.className = 'ph ph-list';
+                }
+            });
+
+            // Close mobile menu when clicking nav links
+            document.querySelectorAll('.header-nav a').forEach(link => {
+                link.addEventListener('click', () => {
+                    headerNav.classList.remove('active');
+                    const icon = menuToggle.querySelector('i');
+                    if (icon) {
+                        icon.className = 'ph ph-list';
+                    }
+                });
+            });
+        }
+
         // ========== 页面加载完成后的初始化 ==========
         document.addEventListener('DOMContentLoaded', function() {
             console.log('痘痘再见 - 用户友好版首页已加载');
@@ -1426,7 +1451,7 @@
             // 初始化AI评估系统
             initAssessment();
 
-            // 移动端菜单按钮事件
+            // 移动端菜单按钮事件（保留旧代码兼容性）
             const menuBtn = document.querySelector('.mobile-menu-btn');
             if (menuBtn) {
                 menuBtn.addEventListener('click', toggleMobileMenu);
