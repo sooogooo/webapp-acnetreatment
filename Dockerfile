@@ -17,6 +17,16 @@ COPY service-worker.js /usr/share/nginx/html/
 COPY sitemap.xml /usr/share/nginx/html/
 COPY robots.txt /usr/share/nginx/html/
 
+# 复制CSS文件
+COPY css/ /usr/share/nginx/html/css/
+
+# 复制资源文件
+COPY assets/ /usr/share/nginx/html/assets/
+
+# 复制Logo和Favicon
+COPY logo.png /usr/share/nginx/html/
+COPY favicon.png /usr/share/nginx/html/
+
 # 创建icons目录（如果将来需要添加PWA图标）
 RUN mkdir -p /usr/share/nginx/html/icons
 
