@@ -1895,6 +1895,89 @@
             document.getElementById('gags').scrollIntoView({ behavior: 'smooth' });
         }
 
+        // ========== 滚动动画 Scroll Animations ==========
+
+        // Intersection Observer配置
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1 // 元素10%可见时触发
+        };
+
+        // 创建观察器
+        const scrollObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // 元素进入视口
+                    entry.target.classList.add('animate-fade-in-up');
+                    // 可选：观察一次后停止观察
+                    // scrollObserver.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // 为卡片添加延迟动画
+        function observeCardsWithStagger() {
+            const cards = document.querySelectorAll('.card');
+            cards.forEach((card, index) => {
+                // 添加stagger延迟类
+                const staggerClass = `stagger-${(index % 5) + 1}`;
+                card.classList.add(staggerClass);
+                scrollObserver.observe(card);
+            });
+        }
+
+        // 观察主要区块
+        function observeSections() {
+            const sections = document.querySelectorAll('.section, .gags-section, .treatment-plans');
+            sections.forEach(section => {
+                scrollObserver.observe(section);
+            });
+        }
+
+        // 平滑滚动到锚点
+        function initSmoothScroll() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+
+                    // 排除空锚点和特殊锚点
+                    if (href === '#' || href === '#!') {
+                        return;
+                    }
+
+                    const targetId = href.substring(1);
+                    const targetElement = document.getElementById(targetId);
+
+                    if (targetElement) {
+                        e.preventDefault();
+
+                        // 计算目标位置（考虑固定头部）
+                        const header = document.querySelector('.header');
+                        const headerHeight = header ? header.offsetHeight : 0;
+                        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20;
+
+                        // 平滑滚动
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+
+                        // 关闭移动端菜单（如果打开）
+                        const headerNav = document.getElementById('headerNav');
+                        const menuToggle = document.getElementById('menuToggle');
+                        if (headerNav && headerNav.classList.contains('active')) {
+                            headerNav.classList.remove('active');
+                            const icon = menuToggle.querySelector('i');
+                            if (icon) {
+                                icon.className = 'ph ph-list';
+                            }
+                        }
+                    }
+                });
+            });
+        }
+
         // ========== 页面加载完成后的初始化 ==========
         document.addEventListener('DOMContentLoaded', function() {
             console.log('痘痘再见 - 用户友好版首页已加载');
@@ -1902,6 +1985,11 @@
 
             // 初始化AI评估系统
             initAssessment();
+
+            // 初始化滚动动画
+            observeCardsWithStagger();
+            observeSections();
+            initSmoothScroll();
 
             // 移动端菜单按钮事件（保留旧代码兼容性）
             const menuBtn = document.querySelector('.mobile-menu-btn');
