@@ -1,0 +1,428 @@
+/**
+ * 联合丽格痤疮治疗网站 - 设计系统
+ * Design System - Feminine MedBeauty Style
+ * Version: 1.0.0
+ * Date: 2026-01-08
+ */
+
+:root {
+  /* ========== 色彩系统 Color System ========== */
+
+  /* 主色调 - 温暖中性色 */
+  --color-cream: #F8F6F3;
+  --color-taupe: #E8DDD0;
+  --color-mint: #D4E8E0;
+  --color-lavender: #E6E0F0;
+  --color-rose-gold: #D4A69C;
+  --color-rose-gold-dark: #C9968A;
+
+  /* 品牌色 - 专业信任色 */
+  --color-brand-blue: #4A6B8A;
+  --color-brand-blue-light: #6B8AA8;
+  --color-brand-blue-dark: #2A4B6A;
+
+  /* 功能色 */
+  --color-success: #7FC8A9;
+  --color-warning: #F4C790;
+  --color-error: #E8A5A5;
+  --color-info: #A5C7E8;
+
+  /* 文字色 */
+  --color-text-primary: #3A3A3A;
+  --color-text-secondary: #6B6B6B;
+  --color-text-tertiary: #9B9B9B;
+  --color-text-white: #FFFFFF;
+
+  /* 背景与边框 */
+  --color-bg-primary: #FFFFFF;
+  --color-bg-secondary: #F8F6F3;
+  --color-bg-tertiary: #E8DDD0;
+  --color-border-light: rgba(232, 221, 208, 0.3);
+  --color-border-medium: rgba(74, 107, 138, 0.2);
+
+  /* ========== 字体系统 Typography System ========== */
+
+  /* 字体家族 */
+  --font-primary: 'Inter', 'PingFang SC', 'Hiragino Sans GB',
+                  'Microsoft YaHei', sans-serif;
+  --font-heading: 'Plus Jakarta Sans', 'Source Han Sans CN', sans-serif;
+  --font-mono: 'SF Mono', 'Monaco', 'Cascadia Code', monospace;
+
+  /* 字重 */
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+
+  /* 字号层级 */
+  --font-size-xs: 0.75rem;      /* 12px */
+  --font-size-sm: 0.875rem;     /* 14px */
+  --font-size-base: 1rem;       /* 16px */
+  --font-size-lg: 1.125rem;     /* 18px */
+  --font-size-xl: 1.25rem;      /* 20px */
+  --font-size-2xl: 1.5rem;      /* 24px */
+  --font-size-3xl: 1.875rem;    /* 30px */
+  --font-size-4xl: 2.25rem;     /* 36px */
+  --font-size-5xl: 3rem;        /* 48px */
+
+  /* 行高 */
+  --line-height-tight: 1.3;
+  --line-height-normal: 1.6;
+  --line-height-relaxed: 1.8;
+  --line-height-loose: 2;
+
+  /* 字间距 */
+  --letter-spacing-tight: -0.01em;
+  --letter-spacing-normal: 0;
+  --letter-spacing-wide: 0.02em;
+  --letter-spacing-wider: 0.05em;
+
+  /* ========== 间距系统 Spacing System (8px基准) ========== */
+
+  --spacing-xs: 0.5rem;         /* 8px */
+  --spacing-sm: 1rem;           /* 16px */
+  --spacing-md: 1.5rem;         /* 24px */
+  --spacing-lg: 2.5rem;         /* 40px */
+  --spacing-xl: 4rem;           /* 64px */
+  --spacing-2xl: 6rem;          /* 96px */
+  --spacing-3xl: 8rem;          /* 128px */
+
+  /* ========== 圆角系统 Border Radius ========== */
+
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  --radius-2xl: 40px;
+  --radius-pill: 999px;
+  --radius-circle: 50%;
+
+  /* ========== 阴影系统 Shadow System ========== */
+
+  --shadow-xs: 0 1px 3px rgba(0, 0, 0, 0.04);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 32px rgba(74, 107, 138, 0.12);
+  --shadow-xl: 0 12px 48px rgba(74, 107, 138, 0.15);
+  --shadow-glow-rose: 0 0 24px rgba(212, 166, 156, 0.15);
+  --shadow-glow-mint: 0 0 24px rgba(212, 232, 224, 0.2);
+
+  /* ========== 过渡动画 Transitions ========== */
+
+  --transition-fast: 150ms ease;
+  --transition-base: 300ms ease;
+  --transition-slow: 500ms ease;
+  --transition-bounce: 400ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --transition-smooth: 600ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ========== 层级 Z-Index ========== */
+
+  --z-base: 0;
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-modal-backdrop: 900;
+  --z-modal: 1000;
+  --z-toast: 1100;
+  --z-tooltip: 1200;
+
+  /* ========== 容器与布局 Container & Layout ========== */
+
+  --container-max-width: 1280px;
+  --container-padding: 2rem;
+  --section-spacing: var(--spacing-2xl);
+}
+
+/* ========== 响应式设计令牌 Responsive Design Tokens ========== */
+
+/* Mobile */
+@media (max-width: 639px) {
+  :root {
+    --container-padding: 1rem;
+    --section-spacing: var(--spacing-xl);
+    --font-size-5xl: 2.25rem;     /* 减小Hero标题 */
+    --font-size-4xl: 1.875rem;
+  }
+}
+
+/* Tablet */
+@media (min-width: 640px) and (max-width: 1023px) {
+  :root {
+    --container-padding: 2rem;
+    --section-spacing: var(--spacing-2xl);
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  :root {
+    --container-padding: 2rem;
+    --section-spacing: var(--spacing-3xl);
+  }
+}
+
+/* Wide */
+@media (min-width: 1440px) {
+  :root {
+    --container-padding: 3rem;
+  }
+}
+
+/* ========== 全局重置 Global Reset ========== */
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-light);
+  line-height: var(--line-height-relaxed);
+  letter-spacing: var(--letter-spacing-wide);
+  color: var(--color-text-primary);
+  background: var(--color-bg-primary);
+}
+
+/* ========== 基础排版 Base Typography ========== */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: var(--font-weight-light);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-normal);
+  color: var(--color-brand-blue);
+  margin-bottom: 1em;
+}
+
+h1 {
+  font-size: var(--font-size-5xl);
+}
+
+h2 {
+  font-size: var(--font-size-4xl);
+}
+
+h3 {
+  font-size: var(--font-size-3xl);
+}
+
+h4 {
+  font-size: var(--font-size-2xl);
+}
+
+h5 {
+  font-size: var(--font-size-xl);
+}
+
+h6 {
+  font-size: var(--font-size-lg);
+}
+
+p {
+  margin-bottom: 1.5em;
+}
+
+a {
+  color: var(--color-brand-blue);
+  text-decoration: none;
+  transition: color var(--transition-base);
+}
+
+a:hover {
+  color: var(--color-rose-gold);
+}
+
+/* ========== 实用类 Utility Classes ========== */
+
+.container {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding-left: var(--container-padding);
+  padding-right: var(--container-padding);
+}
+
+.section {
+  padding-top: var(--section-spacing);
+  padding-bottom: var(--section-spacing);
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-light {
+  font-weight: var(--font-weight-light);
+}
+
+.text-normal {
+  font-weight: var(--font-weight-normal);
+}
+
+.text-medium {
+  font-weight: var(--font-weight-medium);
+}
+
+/* 颜色实用类 */
+.text-primary {
+  color: var(--color-text-primary);
+}
+
+.text-secondary {
+  color: var(--color-text-secondary);
+}
+
+.text-brand {
+  color: var(--color-brand-blue);
+}
+
+.text-rose {
+  color: var(--color-rose-gold);
+}
+
+.bg-cream {
+  background-color: var(--color-cream);
+}
+
+.bg-white {
+  background-color: var(--color-bg-primary);
+}
+
+/* 间距实用类 */
+.mt-xs { margin-top: var(--spacing-xs); }
+.mt-sm { margin-top: var(--spacing-sm); }
+.mt-md { margin-top: var(--spacing-md); }
+.mt-lg { margin-top: var(--spacing-lg); }
+.mt-xl { margin-top: var(--spacing-xl); }
+
+.mb-xs { margin-bottom: var(--spacing-xs); }
+.mb-sm { margin-bottom: var(--spacing-sm); }
+.mb-md { margin-bottom: var(--spacing-md); }
+.mb-lg { margin-bottom: var(--spacing-lg); }
+.mb-xl { margin-bottom: var(--spacing-xl); }
+
+.pt-xs { padding-top: var(--spacing-xs); }
+.pt-sm { padding-top: var(--spacing-sm); }
+.pt-md { padding-top: var(--spacing-md); }
+.pt-lg { padding-top: var(--spacing-lg); }
+.pt-xl { padding-top: var(--spacing-xl); }
+
+.pb-xs { padding-bottom: var(--spacing-xs); }
+.pb-sm { padding-bottom: var(--spacing-sm); }
+.pb-md { padding-bottom: var(--spacing-md); }
+.pb-lg { padding-bottom: var(--spacing-lg); }
+.pb-xl { padding-bottom: var(--spacing-xl); }
+
+/* ========== 动画关键帧 Animation Keyframes ========== */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* 动画类 */
+.animate-fade-in-up {
+  animation: fadeInUp var(--transition-smooth) ease-out;
+}
+
+.animate-fade-in {
+  animation: fadeIn var(--transition-base) ease-out;
+}
+
+/* Stagger动画延迟 */
+.stagger-1 { animation-delay: 0ms; }
+.stagger-2 { animation-delay: 100ms; }
+.stagger-3 { animation-delay: 200ms; }
+.stagger-4 { animation-delay: 300ms; }
+.stagger-5 { animation-delay: 400ms; }
+
+/* ========== 骨架屏 Skeleton Screen ========== */
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--color-cream) 0%,
+    var(--color-taupe) 50%,
+    var(--color-cream) 100%
+  );
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite;
+  border-radius: var(--radius-md);
+}
+
+/* ========== 可访问性 Accessibility ========== */
+
+/* 屏幕阅读器专用 */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* 聚焦样式 */
+*:focus-visible {
+  outline: 2px solid var(--color-rose-gold);
+  outline-offset: 2px;
+}
+
+/* ========== 打印样式 Print Styles ========== */
+
+@media print {
+  body {
+    background: white;
+    color: black;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+}
