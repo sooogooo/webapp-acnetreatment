@@ -289,6 +289,148 @@
   color: var(--color-rose-gold);
 }
 
+/* ========== 治疗方案卡片 Treatment Plan Cards ========== */
+
+.plan-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: all var(--transition-base);
+}
+
+.plan-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-xl);
+}
+
+/* 推荐标签 */
+.plan-badge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, var(--color-rose-gold), var(--color-rose-gold-dark));
+  color: var(--color-text-white);
+  padding: 0.5rem 1.5rem;
+  border-radius: var(--radius-pill);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  box-shadow: var(--shadow-glow-rose);
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  z-index: 1;
+}
+
+.plan-badge i {
+  font-size: 16px;
+}
+
+/* 推荐卡片特殊样式 */
+.plan-recommended {
+  border: 2px solid var(--color-rose-gold);
+  box-shadow: 0 4px 20px rgba(212, 166, 156, 0.2);
+}
+
+.plan-recommended:hover {
+  box-shadow: 0 8px 32px rgba(212, 166, 156, 0.3);
+}
+
+/* 方案头部 */
+.plan-header {
+  text-align: center;
+  padding: var(--spacing-md) 0;
+  border-bottom: 1px solid var(--color-border-light);
+  margin-bottom: var(--spacing-md);
+}
+
+.plan-header h3 {
+  font-size: var(--font-size-2xl);
+  color: var(--color-brand-blue);
+  font-weight: var(--font-weight-normal);
+  margin: 0 0 0.5rem 0;
+}
+
+.plan-subtitle {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+/* 价格区域 */
+.plan-price-box {
+  text-align: center;
+  padding: var(--spacing-md) 0;
+  background: linear-gradient(135deg, var(--color-cream) 0%, rgba(248, 246, 243, 0.3) 100%);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--spacing-md);
+}
+
+.plan-price {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+}
+
+.price-currency {
+  font-size: var(--font-size-lg);
+  color: var(--color-rose-gold);
+  font-weight: var(--font-weight-medium);
+  margin-right: 0.25rem;
+}
+
+.price-amount {
+  font-size: var(--font-size-4xl);
+  color: var(--color-rose-gold);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1;
+}
+
+.price-period {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  margin-left: 0.25rem;
+}
+
+.plan-duration {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-tertiary);
+}
+
+/* 方案特性列表 */
+.plan-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 var(--spacing-lg) 0;
+  flex-grow: 1;
+}
+
+.plan-features li {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-xs);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-sm);
+  line-height: var(--line-height-normal);
+}
+
+.plan-features li i {
+  color: var(--color-success);
+  font-size: 18px;
+  flex-shrink: 0;
+  margin-top: 0.125rem;
+}
+
+/* 全宽按钮 */
+.btn-block {
+  width: 100%;
+  justify-content: center;
+}
+
 /* ========== 输入组件 Form Inputs ========== */
 
 .form-group {

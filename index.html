@@ -591,61 +591,91 @@
     </section>
 
     <!-- Treatment Plans -->
-    <section id="plans" class="treatment-plans">
-        <h2 class="section-title">💊 专业治疗方案</h2>
-        <p class="section-subtitle">根据您的痤疮程度，选择最适合的治疗套餐</p>
-
-        <div class="plans-container">
-            <!-- 基础方案 -->
-            <div class="plan-card">
-                <div class="plan-name">基础方案</div>
-                <div class="plan-desc">适合轻度痤疮，预防为主</div>
-                <div class="plan-price">¥980<span>/疗程</span></div>
-                <div class="plan-period">3-6个月 | 3-5次治疗</div>
-                <ul class="plan-features">
-                    <li><span class="check-icon">✓</span> 激光针清 + 红蓝光消炎</li>
-                    <li><span class="check-icon">✓</span> 水杨酸深层清洁</li>
-                    <li><span class="check-icon">✓</span> 专业护理指导</li>
-                    <li><span class="check-icon">✓</span> 定期复查跟踪</li>
-                    <li><span class="check-icon">✓</span> 微信随时咨询</li>
-                </ul>
-                <button class="btn-plan btn-plan-secondary" onclick="selectPlan('basic')">选择方案</button>
+    <section id="plans" class="section" style="background: linear-gradient(180deg, var(--color-bg-primary) 0%, var(--color-cream) 100%);">
+        <div class="container">
+            <div class="section-title">
+                <h2>专业治疗方案</h2>
+                <p>根据您的痤疮程度，选择最适合的治疗套餐</p>
             </div>
 
-            <!-- 标准方案（推荐） -->
-            <div class="plan-card recommended">
-                <span class="plan-badge">🔥 最受欢迎</span>
-                <div class="plan-name">标准方案</div>
-                <div class="plan-desc">适合中度痤疮，深度治疗</div>
-                <div class="plan-price">¥1,880<span>/疗程</span></div>
-                <div class="plan-period">6-12个月 | 6-10次治疗</div>
-                <ul class="plan-features">
-                    <li><span class="check-icon">✓</span> 包含基础方案全部内容</li>
-                    <li><span class="check-icon">✓</span> 光子嫩肤 + 海飞秀清洁</li>
-                    <li><span class="check-icon">✓</span> 1550点阵修复痘坑</li>
-                    <li><span class="check-icon">✓</span> 专属治疗方案定制</li>
-                    <li><span class="check-icon">✓</span> 专家一对一指导</li>
-                    <li><span class="check-icon">✓</span> 治疗效果保障</li>
-                </ul>
-                <button class="btn-plan btn-plan-primary" onclick="selectPlan('standard')">立即选择（推荐）</button>
-            </div>
+            <div class="grid-3">
+                <!-- 基础方案 -->
+                <div class="card plan-card">
+                    <div class="plan-header">
+                        <h3>基础方案</h3>
+                        <p class="plan-subtitle">适合轻度痤疮</p>
+                    </div>
+                    <div class="plan-price-box">
+                        <div class="plan-price">
+                            <span class="price-currency">¥</span>
+                            <span class="price-amount">980</span>
+                            <span class="price-period">/疗程</span>
+                        </div>
+                        <div class="plan-duration">3-6个月 · 3-5次治疗</div>
+                    </div>
+                    <ul class="plan-features">
+                        <li><i class="ph-bold ph-check-circle"></i> 激光针清 + 红蓝光消炎</li>
+                        <li><i class="ph-bold ph-check-circle"></i> 水杨酸深层清洁</li>
+                        <li><i class="ph-bold ph-check-circle"></i> 专业护理指导</li>
+                        <li><i class="ph-bold ph-check-circle"></i> 定期复查跟踪</li>
+                        <li><i class="ph-bold ph-check-circle"></i> 微信随时咨询</li>
+                    </ul>
+                    <button class="btn btn-secondary btn-block" onclick="selectPlan('basic')">选择方案</button>
+                </div>
 
-            <!-- 高级方案 -->
-            <div class="plan-card">
-                <div class="plan-name">高级方案</div>
-                <div class="plan-desc">适合重度痤疮，全面治疗</div>
-                <div class="plan-price">¥4,580<span>/疗程</span></div>
-                <div class="plan-period">12-18个月 | 10-15次治疗</div>
-                <ul class="plan-features">
-                    <li><span class="check-icon">✓</span> 包含标准方案全部内容</li>
-                    <li><span class="check-icon">✓</span> 光动力深层杀菌</li>
-                    <li><span class="check-icon">✓</span> 微针射频修复</li>
-                    <li><span class="check-icon">✓</span> PRP自体血清修复</li>
-                    <li><span class="check-icon">✓</span> 专家团队会诊</li>
-                    <li><span class="check-icon">✓</span> VIP绿色通道</li>
-                    <li><span class="check-icon">✓</span> 终身咨询服务</li>
-                </ul>
-                <button class="btn-plan btn-plan-secondary" onclick="selectPlan('premium')">选择方案</button>
+                <!-- 标准方案（推荐） -->
+                <div class="card plan-card plan-recommended">
+                    <div class="plan-badge">
+                        <i class="ph-bold ph-star"></i> 最受欢迎
+                    </div>
+                    <div class="plan-header">
+                        <h3>标准方案</h3>
+                        <p class="plan-subtitle">适合中度痤疮</p>
+                    </div>
+                    <div class="plan-price-box">
+                        <div class="plan-price">
+                            <span class="price-currency">¥</span>
+                            <span class="price-amount">1,880</span>
+                            <span class="price-period">/疗程</span>
+                        </div>
+                        <div class="plan-duration">6-12个月 · 6-10次治疗</div>
+                    </div>
+                    <ul class="plan-features">
+                        <li><i class="ph-bold ph-check-circle"></i> 包含基础方案全部内容</li>
+                        <li><i class="ph-bold ph-check-circle"></i> 光子嫩肤 + 海飞秀清洁</li>
+                        <li><i class="ph-bold ph-check-circle"></i> 1550点阵修复痘坑</li>
+                        <li><i class="ph-bold ph-check-circle"></i> 专属治疗方案定制</li>
+                        <li><i class="ph-bold ph-check-circle"></i> 专家一对一指导</li>
+                        <li><i class="ph-bold ph-check-circle"></i> 治疗效果保障</li>
+                    </ul>
+                    <button class="btn btn-primary btn-block" onclick="selectPlan('standard')">立即选择</button>
+                </div>
+
+                <!-- 高级方案 -->
+                <div class="card plan-card">
+                    <div class="plan-header">
+                        <h3>高级方案</h3>
+                        <p class="plan-subtitle">适合重度痤疮</p>
+                    </div>
+                    <div class="plan-price-box">
+                        <div class="plan-price">
+                            <span class="price-currency">¥</span>
+                            <span class="price-amount">4,580</span>
+                            <span class="price-period">/疗程</span>
+                        </div>
+                        <div class="plan-duration">12-18个月 · 10-15次治疗</div>
+                    </div>
+                    <ul class="plan-features">
+                        <li><i class="ph-bold ph-check-circle"></i> 包含标准方案全部内容</li>
+                        <li><i class="ph-bold ph-check-circle"></i> 光动力深层杀菌</li>
+                        <li><i class="ph-bold ph-check-circle"></i> 微针射频修复</li>
+                        <li><i class="ph-bold ph-check-circle"></i> PRP自体血清修复</li>
+                        <li><i class="ph-bold ph-check-circle"></i> 专家团队会诊</li>
+                        <li><i class="ph-bold ph-check-circle"></i> VIP绿色通道</li>
+                        <li><i class="ph-bold ph-check-circle"></i> 终身咨询服务</li>
+                    </ul>
+                    <button class="btn btn-secondary btn-block" onclick="selectPlan('premium')">选择方案</button>
+                </div>
             </div>
         </div>
     </section>
