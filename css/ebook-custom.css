@@ -1,0 +1,785 @@
+/**
+ * E-Book Reader Custom Styles
+ * 电子书阅读器专用样式
+ * Version: 1.0.0
+ * Date: 2026-01-09
+ *
+ * 基于温柔医美设计系统,为电子书阅读器提供专用样式
+ */
+
+/* ========== Body & Container Override ========== */
+
+body {
+  background: linear-gradient(
+    135deg,
+    var(--color-cream) 0%,
+    var(--color-bg-primary) 50%,
+    var(--color-mint) 100%
+  );
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--spacing-md);
+}
+
+/* ========== E-Book Header ========== */
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+}
+
+.header-logo img {
+  max-width: 120px;
+  margin: 0;
+}
+
+.header-title {
+  text-align: left;
+}
+
+.header-title h1 {
+  font-size: var(--font-size-3xl);
+  color: var(--color-brand-blue);
+  margin: 0 0 var(--spacing-xs) 0;
+  font-weight: var(--font-weight-light);
+}
+
+.header-title p {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-base);
+  margin: 0;
+}
+
+/* ========== Theme Toggle Button ========== */
+
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--color-bg-primary);
+  border: 2px solid var(--color-rose-gold);
+  box-shadow: var(--shadow-md);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5em;
+  z-index: 1000;
+  transition: all var(--transition-base);
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1);
+  box-shadow: var(--shadow-glow-rose);
+}
+
+.theme-toggle:active {
+  transform: scale(0.95);
+}
+
+.theme-icon {
+  transition: transform var(--transition-base), opacity var(--transition-base);
+}
+
+.theme-icon.hide {
+  transform: rotate(180deg);
+  opacity: 0;
+}
+
+/* ========== Floating Buttons ========== */
+
+.float-btn {
+  position: fixed;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: var(--shadow-lg);
+  z-index: 1000;
+  transition: all var(--transition-base);
+  border: none;
+}
+
+/* TOC Float Button */
+#tocFloatBtn {
+  bottom: 160px;
+  background: linear-gradient(135deg, var(--color-brand-blue), var(--color-brand-blue-dark));
+}
+
+#tocFloatBtn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 30px rgba(74, 107, 138, 0.5);
+}
+
+/* Bookmark Float Button */
+#bookmarkFloatBtn {
+  bottom: 80px;
+  background: linear-gradient(135deg, var(--color-rose-gold), var(--color-rose-gold-dark));
+}
+
+#bookmarkFloatBtn:hover {
+  transform: scale(1.1);
+  box-shadow: var(--shadow-glow-rose);
+}
+
+.float-btn span {
+  font-size: 1.8em;
+  color: white;
+}
+
+/* Bookmark Count Badge */
+#bookmarkCount {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: var(--color-error);
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7em;
+  font-weight: var(--font-weight-semibold);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ========== Side Panels (TOC & Bookmark) ========== */
+
+.side-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: min(420px, 90vw);
+  height: 100vh;
+  background: var(--color-bg-primary);
+  box-shadow: -5px 0 30px rgba(0, 0, 0, 0.15);
+  z-index: 1001;
+  overflow-y: auto;
+  animation: slideInRight var(--transition-smooth) ease-out;
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* Panel Header */
+.side-panel .panel-header {
+  position: sticky;
+  top: 0;
+  background: linear-gradient(135deg, var(--color-brand-blue), var(--color-brand-blue-dark));
+  color: white;
+  padding: var(--spacing-md);
+  z-index: 10;
+  box-shadow: var(--shadow-sm);
+}
+
+#bookmarkPanel .panel-header {
+  background: linear-gradient(135deg, var(--color-rose-gold), var(--color-rose-gold-dark));
+}
+
+.panel-header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.panel-header h3 {
+  margin: 0;
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-medium);
+}
+
+.panel-header p {
+  margin: var(--spacing-xs) 0 0 0;
+  opacity: 0.9;
+  font-size: var(--font-size-sm);
+}
+
+.panel-close-btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-base);
+}
+
+.panel-close-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: rotate(90deg);
+}
+
+/* Panel Content */
+.panel-content {
+  padding: var(--spacing-md);
+}
+
+/* Backdrop */
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  backdrop-filter: blur(2px);
+}
+
+/* ========== Chapter Cards ========== */
+
+.chapters-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--spacing-md);
+  margin: var(--spacing-lg) 0;
+}
+
+.chapter-card {
+  background: var(--color-bg-primary);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-md);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  position: relative;
+}
+
+.chapter-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--color-rose-gold);
+}
+
+.chapter-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-sm);
+}
+
+.chapter-icon {
+  font-size: 32px;
+  color: var(--color-rose-gold);
+  flex-shrink: 0;
+}
+
+.chapter-number {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-tertiary);
+  font-weight: var(--font-weight-medium);
+  background: var(--color-cream);
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-pill);
+}
+
+.chapter-title {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-brand-blue);
+  margin: 0 0 var(--spacing-xs) 0;
+}
+
+.chapter-desc {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
+  margin: 0;
+}
+
+/* Special Chapter Card (Medical Beauty) */
+.chapter-card.special {
+  background: linear-gradient(135deg, var(--color-rose-gold) 0%, var(--color-rose-gold-dark) 100%);
+  color: white;
+  border: 2px solid var(--color-rose-gold);
+  position: relative;
+  overflow: hidden;
+}
+
+.chapter-card.special::before {
+  content: "✨ 专业医美";
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: white;
+  color: var(--color-brand-blue);
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-pill);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+}
+
+.chapter-card.special .chapter-title {
+  color: white;
+}
+
+.chapter-card.special .chapter-desc {
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.chapter-card.special .chapter-icon {
+  color: white;
+}
+
+/* ========== Medical Beauty Section ========== */
+
+.medical-beauty-section {
+  background: linear-gradient(135deg, var(--color-brand-blue) 0%, var(--color-brand-blue-dark) 100%);
+  color: white;
+  padding: var(--spacing-xl);
+  border-radius: var(--radius-xl);
+  margin-bottom: var(--spacing-lg);
+  box-shadow: 0 15px 40px rgba(74, 107, 138, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.medical-beauty-section::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  animation: medicalPulse 4s ease-in-out infinite;
+}
+
+@keyframes medicalPulse {
+  0%, 100% {
+    opacity: 0.5;
+    transform: scale(0.8) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1) rotate(180deg);
+  }
+}
+
+.medical-beauty-section h3 {
+  text-align: center;
+  margin-bottom: var(--spacing-md);
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-light);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  position: relative;
+  z-index: 1;
+}
+
+.medical-beauty-highlights {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--spacing-md);
+  position: relative;
+  z-index: 1;
+}
+
+.highlight-card {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-md);
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.highlight-card:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.highlight-icon {
+  font-size: 2.5em;
+  margin-bottom: var(--spacing-sm);
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.highlight-card h4 {
+  margin-bottom: var(--spacing-xs);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+}
+
+.highlight-card p {
+  font-size: var(--font-size-sm);
+  opacity: 0.95;
+  line-height: var(--line-height-normal);
+}
+
+/* Golden Combo Highlight */
+.highlight-card.golden-combo {
+  background: linear-gradient(135deg, #ffd700 0%, #ff8c00 100%);
+  color: var(--color-brand-blue);
+  border: 3px solid white;
+  transform: scale(1.05);
+  box-shadow: 0 20px 50px rgba(255, 215, 0, 0.4);
+  position: relative;
+}
+
+.highlight-card.golden-combo::before {
+  content: '⭐ 黄金组合';
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background: linear-gradient(45deg, var(--color-error), var(--color-warning));
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-pill);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  box-shadow: var(--shadow-md);
+  animation: glow 2s ease-in-out infinite alternate;
+  z-index: 10;
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+  }
+  to {
+    box-shadow: 0 6px 25px rgba(231, 76, 60, 0.6);
+  }
+}
+
+/* ========== Search Container ========== */
+
+.search-container {
+  position: relative;
+  max-width: 600px;
+  margin: var(--spacing-lg) auto;
+}
+
+.search-input {
+  width: 100%;
+  padding: var(--spacing-sm) var(--spacing-md) var(--spacing-sm) 3rem;
+  border: 2px solid var(--color-border-light);
+  border-radius: var(--radius-pill);
+  font-size: var(--font-size-base);
+  font-family: var(--font-primary);
+  transition: all var(--transition-base);
+  background: var(--color-bg-primary);
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--color-rose-gold);
+  box-shadow: 0 0 0 3px rgba(212, 166, 156, 0.1);
+}
+
+.search-icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-text-tertiary);
+  pointer-events: none;
+}
+
+/* ========== Tool Panels ========== */
+
+.tool-panel {
+  background: var(--color-bg-primary);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-xl);
+  box-shadow: var(--shadow-xl);
+  margin-top: var(--spacing-md);
+  display: none;
+  border: 1px solid var(--color-border-light);
+}
+
+.tool-panel.active {
+  display: block;
+}
+
+.tool-header {
+  text-align: center;
+  margin-bottom: var(--spacing-lg);
+  border-bottom: 2px solid var(--color-rose-gold);
+  padding-bottom: var(--spacing-md);
+}
+
+.tool-header h2 {
+  color: var(--color-brand-blue);
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-light);
+  margin-bottom: var(--spacing-xs);
+}
+
+.tool-header p {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-base);
+}
+
+/* ========== Tables ========== */
+
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--spacing-md) 0;
+  box-shadow: var(--shadow-md);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.comparison-table th {
+  background: linear-gradient(135deg, var(--color-brand-blue), var(--color-brand-blue-dark));
+  color: white;
+  padding: var(--spacing-sm) var(--spacing-md);
+  text-align: center;
+  font-weight: var(--font-weight-medium);
+}
+
+.comparison-table td {
+  padding: var(--spacing-sm) var(--spacing-md);
+  text-align: center;
+  border-bottom: 1px solid var(--color-border-light);
+  color: var(--color-text-primary);
+}
+
+.comparison-table tr:nth-child(even) {
+  background-color: var(--color-cream);
+}
+
+.comparison-table tr:hover {
+  background-color: rgba(212, 166, 156, 0.1);
+}
+
+/* ========== Forms ========== */
+
+.form-group {
+  margin-bottom: var(--spacing-md);
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: var(--spacing-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-brand-blue);
+}
+
+.form-group select,
+.form-group input {
+  width: 100%;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 2px solid var(--color-border-light);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-base);
+  font-family: var(--font-primary);
+  transition: all var(--transition-base);
+  background: var(--color-bg-primary);
+}
+
+.form-group select:focus,
+.form-group input:focus {
+  outline: none;
+  border-color: var(--color-rose-gold);
+  box-shadow: 0 0 0 3px rgba(212, 166, 156, 0.1);
+}
+
+/* ========== Treatment Categories ========== */
+
+.treatment-category {
+  background: rgba(74, 107, 138, 0.05);
+  border: 2px solid rgba(74, 107, 138, 0.2);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-md);
+  margin: var(--spacing-md) 0;
+}
+
+.treatment-category h4 {
+  color: var(--color-brand-blue);
+  margin-bottom: var(--spacing-sm);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-medium);
+  border-bottom: 2px solid rgba(74, 107, 138, 0.2);
+  padding-bottom: var(--spacing-xs);
+}
+
+.checkbox-group {
+  margin: var(--spacing-sm) 0;
+}
+
+.checkbox-group label {
+  display: block;
+  margin: var(--spacing-xs) 0;
+  padding: var(--spacing-sm);
+  background: var(--color-bg-primary);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  border: 2px solid transparent;
+}
+
+.checkbox-group label:hover {
+  background: rgba(212, 166, 156, 0.1);
+  border-color: var(--color-rose-gold);
+}
+
+.checkbox-group input[type="checkbox"] {
+  margin-right: var(--spacing-xs);
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+.checkbox-group label:has(input[type="checkbox"]:checked) {
+  background: rgba(212, 166, 156, 0.15);
+  border-color: var(--color-rose-gold);
+  font-weight: var(--font-weight-medium);
+}
+
+/* ========== Results Display ========== */
+
+.result-card {
+  background: linear-gradient(135deg, var(--color-success), var(--color-success-dark));
+  color: white;
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-xl);
+  margin: var(--spacing-md) 0;
+  box-shadow: var(--shadow-xl);
+}
+
+.result-card h3 {
+  margin-bottom: var(--spacing-sm);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-medium);
+}
+
+.cost-breakdown {
+  background: rgba(255, 255, 255, 0.15);
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+  margin-top: var(--spacing-sm);
+}
+
+.cost-item {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--spacing-xs) 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.cost-item:last-child {
+  border-bottom: none;
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-lg);
+  margin-top: var(--spacing-xs);
+  padding-top: var(--spacing-sm);
+  border-top: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+/* ========== Bookmark Tab Buttons ========== */
+
+.bookmark-tab-btn {
+  padding: 0.5rem 1rem;
+  background: var(--color-bg-secondary);
+  color: var(--color-text-secondary);
+  border: none;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  font-family: var(--font-primary);
+  transition: all var(--transition-base);
+}
+
+.bookmark-tab-btn:hover {
+  background: rgba(212, 166, 156, 0.2);
+  color: var(--color-rose-gold);
+}
+
+.bookmark-tab-btn.active {
+  background: linear-gradient(135deg, var(--color-rose-gold), var(--color-rose-gold-dark));
+  color: white;
+}
+
+/* ========== Responsive Design ========== */
+
+@media (max-width: 639px) {
+  .container {
+    padding: var(--spacing-sm);
+  }
+
+  .header-title h1 {
+    font-size: var(--font-size-2xl);
+  }
+
+  .chapters-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .medical-beauty-highlights {
+    grid-template-columns: 1fr;
+  }
+
+  .float-btn {
+    width: 50px;
+    height: 50px;
+  }
+
+  .float-btn span {
+    font-size: 1.5em;
+  }
+
+  .side-panel {
+    width: 100%;
+  }
+
+  .theme-toggle {
+    top: 10px;
+    right: 10px;
+    width: 44px;
+    height: 44px;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 1023px) {
+  .chapters-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ========== Print Styles ========== */
+
+@media print {
+  .theme-toggle,
+  .float-btn,
+  .side-panel,
+  .backdrop {
+    display: none !important;
+  }
+
+  body {
+    background: white;
+  }
+}
