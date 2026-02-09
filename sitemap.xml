@@ -4,15 +4,15 @@
 
     <!-- 首页 -->
     <url>
-        <loc>https://acne.yoursite.com/</loc>
-        <lastmod>2025-10-19</lastmod>
+        <loc>https://sooogooo.github.io/webapp-acnetreatment/</loc>
+        <lastmod>2026-02-09</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
 
     <!-- 治疗项目页面 -->
     <url>
-        <loc>https://acne.yoursite.com/treatments.html</loc>
+        <loc>https://sooogooo.github.io/webapp-acnetreatment/treatments.html</loc>
         <lastmod>2025-10-19</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
@@ -20,7 +20,7 @@
 
     <!-- GAGS评分系统 -->
     <url>
-        <loc>https://acne.yoursite.com/#gags-assessment</loc>
+        <loc>https://sooogooo.github.io/webapp-acnetreatment/#gags-assessment</loc>
         <lastmod>2025-10-19</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
@@ -28,7 +28,7 @@
 
     <!-- 治疗决策树 -->
     <url>
-        <loc>https://acne.yoursite.com/#decision-tree</loc>
+        <loc>https://sooogooo.github.io/webapp-acnetreatment/#decision-tree</loc>
         <lastmod>2025-10-19</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
@@ -36,7 +36,7 @@
 
     <!-- 案例展示 -->
     <url>
-        <loc>https://acne.yoursite.com/#cases</loc>
+        <loc>https://sooogooo.github.io/webapp-acnetreatment/#cases</loc>
         <lastmod>2025-10-19</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
@@ -44,7 +44,7 @@
 
     <!-- 治疗时间线规划器 -->
     <url>
-        <loc>https://acne.yoursite.com/#timeline-planner</loc>
+        <loc>https://sooogooo.github.io/webapp-acnetreatment/#timeline-planner</loc>
         <lastmod>2025-10-19</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
@@ -52,7 +52,7 @@
 
     <!-- FAQ常见问题 -->
     <url>
-        <loc>https://acne.yoursite.com/#faq</loc>
+        <loc>https://sooogooo.github.io/webapp-acnetreatment/#faq</loc>
         <lastmod>2025-10-19</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
@@ -60,7 +60,7 @@
 
     <!-- 术后护理指南 -->
     <url>
-        <loc>https://acne.yoursite.com/#aftercare</loc>
+        <loc>https://sooogooo.github.io/webapp-acnetreatment/#aftercare</loc>
         <lastmod>2025-10-19</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
@@ -68,7 +68,7 @@
 
     <!-- 医生团队 -->
     <url>
-        <loc>https://acne.yoursite.com/#doctors</loc>
+        <loc>https://sooogooo.github.io/webapp-acnetreatment/#doctors</loc>
         <lastmod>2025-10-19</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
@@ -76,7 +76,7 @@
 
     <!-- 治疗效果跟踪 -->
     <url>
-        <loc>https://acne.yoursite.com/#tracking</loc>
+        <loc>https://sooogooo.github.io/webapp-acnetreatment/#tracking</loc>
         <lastmod>2025-10-19</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
@@ -84,7 +84,7 @@
 
     <!-- 在线预约 -->
     <url>
-        <loc>https://acne.yoursite.com/#appointment</loc>
+        <loc>https://sooogooo.github.io/webapp-acnetreatment/#appointment</loc>
         <lastmod>2025-10-19</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
