@@ -12,3 +12,16 @@ node_modules/
 *.backup2
 server.log
 nohup.out
+
+# Test and development files
+dev-files/
+test-*.js
+test-*.html
+*.test.js
+*.test.html
+
+# Build artifacts
+dist/
+build/
+*.min.js
+*.min.css
